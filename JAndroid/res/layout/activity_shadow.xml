@@ -1,0 +1,58 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/shadow_challenge"
+    android:orientation="vertical"
+    android:layout_height="match_parent" xmlns:android1="http://schemas.android.com/apk/res/android">
+        
+	<ImageView
+	    android:id="@+id/shadow"
+	    android:layout_width="150dp"
+	    android:layout_height="150dp"
+	    android1:layout_gravity="center_horizontal"
+	    android1:layout_marginTop="170dp"
+	    android:contentDescription="first_obstacle"
+	    android:src="@drawable/elephant_shadow" />
+
+	<LinearLayout
+	    android1:id="@+id/linearLayout2"
+	    android1:layout_width="fill_parent"
+	    android1:layout_height="wrap_content"
+	    android1:layout_margin="20dp"
+	    android1:gravity="center_horizontal"
+	    android1:orientation="horizontal" >
+
+	    <Button
+	        android1:id="@+id/first_option"
+	        android1:layout_width="80dp"
+	        android1:layout_height="wrap_content"
+	        android1:layout_margin="5dp"
+	        android:background="@drawable/button"
+	        android1:adjustViewBounds="false"
+	        android1:contentDescription="first_option"
+	        android1:onClick="verifyAnswer"
+	        android1:text="Gorila" />
+
+	    <Button
+	        android1:id="@+id/second_option"
+	        android1:layout_width="80dp"
+	        android1:layout_height="wrap_content"
+	        android1:layout_margin="5dp"
+	        android:background="@drawable/button"
+	        android1:contentDescription="first_option"
+	        android1:onClick="verifyAnswer"
+	        android1:text="Hipopótamo" />
+
+	    <Button
+	        android1:id="@+id/third_option"
+	        android1:layout_width="80dp"
+	        android1:layout_height="wrap_content"
+	        android1:layout_margin="5dp"
+	        android:background="@drawable/button"
+	        android1:contentDescription="first_option"
+	        android1:onClick="verifyAnswer"
+	        android1:text="Elefante" />
+
+	</LinearLayout>
+
+</LinearLayout>

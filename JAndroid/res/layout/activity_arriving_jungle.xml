@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/arriving_jungle"
+    android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+
+    <ImageView
+        android:id="@+id/indieParachuting"
+        android:layout_width="250dp"
+        android:layout_height="450dp"
+        android:layout_marginLeft="0dp"
+        android:src="@drawable/indie_parachuting" />
+
+    <ImageView
+        android:id="@+id/indie"
+        android:layout_width="170dp"
+        android:layout_height="270dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="40dp"
+        android:src="@drawable/indie1" />
+
+    <ImageButton
+        android:id="@+id/nextButton_arriv"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="24dp"
+        android:layout_marginRight="24dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/arrow_next" />
+
+</RelativeLayout>

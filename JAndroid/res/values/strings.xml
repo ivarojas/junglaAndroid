@@ -1,0 +1,14 @@
+<resources>
+
+    <string name="app_name">La Jungla</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">La Jungla</string>
+    <string name="title_activity_indie_introducing">IndieIntroducing</string>
+    <string name="hola">Hola, soy Indie, viajemos juntos a la jungla</string>
+    <string name="title_activity_goodbye">GoodbyeActivity</string>
+    <string name="title_activity_choose_animals_jungle">ChooseAnimalsJungleActivity</string>
+    <string name="title_activity_say_goodbye">SayGoodbyeActivity</string>
+    <string name="bye">Este el fin del viaje. Ven conmigo a una nueva aventura!!</string>
+
+</resources>

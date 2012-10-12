@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background" >
+
+    <ImageButton
+        android:id="@+id/continuebutton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="40dp"
+        android:layout_marginRight="28dp"
+        android:background="@drawable/arrow_next" />
+
+    <ImageButton
+        android:id="@+id/monkeybutton"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/continuebutton"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/monkey" />
+
+    <ImageButton
+        android:id="@+id/rhinobutton"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignTop="@+id/monkeybutton"
+        android:layout_marginTop="50dp"
+        android:layout_toLeftOf="@+id/monkeybutton"
+        android:background="@drawable/hippo" />
+
+    <ImageButton
+        android:id="@+id/lionbutton"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_alignLeft="@+id/monkeybutton"
+        android:layout_below="@+id/rhinobutton"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/elephant2" />
+
+    <ImageButton
+        android:id="@+id/giraffebutton"
+        android:layout_width="100dp"
+        android:layout_height="120dp"
+        android:layout_above="@+id/continuebutton"
+        android:layout_alignRight="@+id/rhinobutton"
+        android:layout_marginBottom="18dp"
+        android:background="@drawable/gorilla" />
+
+</RelativeLayout>

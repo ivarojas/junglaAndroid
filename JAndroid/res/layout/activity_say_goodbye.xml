@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+
+    <ImageView
+        android:id="@+id/cloud_intr"
+        android:layout_width="270dp"
+        android:layout_height="280dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/cloud" />
+
+    <ImageView
+        android:id="@+id/indie_goodbye"
+        android:layout_width="180dp"
+        android:layout_height="250dp"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/indie_goodbye" />
+
+    <ImageButton
+        android:id="@+id/nextButton_sayGB"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="24dp"
+        android:layout_marginRight="24dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/arrow_next" />
+
+    <TextView
+        android:id="@+id/cloud_text"
+        android:layout_width="230dp"
+        android:layout_height="120dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="75dp"
+        android:layout_marginRight="18dp"
+        android:gravity="center_horizontal"
+        android:text="@string/bye"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#000000"
+        android:textSize="22dp" />
+
+</RelativeLayout>

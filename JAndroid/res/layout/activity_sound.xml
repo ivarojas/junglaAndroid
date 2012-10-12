@@ -1,0 +1,66 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android1="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/sound_challenge"
+    android:orientation="vertical" >
+        
+	<ImageView
+	    android:id="@+id/shadow"
+	    android1:layout_width="fill_parent"
+	    android:layout_height="120dp"
+	    android1:layout_gravity="center_horizontal"
+	    android1:layout_marginTop="170dp"
+	    android:contentDescription="first_obstacle"
+	    android:src="@drawable/sound_animal" />
+	
+	<ImageButton
+	    android:id="@+id/soundChallenge"
+	    android1:layout_width="100dp"
+	    android1:layout_height="61dp"
+	    android1:layout_gravity="center_horizontal"
+	    android:background="@drawable/speaker"
+	    android:contentDescription="sound" />
+	
+	<LinearLayout
+	    android1:id="@+id/linearLayout2"
+	    android1:layout_width="fill_parent"
+	    android1:layout_height="wrap_content"
+	    android1:layout_marginTop="20dp"
+	    android1:gravity="center_horizontal"
+	    android1:orientation="horizontal" >
+
+	    <Button
+	        android1:id="@+id/first_option"
+	        android1:layout_width="80dp"
+	        android1:layout_height="wrap_content"
+	        android1:layout_margin="5dp"
+	        android:background="@drawable/button"
+	        android1:adjustViewBounds="false"
+	        android1:contentDescription="first_option"
+	        android1:onClick="verifyAnswer"
+	        android1:text="Gorila" />
+
+	    <Button
+	        android1:id="@+id/second_option"
+	        android1:layout_width="80dp"
+	        android1:layout_height="wrap_content"
+	        android1:layout_margin="5dp"
+	        android:background="@drawable/button"
+	        android1:contentDescription="first_option"
+	        android1:onClick="verifyAnswer"
+	        android1:text="Hipopótamo" />
+
+	    <Button
+	        android1:id="@+id/third_option"
+	        android1:layout_width="80dp"
+	        android1:layout_height="wrap_content"
+	        android1:layout_margin="5dp"
+	        android:background="@drawable/button"
+	        android1:contentDescription="first_option"
+	        android1:onClick="verifyAnswer"
+	        android1:text="Elefante" />
+
+	</LinearLayout>
+</LinearLayout>
