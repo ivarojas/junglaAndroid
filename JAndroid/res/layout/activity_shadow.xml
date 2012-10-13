@@ -18,7 +18,6 @@
 	    android1:id="@+id/linearLayout2"
 	    android1:layout_width="match_parent"
 	    android1:layout_height="wrap_content"
-	    android1:layout_margin="20dp"
 	    android1:gravity="center_horizontal"
 	    android1:orientation="horizontal" >
 
