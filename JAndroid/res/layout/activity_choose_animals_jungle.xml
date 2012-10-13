@@ -145,18 +145,36 @@
         </RelativeLayout>
     </LinearLayout>
 	
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="40dp" >
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:padding="30dp">
+        
+   		<TextView
+   		    android:id="@+id/textView1"
+   		    android:layout_width="128dp"
+   		    android:layout_height="wrap_content"
+   		    android:layout_marginLeft="30dp"
+   		    android:margin="3dp"
+   		    android:text="¿Cuál de estos animales viven en la jungla?"
+   		    android:textAppearance="?android:attr/textAppearanceLarge" />
 
 		<drag_framework.DropSpot
 		    android:id="@+id/drop_spot_center"
 		    android:layout_width="150dp"
 		    android:layout_height="150dp"
-		    android:layout_centerHorizontal="true"
-		    android:layout_centerVertical="true"
 		    android:background="@color/drop_target_enabled" >
 		</drag_framework.DropSpot>
-	</RelativeLayout>
+
+		<TextView
+		    android:id="@+id/textView2"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_marginRight="30dp"
+		    android:text="0/3"
+		    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+	</LinearLayout>
 </drag_framework.DragLayer>
