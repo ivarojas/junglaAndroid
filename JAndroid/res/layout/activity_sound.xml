@@ -33,34 +33,37 @@
 
 	    <Button
 	        android1:id="@+id/first_option"
-	        android1:layout_width="80dp"
+	        android1:layout_width="90dp"
 	        android1:layout_height="wrap_content"
 	        android1:layout_margin="5dp"
 	        android:background="@drawable/button"
 	        android1:adjustViewBounds="false"
 	        android1:contentDescription="first_option"
 	        android1:onClick="verifyAnswer"
-	        android1:text="Gorila" />
+	        android1:text="Gorila" 
+	        android:textSize="15dp" />
 
 	    <Button
 	        android1:id="@+id/second_option"
-	        android1:layout_width="80dp"
+	        android1:layout_width="90dp"
 	        android1:layout_height="wrap_content"
 	        android1:layout_margin="5dp"
 	        android:background="@drawable/button"
 	        android1:contentDescription="first_option"
 	        android1:onClick="verifyAnswer"
-	        android1:text="Hipopótamo" />
+	        android1:text="Hipopótamo" 
+	        android:textSize="15dp" />
 
 	    <Button
 	        android1:id="@+id/third_option"
-	        android1:layout_width="80dp"
+	        android1:layout_width="90dp"
 	        android1:layout_height="wrap_content"
 	        android1:layout_margin="5dp"
 	        android:background="@drawable/button"
 	        android1:contentDescription="first_option"
 	        android1:onClick="verifyAnswer"
-	        android1:text="Elefante" />
+	        android1:text="Elefante" 
+	        android:textSize="15dp" />
 
 	</LinearLayout>
 </LinearLayout>

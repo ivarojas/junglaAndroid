@@ -10,5 +10,6 @@
     <string name="title_activity_choose_animals_jungle">ChooseAnimalsJungleActivity</string>
     <string name="title_activity_say_goodbye">SayGoodbyeActivity</string>
     <string name="bye">Este el fin del viaje. Ven conmigo a una nueva aventura!!</string>
+    <string name="title_activity_new_challenge">NewChallengeActivity</string>
 
 </resources>
