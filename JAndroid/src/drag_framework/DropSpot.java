@@ -224,9 +224,9 @@ public void onDrop(DragSource source, int x, int y, int xOffset, int yOffset,
     
     if(ChooseAnimalsJungleActivity.verifyAnimalChosen(v)){
     	((ViewManager)v.getParent()).removeView(v);
-    	this.setBackgroundResource(R.drawable.smiley_happy_green);
+    	this.setBackgroundResource(R.drawable.smiley_happy);
     }else{
-    	this.setBackgroundResource(R.drawable.smiley_sad_green);
+    	this.setBackgroundResource(R.drawable.smiley_sad);
     }
     
 //    ((ViewManager)v.getParent()).removeView(v);

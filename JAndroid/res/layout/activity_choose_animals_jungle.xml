@@ -1,19 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    <HorizontalScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:launcher="http://schemas.android.com/apk/res/com.android.launcher"
-
-    android:id="@+id/horizSV"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
--->
-<!--
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:launcher="http://schemas.android.com/apk/res/com.android.launcher"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
--->
 <drag_framework.DragLayer xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:launcher="http://schemas.android.com/apk/res/com.android.launcher"
     android:id="@+id/drag_layer"
@@ -40,14 +25,14 @@
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:layout_centerHorizontal="true"
-                android:background="@color/drop_target_color1" >
+                android:background="@color/drop_target_disabled" >
             </drag_framework.DropSpot>
 
             <ImageView
                 android:id="@+id/animal1"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
-                android:src="@drawable/plane" />
+                android:src="@drawable/elephant2" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -62,14 +47,14 @@
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:layout_centerHorizontal="true"
-                android:background="@color/drop_target_color1" >
+                android:background="@color/drop_target_disabled" >
             </drag_framework.DropSpot>
 
             <ImageView
                 android:id="@+id/animal2"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
-                android:src="@drawable/plane" />
+                android:src="@drawable/gorilla" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -84,14 +69,14 @@
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:layout_centerHorizontal="true"
-                android:background="@color/drop_target_color1" >
+                android:background="@color/drop_target_disabled" >
             </drag_framework.DropSpot>
 
             <ImageView
                 android:id="@+id/animal3"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
-                android:src="@drawable/plane" />
+                android:src="@drawable/dog" />
         </RelativeLayout>
         
         <RelativeLayout
@@ -106,14 +91,14 @@
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:layout_centerHorizontal="true"
-                android:background="@color/drop_target_color1" >
+                android:background="@color/drop_target_disabled" >
             </drag_framework.DropSpot>
 
             <ImageView
                 android:id="@+id/animal4"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
-                android:src="@drawable/plane" />
+                android:src="@drawable/cow" />
         </RelativeLayout>
         
         <RelativeLayout
@@ -128,14 +113,14 @@
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:layout_centerHorizontal="true"
-                android:background="@color/drop_target_color1" >
+                android:background="@color/drop_target_disabled" >
             </drag_framework.DropSpot>
 
             <ImageView
                 android:id="@+id/animal5"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
-                android:src="@drawable/plane" />
+                android:src="@drawable/rabbit" />
         </RelativeLayout>
         <RelativeLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
@@ -149,36 +134,29 @@
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:layout_centerHorizontal="true"
-                android:background="@color/drop_target_color1" >
+                android:background="@color/drop_target_disabled" >
             </drag_framework.DropSpot>
 
             <ImageView
                 android:id="@+id/animal6"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
-                android:src="@drawable/plane" />
+                android:src="@drawable/hippo" />
         </RelativeLayout>
     </LinearLayout>
-
- 	<!-- <drag_framework.DragLayer
-        android:id="@+id/super_drag_layer"
-    	android:layout_width="match_parent"
-        android:layout_height="match_parent" >-->
 	
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="40dp" >
 
-	<drag_framework.DropSpot
-	    android:id="@+id/drop_spot_center"
-	    android:layout_width="150dp"
-	    android:layout_height="150dp"
-	    android:layout_centerHorizontal="true"
-	    android:layout_centerVertical="true"
-	    android:background="@color/drop_target_color1" >
-	</drag_framework.DropSpot>
+		<drag_framework.DropSpot
+		    android:id="@+id/drop_spot_center"
+		    android:layout_width="150dp"
+		    android:layout_height="150dp"
+		    android:layout_centerHorizontal="true"
+		    android:layout_centerVertical="true"
+		    android:background="@color/drop_target_enabled" >
+		</drag_framework.DropSpot>
 	</RelativeLayout>
-	</drag_framework.DragLayer>
-<!--</RelativeLayout>-->
-<!--</HorizontalScrollView>-->
+</drag_framework.DragLayer>
