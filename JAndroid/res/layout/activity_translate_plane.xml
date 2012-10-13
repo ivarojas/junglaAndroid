@@ -11,7 +11,7 @@
         android:layout_height="60dp"
         android:layout_gravity="bottom"
         android:layout_marginBottom="70dp"
-        android:layout_marginLeft="40dp"
+        android:layout_marginLeft="5dp"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
         android:src="@drawable/oak_tree_large" />
@@ -22,7 +22,7 @@
         android:layout_height="60dp"
         android:layout_gravity="bottom|right"
         android:layout_marginBottom="70dp"
-        android:layout_marginRight="40dp"
+        android:layout_marginRight="5dp"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
         android:src="@drawable/oak_tree_large" />
