@@ -15,6 +15,9 @@ import android.widget.ImageView;
 
 public class TranslatePlane extends Activity implements OnClickListener, AnimationListener{
 
+	
+	private int destiny = 1; 
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +48,9 @@ public class TranslatePlane extends Activity implements OnClickListener, Animati
     		break;
     	}
     	case R.id.destiny2:{
-    		translate = AnimationUtils.loadAnimation(this, R.anim.translate_destiny2);
-    		break;
+//    		translate = AnimationUtils.loadAnimation(this, R.anim.translate_destiny2);
+//    		break;
+    		return;
     	}
     	}
     			 
@@ -73,9 +77,17 @@ public class TranslatePlane extends Activity implements OnClickListener, Animati
     }           
     @Override
     public void onAnimationEnd(Animation arg0) {
-    	Intent nextintent = new Intent(this,ArrivingJungle.class);
-    	this.startActivity(nextintent);
-    	this.finish();
+    	Intent nextintent = null;
+    	if(destiny == 1){
+    		nextintent = new Intent(this,ArrivingJungle.class);
+    		this.startActivity(nextintent);
+    		this.finish();
+    	}
+    	else{
+    		
+    	}
+    		
+    	
     }
     
     @Override

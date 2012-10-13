@@ -79,5 +79,12 @@ public class ArrivingJungle extends Activity implements OnClickListener, Animati
         next.setVisibility(View.VISIBLE);
     	
 	}
+	
+    @Override
+    public void onBackPressed(){
+    	super.onBackPressed();
+    	Intent intro = new Intent(this,TranslatePlane.class);
+    	this.startActivity(intro);
+    }
 
 }
