@@ -72,7 +72,7 @@ public class PresentationActivity extends Activity {
     @Override
     public void onBackPressed(){
     	super.onBackPressed();
-        Intent translate = new Intent(this,TranslatePlane.class);
+        Intent translate = new Intent(this,ArrivingJungle.class);
         startActivity(translate);    	
     }
 

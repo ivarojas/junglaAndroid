@@ -229,7 +229,7 @@ public void onDrop(DragSource source, int x, int y, int xOffset, int yOffset,
     	((ViewManager)v.getParent()).removeView(v);
     	this.setBackgroundResource(R.drawable.smiley_happy);
     	ImageButton next = (ImageButton)mDragLayer.findViewById(R.id.nextButton_choose);
-    	if(next!=null && success==3){
+    	if(next != null && success == 3){
     		Log.i("sip", "sip");
     		next.setVisibility(View.VISIBLE);
     	}

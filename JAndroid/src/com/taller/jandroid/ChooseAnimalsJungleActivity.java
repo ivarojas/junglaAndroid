@@ -101,6 +101,7 @@ import drag_framework.DropSpot;
 	    if(v.getId() == R.id.nextButton_choose){
 	    	Intent i = new Intent(this, GoodbyeActivity.class);
 	    	startActivity(i);
+	    	finish();
 	    }
 	    if(v.getId() == R.id.dialogButtonOK)
 	    	dialog.dismiss();
@@ -269,7 +270,13 @@ import drag_framework.DropSpot;
 			return -1;
 	}
 
-
+    @Override
+    public void onBackPressed(){
+    	super.onBackPressed();
+        Intent i = new Intent(this,SplitAnimalActivity.class);
+        i.putExtra("animal", "gorilla");
+        startActivity(i);    	
+    }
 //	private void plus_success() {
 //		success +=1;
 //		TextView tx = (TextView)mDragLayer.findViewById(R.id.text_success);
