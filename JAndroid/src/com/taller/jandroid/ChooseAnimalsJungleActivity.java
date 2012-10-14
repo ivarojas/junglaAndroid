@@ -1,12 +1,14 @@
 package com.taller.jandroid;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -41,6 +43,7 @@ import drag_framework.DropSpot;
 	
 	public static final boolean Debugging = false;
 	private static int success = 0;
+	Dialog dialog;
 	
 	/**
 	 */
@@ -69,6 +72,18 @@ import drag_framework.DropSpot;
 	    next.setVisibility(View.INVISIBLE);
 	    
 	    next.setOnClickListener(this);
+	    
+	    dialog = new Dialog(this);
+		dialog.setContentView(R.layout.activity_choose_dialog);
+		dialog.setTitle("Instrucciones:");
+		
+		
+
+		Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
+		// if button is clicked, close the custom dialog
+		dialogButton.setOnClickListener(this);
+		dialog.show();
+	    
 	}
 	
 	
@@ -87,6 +102,8 @@ import drag_framework.DropSpot;
 	    	Intent i = new Intent(this, GoodbyeActivity.class);
 	    	startActivity(i);
 	    }
+	    if(v.getId() == R.id.dialogButtonOK)
+	    	dialog.dismiss();
 	}
 	
 	/**
@@ -237,9 +254,9 @@ import drag_framework.DropSpot;
 	    // The current DragLayer.onDrop method makes assumptions about how to reposition a dropped view.
 	
 	    // Give the user a little guidance.
-	    String message = mLongClickStartsDrag ? "Press and hold to start dragging." 
-	                                          : "Toca un animal para arrastrarlo.";
-	    Toast.makeText (getApplicationContext(), message, Toast.LENGTH_LONG).show ();
+//	    String message = mLongClickStartsDrag ? "Press and hold to start dragging." 
+//	                                          : "Toca un animal para arrastrarlo.";
+//	    Toast.makeText (getApplicationContext(), message, Toast.LENGTH_LONG).show ();
 	
 	}
 	
