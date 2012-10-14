@@ -34,7 +34,6 @@ public class ArrivingJungle extends Activity implements OnClickListener, Animati
         
     }
     
-    @Override
     public void onClick(View v) {
     	if(v.getId() == R.id.nextButton_arriv){
     		Intent shadow = new Intent(this, PresentationActivity.class);
@@ -58,13 +57,10 @@ public class ArrivingJungle extends Activity implements OnClickListener, Animati
 
 	}
     
-    @Override
     public void onAnimationStart(Animation arg0) {
     }           
-    @Override
     public void onAnimationRepeat(Animation arg0) {
     }           
-    @Override
     public void onAnimationEnd(Animation arg0) {
     	ImageView iv = (ImageView)findViewById(R.id.indieParachuting);
     	iv.clearAnimation();

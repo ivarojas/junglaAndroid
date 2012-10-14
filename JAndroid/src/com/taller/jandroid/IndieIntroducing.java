@@ -27,7 +27,6 @@ public class IndieIntroducing extends Activity implements OnClickListener {
         next.setOnClickListener(this);
     }
 
-	@Override
 	public void onClick(View arg0) {
 		if(arg0.getId() == R.id.nextButton_intr){
 			Intent chooseDestiny = new Intent(this, TranslatePlane.class);

@@ -28,7 +28,6 @@ public class MainActivity extends Activity implements OnClickListener{
         exit.setOnClickListener(this);
     }
     
-	@Override
 	public void onClick(View arg0) {
 		
 		switch(arg0.getId()){
