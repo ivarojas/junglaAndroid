@@ -54,12 +54,10 @@ public class AnimalInformationActivity extends Activity implements OnCompletionL
     	mediaPlayer.setOnCompletionListener(this);
     }
 
-	@Override
 	public void onCompletion(MediaPlayer mp) {
 		mp.stop();
 	}
 
-	@Override
 	public void onClick(View v) {
 		if(v.getId() == R.id.nextButton_info){
 			Intent next = null;
