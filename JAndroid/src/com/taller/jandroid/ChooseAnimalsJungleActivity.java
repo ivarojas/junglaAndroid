@@ -243,13 +243,13 @@ import drag_framework.DropSpot;
 	
 	}
 	
-	public static boolean verifyAnimalChosen(View v) {
+	public static int verifyAnimalChosen(View v) {
 		if(v.getId() == R.id.animal1 || v.getId() == R.id.animal2 || v.getId() == R.id.animal6){
 			success += 1;
-			return true;
+			return success;
 		}
 		else
-			return false;
+			return -1;
 	}
 
 

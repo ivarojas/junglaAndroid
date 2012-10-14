@@ -14,16 +14,16 @@
 
 package drag_framework;
 
-import com.taller.jandroid.ChooseAnimalsJungleActivity;
-import com.taller.jandroid.R;
-
 import android.content.Context;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewManager;
-import android.widget.Toast;
+import android.widget.ImageButton;
+
+import com.taller.jandroid.ChooseAnimalsJungleActivity;
+import com.taller.jandroid.R;
 
 /**
  * This class describes an area within a DragLayer where a dragged item can be dropped.
@@ -223,9 +223,16 @@ public void onDrop(DragSource source, int x, int y, int xOffset, int yOffset,
     int top = y - yOffset + viewY;
     DragLayer.LayoutParams lp = new DragLayer.LayoutParams (w, h, left, top);
     
-    if(ChooseAnimalsJungleActivity.verifyAnimalChosen(v)){
+    int success = ChooseAnimalsJungleActivity.verifyAnimalChosen(v);
+    
+    if(success !=-1){
     	((ViewManager)v.getParent()).removeView(v);
     	this.setBackgroundResource(R.drawable.smiley_happy);
+    	ImageButton next = (ImageButton)mDragLayer.findViewById(R.id.nextButton_choose);
+    	if(next!=null && success==3){
+    		Log.i("sip", "sip");
+    		next.setVisibility(View.VISIBLE);
+    	}
     }else{
     	this.setBackgroundResource(R.drawable.smiley_sad);
     }
