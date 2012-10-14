@@ -1,21 +1,18 @@
 package com.taller.jandroid;
 
-import drag_framework.DragController;
-import drag_framework.DragLayer;
-import drag_framework.DropSpot;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
+import drag_framework.DragController;
+import drag_framework.DragLayer;
+import drag_framework.DropSpot;
 
 /**
  * This activity presents a screen on which images can be added and moved around.
@@ -67,6 +64,11 @@ import android.widget.Toast;
 	        WindowManager.LayoutParams.FLAG_FULLSCREEN);
 	    setContentView(R.layout.activity_choose_animals_jungle);
 	    setupViews ();
+	    
+	    ImageButton next = (ImageButton)findViewById(R.id.nextButton_choose);
+	    next.setVisibility(View.INVISIBLE);
+	    
+	    next.setOnClickListener(this);
 	}
 	
 	
@@ -79,6 +81,11 @@ import android.widget.Toast;
 	{
 	    if (mLongClickStartsDrag) {
 	       // Tell the user that it takes a long click to start dragging.
+	    }
+	    
+	    if(v.getId() == R.id.nextButton_choose){
+	    	Intent i = new Intent(this, GoodbyeActivity.class);
+	    	startActivity(i);
 	    }
 	}
 	
@@ -210,7 +217,7 @@ import android.widget.Toast;
 	    DropSpot drop6 = (DropSpot) mDragLayer.findViewById (R.id.drop_spot6);
 	    
 	    DropSpot drop_center = (DropSpot) mDragLayer.findViewById (R.id.drop_spot_center);
-	    drop_center.setup (mDragLayer, dragController, R.color.drop_target_color2);
+	    drop_center.setup (mDragLayer, dragController, R.drawable.drag_here);
 	
 	    
 	
@@ -231,7 +238,7 @@ import android.widget.Toast;
 	
 	    // Give the user a little guidance.
 	    String message = mLongClickStartsDrag ? "Press and hold to start dragging." 
-	                                          : "Touch a view to start dragging.";
+	                                          : "Toca un animal para arrastrarlo.";
 	    Toast.makeText (getApplicationContext(), message, Toast.LENGTH_LONG).show ();
 	
 	}

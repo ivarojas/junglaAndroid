@@ -94,8 +94,9 @@ public class DragView extends View
             // for debugging
             Paint p = new Paint();
             p.setStyle(Paint.Style.FILL);
-            p.setColor(0x88dd0011);
-            canvas.drawRect(0, 0, getWidth(), getHeight(), p);
+            p.setColor(0x33dd0011);
+//            canvas.drawRect(0, 0, getWidth(), getHeight(), p);
+            canvas.drawCircle(getWidth()/2, getHeight()/2, getWidth()/2, p);
         }
         float scale = mAnimationScale;
         if (scale < 0.999f) { // allow for some float error
