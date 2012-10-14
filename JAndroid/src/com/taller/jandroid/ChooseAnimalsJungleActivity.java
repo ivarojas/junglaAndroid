@@ -43,6 +43,7 @@ import android.widget.Toast;
 	                                                // Otherwise, any touch event starts a drag.
 	
 	public static final boolean Debugging = false;
+	private static int success = 0;
 	
 	/**
 	 */
@@ -156,7 +157,6 @@ import android.widget.Toast;
 	private void setupViews() 
 	{
 	    DragController dragController = mDragController;
-	
 	    mDragLayer = (DragLayer) findViewById(R.id.drag_layer);
 	    mDragLayer.setDragController(dragController);
 	
@@ -237,10 +237,19 @@ import android.widget.Toast;
 	}
 	
 	public static boolean verifyAnimalChosen(View v) {
-		if(v.getId() == R.id.animal1 || v.getId() == R.id.animal2 || v.getId() == R.id.animal6)
+		if(v.getId() == R.id.animal1 || v.getId() == R.id.animal2 || v.getId() == R.id.animal6){
+			success += 1;
 			return true;
+		}
 		else
 			return false;
 	}
+
+
+//	private void plus_success() {
+//		success +=1;
+//		TextView tx = (TextView)mDragLayer.findViewById(R.id.text_success);
+//		tx.setText(success+"/3");
+//	}
 
 } // end class

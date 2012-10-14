@@ -117,7 +117,8 @@ public void setDragLayer (DragLayer newValue)
  * This variable holds the value of the SavedBackground property.
  */
 
-   private int mSavedBackground = R.color.drop_target_color1;
+//   private int mSavedBackground = R.color.drop_target_color1;
+	private int mSavedBackground = R.drawable.drag_here;
 
 /**
  * Get the value of the SavedBackground property.
@@ -244,7 +245,7 @@ public void onDragEnter(DragSource source, int x, int y, int xOffset, int yOffse
         DragView dragView, Object dragInfo)
 {
     toast ("onDragEnter");
-    int bg = isEnabled () ? R.color.drop_target_enabled : R.color.drop_target_disabled;
+    int bg = isEnabled () ? R.drawable.drag_here: R.color.drop_target_disabled;
     setBackgroundResource (bg);
 }
 
