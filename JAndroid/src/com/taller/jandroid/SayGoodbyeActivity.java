@@ -22,7 +22,6 @@ public class SayGoodbyeActivity extends Activity implements OnClickListener {
         next.setOnClickListener(this);
     }
 
-	@Override
 	public void onClick(View arg0) {
 		if(arg0.getId() == R.id.nextButton_sayGB){
 			Intent next = new Intent(this, GoodbyeActivity.class);

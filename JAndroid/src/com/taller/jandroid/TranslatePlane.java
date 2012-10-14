@@ -35,7 +35,6 @@ public class TranslatePlane extends Activity implements OnClickListener, Animati
         
     }
     
-    @Override
     public void onClick(View v) {
     	
     	ImageView iv = (ImageView)findViewById(R.id.plane); 
@@ -69,13 +68,10 @@ public class TranslatePlane extends Activity implements OnClickListener, Animati
 		iv.startAnimation(translate);
 	}
 
-    @Override
     public void onAnimationStart(Animation arg0) {
     }           
-    @Override
     public void onAnimationRepeat(Animation arg0) {
     }           
-    @Override
     public void onAnimationEnd(Animation arg0) {
     	Intent nextintent = null;
     	if(destiny == 1){

@@ -41,7 +41,6 @@ public class GoodbyeActivity extends Activity implements AnimationListener {
         
     }
 
-	@Override
 	public void onAnimationEnd(Animation animation) {
 		ImageView indie_ship = (ImageView)findViewById(R.id.ship);
 		indie_ship.setVisibility(View.INVISIBLE);
@@ -50,13 +49,11 @@ public class GoodbyeActivity extends Activity implements AnimationListener {
 		
 	}
 
-	@Override
 	public void onAnimationRepeat(Animation animation) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void onAnimationStart(Animation animation) {
 		// TODO Auto-generated method stub
 		
