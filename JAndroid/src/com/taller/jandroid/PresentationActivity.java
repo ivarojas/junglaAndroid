@@ -25,6 +25,7 @@ public class PresentationActivity extends Activity {
         ImageButton rbutton=(ImageButton)findViewById(R.id.rhinobutton);
         ImageButton lbutton=(ImageButton)findViewById(R.id.lionbutton);
         ImageButton gbutton=(ImageButton)findViewById(R.id.giraffebutton);
+        ImageButton obutton=(ImageButton)findViewById(R.id.okapibutton);
         ImageButton next=(ImageButton)findViewById(R.id.continuebutton);
 
         mbutton.setOnClickListener(new OnClickListener() {
@@ -58,6 +59,15 @@ public class PresentationActivity extends Activity {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationActivity.this,AnimalPresentationActivity.class);
                 i.putExtra("animal","gorilla");
+                startActivity(i);
+                finish();
+               }
+             });
+        
+        obutton.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                Intent i=new Intent(PresentationActivity.this,AnimalPresentationActivity.class);
+                i.putExtra("animal","okapi");
                 startActivity(i);
                 finish();
                }

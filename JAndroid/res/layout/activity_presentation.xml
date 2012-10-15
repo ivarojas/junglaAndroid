@@ -18,36 +18,42 @@
         android:id="@+id/monkeybutton"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/continuebutton"
-        android:layout_marginTop="28dp"
         android:background="@drawable/threed_monkey" />
 
     <ImageButton
         android:id="@+id/rhinobutton"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_alignTop="@+id/monkeybutton"
-        android:layout_marginTop="50dp"
-        android:layout_toLeftOf="@+id/monkeybutton"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
         android:background="@drawable/threed_hippo" />
 
     <ImageButton
         android:id="@+id/lionbutton"
         android:layout_width="150dp"
         android:layout_height="100dp"
-        android:layout_alignLeft="@+id/monkeybutton"
-        android:layout_below="@+id/rhinobutton"
-        android:layout_marginTop="25dp"
+        android:layout_alignBottom="@+id/monkeybutton"
+        android:layout_toLeftOf="@+id/monkeybutton"
         android:background="@drawable/threed_elephant" />
 
     <ImageButton
         android:id="@+id/giraffebutton"
         android:layout_width="100dp"
         android:layout_height="120dp"
-        android:layout_above="@+id/continuebutton"
-        android:layout_alignRight="@+id/rhinobutton"
-        android:layout_marginBottom="18dp"
+        android:layout_alignLeft="@+id/lionbutton"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="21dp"
         android:background="@drawable/threed_gorilla" />
+
+    <ImageButton
+        android:id="@+id/okapibutton"
+        android:layout_width="120dp"
+        android:layout_height="140dp"
+        android:layout_alignLeft="@+id/giraffebutton"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="33dp"
+        android:background="@drawable/threed_okapi" />
 
 </RelativeLayout>

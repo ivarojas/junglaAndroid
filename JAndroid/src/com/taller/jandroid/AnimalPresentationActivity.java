@@ -91,6 +91,12 @@ public class AnimalPresentationActivity extends Activity {
 			animal_img=R.drawable.gorilla;
 			animal_sound=R.raw.gorilla;
 		}
+		if(animal_name.equals("okapi")){
+			animal_info="Hola soy un okapi.\nSoy pariente de las jirafas.\nSoy vegetariano, me alimento de frutas y hojas";
+			animal_img=R.drawable.okapi;
+			animal_sound=R.raw.gorilla;
+			findViewById(R.id.speaker).setVisibility(View.INVISIBLE);
+		}
 	}
 	
     @Override
