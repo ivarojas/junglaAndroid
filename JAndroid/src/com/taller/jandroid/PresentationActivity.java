@@ -19,16 +19,18 @@ public class PresentationActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_first);
+        setContentView(R.layout.activity_presentation);
+        
         ImageButton mbutton=(ImageButton)findViewById(R.id.monkeybutton);
         ImageButton rbutton=(ImageButton)findViewById(R.id.rhinobutton);
         ImageButton lbutton=(ImageButton)findViewById(R.id.lionbutton);
         ImageButton gbutton=(ImageButton)findViewById(R.id.giraffebutton);
-        ImageButton next= (ImageButton)findViewById(R.id.continuebutton);
+        ImageButton next=(ImageButton)findViewById(R.id.continuebutton);
 
         mbutton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                Intent i=new Intent(PresentationActivity.this,MonkeyActivity.class);
+                Intent i=new Intent(PresentationActivity.this,AnimalPresentationActivity.class);
+                i.putExtra("animal","monkey");
                 startActivity(i);
                 finish();
                }
@@ -36,7 +38,8 @@ public class PresentationActivity extends Activity {
         
         rbutton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                Intent i=new Intent(PresentationActivity.this,RhinoActivity.class);
+                Intent i=new Intent(PresentationActivity.this,AnimalPresentationActivity.class);
+                i.putExtra("animal","hippo");
                 startActivity(i);
                 finish();
                }
@@ -44,7 +47,8 @@ public class PresentationActivity extends Activity {
         
         lbutton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                Intent i=new Intent(PresentationActivity.this,LionActivity.class);
+                Intent i=new Intent(PresentationActivity.this,AnimalPresentationActivity.class);
+                i.putExtra("animal","elephant");
                 startActivity(i);
                 finish();
                }
@@ -52,7 +56,8 @@ public class PresentationActivity extends Activity {
         
         gbutton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                Intent i=new Intent(PresentationActivity.this,GiraffeActivity.class);
+                Intent i=new Intent(PresentationActivity.this,AnimalPresentationActivity.class);
+                i.putExtra("animal","gorilla");
                 startActivity(i);
                 finish();
                }
@@ -65,14 +70,12 @@ public class PresentationActivity extends Activity {
                 finish();
                }
              });
-
-
     }
     
     @Override
     public void onBackPressed(){
     	super.onBackPressed();
-        Intent translate = new Intent(this,ArrivingJungle.class);
+        Intent translate = new Intent(this,TranslatePlane.class);
         startActivity(translate);    	
     }
 

@@ -21,7 +21,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/continuebutton"
         android:layout_marginTop="28dp"
-        android:background="@drawable/monkey" />
+        android:background="@drawable/threed_monkey" />
 
     <ImageButton
         android:id="@+id/rhinobutton"
@@ -30,7 +30,7 @@
         android:layout_alignTop="@+id/monkeybutton"
         android:layout_marginTop="50dp"
         android:layout_toLeftOf="@+id/monkeybutton"
-        android:background="@drawable/hippo" />
+        android:background="@drawable/threed_hippo" />
 
     <ImageButton
         android:id="@+id/lionbutton"
@@ -39,7 +39,7 @@
         android:layout_alignLeft="@+id/monkeybutton"
         android:layout_below="@+id/rhinobutton"
         android:layout_marginTop="25dp"
-        android:background="@drawable/elephant2" />
+        android:background="@drawable/threed_elephant" />
 
     <ImageButton
         android:id="@+id/giraffebutton"
@@ -48,6 +48,6 @@
         android:layout_above="@+id/continuebutton"
         android:layout_alignRight="@+id/rhinobutton"
         android:layout_marginBottom="18dp"
-        android:background="@drawable/gorilla" />
+        android:background="@drawable/threed_gorilla" />
 
 </RelativeLayout>

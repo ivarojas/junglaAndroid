@@ -76,7 +76,8 @@ import drag_framework.DropSpot;
 	    dialog = new Dialog(this);
 		dialog.setContentView(R.layout.activity_choose_dialog);
 		dialog.setTitle("Instrucciones:");
-		
+
+		success = 0;
 		
 
 		Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
@@ -99,7 +100,7 @@ import drag_framework.DropSpot;
 	    }
 	    
 	    if(v.getId() == R.id.nextButton_choose){
-	    	Intent i = new Intent(this, GoodbyeActivity.class);
+	    	Intent i = new Intent(this, SayGoodbyeActivity.class);
 	    	startActivity(i);
 	    	finish();
 	    }
@@ -262,7 +263,7 @@ import drag_framework.DropSpot;
 	}
 	
 	public static int verifyAnimalChosen(View v) {
-		if(v.getId() == R.id.animal1 || v.getId() == R.id.animal2 || v.getId() == R.id.animal6){
+		if(v.getId() == R.id.animal1 || v.getId() == R.id.animal2 || v.getId() == R.id.animal4){
 			success += 1;
 			return success;
 		}
@@ -277,10 +278,5 @@ import drag_framework.DropSpot;
         i.putExtra("animal", "gorilla");
         startActivity(i);    	
     }
-//	private void plus_success() {
-//		success +=1;
-//		TextView tx = (TextView)mDragLayer.findViewById(R.id.text_success);
-//		tx.setText(success+"/3");
-//	}
 
 } // end class

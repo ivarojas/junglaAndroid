@@ -99,7 +99,7 @@
                 android:id="@+id/animal4"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
-                android:src="@drawable/cow" />
+                android:src="@drawable/hippo" />
         </RelativeLayout>
         
         <RelativeLayout
@@ -142,7 +142,7 @@
                 android:id="@+id/animal6"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
-                android:src="@drawable/hippo" />
+                android:src="@drawable/cow" />
         </RelativeLayout>
     </LinearLayout>
 	<HorizontalScrollView 
