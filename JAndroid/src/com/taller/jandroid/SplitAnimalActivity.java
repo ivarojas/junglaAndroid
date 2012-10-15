@@ -173,14 +173,14 @@ public class SplitAnimalActivity extends Activity implements ViewFactory {
             }
         });
     	
-    	/*next = (ImageButton) findViewById(R.id.nextButton_split);
+    	next = (ImageButton) findViewById(R.id.nextButton_split);
     	next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	Intent nextIntent = new Intent(SplitAnimalActivity.this, ChooseAnimalsJungleActivity.class);
             	startActivity(nextIntent);
             	finish();
             }
-        });*/
+        });
     	
     	mix = (Button) findViewById(R.id.buttonMix);
     	mix.setOnClickListener(new View.OnClickListener() {
