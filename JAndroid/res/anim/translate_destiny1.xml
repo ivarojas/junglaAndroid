@@ -3,9 +3,10 @@
     android:interpolator="@android:anim/linear_interpolator">
     
     <set>
+                
 	    <translate
 	        android:fromXDelta="0%p"
-	        android:toXDelta="-25%p"
+	        android:toXDelta="25%p"
 	        android:fromYDelta="0%p"
 	        android:toYDelta="75%p" />
 	    <alpha
@@ -18,6 +19,11 @@
 	        android:toYScale="0.7"
 	        android:pivotX="-35%p"
 	        android:pivotY="75%p" />
+	    <rotate
+	        android:fromDegrees="0"
+    	    android:toDegrees="15"
+	        android:pivotX="0%"
+    	    android:pivotY="0%" />
 	</set>		
 
 </set>
