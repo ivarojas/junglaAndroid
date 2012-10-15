@@ -40,6 +40,7 @@ public class AnimalInformationActivity extends Activity implements OnCompletionL
         TextView animal_txt = (TextView)findViewById(R.id.animal_txt);
         
         if(animal.equals("elephant")){
+        	animal_sound = R.raw.elephant;
         	
         }else if(animal.equals("gorilla")){
         	animal_txt.setText("Hola soy un gorila. Paso todo el día en busca de hojas, tallos y brotes de las plantas.");
