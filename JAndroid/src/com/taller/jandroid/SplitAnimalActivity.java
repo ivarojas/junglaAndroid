@@ -1,16 +1,23 @@
 package com.taller.jandroid;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 import android.widget.ViewSwitcher.ViewFactory;
 //import android.app.ActionBar.LayoutParams;
 //import android.widget.Toast;
@@ -36,10 +43,12 @@ public class SplitAnimalActivity extends Activity implements ViewFactory {
 	Button btnPrevUp;
 	Button btnNextDown;
 	Button btnPrevDown;
+	Button mix;
 	ImageButton next;
 	int positionUp = 0;
 	int positionDown = 0;
 	Activity activity = this;
+	List<Integer> right_animals = new ArrayList<Integer>(); 
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -147,7 +156,7 @@ public class SplitAnimalActivity extends Activity implements ViewFactory {
     			   setPositionDownNext();
     			   iSwitcherDown.setImageResource(mImageDownIds[positionDown]); 
     			   //Toast.makeText(SplitedAnimalActivity.this, "Your selected position = " + getResources().getResourceName(mImageIds[position]), Toast.LENGTH_SHORT).show();
-    			}    
+    		   }    
     	});  
         
     	btnPrevDown = (Button) findViewById(R.id.buttonPrevDown);
@@ -164,12 +173,19 @@ public class SplitAnimalActivity extends Activity implements ViewFactory {
             }
         });
     	
-    	next = (ImageButton) findViewById(R.id.nextButton_split);
+    	/*next = (ImageButton) findViewById(R.id.nextButton_split);
     	next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	Intent nextIntent = new Intent(SplitAnimalActivity.this, SayGoodbyeActivity.class);
             	startActivity(nextIntent);
             	finish();
+            }
+        });*/
+    	
+    	mix = (Button) findViewById(R.id.buttonMix);
+    	mix.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+            	mixAnimalParts();
             }
         });
     }
@@ -181,5 +197,24 @@ public class SplitAnimalActivity extends Activity implements ViewFactory {
         i.putExtra("animal", "gorilla");
         startActivity(i);    	
     }
-
+    
+    void mixAnimalParts(){
+    	if(positionUp == positionDown){
+    		if(!right_animals.contains(new Integer(positionUp))){
+    			right_animals.add(new Integer(positionUp));
+    			addRightImage();
+    			Toast.makeText(SplitAnimalActivity.this, "Bien hecho !!!", Toast.LENGTH_SHORT).show();
+    		}
+    	}else{
+    		Toast.makeText(SplitAnimalActivity.this, "Mal hecho !!!", Toast.LENGTH_SHORT).show();
+    	}	
+    }
+    
+    void addRightImage(){
+    	HorizontalScrollView scrollView = (HorizontalScrollView) findViewById(R.id.horizontalScrollView1);
+    	LinearLayout topLinearLayout = (LinearLayout) scrollView.getChildAt(0);
+    	final ImageView imageView = new ImageView (this);
+        imageView.setImageResource(mImageUpIds[positionUp]);
+        topLinearLayout.addView(imageView);
+    }
 }
