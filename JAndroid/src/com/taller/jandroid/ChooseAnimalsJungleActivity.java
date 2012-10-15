@@ -1,21 +1,20 @@
 package com.taller.jandroid;
 
-import drag_framework.DragController;
-import drag_framework.DragLayer;
-import drag_framework.DropSpot;
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
-
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
+import drag_framework.DragController;
+import drag_framework.DragLayer;
+import drag_framework.DropSpot;
 
 /**
  * This activity presents a screen on which images can be added and moved around.
@@ -43,6 +42,8 @@ import android.widget.Toast;
 	                                                // Otherwise, any touch event starts a drag.
 	
 	public static final boolean Debugging = false;
+	private static int success = 0;
+	Dialog dialog;
 	
 	/**
 	 */
@@ -66,6 +67,24 @@ import android.widget.Toast;
 	        WindowManager.LayoutParams.FLAG_FULLSCREEN);
 	    setContentView(R.layout.activity_choose_animals_jungle);
 	    setupViews ();
+	    
+	    ImageButton next = (ImageButton)findViewById(R.id.nextButton_choose);
+	    next.setVisibility(View.INVISIBLE);
+	    
+	    next.setOnClickListener(this);
+	    
+	    dialog = new Dialog(this);
+		dialog.setContentView(R.layout.activity_choose_dialog);
+		dialog.setTitle("Instrucciones:");
+
+		success = 0;
+		
+
+		Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
+		// if button is clicked, close the custom dialog
+		dialogButton.setOnClickListener(this);
+		dialog.show();
+	    
 	}
 	
 	
@@ -79,6 +98,14 @@ import android.widget.Toast;
 	    if (mLongClickStartsDrag) {
 	       // Tell the user that it takes a long click to start dragging.
 	    }
+	    
+	    if(v.getId() == R.id.nextButton_choose){
+	    	Intent i = new Intent(this, SayGoodbyeActivity.class);
+	    	startActivity(i);
+	    	finish();
+	    }
+	    if(v.getId() == R.id.dialogButtonOK)
+	    	dialog.dismiss();
 	}
 	
 	/**
@@ -156,7 +183,6 @@ import android.widget.Toast;
 	private void setupViews() 
 	{
 	    DragController dragController = mDragController;
-	
 	    mDragLayer = (DragLayer) findViewById(R.id.drag_layer);
 	    mDragLayer.setDragController(dragController);
 	
@@ -210,7 +236,7 @@ import android.widget.Toast;
 	    DropSpot drop6 = (DropSpot) mDragLayer.findViewById (R.id.drop_spot6);
 	    
 	    DropSpot drop_center = (DropSpot) mDragLayer.findViewById (R.id.drop_spot_center);
-	    drop_center.setup (mDragLayer, dragController, R.color.drop_target_color2);
+	    drop_center.setup (mDragLayer, dragController, R.drawable.drag_here);
 	
 	    
 	
@@ -230,17 +256,27 @@ import android.widget.Toast;
 	    // The current DragLayer.onDrop method makes assumptions about how to reposition a dropped view.
 	
 	    // Give the user a little guidance.
-	    String message = mLongClickStartsDrag ? "Press and hold to start dragging." 
-	                                          : "Touch a view to start dragging.";
-	    Toast.makeText (getApplicationContext(), message, Toast.LENGTH_LONG).show ();
+//	    String message = mLongClickStartsDrag ? "Press and hold to start dragging." 
+//	                                          : "Toca un animal para arrastrarlo.";
+//	    Toast.makeText (getApplicationContext(), message, Toast.LENGTH_LONG).show ();
 	
 	}
 	
-	public static boolean verifyAnimalChosen(View v) {
-		if(v.getId() == R.id.animal1 || v.getId() == R.id.animal2 || v.getId() == R.id.animal6)
-			return true;
+	public static int verifyAnimalChosen(View v) {
+		if(v.getId() == R.id.animal1 || v.getId() == R.id.animal2 || v.getId() == R.id.animal4){
+			success += 1;
+			return success;
+		}
 		else
-			return false;
+			return -1;
 	}
+
+    @Override
+    public void onBackPressed(){
+    	super.onBackPressed();
+        Intent i = new Intent(this,SplitAnimalActivity.class);
+        i.putExtra("animal", "gorilla");
+        startActivity(i);    	
+    }
 
 } // end class

@@ -33,7 +33,7 @@ public class SayGoodbyeActivity extends Activity implements OnClickListener {
     @Override
     public void onBackPressed(){
     	super.onBackPressed();
-        Intent i = new Intent(this,SplitAnimalActivity.class);
+        Intent i = new Intent(this,ChooseAnimalsJungleActivity.class);
         startActivity(i);    	
     }
     

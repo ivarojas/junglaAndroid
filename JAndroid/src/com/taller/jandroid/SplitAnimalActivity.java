@@ -176,7 +176,7 @@ public class SplitAnimalActivity extends Activity implements ViewFactory {
     	/*next = (ImageButton) findViewById(R.id.nextButton_split);
     	next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	Intent nextIntent = new Intent(SplitAnimalActivity.this, SayGoodbyeActivity.class);
+            	Intent nextIntent = new Intent(SplitAnimalActivity.this, ChooseAnimalsJungleActivity.class);
             	startActivity(nextIntent);
             	finish();
             }

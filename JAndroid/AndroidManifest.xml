@@ -55,22 +55,7 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".GiraffeActivity"
-            android:label="@string/title_activity_main"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".MonkeyActivity"
-            android:label="@string/title_activity_main"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".RhinoActivity"
-            android:label="@string/title_activity_main"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".LionActivity"
+            android:name=".AnimalPresentationActivity"
             android:label="@string/title_activity_main"
             android:screenOrientation="portrait" >
         </activity>
@@ -88,11 +73,6 @@
             android:name=".ChooseAnimalsJungleActivity"
             android:label="@string/title_activity_choose_animals_jungle"
             android:screenOrientation="landscape" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".SplitAnimalActivity"
