@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -38,12 +39,16 @@ public class ShadowActivity extends Activity {
     public void verifyAnswer(View view){
     	Button button = (Button) findViewById(view.getId());
     	if(button.getText().equals("Elefante")){
+    		MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.tada);
+    		mediaPlayer.start();
     		Intent intent = new Intent(this, AnimalInformationActivity.class);
     		intent.putExtra("animal", "elephant");
             startActivity(intent);
             finish();
     	}else{
     		// show it
+    		MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.failbeep);
+    		mediaPlayer.start();
     		alertDialog.show();
     	}
     }
