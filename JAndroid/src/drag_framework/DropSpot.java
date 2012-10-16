@@ -16,6 +16,7 @@ package drag_framework;
 
 import android.content.Context;
 import android.graphics.Rect;
+import android.media.MediaPlayer;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -226,6 +227,10 @@ public void onDrop(DragSource source, int x, int y, int xOffset, int yOffset,
     int success = ChooseAnimalsJungleActivity.verifyAnimalChosen(v);
     
     if(success !=-1){
+    	
+    	MediaPlayer mediaPlayer = MediaPlayer.create(this.getContext(), R.raw.tada);
+    	mediaPlayer.start();
+    	
     	((ViewManager)v.getParent()).removeView(v);
     	this.setBackgroundResource(R.drawable.smiley_happy);
     	ImageButton next = (ImageButton)mDragLayer.findViewById(R.id.nextButton_choose);
@@ -234,6 +239,8 @@ public void onDrop(DragSource source, int x, int y, int xOffset, int yOffset,
     		next.setVisibility(View.VISIBLE);
     	}
     }else{
+    	MediaPlayer mediaPlayer = MediaPlayer.create(this.getContext(), R.raw.failbeep);
+    	mediaPlayer.start();
     	this.setBackgroundResource(R.drawable.smiley_sad);
     }
     
