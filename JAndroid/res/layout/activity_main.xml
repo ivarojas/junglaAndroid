@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/main_background" >
+    android:background="@drawable/main" >
 
     <TextView
         android:id="@+id/textView1"
@@ -11,7 +11,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="72dp"
-        android:text="Descubriendo el mundo:"
+        android:text=""
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="25dp" />
 
@@ -22,7 +22,7 @@
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="26dp"
-        android:text="La Jungla"
+        android:text=""
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
