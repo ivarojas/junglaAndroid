@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
@@ -23,7 +25,7 @@ import android.widget.ViewSwitcher.ViewFactory;
 //import android.widget.Toast;
 
 
-public class SplitAnimalActivity extends Activity implements ViewFactory {
+public class SplitAnimalActivity extends Activity implements ViewFactory, View.OnClickListener {
 
     private Integer[] mImageUpIds = {
             R.drawable.split_gorilla_up,
@@ -48,7 +50,9 @@ public class SplitAnimalActivity extends Activity implements ViewFactory {
 	int positionUp = 0;
 	int positionDown = 0;
 	Activity activity = this;
-	List<Integer> right_animals = new ArrayList<Integer>(); 
+	List<Integer> right_animals = new ArrayList<Integer>();
+
+	private Dialog dialog; 
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,6 +73,15 @@ public class SplitAnimalActivity extends Activity implements ViewFactory {
 		iSwitcherDown.setImageResource(mImageDownIds[0]);
 
     	setButtons();
+    	
+	    dialog = new Dialog(this);
+		dialog.setContentView(R.layout.activity_choose_dialog);
+		dialog.setTitle("Instrucciones:");
+
+		Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
+		// if button is clicked, close the custom dialog
+		dialogButton.setOnClickListener(this);
+		dialog.show();
     }
     
     public void setPositionUpNext()
@@ -217,4 +230,9 @@ public class SplitAnimalActivity extends Activity implements ViewFactory {
         imageView.setImageResource(mImageUpIds[positionUp]);
         topLinearLayout.addView(imageView);
     }
+
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		dialog.dismiss();
+	}
 }

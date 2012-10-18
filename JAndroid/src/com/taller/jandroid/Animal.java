@@ -15,7 +15,9 @@ public class Animal {
 	}
 
 	public String[] getAnimalsCongo(){
-		String[] animals = null;
+		String[] animals = {
+			"elephant","hippo",""
+		};
 		return animals;
 	}
 	
