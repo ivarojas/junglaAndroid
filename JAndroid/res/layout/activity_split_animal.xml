@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo_selva6"
+    android:background="@drawable/background"
     android:gravity="center_vertical|center" >
 
     <LinearLayout
@@ -17,23 +17,23 @@
             android:id="@+id/buttonPrevUp"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="0dp"
-            android:layout_height="70dp"
-            android:layout_weight=".20"
+            android:layout_height="50dp"
+            android:layout_weight=".15"
             android:background="@drawable/arrow_prev" />
 
         <ImageSwitcher
             android:id="@+id/imageSwitcherUp"
             android:layout_width="0dp"
             android:layout_height="90dp"
-            android:layout_weight=".60" >
+            android:layout_weight=".70" >
         </ImageSwitcher>
 
         <Button
             android:id="@+id/buttonNextUp"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="0dp"
-            android:layout_height="70dp"
-            android:layout_weight=".20"
+            android:layout_height="50dp"
+            android:layout_weight=".15"
             android:background="@drawable/arrow_next" />
     </LinearLayout>
 
@@ -49,34 +49,35 @@
             android:id="@+id/buttonPrevDown"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="0dp"
-            android:layout_height="70dp"
-            android:layout_weight=".20"
+            android:layout_height="50dp"
+            android:layout_weight=".15"
             android:background="@drawable/arrow_prev" />
 
         <ImageSwitcher
             android:id="@+id/imageSwitcherDown"
             android:layout_width="0dp"
             android:layout_height="90dp"
-            android:layout_weight=".60" >
+            android:layout_weight=".70" >
         </ImageSwitcher>
 
         <Button
             android:id="@+id/buttonNextDown"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="0dp"
-            android:layout_height="70dp"
-            android:layout_weight=".20"
+            android:layout_height="50dp"
+            android:layout_weight=".15"
             android:background="@drawable/arrow_next" />
     </LinearLayout>
 	
     <Button
         android:id="@+id/buttonMix"
-        style="?android:attr/buttonStyleSmall"
+        style="?android:attr/buttonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/linearLayout1"
         android:layout_centerHorizontal="true"
-        android:text="Juntar" />
+        android:text="Juntar" 
+        android:textSize="15dp"/>
     
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView1"

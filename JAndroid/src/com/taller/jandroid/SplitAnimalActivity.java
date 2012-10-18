@@ -6,6 +6,7 @@ import java.util.List;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -46,6 +47,7 @@ public class SplitAnimalActivity extends Activity implements ViewFactory, View.O
 	Button btnNextDown;
 	Button btnPrevDown;
 	Button mix;
+	MediaPlayer mediaPlayer;
 	ImageButton next;
 	int positionUp = 0;
 	int positionDown = 0;
@@ -72,6 +74,9 @@ public class SplitAnimalActivity extends Activity implements ViewFactory, View.O
 		iSwitcherUp.setImageResource(mImageUpIds[0]);
 		iSwitcherDown.setImageResource(mImageDownIds[0]);
 
+		next = (ImageButton)findViewById(R.id.nextButton_split);
+		next.setVisibility(View.INVISIBLE);
+		
     	setButtons();
     	
 	    dialog = new Dialog(this);
@@ -220,9 +225,15 @@ public class SplitAnimalActivity extends Activity implements ViewFactory, View.O
     		}
     	}*/
     	if(positionUp == 0 && positionDown == 2){
+    		next = (ImageButton)findViewById(R.id.nextButton_split);
+    		next.setVisibility(View.VISIBLE);
+    		mediaPlayer = MediaPlayer.create(this, R.raw.tada);
+    		mediaPlayer.start();
     		Toast.makeText(SplitAnimalActivity.this, "Bien hecho !!!", Toast.LENGTH_SHORT).show();
     	}
     	else{
+    		mediaPlayer = MediaPlayer.create(this, R.raw.failbeep);
+    		mediaPlayer.start();
     		Toast.makeText(SplitAnimalActivity.this, "Mal hecho !!!", Toast.LENGTH_SHORT).show();
     	}	
     }
