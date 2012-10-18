@@ -28,15 +28,15 @@ import android.widget.ViewSwitcher.ViewFactory;
 public class SplitAnimalActivity extends Activity implements ViewFactory, View.OnClickListener {
 
     private Integer[] mImageUpIds = {
-            R.drawable.split_gorilla_up,
-            R.drawable.split_elephant_up,
+            R.drawable.split_chimpanzee_up,
+            R.drawable.split_zebra_up,
             R.drawable.split_hippo_up,
     };
     
     private Integer[] mImageDownIds = {
             R.drawable.split_gorilla_down, 
             R.drawable.split_elephant_down,
-            R.drawable.split_hippo_down,
+            R.drawable.split_chimpanzee_down,
     };
     
 	ImageSwitcher iSwitcherUp;
@@ -75,10 +75,10 @@ public class SplitAnimalActivity extends Activity implements ViewFactory, View.O
     	setButtons();
     	
 	    dialog = new Dialog(this);
-		dialog.setContentView(R.layout.activity_choose_dialog);
+		dialog.setContentView(R.layout.activity_manual_split_animal);
 		dialog.setTitle("Instrucciones:");
 
-		Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
+		Button dialogButton = (Button) dialog.findViewById(R.id.button1);
 		// if button is clicked, close the custom dialog
 		dialogButton.setOnClickListener(this);
 		dialog.show();
@@ -212,13 +212,17 @@ public class SplitAnimalActivity extends Activity implements ViewFactory, View.O
     }
     
     void mixAnimalParts(){
-    	if(positionUp == positionDown){
+    	/*if(positionUp == positionDown){
     		if(!right_animals.contains(new Integer(positionUp))){
     			right_animals.add(new Integer(positionUp));
     			addRightImage();
     			Toast.makeText(SplitAnimalActivity.this, "Bien hecho !!!", Toast.LENGTH_SHORT).show();
     		}
-    	}else{
+    	}*/
+    	if(positionUp == 0 && positionDown == 2){
+    		Toast.makeText(SplitAnimalActivity.this, "Bien hecho !!!", Toast.LENGTH_SHORT).show();
+    	}
+    	else{
     		Toast.makeText(SplitAnimalActivity.this, "Mal hecho !!!", Toast.LENGTH_SHORT).show();
     	}	
     }
