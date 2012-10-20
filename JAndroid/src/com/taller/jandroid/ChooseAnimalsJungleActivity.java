@@ -1,18 +1,17 @@
 package com.taller.jandroid;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewManager;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
 import drag_framework.DragController;
 import drag_framework.DragLayer;
 import drag_framework.DropSpot;
@@ -27,7 +26,7 @@ import drag_framework.DropSpot;
  * 
  */
 
-	public class ChooseAnimalsJungleActivity extends Activity 
+	public class ChooseAnimalsJungleActivity extends MyActivity 
 	    implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 	{
 	
@@ -38,7 +37,6 @@ import drag_framework.DropSpot;
 	
 	private DragController mDragController;   // Object that sends out drag-drop events while a view is being moved.
 	private DragLayer mDragLayer;             // The ViewGroup that supports drag-drop.
-	private DropSpot mSpot2;                  // The DropSpot that can be turned on and off via the menu.
 	private boolean mLongClickStartsDrag = false;    // If true, it takes a long click to start the drag operation.
 	                                                // Otherwise, any touch event starts a drag.
 	
@@ -67,6 +65,9 @@ import drag_framework.DropSpot;
 	    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 	        WindowManager.LayoutParams.FLAG_FULLSCREEN);
 	    setContentView(R.layout.activity_choose_animals_jungle);
+	    
+	    this.setDrop_background(R.drawable.drag_here);
+	    
 	    setupViews ();
 	    
 	    ImageButton next = (ImageButton)findViewById(R.id.nextButton_choose);
@@ -237,20 +238,17 @@ import drag_framework.DropSpot;
 	    DropSpot drop6 = (DropSpot) mDragLayer.findViewById (R.id.drop_spot6);
 	    
 	    DropSpot drop_center = (DropSpot) mDragLayer.findViewById (R.id.drop_spot_center);
-	    drop_center.setup (mDragLayer, dragController, R.drawable.drag_here);
+	    drop_center.setup (mDragLayer, dragController, R.drawable.drag_here,this);
 	
 	    
 	
-	    drop1.setup (null, dragController, R.color.drop_target_disabled);
-	    drop2.setup (null, dragController, R.color.drop_target_disabled);
-	    drop3.setup (null, dragController, R.color.drop_target_disabled);
-	    drop4.setup (null, dragController, R.color.drop_target_disabled);
-	    drop5.setup (null, dragController, R.color.drop_target_disabled);
-	    drop6.setup (null, dragController, R.color.drop_target_disabled);
-	
-	    // Save the second area so we can enable and disable it via the menu.
-	    mSpot2 = drop_center;
-	
+	    drop1.setup (null, dragController, R.color.drop_target_disabled,this);
+	    drop2.setup (null, dragController, R.color.drop_target_disabled,this);
+	    drop3.setup (null, dragController, R.color.drop_target_disabled,this);
+	    drop4.setup (null, dragController, R.color.drop_target_disabled,this);
+	    drop5.setup (null, dragController, R.color.drop_target_disabled,this);
+	    drop6.setup (null, dragController, R.color.drop_target_disabled,this);
+		
 	    // Note: It might be interesting to allow the drop spots to be movable too.
 	    // Unfortunately, in the current implementation, that does not work
 	    // because the parent view of the DropTarget objects is not the drag layer.
@@ -263,13 +261,28 @@ import drag_framework.DropSpot;
 	
 	}
 	
-	public static int verifyAnimalChosen(View v) {
+	@Override
+	public void verifyChoice(View v) {
+		DropSpot center =  (DropSpot)mDragLayer.findViewById(R.id.drop_spot_center);
+		
 		if(v.getId() == R.id.animal1 || v.getId() == R.id.animal2 || v.getId() == R.id.animal4){
+			MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.tada);
+	    	mediaPlayer.start();
+	    	
+	    	((ViewManager)v.getParent()).removeView(v);
+	    	center.setBackgroundResource(R.drawable.smiley_happy);
 			success += 1;
-			return success;
+	    	if(success == 3){
+	    		ImageButton next = (ImageButton)mDragLayer.findViewById(R.id.nextButton_choose);
+	    		next.setVisibility(View.VISIBLE);
+    		}
 		}
-		else
-			return -1;
+		else{
+	    	MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.failbeep);
+	    	mediaPlayer.start();
+	    	center.setBackgroundResource(R.drawable.smiley_sad);
+		}
+//			return -1;
 	}
 
     @Override
@@ -279,5 +292,6 @@ import drag_framework.DropSpot;
         i.putExtra("animal", "gorilla");
         startActivity(i);    	
     }
+
 
 } // end class

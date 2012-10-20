@@ -16,14 +16,11 @@ package drag_framework;
 
 import android.content.Context;
 import android.graphics.Rect;
-import android.media.MediaPlayer;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewManager;
-import android.widget.ImageButton;
 
-import com.taller.jandroid.ChooseAnimalsJungleActivity;
+import com.taller.jandroid.MyActivity;
 import com.taller.jandroid.R;
 
 /**
@@ -41,6 +38,8 @@ public class DropSpot extends MyAbsoluteLayout
     implements DropTarget, DragController.DragListener
 {
 
+	
+	private MyActivity myActivity;
 
 /**
  */
@@ -120,6 +119,8 @@ public void setDragLayer (DragLayer newValue)
 
 //   private int mSavedBackground = R.color.drop_target_color1;
 	private int mSavedBackground = R.drawable.drag_here;
+	private int drop_background;
+
 
 /**
  * Get the value of the SavedBackground property.
@@ -224,30 +225,7 @@ public void onDrop(DragSource source, int x, int y, int xOffset, int yOffset,
     int top = y - yOffset + viewY;
     DragLayer.LayoutParams lp = new DragLayer.LayoutParams (w, h, left, top);
     
-    int success = ChooseAnimalsJungleActivity.verifyAnimalChosen(v);
-    
-    if(success !=-1){
-    	
-    	MediaPlayer mediaPlayer = MediaPlayer.create(this.getContext(), R.raw.tada);
-    	mediaPlayer.start();
-    	
-    	((ViewManager)v.getParent()).removeView(v);
-    	this.setBackgroundResource(R.drawable.smiley_happy);
-    	ImageButton next = (ImageButton)mDragLayer.findViewById(R.id.nextButton_choose);
-    	if(next != null && success == 3){
-    		Log.i("sip", "sip");
-    		next.setVisibility(View.VISIBLE);
-    	}
-    }else{
-    	MediaPlayer mediaPlayer = MediaPlayer.create(this.getContext(), R.raw.failbeep);
-    	mediaPlayer.start();
-    	this.setBackgroundResource(R.drawable.smiley_sad);
-    }
-    
-//    ((ViewManager)v.getParent()).removeView(v);
-//    mDragLayer.addView(v);
-//    mDragLayer.updateViewLayout(v, lp);
-    
+    myActivity.verifyChoice(v);  
         
 }
 
@@ -259,7 +237,7 @@ public void onDragEnter(DragSource source, int x, int y, int xOffset, int yOffse
         DragView dragView, Object dragInfo)
 {
     toast ("onDragEnter");
-    int bg = isEnabled () ? R.drawable.drag_here: R.color.drop_target_disabled;
+    int bg = isEnabled () ? drop_background: R.color.drop_target_disabled;
     setBackgroundResource (bg);
 }
 
@@ -353,12 +331,15 @@ public boolean isEnabled ()
  * @param layer DragLayer
  * @param controller DragController
  * @param initialColor int - resource id of the initial background color
+ * @param feedingActivity 
  */
 
-public void setup (DragLayer layer, DragController controller, int initialColor)
+public void setup (DragLayer layer, DragController controller, int initialColor, MyActivity dragActivity)
 {
+	myActivity = dragActivity; 
     mDragLayer = layer;
     mDragController = controller;
+    drop_background = myActivity.getDrop_background();
     setSavedBackground (initialColor);    
 
     if (controller != null) {

@@ -1,7 +1,10 @@
 package com.taller.jandroid;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +23,16 @@ public class MainActivity extends Activity implements OnClickListener{
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
         
         setContentView(R.layout.activity_main);
+        
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("CLOSE_ALL");
+        BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+          @Override
+          public void onReceive(Context context, Intent intent) {
+        	  android.os.Process.killProcess(android.os.Process.myPid()); 
+          }
+        };
+        registerReceiver(broadcastReceiver, intentFilter);
         
         Button start = (Button)findViewById(R.id.start);
         Button exit = (Button)findViewById(R.id.exit);

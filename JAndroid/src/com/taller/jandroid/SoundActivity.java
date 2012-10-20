@@ -58,6 +58,7 @@ public class SoundActivity extends Activity{
     public void verifyAnswer(View view){
     	Button button = (Button) findViewById(view.getId());
     	if(button.getText().equals("Gorila")){
+    		mediaPlayer.stop();
     		mediaPlayer = MediaPlayer.create(SoundActivity.this, R.raw.tada);
     		mediaPlayer.start();
     		Intent intent = new Intent(this, AnimalInformationActivity.class);
@@ -76,8 +77,8 @@ public class SoundActivity extends Activity{
     @Override
     public void onBackPressed(){
     	super.onBackPressed();
-        Intent i = new Intent(this,AnimalInformationActivity.class);
-        i.putExtra("animal", "elephant");
+    	mediaPlayer.stop();
+        Intent i = new Intent(this,FeedingActivity.class);
         startActivity(i);    	
     }
 }

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<drag_framework.DragLayer xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drag_layer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:background="@drawable/background">
+
+    <LinearLayout
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content"
+        android:paddingTop="200dp"
+        android:orientation="vertical">
+        
+        
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:launcher="http://schemas.android.com/apk/res/com.android.launcher"
+            android:id="@+id/layout_animal1"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <drag_framework.DropSpot
+                android:id="@+id/drop_spot1"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/drop_target_disabled" >
+            </drag_framework.DropSpot>
+
+            <ImageView
+                android:id="@+id/image_view1"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:src="@drawable/beef" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:launcher="http://schemas.android.com/apk/res/com.android.launcher"
+            android:id="@+id/layout_animal2"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <drag_framework.DropSpot
+                android:id="@+id/drop_spot2"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/drop_target_disabled" >
+            </drag_framework.DropSpot>
+
+            <ImageView
+                android:id="@+id/image_view2"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:src="@drawable/apple" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:launcher="http://schemas.android.com/apk/res/com.android.launcher"
+            android:id="@+id/layout_animal3"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <drag_framework.DropSpot
+                android:id="@+id/drop_spot3"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/drop_target_disabled" >
+            </drag_framework.DropSpot>
+
+            <ImageView
+                android:id="@+id/image_view3"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:src="@drawable/ice_cream" />
+        </RelativeLayout>
+  
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:paddingTop="30dp">
+
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:launcher="http://schemas.android.com/apk/res/com.android.launcher"
+            android:id="@+id/layout_animal4"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <drag_framework.DropSpot
+                android:id="@+id/drop_spot4"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/drop_target_disabled" >
+            </drag_framework.DropSpot>
+
+            <ImageView
+                android:id="@+id/image_view4"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:src="@drawable/banana" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:launcher="http://schemas.android.com/apk/res/com.android.launcher"
+            android:id="@+id/layout_animal5"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <drag_framework.DropSpot
+                android:id="@+id/drop_spot5"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/drop_target_disabled" >
+            </drag_framework.DropSpot>
+
+            <ImageView
+                android:id="@+id/image_view5"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:src="@drawable/hamburger" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:launcher="http://schemas.android.com/apk/res/com.android.launcher"
+            android:id="@+id/layout_animal6"
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <drag_framework.DropSpot
+                android:id="@+id/drop_spot6"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/drop_target_disabled" >
+            </drag_framework.DropSpot>
+
+            <ImageView
+                android:id="@+id/image_view6"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:src="@drawable/cherry" />
+        </RelativeLayout>
+  
+    </LinearLayout>
+    </LinearLayout>
+	<HorizontalScrollView 
+	    android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingTop="40dp"
+        android:paddingLeft="30dp" >
+        
+        <RelativeLayout 
+		    android:layout_width="wrap_content"
+        	android:layout_height="wrap_content">
+        </RelativeLayout>
+        
+        <RelativeLayout 
+		    android:layout_width="wrap_content"
+        	android:layout_height="wrap_content">
+			<drag_framework.DropSpot
+			    android:id="@+id/drop_spot0"
+			    android:layout_width="150dp"
+			    android:layout_height="150dp"
+			    android:paddingLeft="30dp"
+			    android:background="@drawable/sad_monkey" >
+			</drag_framework.DropSpot>
+		</RelativeLayout>
+		
+        <RelativeLayout 
+		    android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+   		    android:paddingLeft="30dp"
+   		    android:paddingTop="50dp">
+	        <ImageButton
+		        android:id="@+id/next"
+		        android:layout_width="60dp"
+		        android:layout_height="60dp"
+		        android:background="@android:color/transparent"
+		        android:scaleType="fitCenter"
+		        android:src="@drawable/arrow_next" />
+		</RelativeLayout>
+	</LinearLayout>
+	</HorizontalScrollView>
+</drag_framework.DragLayer>

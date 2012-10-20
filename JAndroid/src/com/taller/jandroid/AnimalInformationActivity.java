@@ -63,7 +63,7 @@ public class AnimalInformationActivity extends Activity implements OnCompletionL
 		if(v.getId() == R.id.nextButton_info){
 			Intent next = null;
 			if(animal.equals("elephant")){
-				next = new Intent(this, SoundActivity.class);
+				next = new Intent(this, FeedingActivity.class);
 			}else if(animal.equals("gorilla")){
 				next = new Intent(this, SplitAnimalActivity.class);
 			}
