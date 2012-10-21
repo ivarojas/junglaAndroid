@@ -1,10 +1,15 @@
 package com.taller.jandroid;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -15,6 +20,8 @@ import android.widget.ImageView;
 
 public class ArrivingJungle extends Activity implements OnClickListener, AnimationListener{
 
+	BroadcastReceiver broadcastReceiver = null;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +31,17 @@ public class ArrivingJungle extends Activity implements OnClickListener, Animati
         
         setContentView(R.layout.activity_arriving_jungle);
         
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("CLOSE_ALL");
+        broadcastReceiver = new BroadcastReceiver() {
+          @Override
+          public void onReceive(Context context, Intent intent) {
+        	  finish();
+        	  
+          }
+        };
+        registerReceiver(broadcastReceiver, intentFilter);
+        
         ImageButton next = (ImageButton)findViewById(R.id.nextButton_arriv);
         next.setOnClickListener(this);
         next.setVisibility(View.INVISIBLE);
@@ -32,6 +50,29 @@ public class ArrivingJungle extends Activity implements OnClickListener, Animati
     	indie.setVisibility(View.INVISIBLE);
         translate();
         
+    }
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item) 
+    {
+        switch (item.getItemId()) {
+//        case ENABLE_S2_MENU_ID:
+//            if (mSpot2 != null) mSpot2.setDragLayer (mDragLayer);
+//            return true;
+        }
+
+        
+        Intent intent = new Intent("CLOSE_ALL");
+        this.sendBroadcast(intent);
+//        android.os.Process.killProcess(android.os.Process.myPid()); 
+        finish();
+        return super.onOptionsItemSelected(item);
     }
     
     public void onClick(View v) {
@@ -83,4 +124,10 @@ public class ArrivingJungle extends Activity implements OnClickListener, Animati
     	this.startActivity(intro);
     }
 
+	@Override
+	public void onDestroy(){
+		super.onDestroy();
+		unregisterReceiver(broadcastReceiver);
+	}
+    
 }

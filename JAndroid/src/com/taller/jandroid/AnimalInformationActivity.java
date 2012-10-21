@@ -1,12 +1,17 @@
 package com.taller.jandroid;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
@@ -18,7 +23,8 @@ public class AnimalInformationActivity extends Activity implements OnCompletionL
     private static int animal_sound = R.raw.elephant;
 	private String animal;
 	MediaPlayer mediaPlayer;
-
+	BroadcastReceiver broadcastReceiver = null;
+	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,11 +34,45 @@ public class AnimalInformationActivity extends Activity implements OnCompletionL
                
         setContentView(R.layout.activity_animal_information);
         
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("CLOSE_ALL");
+        broadcastReceiver = new BroadcastReceiver() {
+          @Override
+          public void onReceive(Context context, Intent intent) {
+        	  finish();
+        	  
+          }
+        };
+        registerReceiver(broadcastReceiver, intentFilter);
+        
         animal = getIntent().getStringExtra("animal");
         setAnimalInfoAndImg();
         
         ImageButton next = (ImageButton)findViewById(R.id.nextButton_info);
         next.setOnClickListener(this);
+    }
+	
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item) 
+    {
+        switch (item.getItemId()) {
+//        case ENABLE_S2_MENU_ID:
+//            if (mSpot2 != null) mSpot2.setDragLayer (mDragLayer);
+//            return true;
+        }
+
+        
+        Intent intent = new Intent("CLOSE_ALL");
+        this.sendBroadcast(intent);
+//        android.os.Process.killProcess(android.os.Process.myPid()); 
+        finish();
+        return super.onOptionsItemSelected(item);
     }
 
 	public void setAnimalInfoAndImg() {
@@ -86,5 +126,11 @@ public class AnimalInformationActivity extends Activity implements OnCompletionL
 			mediaPlayer.stop();
         startActivity(i);
     }
+    
+	@Override
+	public void onDestroy(){
+		super.onDestroy();
+		unregisterReceiver(broadcastReceiver);
+	}
 	
 }

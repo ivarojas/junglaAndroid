@@ -5,12 +5,15 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
@@ -39,7 +42,9 @@ public class SplitAnimalActivity extends Activity implements ViewFactory, View.O
             R.drawable.split_elephant_down,
             R.drawable.split_chimpanzee_down,
     };
-    
+
+	BroadcastReceiver broadcastReceiver = null;
+
 	ImageSwitcher iSwitcherUp;
 	ImageSwitcher iSwitcherDown;
 	Button btnNextUp;
@@ -64,6 +69,18 @@ public class SplitAnimalActivity extends Activity implements ViewFactory, View.O
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_split_animal);
          
+        
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("CLOSE_ALL");
+        broadcastReceiver = new BroadcastReceiver() {
+          @Override
+          public void onReceive(Context context, Intent intent) {
+        	  finish();
+        	  
+          }
+        };
+        registerReceiver(broadcastReceiver, intentFilter);
+        
        // imageSwitcher1
 		iSwitcherUp = (ImageSwitcher) findViewById(R.id.imageSwitcherUp);
 		iSwitcherUp.setFactory(this);
@@ -87,6 +104,29 @@ public class SplitAnimalActivity extends Activity implements ViewFactory, View.O
 		// if button is clicked, close the custom dialog
 		dialogButton.setOnClickListener(this);
 		dialog.show();
+    }
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item) 
+    {
+        switch (item.getItemId()) {
+//        case ENABLE_S2_MENU_ID:
+//            if (mSpot2 != null) mSpot2.setDragLayer (mDragLayer);
+//            return true;
+        }
+
+        
+        Intent intent = new Intent("CLOSE_ALL");
+        this.sendBroadcast(intent);
+//        android.os.Process.killProcess(android.os.Process.myPid()); 
+        finish();
+        return super.onOptionsItemSelected(item);
     }
     
     public void setPositionUpNext()
@@ -247,7 +287,12 @@ public class SplitAnimalActivity extends Activity implements ViewFactory, View.O
     }
 
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
 		dialog.dismiss();
+	}
+	
+	@Override
+	public void onDestroy(){
+		super.onDestroy();
+		unregisterReceiver(broadcastReceiver);
 	}
 }

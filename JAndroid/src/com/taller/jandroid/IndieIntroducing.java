@@ -16,6 +16,9 @@ import android.widget.ImageButton;
 
 public class IndieIntroducing extends Activity implements OnClickListener {
 
+	
+	BroadcastReceiver broadcastReceiver = null;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,10 +30,11 @@ public class IndieIntroducing extends Activity implements OnClickListener {
         
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("CLOSE_ALL");
-        BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        broadcastReceiver = new BroadcastReceiver() {
           @Override
           public void onReceive(Context context, Intent intent) {
-        	  android.os.Process.killProcess(android.os.Process.myPid()); 
+        	  finish();
+        	  
           }
         };
         registerReceiver(broadcastReceiver, intentFilter);
@@ -58,7 +62,8 @@ public class IndieIntroducing extends Activity implements OnClickListener {
         
         Intent intent = new Intent("CLOSE_ALL");
         this.sendBroadcast(intent);
-
+//        android.os.Process.killProcess(android.os.Process.myPid()); 
+        finish();
         return super.onOptionsItemSelected(item);
     }
     
@@ -67,6 +72,12 @@ public class IndieIntroducing extends Activity implements OnClickListener {
 			Intent chooseDestiny = new Intent(this, TranslatePlane.class);
 			this.startActivity(chooseDestiny);
 		}
+	}
+	
+	@Override
+	public void onDestroy(){
+		super.onDestroy();
+		unregisterReceiver(broadcastReceiver);
 	}
 	
 }

@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -15,6 +14,9 @@ import android.widget.Button;
 
 public class MainActivity extends Activity implements OnClickListener{
 
+	
+	BroadcastReceiver broadcastReceiver = null;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,10 +28,11 @@ public class MainActivity extends Activity implements OnClickListener{
         
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("CLOSE_ALL");
-        BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        broadcastReceiver = new BroadcastReceiver() {
           @Override
           public void onReceive(Context context, Intent intent) {
-        	  android.os.Process.killProcess(android.os.Process.myPid()); 
+        	  finish();
+        	  
           }
         };
         registerReceiver(broadcastReceiver, intentFilter);
@@ -53,5 +56,11 @@ public class MainActivity extends Activity implements OnClickListener{
 			break;
 		}
 		
+	}
+	
+	@Override
+	public void onDestroy(){
+		super.onDestroy();
+		unregisterReceiver(broadcastReceiver);
 	}
 }

@@ -1,9 +1,14 @@
 package com.taller.jandroid;
 
 import android.app.Dialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewManager;
@@ -43,6 +48,7 @@ import drag_framework.DropSpot;
 	public static final boolean Debugging = false;
 	private static int success = 0;
 	Dialog dialog;
+	BroadcastReceiver broadcastReceiver = null;
 	
 	/**
 	 */
@@ -68,6 +74,17 @@ import drag_framework.DropSpot;
 	    
 	    this.setDrop_background(R.drawable.drag_here);
 	    
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("CLOSE_ALL");
+        broadcastReceiver = new BroadcastReceiver() {
+          @Override
+          public void onReceive(Context context, Intent intent) {
+        	  finish();
+        	  
+          }
+        };
+        registerReceiver(broadcastReceiver, intentFilter);
+	    
 	    setupViews ();
 	    
 	    ImageButton next = (ImageButton)findViewById(R.id.nextButton_choose);
@@ -88,6 +105,30 @@ import drag_framework.DropSpot;
 		dialog.show();
 	    
 	}
+	 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item) 
+    {
+        switch (item.getItemId()) {
+//	        case ENABLE_S2_MENU_ID:
+//	            if (mSpot2 != null) mSpot2.setDragLayer (mDragLayer);
+//	            return true;
+        }
+
+        
+        Intent intent = new Intent("CLOSE_ALL");
+        this.sendBroadcast(intent);
+//	        android.os.Process.killProcess(android.os.Process.myPid()); 
+        finish();
+        return super.onOptionsItemSelected(item);
+    }
+	    
 	
 	
 	/**
@@ -282,7 +323,6 @@ import drag_framework.DropSpot;
 	    	mediaPlayer.start();
 	    	center.setBackgroundResource(R.drawable.smiley_sad);
 		}
-//			return -1;
 	}
 
     @Override
@@ -293,5 +333,10 @@ import drag_framework.DropSpot;
         startActivity(i);    	
     }
 
+	@Override
+	public void onDestroy(){
+		super.onDestroy();
+		unregisterReceiver(broadcastReceiver);
+	}
 
 } // end class
