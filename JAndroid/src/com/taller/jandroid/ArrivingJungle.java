@@ -1,10 +1,6 @@
 package com.taller.jandroid;
 
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,9 +14,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
-public class ArrivingJungle extends Activity implements OnClickListener, AnimationListener{
-
-	BroadcastReceiver broadcastReceiver = null;
+public class ArrivingJungle extends MyActivity implements OnClickListener, AnimationListener{
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,17 +24,6 @@ public class ArrivingJungle extends Activity implements OnClickListener, Animati
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
         
         setContentView(R.layout.activity_arriving_jungle);
-        
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction("CLOSE_ALL");
-        broadcastReceiver = new BroadcastReceiver() {
-          @Override
-          public void onReceive(Context context, Intent intent) {
-        	  finish();
-        	  
-          }
-        };
-        registerReceiver(broadcastReceiver, intentFilter);
         
         ImageButton next = (ImageButton)findViewById(R.id.nextButton_arriv);
         next.setOnClickListener(this);
@@ -125,9 +108,9 @@ public class ArrivingJungle extends Activity implements OnClickListener, Animati
     }
 
 	@Override
-	public void onDestroy(){
-		super.onDestroy();
-		unregisterReceiver(broadcastReceiver);
+	public void verifyChoice(View v) {
+		// TODO Auto-generated method stub
+		
 	}
     
 }

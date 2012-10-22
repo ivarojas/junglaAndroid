@@ -1,11 +1,7 @@
 package com.taller.jandroid;
 
 import android.os.Bundle;
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,9 +10,7 @@ import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 
-public class SayGoodbyeActivity extends Activity implements OnClickListener {
-
-	BroadcastReceiver broadcastReceiver = null;
+public class SayGoodbyeActivity extends MyActivity implements OnClickListener {
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,18 +19,7 @@ public class SayGoodbyeActivity extends Activity implements OnClickListener {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_say_goodbye);
-        
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction("CLOSE_ALL");
-        broadcastReceiver = new BroadcastReceiver() {
-          @Override
-          public void onReceive(Context context, Intent intent) {
-        	  finish();
-        	  
-          }
-        };
-        registerReceiver(broadcastReceiver, intentFilter);
-        
+                
         ImageButton next = (ImageButton)findViewById(R.id.nextButton_sayGB);
         next.setOnClickListener(this);
     }
@@ -78,11 +61,10 @@ public class SayGoodbyeActivity extends Activity implements OnClickListener {
         Intent i = new Intent(this,ChooseAnimalsJungleActivity.class);
         startActivity(i);    	
     }
-    
+
 	@Override
-	public void onDestroy(){
-		super.onDestroy();
-		unregisterReceiver(broadcastReceiver);
+	public void verifyChoice(View v) {
+
 	}
     
 }

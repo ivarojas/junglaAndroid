@@ -1,10 +1,7 @@
 package com.taller.jandroid;
 
 import android.app.Dialog;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
@@ -48,7 +45,6 @@ import drag_framework.DropSpot;
 	public static final boolean Debugging = false;
 	private static int success = 0;
 	Dialog dialog;
-	BroadcastReceiver broadcastReceiver = null;
 	
 	/**
 	 */
@@ -62,7 +58,7 @@ import drag_framework.DropSpot;
 	 *
 	 */
 	
-	 protected void onCreate(Bundle savedInstanceState) 
+	 public void onCreate(Bundle savedInstanceState) 
 	{
 	    super.onCreate(savedInstanceState);
 	    mDragController = new DragController(this);
@@ -73,17 +69,6 @@ import drag_framework.DropSpot;
 	    setContentView(R.layout.activity_choose_animals_jungle);
 	    
 	    this.setDrop_background(R.drawable.drag_here);
-	    
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction("CLOSE_ALL");
-        broadcastReceiver = new BroadcastReceiver() {
-          @Override
-          public void onReceive(Context context, Intent intent) {
-        	  finish();
-        	  
-          }
-        };
-        registerReceiver(broadcastReceiver, intentFilter);
 	    
 	    setupViews ();
 	    
@@ -332,11 +317,5 @@ import drag_framework.DropSpot;
         i.putExtra("animal", "gorilla");
         startActivity(i);    	
     }
-
-	@Override
-	public void onDestroy(){
-		super.onDestroy();
-		unregisterReceiver(broadcastReceiver);
-	}
 
 } // end class

@@ -1,10 +1,6 @@
 package com.taller.jandroid;
 
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,9 +13,7 @@ import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-public class GoodbyeActivity extends Activity implements AnimationListener {
-
-	BroadcastReceiver broadcastReceiver = null;
+public class GoodbyeActivity extends MyActivity implements AnimationListener {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,17 +22,6 @@ public class GoodbyeActivity extends Activity implements AnimationListener {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_goodbye);
-        
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction("CLOSE_ALL");
-        broadcastReceiver = new BroadcastReceiver() {
-          @Override
-          public void onReceive(Context context, Intent intent) {
-        	  finish();
-        	  
-          }
-        };
-        registerReceiver(broadcastReceiver, intentFilter);
         
         ImageView image = (ImageView) findViewById(R.id.ship);
         AnimationSet animSet = new AnimationSet(false);
@@ -106,10 +89,10 @@ public class GoodbyeActivity extends Activity implements AnimationListener {
         Intent i = new Intent(this,SayGoodbyeActivity.class);
         startActivity(i);    	
     }
-    
+
 	@Override
-	public void onDestroy(){
-		super.onDestroy();
-		unregisterReceiver(broadcastReceiver);
+	public void verifyChoice(View v) {
+
 	}
+
 }

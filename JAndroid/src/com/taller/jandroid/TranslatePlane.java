@@ -1,10 +1,6 @@
 package com.taller.jandroid;
 
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -19,12 +15,11 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
-public class TranslatePlane extends Activity implements OnClickListener, AnimationListener{
+public class TranslatePlane extends MyActivity implements OnClickListener, AnimationListener{
 
 	
 	private int destiny = 1;
-	BroadcastReceiver broadcastReceiver = null;
-	
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,18 +28,7 @@ public class TranslatePlane extends Activity implements OnClickListener, Animati
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
         
         setContentView(R.layout.activity_translate_plane);
-        
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction("CLOSE_ALL");
-        broadcastReceiver = new BroadcastReceiver() {
-          @Override
-          public void onReceive(Context context, Intent intent) {
-        	  finish();
-        	  
-          }
-        };
-        registerReceiver(broadcastReceiver, intentFilter);
-        
+               
         ImageButton destiny1 = (ImageButton)findViewById(R.id.destiny1);
         ImageButton destiny2 = (ImageButton)findViewById(R.id.destiny2);
         
@@ -137,10 +121,10 @@ public class TranslatePlane extends Activity implements OnClickListener, Animati
     	Intent intro = new Intent(this,IndieIntroducing.class);
     	this.startActivity(intro);
     }
-    
+
 	@Override
-	public void onDestroy(){
-		super.onDestroy();
-		unregisterReceiver(broadcastReceiver);
+	public void verifyChoice(View v) {
+
 	}
+
 }

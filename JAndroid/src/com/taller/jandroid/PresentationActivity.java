@@ -3,11 +3,7 @@ package com.taller.jandroid;
 import com.taller.jandroid.R;
 
 import android.os.Bundle;
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,9 +12,7 @@ import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 
-public class PresentationActivity extends Activity {
-	
-	BroadcastReceiver broadcastReceiver = null;
+public class PresentationActivity extends MyActivity {
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,18 +21,6 @@ public class PresentationActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_presentation);
-        
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction("CLOSE_ALL");
-        broadcastReceiver = new BroadcastReceiver() {
-          @Override
-          public void onReceive(Context context, Intent intent) {
-        	  finish();
-        	  
-          }
-        };
-        registerReceiver(broadcastReceiver, intentFilter);
-        
         
         ImageButton mbutton=(ImageButton)findViewById(R.id.monkeybutton);
         ImageButton rbutton=(ImageButton)findViewById(R.id.rhinobutton);
@@ -131,11 +113,11 @@ public class PresentationActivity extends Activity {
         Intent translate = new Intent(this,TranslatePlane.class);
         startActivity(translate);    	
     }
-    
-	@Override
-	public void onDestroy(){
-		super.onDestroy();
-		unregisterReceiver(broadcastReceiver);
-	}
 
+
+	@Override
+	public void verifyChoice(View v) {
+		// TODO Auto-generated method stub
+		
+	}
 }

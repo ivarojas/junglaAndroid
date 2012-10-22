@@ -1,12 +1,8 @@
 package com.taller.jandroid;
 
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,29 +12,17 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
-public class ShadowActivity extends Activity {
+public class ShadowActivity extends MyActivity {
 
     private AlertDialog alertDialog;
-	BroadcastReceiver broadcastReceiver = null;
-
+    
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction("CLOSE_ALL");
-        broadcastReceiver = new BroadcastReceiver() {
-          @Override
-          public void onReceive(Context context, Intent intent) {
-        	  finish();
-        	  
-          }
-        };
-        registerReceiver(broadcastReceiver, intentFilter);
-        
+  
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         builder.setMessage("Has fallado")
@@ -101,9 +85,9 @@ public class ShadowActivity extends Activity {
     }
 
 	@Override
-	public void onDestroy(){
-		super.onDestroy();
-		unregisterReceiver(broadcastReceiver);
+	public void verifyChoice(View v) {
+		// TODO Auto-generated method stub
+		
 	}
-    
+
 }

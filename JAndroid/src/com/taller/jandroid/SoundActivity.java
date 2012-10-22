@@ -2,13 +2,9 @@ package com.taller.jandroid;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,11 +14,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-public class SoundActivity extends Activity{
+public class SoundActivity extends MyActivity{
 
 	private AlertDialog alertDialog;
 	MediaPlayer mediaPlayer;
-	BroadcastReceiver broadcastReceiver = null;
 
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,17 +27,6 @@ public class SoundActivity extends Activity{
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		
 		setContentView(R.layout.activity_sound);
-		
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction("CLOSE_ALL");
-        broadcastReceiver = new BroadcastReceiver() {
-          @Override
-          public void onReceive(Context context, Intent intent) {
-        	  finish();
-        	  
-          }
-        };
-        registerReceiver(broadcastReceiver, intentFilter);
 		
 		ImageButton sound1 = (ImageButton)findViewById(R.id.soundChallenge);
         
@@ -119,10 +103,11 @@ public class SoundActivity extends Activity{
         Intent i = new Intent(this,FeedingActivity.class);
         startActivity(i);    	
     }
-    
+
 	@Override
-	public void onDestroy(){
-		super.onDestroy();
-		unregisterReceiver(broadcastReceiver);
+	public void verifyChoice(View v) {
+		// TODO Auto-generated method stub
+		
 	}
+
 }

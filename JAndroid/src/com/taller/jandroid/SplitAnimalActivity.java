@@ -5,10 +5,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -25,11 +22,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.widget.ViewSwitcher.ViewFactory;
-//import android.app.ActionBar.LayoutParams;
-//import android.widget.Toast;
 
 
-public class SplitAnimalActivity extends Activity implements ViewFactory, View.OnClickListener {
+public class SplitAnimalActivity extends MyActivity implements ViewFactory, View.OnClickListener {
 
     private Integer[] mImageUpIds = {
             R.drawable.split_chimpanzee_up,
@@ -43,9 +38,7 @@ public class SplitAnimalActivity extends Activity implements ViewFactory, View.O
             R.drawable.split_chimpanzee_down,
     };
 
-	BroadcastReceiver broadcastReceiver = null;
-
-	ImageSwitcher iSwitcherUp;
+    ImageSwitcher iSwitcherUp;
 	ImageSwitcher iSwitcherDown;
 	Button btnNextUp;
 	Button btnPrevUp;
@@ -68,18 +61,6 @@ public class SplitAnimalActivity extends Activity implements ViewFactory, View.O
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_split_animal);
-         
-        
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction("CLOSE_ALL");
-        broadcastReceiver = new BroadcastReceiver() {
-          @Override
-          public void onReceive(Context context, Intent intent) {
-        	  finish();
-        	  
-          }
-        };
-        registerReceiver(broadcastReceiver, intentFilter);
         
        // imageSwitcher1
 		iSwitcherUp = (ImageSwitcher) findViewById(R.id.imageSwitcherUp);
@@ -166,7 +147,6 @@ public class SplitAnimalActivity extends Activity implements ViewFactory, View.O
     }
     
 	public View makeView() {
-		// TODO Auto-generated method stub
 		ImageView iView = new ImageView(this);
 		iView.setScaleType(ImageView.ScaleType.FIT_CENTER);
 		/*iView.setLayoutParams(new 
@@ -289,10 +269,10 @@ public class SplitAnimalActivity extends Activity implements ViewFactory, View.O
 	public void onClick(View v) {
 		dialog.dismiss();
 	}
-	
+
+
 	@Override
-	public void onDestroy(){
-		super.onDestroy();
-		unregisterReceiver(broadcastReceiver);
+	public void verifyChoice(View v) {
+
 	}
 }

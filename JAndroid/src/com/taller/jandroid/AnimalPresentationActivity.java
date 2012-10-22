@@ -3,13 +3,9 @@ package com.taller.jandroid;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,12 +15,11 @@ import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
-public class AnimalPresentationActivity extends Activity {
+public class AnimalPresentationActivity extends MyActivity {
 	private static AlertDialog alertDialog;
 	private MediaPlayer mp;
 	private int animal_sound,animal_img;
 	private String animal_name, animal_info;
-	BroadcastReceiver broadcastReceiver = null;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,19 +27,7 @@ public class AnimalPresentationActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_animal_presentation);
-        
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction("CLOSE_ALL");
-        broadcastReceiver = new BroadcastReceiver() {
-          @Override
-          public void onReceive(Context context, Intent intent) {
-        	  finish();
-        	  
-          }
-        };
-        registerReceiver(broadcastReceiver, intentFilter);
-        
+        setContentView(R.layout.activity_animal_presentation);      
         
     	AlertDialog.Builder builder=new AlertDialog.Builder(this);
         ImageButton arrow=(ImageButton)findViewById(R.id.back);
@@ -147,11 +130,10 @@ public class AnimalPresentationActivity extends Activity {
         mp.stop();
         startActivity(i);
     }
-	
+
 	@Override
-	public void onDestroy(){
-		super.onDestroy();
-		unregisterReceiver(broadcastReceiver);
+	public void verifyChoice(View v) {
+
 	}
     
 }

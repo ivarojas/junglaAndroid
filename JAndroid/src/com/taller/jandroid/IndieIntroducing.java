@@ -1,10 +1,6 @@
 package com.taller.jandroid;
 
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,10 +10,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 
-public class IndieIntroducing extends Activity implements OnClickListener {
-
-	
-	BroadcastReceiver broadcastReceiver = null;
+public class IndieIntroducing extends MyActivity implements OnClickListener {
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,18 +20,6 @@ public class IndieIntroducing extends Activity implements OnClickListener {
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
         
         setContentView(R.layout.activity_indie_introducing);
-        
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction("CLOSE_ALL");
-        broadcastReceiver = new BroadcastReceiver() {
-          @Override
-          public void onReceive(Context context, Intent intent) {
-        	  finish();
-        	  
-          }
-        };
-        registerReceiver(broadcastReceiver, intentFilter);
-        
         
         ImageButton next = (ImageButton)findViewById(R.id.nextButton_intr);
         next.setOnClickListener(this);
@@ -73,11 +54,10 @@ public class IndieIntroducing extends Activity implements OnClickListener {
 			this.startActivity(chooseDestiny);
 		}
 	}
-	
+
 	@Override
-	public void onDestroy(){
-		super.onDestroy();
-		unregisterReceiver(broadcastReceiver);
+	public void verifyChoice(View v) {
+	
 	}
 	
 }

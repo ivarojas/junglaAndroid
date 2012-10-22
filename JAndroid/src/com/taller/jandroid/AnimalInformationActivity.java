@@ -1,10 +1,6 @@
 package com.taller.jandroid;
 
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
@@ -18,12 +14,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class AnimalInformationActivity extends Activity implements OnCompletionListener, OnClickListener {
+public class AnimalInformationActivity extends MyActivity implements OnCompletionListener, OnClickListener {
 
     private static int animal_sound = R.raw.elephant;
 	private String animal;
 	MediaPlayer mediaPlayer;
-	BroadcastReceiver broadcastReceiver = null;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -33,18 +28,7 @@ public class AnimalInformationActivity extends Activity implements OnCompletionL
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
                
         setContentView(R.layout.activity_animal_information);
-        
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction("CLOSE_ALL");
-        broadcastReceiver = new BroadcastReceiver() {
-          @Override
-          public void onReceive(Context context, Intent intent) {
-        	  finish();
-        	  
-          }
-        };
-        registerReceiver(broadcastReceiver, intentFilter);
-        
+              
         animal = getIntent().getStringExtra("animal");
         setAnimalInfoAndImg();
         
@@ -126,11 +110,11 @@ public class AnimalInformationActivity extends Activity implements OnCompletionL
 			mediaPlayer.stop();
         startActivity(i);
     }
-    
+
 	@Override
-	public void onDestroy(){
-		super.onDestroy();
-		unregisterReceiver(broadcastReceiver);
+	public void verifyChoice(View v) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
