@@ -20,6 +20,7 @@ public class AnimalPresentationActivity extends MyActivity {
 	private MediaPlayer mp;
 	private int animal_sound,animal_img;
 	private String animal_name, animal_info;
+	int destiny;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,8 @@ public class AnimalPresentationActivity extends MyActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_animal_presentation);      
+        
+        destiny = getIntent().getExtras().getInt("destiny");
         
     	AlertDialog.Builder builder=new AlertDialog.Builder(this);
         ImageButton arrow=(ImageButton)findViewById(R.id.back);
@@ -53,6 +56,7 @@ public class AnimalPresentationActivity extends MyActivity {
         arrow.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 Intent i=new Intent(AnimalPresentationActivity.this,PresentationActivity.class);
+                i.putExtra("destiny", destiny);
                 mp.stop();
                 startActivity(i);
                 }
@@ -127,6 +131,7 @@ public class AnimalPresentationActivity extends MyActivity {
     public void onBackPressed(){
     	super.onBackPressed();
         Intent i=new Intent(this,PresentationActivity.class);
+        i.putExtra("destiny", destiny);
         mp.stop();
         startActivity(i);
     }

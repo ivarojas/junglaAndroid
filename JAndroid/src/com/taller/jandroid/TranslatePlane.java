@@ -49,13 +49,14 @@ public class TranslatePlane extends MyActivity implements OnClickListener, Anima
     	
     	switch(v.getId()){
     	case R.id.destiny1:{
+    		destiny = 1;
     		translate = AnimationUtils.loadAnimation(this, R.anim.translate_destiny1);
     		break;
     	}
     	case R.id.destiny2:{
-//    		translate = AnimationUtils.loadAnimation(this, R.anim.translate_destiny2);
-//    		break;
-    		return;
+    		destiny = 2;
+    		translate = AnimationUtils.loadAnimation(this, R.anim.translate_destiny2);
+    		break;
     	}
     	}
     			 
@@ -79,17 +80,10 @@ public class TranslatePlane extends MyActivity implements OnClickListener, Anima
     public void onAnimationRepeat(Animation arg0) {
     }           
     public void onAnimationEnd(Animation arg0) {
-    	Intent nextintent = null;
-    	if(destiny == 1){
-    		nextintent = new Intent(this,ArrivingJungle.class);
-    		this.startActivity(nextintent);
-    		this.finish();
-    	}
-    	else{
-    		
-    	}
-    		
-    	
+    	Intent nextintent = new Intent(this,ArrivingJungle.class);
+    	nextintent.putExtra("destiny", destiny);    		
+		this.startActivity(nextintent);
+		this.finish();
     }
     
     @Override

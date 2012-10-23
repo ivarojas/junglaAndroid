@@ -16,6 +16,8 @@ import android.widget.ImageView;
 
 public class ArrivingJungle extends MyActivity implements OnClickListener, AnimationListener{
 	
+	int destiny;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +25,13 @@ public class ArrivingJungle extends MyActivity implements OnClickListener, Anima
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
         
+        destiny = getIntent().getExtras().getInt("destiny");
+        
         setContentView(R.layout.activity_arriving_jungle);
+        
+        if(destiny == 2){
+        	findViewById(R.id.relative_arriv).setBackgroundResource(R.drawable.arriving_jungle2);
+        }
         
         ImageButton next = (ImageButton)findViewById(R.id.nextButton_arriv);
         next.setOnClickListener(this);
@@ -60,8 +68,10 @@ public class ArrivingJungle extends MyActivity implements OnClickListener, Anima
     
     public void onClick(View v) {
     	if(v.getId() == R.id.nextButton_arriv){
-    		Intent shadow = new Intent(this, PresentationActivity.class);
-    		this.startActivity(shadow);
+    		Intent presentation = new Intent(this, PresentationActivity.class);
+    		presentation.putExtra("destiny", destiny);
+    		this.startActivity(presentation);
+    		finish();
     	}
     		
 	}

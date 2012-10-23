@@ -1,0 +1,88 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background" >
+	<ScrollView 
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:scrollbars="vertical" >
+
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    
+    <ImageButton
+        android:id="@+id/monkeybutton"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/frog" />
+
+    <ImageButton
+        android:id="@+id/rhinobutton"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/hornbill" />
+
+    </LinearLayout>
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+	    <ImageButton
+	        android:id="@+id/rhino"
+	        android:layout_width="100dp"
+	        android:layout_height="100dp"
+	        android:layout_margin="5dp"
+	        android:background="@drawable/rhino" />
+	
+	    <ImageButton
+	        android:id="@+id/okapibutton"
+	        android:layout_width="120dp"
+	        android:layout_height="140dp"
+	        android:layout_margin="5dp"
+	        android:background="@drawable/sun_bear" />
+	</LinearLayout>
+	<LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+	    <ImageButton
+	        android:id="@+id/rhino1"
+	        android:layout_width="100dp"
+	        android:layout_height="100dp"
+	        android:layout_margin="5dp"
+	        android:background="@drawable/rhino" />
+	
+	    <ImageButton
+	        android:id="@+id/okapibutton1"
+	        android:layout_width="120dp"
+	        android:layout_height="140dp"
+	        android:layout_margin="5dp"
+	        android:background="@drawable/threed_okapi" />
+	</LinearLayout>
+
+    <ImageButton
+        android:id="@+id/giraffebutton"
+        android:layout_width="100dp"
+        android:layout_height="120dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="21dp"
+        android:background="@drawable/threed_gorilla" />
+	</LinearLayout>
+	</ScrollView>
+	
+	<ImageButton
+        android:id="@+id/continuebutton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="24dp"
+        android:layout_marginRight="24dp"
+        android:background="@drawable/arrow_next" />
+</RelativeLayout>
