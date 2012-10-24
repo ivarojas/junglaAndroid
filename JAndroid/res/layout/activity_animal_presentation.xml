@@ -39,4 +39,12 @@
         android:layout_alignTop="@+id/speaker"
         android:background="@drawable/sbubble" />
 
+    <Button
+        android:id="@+id/web"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/bubble"
+        android:layout_below="@+id/speaker"
+        android:text="Video" />
+
 </RelativeLayout>
