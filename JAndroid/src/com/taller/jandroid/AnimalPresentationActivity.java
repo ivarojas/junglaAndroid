@@ -1,19 +1,26 @@
 package com.taller.jandroid;
 
 
-import android.media.MediaPlayer;
-import android.os.Bundle;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.View.OnClickListener;
+import android.webkit.WebView;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.MediaController;
+import android.widget.VideoView;
 
 public class AnimalPresentationActivity extends MyActivity {
 	private static AlertDialog alertDialog;
@@ -21,7 +28,9 @@ public class AnimalPresentationActivity extends MyActivity {
 	private int animal_sound,animal_img;
 	private String animal_name, animal_info;
 	int destiny;
-	
+	private Dialog dialog;
+	WebView mWebView;
+	@SuppressLint("SetJavaScriptEnabled")
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +46,14 @@ public class AnimalPresentationActivity extends MyActivity {
     	ImageButton sound=(ImageButton)findViewById(R.id.speaker);
         ImageButton info=(ImageButton)findViewById(R.id.bubble);
         ImageView imv=(ImageView)findViewById(R.id.imageView1);
+        Button video = (Button)findViewById(R.id.web); 
         
+        dialog = new Dialog(this);
+		dialog.setContentView(R.layout.dialog_webview);
+		dialog.setTitle("Video:");
+		
+		Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
+		
         animal_name=getIntent().getStringExtra("animal");
         
         setAnimalInfo();
@@ -71,6 +87,33 @@ public class AnimalPresentationActivity extends MyActivity {
 		info.setOnClickListener(new OnClickListener(){
 			public void onClick(View v){
 				alertDialog.show();
+			}
+		});
+		
+		video.setOnClickListener(new OnClickListener(){
+			private VideoView mVideoView;
+			private MediaController mc;
+
+			public void onClick(View v){
+				
+			     mVideoView = (VideoView) dialog.findViewById(R.id.videoView1);
+//			     String videourl = "rtsp://v7.cache4.c.youtube.com/CiILENy73wIaGQl25yDUbxNXTRMYDSANFEgGUgZ2aWRlb3MM/0/0/0/video.3gp";
+			     
+			     mVideoView.requestFocus();
+			     Uri video = Uri.parse("android.resource://com.taller.jandroid/"+R.raw.video_orangutan);
+
+			     mVideoView.setVideoURI(Uri.parse(video.toString()));
+			     mVideoView.start();
+			     mVideoView.setZOrderOnTop(true);
+			     dialog.show();
+			     
+			
+			}
+		});
+		
+		dialogButton.setOnClickListener(new OnClickListener(){
+			public void onClick(View v){
+				dialog.dismiss();
 			}
 		});
 	}
