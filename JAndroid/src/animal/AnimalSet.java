@@ -1,24 +1,22 @@
-package com.taller.jandroid;
+package animal;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import android.os.Bundle;
-import android.app.Activity;
+import android.content.Context;
 
-public class Animal {
+import animal.Animal;
+
+public class AnimalSet {
+
+	private Context context;
 	
-	String name;
-	int sound_id;
-	int image_id;
-	int[] image_split_ids;
+	public AnimalSet(Context context) {
+		this.context = context;
+	}
 	
-	//public Animal(String n, int sound, int image, int[] split_images) {
-	public Animal(String n) {
-		name = n;
-		/*sound_id = sound;
-		image_id = image;
-		image_split_ids = split_images;*/
+	public Context getContext(){
+		return this.context;
 	}
 	
 	public String[] getAnimalRandom(String key, int amount){
@@ -36,13 +34,13 @@ public class Animal {
 		for(int i = 0; i<amount; i++){
 			n = (int)(Math.random() * (length + 1));
 			if(!number_random.contains(new Integer(n))){
-				Animal animal = new Animal(animals[n]);
+				Animal animal = new Animal(animals[n], this.context);
 				animal_random.add(null);	
 			}
 		}
 		return null;
 	}
-
+	
 	public String[] getAnimalsCongo(){
 		String[] animals = {
 			"elephant",
@@ -65,5 +63,5 @@ public class Animal {
 		};
 		return animals;
 	}
-}
 
+}
