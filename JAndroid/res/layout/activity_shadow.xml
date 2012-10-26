@@ -11,8 +11,7 @@
 	    android:layout_height="150dp"
 	    android1:layout_gravity="center_horizontal"
 	    android1:layout_marginTop="170dp"
-	    android:contentDescription="first_obstacle"
-	    android:src="@drawable/elephant_shadow" />
+	    android:contentDescription="first_obstacle" />
 
 	<LinearLayout
 	    android1:id="@+id/linearLayout2"
@@ -29,8 +28,7 @@
 	        android:background="@drawable/button"
 	        android1:adjustViewBounds="false"
 	        android1:contentDescription="first_option"
-	        android1:onClick="verifyAnswer"
-	        android1:text="Gorila" 
+	        android1:onClick="verifyAnswer" 
 	        android:textSize="15dp" />
 
 	    <Button

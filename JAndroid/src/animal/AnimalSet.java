@@ -3,7 +3,9 @@ package animal;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.Resources;
 
 import animal.Animal;
 
@@ -19,14 +21,15 @@ public class AnimalSet {
 		return this.context;
 	}
 	
-	public String[] getAnimalRandom(String key, int amount){
+	@SuppressLint("UseValueOf")
+	public List<String> getAnimalsRandom(String key, int amount){
 		String[] animals = null;
 		if(key.equals("congo"))
 			animals = getAnimalsCongo();
 		else if(key.equals("extra"))
 			animals = getAnimalsExtras();
 		
-		List<Animal> animal_random = new ArrayList<Animal>();
+		List<String> animal_random = new ArrayList<String>();
 		List<Integer> number_random = new ArrayList<Integer>();
 		
 		int length = animals.length;
@@ -34,11 +37,16 @@ public class AnimalSet {
 		for(int i = 0; i<amount; i++){
 			n = (int)(Math.random() * (length + 1));
 			if(!number_random.contains(new Integer(n))){
-				Animal animal = new Animal(animals[n], this.context);
-				animal_random.add(null);	
+				animal_random.add(animals[n]);	
 			}
 		}
-		return null;
+		
+		return animal_random;
+	}
+	
+	public int getShadowAnimalId(String name){
+		Resources resources = this.context.getResources();
+		return resources.getIdentifier("shadow_" + name, "drawable", context.getPackageName());
 	}
 	
 	public String[] getAnimalsCongo(){
@@ -46,7 +54,8 @@ public class AnimalSet {
 			"elephant",
 			"hippo",
 			"gorilla",
-			"okapi"
+			"okapi",
+			"bonobo"
 		};
 		return animals;
 	}
@@ -63,5 +72,4 @@ public class AnimalSet {
 		};
 		return animals;
 	}
-
 }

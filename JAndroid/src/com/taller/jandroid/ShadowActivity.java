@@ -1,5 +1,7 @@
 package com.taller.jandroid;
 
+import java.util.List;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,10 +13,15 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
+import animal.AnimalSet;
 
 public class ShadowActivity extends MyActivity {
 
     private AlertDialog alertDialog;
+	private AnimalSet animal_set;
+	private List<String> random_animals;
+	private String correct_answer;
     
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,6 +42,9 @@ public class ShadowActivity extends MyActivity {
 		alertDialog = builder.create();
        
         setContentView(R.layout.activity_shadow);
+        
+        //setting shadow animal and choices to show
+        this.setShadowAnimal();
     }
 	
     @Override
@@ -89,5 +99,22 @@ public class ShadowActivity extends MyActivity {
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+	public void setShadowAnimal(){
+		//setting shadow animal and choices to show
+        animal_set = new AnimalSet(this);
+        random_animals = animal_set.getAnimalsRandom("congo", 3);
+        int rand_n = (int)(Math.random() * (3 + 1));
+        correct_answer = random_animals.get(rand_n);
+        int shadow_animal_id = animal_set.getShadowAnimalId(random_animals.get(rand_n));
+        ImageView image_view = (ImageView) findViewById(R.id.shadow);
+        image_view.setBackgroundResource(shadow_animal_id);
+        
+        //set choices
+        int[] button_ids = {R.id.first_option, R.id.second_option, R.id.third_option};
+        for(int i = 0; i < 3; i++){
+        	Button choice = (Button) findViewById(button_ids[i]);
+        	choice.setText(this.random_animals.get(i));
+        }
+	}
 }
