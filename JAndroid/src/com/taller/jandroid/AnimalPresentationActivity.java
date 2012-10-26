@@ -30,6 +30,7 @@ public class AnimalPresentationActivity extends MyActivity {
 	int destiny;
 	private Dialog dialog;
 	WebView mWebView;
+	private Dialog dialog1;
 	@SuppressLint("SetJavaScriptEnabled")
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,12 @@ public class AnimalPresentationActivity extends MyActivity {
 		dialog.setTitle("Video:");
 		
 		Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
+
+        dialog1 = new Dialog(this);
+		dialog1.setContentView(R.layout.dialog_info_animal);
+		dialog1.setTitle("Información:");
+		
+		Button dialogButton1 = (Button) dialog1.findViewById(R.id.dialogButtonOK);
 		
         animal_name=getIntent().getStringExtra("animal");
         
@@ -86,7 +93,8 @@ public class AnimalPresentationActivity extends MyActivity {
 		
 		info.setOnClickListener(new OnClickListener(){
 			public void onClick(View v){
-				alertDialog.show();
+//				alertDialog.show();
+				dialog1.show();
 			}
 		});
 		
@@ -114,6 +122,12 @@ public class AnimalPresentationActivity extends MyActivity {
 		dialogButton.setOnClickListener(new OnClickListener(){
 			public void onClick(View v){
 				dialog.dismiss();
+			}
+		});
+		
+		dialogButton1.setOnClickListener(new OnClickListener(){
+			public void onClick(View v){
+				dialog1.dismiss();
 			}
 		});
 	}
