@@ -72,7 +72,7 @@ public class ShadowActivity extends MyActivity {
     
     public void verifyAnswer(View view){
     	Button button = (Button) findViewById(view.getId());
-    	if(button.getText().equals("elephant")){
+    	if(button.getText().equals(this.correct_answer)){
     		MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.tada);
     		mediaPlayer.start();
     		Intent intent = new Intent(this, AnimalInformationActivity.class);
