@@ -104,7 +104,7 @@ public class ShadowActivity extends MyActivity {
 		//setting shadow animal and choices to show
         animal_set = new AnimalSet(this);
         random_animals = animal_set.getAnimalsRandom("congo", 3);
-        int rand_n = (int)(Math.random() * (3 + 1));
+        int rand_n = (int)(Math.random() * 3);
         correct_answer = random_animals.get(rand_n);
         int shadow_animal_id = animal_set.getShadowAnimalId(random_animals.get(rand_n));
         ImageView image_view = (ImageView) findViewById(R.id.shadow);
