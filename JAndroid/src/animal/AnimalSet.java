@@ -36,10 +36,12 @@ public class AnimalSet {
 		int n;
 		for(int i = 0; i<amount; i++){
 			n = (int)(Math.random() * length);
-			if(!number_random.contains(new Integer(n))){
-				number_random.add(new Integer(n));
-				animal_random.add(animals[n]);	
+			while(number_random.contains(new Integer(n))){
+				n = (int)(Math.random() * length);	
 			}
+			
+			number_random.add(new Integer(n));
+			animal_random.add(animals[n]);
 		}
 		
 		return animal_random;
