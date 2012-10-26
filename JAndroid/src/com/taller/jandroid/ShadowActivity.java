@@ -91,6 +91,7 @@ public class ShadowActivity extends MyActivity {
     public void onBackPressed(){
     	super.onBackPressed();
         Intent i=new Intent(this,PresentationActivity.class);
+        i.putExtra("destiny", 1);
         startActivity(i);
     }
 
