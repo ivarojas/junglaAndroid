@@ -52,6 +52,11 @@ public class AnimalSet {
 		return resources.getIdentifier("shadow_" + name, "drawable", context.getPackageName());
 	}
 	
+	public int getSoundAnimalId(String name){
+		Resources resources = this.context.getResources();
+		return resources.getIdentifier("sound_" + name, "raw", context.getPackageName()); 
+	}
+	
 	public String[] getAnimalsCongo(){
 		String[] animals = {
 			"elephant",

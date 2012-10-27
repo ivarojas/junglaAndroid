@@ -159,27 +159,27 @@ public class AnimalPresentationActivity extends MyActivity {
 		if(animal_name.equals("monkey")){
 			animal_info="Hola soy un mono Bonobo.\nMe gusta comer frutas, pero también como nueces, semillas, hojas e insectos.";
 			animal_img=R.drawable.monkey;
-			animal_sound=R.raw.chimp;	
+			animal_sound=R.raw.sound_bonobo;	
 		}
 		if(animal_name.equals("hippo")){
 			animal_info="Hola soy un hipopótamo.\nPaso la mayor parte del día sumergido en el agua.\n";
 			animal_img=R.drawable.hippo;
-			animal_sound=R.raw.hippo;
+			animal_sound=R.raw.sound_hippo;
 		}
 		if(animal_name.equals("elephant")){
 			animal_info="Hola soy un elefante del Congo.\nAmo comer frutas y plantas.\nSoy el tercer animal terrestre más grande en la Tierra.";
 			animal_img=R.drawable.elephant2;
-			animal_sound=R.raw.elephant;
+			animal_sound=R.raw.sound_elephant;
 		}
 		if(animal_name.equals("gorilla")){
 			animal_info="Hola soy un gorila.\nPaso todo el día en busca de hojas, tallos y brotes de las plantas.";
 			animal_img=R.drawable.gorilla;
-			animal_sound=R.raw.gorilla;
+			animal_sound=R.raw.sound_gorilla;
 		}
 		if(animal_name.equals("okapi")){
 			animal_info="Hola soy un okapi.\nSoy pariente de las jirafas.\nSoy vegetariano, me alimento de frutas y hojas";
 			animal_img=R.drawable.okapi;
-			animal_sound=R.raw.gorilla;
+			animal_sound=R.raw.sound_gorilla;
 			findViewById(R.id.speaker).setVisibility(View.INVISIBLE);
 		}
 	}

@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 public class AnimalInformationActivity extends MyActivity implements OnCompletionListener, OnClickListener {
 
-    private static int animal_sound = R.raw.elephant;
+    private static int animal_sound = R.raw.sound_elephant;
 	private String animal;
 	MediaPlayer mediaPlayer;
 	
@@ -64,12 +64,12 @@ public class AnimalInformationActivity extends MyActivity implements OnCompletio
         TextView animal_txt = (TextView)findViewById(R.id.animal_txt);
         
         if(animal.equals("elephant")){
-        	animal_sound = R.raw.elephant;
+        	animal_sound = R.raw.sound_elephant;
         	
         }else if(animal.equals("gorilla")){
         	animal_txt.setText("Hola soy un gorila. Paso todo el día en busca de hojas, tallos y brotes de las plantas.");
         	animal_img.setImageResource(R.drawable.gorilla);
-        	animal_sound = R.raw.gorilla;
+        	animal_sound = R.raw.sound_gorilla;
         }
 	}
         

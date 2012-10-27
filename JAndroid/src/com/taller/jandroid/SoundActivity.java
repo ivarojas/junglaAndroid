@@ -1,5 +1,7 @@
 package com.taller.jandroid;
 
+import java.util.List;
+
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.app.AlertDialog;
@@ -13,11 +15,17 @@ import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import animal.AnimalSet;
 
 public class SoundActivity extends MyActivity{
 
 	private AlertDialog alertDialog;
-	MediaPlayer mediaPlayer;
+	MediaPlayer media_player;
+	private AnimalSet animal_set;
+	private List<String> random_animals;
+	private String correct_answer;
+	private ImageButton sound;
 
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,7 +36,7 @@ public class SoundActivity extends MyActivity{
 		
 		setContentView(R.layout.activity_sound);
 		
-		ImageButton sound1 = (ImageButton)findViewById(R.id.soundChallenge);
+		sound = (ImageButton)findViewById(R.id.soundChallenge);
         
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
@@ -37,24 +45,15 @@ public class SoundActivity extends MyActivity{
         		.setPositiveButton("Reintentar",new DialogInterface.OnClickListener() {
         			public void onClick(DialogInterface dialog,int id) {}
 		  });
-
+        
+        setSoundAnimal();
+        
 		// create alert dialog
 		alertDialog = builder.create();
 		
-		mediaPlayer = MediaPlayer.create(SoundActivity.this, R.raw.gorilla);
-		mediaPlayer.start();
-		
-		sound1.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-            	if(!mediaPlayer.isPlaying())
-            		mediaPlayer.start();
-            }
-            
-        });
-		
     }
 
-    @Override
+	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
@@ -79,19 +78,19 @@ public class SoundActivity extends MyActivity{
     
     public void verifyAnswer(View view){
     	Button button = (Button) findViewById(view.getId());
-    	if(button.getText().equals("Gorila")){
-    		mediaPlayer.stop();
-    		mediaPlayer = MediaPlayer.create(SoundActivity.this, R.raw.tada);
-    		mediaPlayer.start();
+    	if(button.getText().equals(this.correct_answer)){
+    		media_player.stop();
+    		media_player = MediaPlayer.create(SoundActivity.this, R.raw.tada);
+    		media_player.start();
     		Intent intent = new Intent(this, AnimalInformationActivity.class);
     		intent.putExtra("animal", "gorilla");
-    		mediaPlayer.stop();
+    		media_player.stop();
             startActivity(intent);
             finish();
     	}else{
     		// show it
-    		mediaPlayer = MediaPlayer.create(SoundActivity.this, R.raw.failbeep);
-    		mediaPlayer.start();
+    		media_player = MediaPlayer.create(SoundActivity.this, R.raw.failbeep);
+    		media_player.start();
     		alertDialog.show();
     	}
     }
@@ -99,15 +98,42 @@ public class SoundActivity extends MyActivity{
     @Override
     public void onBackPressed(){
     	super.onBackPressed();
-    	mediaPlayer.stop();
+    	media_player.stop();
         Intent i = new Intent(this,FeedingActivity.class);
         startActivity(i);    	
     }
+
+	public void setSoundAnimal(){
+		//setting sound animal and choices to show
+        animal_set = new AnimalSet(this);
+        random_animals = animal_set.getAnimalsRandom("congo", 3);
+        int rand_n = (int)(Math.random() * 3);
+        correct_answer = random_animals.get(rand_n);
+        int sound_animal_id = animal_set.getSoundAnimalId(random_animals.get(rand_n));
+        
+        //Setting sound
+		media_player = MediaPlayer.create(SoundActivity.this, R.raw.sound_gorilla);
+		media_player.setLooping(true);
+		media_player.start();
+		this.sound.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+            	/*if(!mediaPlayer.isPlaying())
+            		mediaPlayer.start();*/
+            }
+            
+        });
+        
+        //set choices
+        int[] button_ids = {R.id.first_option, R.id.second_option, R.id.third_option};
+        for(int i = 0; i < 3; i++){
+        	Button choice = (Button) findViewById(button_ids[i]);
+        	choice.setText(this.random_animals.get(i));
+        }
+	}
 
 	@Override
 	public void verifyChoice(View v) {
 		// TODO Auto-generated method stub
 		
 	}
-
 }
