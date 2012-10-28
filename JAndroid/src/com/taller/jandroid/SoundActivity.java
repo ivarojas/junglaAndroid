@@ -3,10 +3,13 @@ package com.taller.jandroid;
 import java.util.List;
 
 import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,7 +28,9 @@ public class SoundActivity extends MyActivity{
 	private AnimalSet animal_set;
 	private List<String> random_animals;
 	private String correct_answer;
-	private ImageButton sound;
+	private static ImageButton sound;
+	private AnimationDrawable sound_animation;
+	private static Context context;
 
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,7 +42,10 @@ public class SoundActivity extends MyActivity{
 		setContentView(R.layout.activity_sound);
 		
 		sound = (ImageButton)findViewById(R.id.soundChallenge);
-        
+		
+		setSoundAnimal();
+		setSoundButton();
+		
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         builder.setMessage("Has fallado")
@@ -46,11 +54,10 @@ public class SoundActivity extends MyActivity{
         			public void onClick(DialogInterface dialog,int id) {}
 		  });
         
-        setSoundAnimal();
-        
 		// create alert dialog
 		alertDialog = builder.create();
 		
+		context = this.getApplicationContext();
     }
 
 	@Override
@@ -112,13 +119,17 @@ public class SoundActivity extends MyActivity{
         int sound_animal_id = animal_set.getSoundAnimalId(random_animals.get(rand_n));
         
         //Setting sound
-		media_player = MediaPlayer.create(SoundActivity.this, R.raw.sound_gorilla);
-		media_player.setLooping(true);
+		media_player = MediaPlayer.create(SoundActivity.this, this.animal_set.getSoundAnimalId(this.correct_answer));
+		//media_player.setLooping(true);
 		media_player.start();
 		this.sound.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-            	/*if(!mediaPlayer.isPlaying())
-            		mediaPlayer.start();*/
+            	if(!media_player.isPlaying()){
+            		sound.setBackgroundResource(R.drawable.sound_speaker);
+            		sound_animation = (AnimationDrawable) sound.getBackground();
+            		sound_animation.start();
+            		media_player.start();
+            	}
             }
             
         });
@@ -131,9 +142,26 @@ public class SoundActivity extends MyActivity{
         }
 	}
 
+	public void setSoundButton(){
+		sound.setBackgroundResource(R.drawable.sound_speaker);
+		sound_animation = (AnimationDrawable) sound.getBackground();
+		
+		this.media_player.setOnCompletionListener(new OnCompletionListener() {
+			public void onCompletion(MediaPlayer arg0) {
+				SoundActivity.sound.setBackgroundResource(SoundActivity.context.getResources().getIdentifier("play", "drawable", SoundActivity.context.getPackageName()));
+			}
+        });
+	}
+	
 	@Override
 	public void verifyChoice(View v) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	@Override
+	public void onWindowFocusChanged(boolean hasFocus){
+		super.onWindowFocusChanged(hasFocus);
+		this.sound_animation.start();
 	}
 }

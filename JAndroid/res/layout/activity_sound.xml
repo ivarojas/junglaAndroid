@@ -20,7 +20,6 @@
 	    android1:layout_width="100dp"
 	    android1:layout_height="61dp"
 	    android1:layout_gravity="center_horizontal"
-	    android:background="@drawable/speaker"
 	    android:contentDescription="sound" />
 	
 	<LinearLayout

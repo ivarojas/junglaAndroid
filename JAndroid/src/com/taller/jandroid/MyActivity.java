@@ -44,4 +44,5 @@ abstract public class MyActivity extends Activity {
 		super.onDestroy();
 		unregisterReceiver(broadcastReceiver);
 	}
+
 }
