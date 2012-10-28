@@ -87,7 +87,8 @@ public class AnimalPresentationActivity extends MyActivity {
         
 		sound.setOnClickListener(new OnClickListener(){
 			public void onClick(View v){
-				mp.start();
+				if(!mp.isPlaying())
+					mp.start();
 			}
 		});
 		
