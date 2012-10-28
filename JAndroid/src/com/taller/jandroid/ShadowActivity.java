@@ -23,6 +23,8 @@ public class ShadowActivity extends MyActivity {
 	private List<String> random_animals;
 	private String correct_answer;
     
+	MediaPlayer mediaPlayer;
+	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,15 +75,18 @@ public class ShadowActivity extends MyActivity {
     public void verifyAnswer(View view){
     	Button button = (Button) findViewById(view.getId());
     	if(button.getText().equals(this.correct_answer)){
-    		MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.tada);
+    		if(mediaPlayer!=null && mediaPlayer.isPlaying())
+    			mediaPlayer.stop();
+    		mediaPlayer = MediaPlayer.create(this, R.raw.tada);
     		mediaPlayer.start();
     		Intent intent = new Intent(this, AnimalInformationActivity.class);
     		intent.putExtra("animal", "elephant");
             startActivity(intent);
             finish();
     	}else{
-    		// show it
-    		MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.failbeep);
+    		if(mediaPlayer!=null && mediaPlayer.isPlaying())
+    			mediaPlayer.stop();
+    		mediaPlayer = MediaPlayer.create(this, R.raw.failbeep);
     		mediaPlayer.start();
     		alertDialog.show();
     	}

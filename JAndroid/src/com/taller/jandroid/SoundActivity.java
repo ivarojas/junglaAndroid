@@ -86,7 +86,8 @@ public class SoundActivity extends MyActivity{
     public void verifyAnswer(View view){
     	Button button = (Button) findViewById(view.getId());
     	if(button.getText().equals(this.correct_answer)){
-    		media_player.stop();
+    		if(media_player!=null && media_player.isPlaying())
+    			media_player.stop();
     		media_player = MediaPlayer.create(SoundActivity.this, R.raw.tada);
     		media_player.start();
     		Intent intent = new Intent(this, AnimalInformationActivity.class);
@@ -96,6 +97,8 @@ public class SoundActivity extends MyActivity{
             finish();
     	}else{
     		// show it
+    		if(media_player!=null && media_player.isPlaying())
+    			media_player.stop();
     		media_player = MediaPlayer.create(SoundActivity.this, R.raw.failbeep);
     		media_player.start();
     		alertDialog.show();
