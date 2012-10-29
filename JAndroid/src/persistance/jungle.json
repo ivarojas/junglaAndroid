@@ -1,0 +1,85 @@
+{
+	"Congo":[
+				{
+					"name": "elephant",
+					"spanish": "Elefante",
+					"food": ["fruit", "leaf"],
+					"ambient": ["ground"]
+				},
+				{
+					"name": "hippo",
+					"spanish": "Hipopótamo",
+					"food": ["leaf"],
+					"ambient": ["river","ground"]
+				},
+				{
+					"name": "bonobo",
+					"spanish": "Mono Bonobo",
+					"food": ["fruit", "leaf", "insect"],
+					"ambient": ["tree", "ground"]
+				},
+				{
+					"name": "okapi",
+					"spanish": "Okapi",
+					"food": ["fruit", "leaf"],
+					"ambient": ["ground"]
+				},
+				{
+					"name": "gorilla",
+					"spanish": "Gorila",
+					"food": ["fruit", "leaf"],
+					"ambient": ["tree", "ground"]
+				}
+			],
+	"Borneo":[
+				{
+					"name": "leopard",
+					"spanish": "Pantera Nebulosa",
+					"food": ["meat"],
+					"ambient": ["ground"]
+				},
+				{
+					"name": "frog",
+					"spanish": "Rana cabeza plana",
+					"food": ["insect"],
+					"ambient": ["river"]
+				},
+				{
+					"name": "bear",
+					"spanish": "Oso Malayo",
+					"food": ["meat", "fruit", "leaf", "insect"],
+					"ambient": ["tree", "ground"]
+				},
+				{
+					"name": "snake",
+					"spanish": "Serpiente",
+					"food": ["meat"],
+					"ambient": ["tree"]
+				},
+				{
+					"name": "orangutan",
+					"spanish": "Orangután",
+					"food": ["fruit", "leaf", "insect"],
+					"ambient": ["tree", "ground"]
+				},
+				{
+					"name": "proboscis",
+					"spanish": "Mono narigudo",
+					"food": ["fruit", "leaf"],
+					"ambient": ["tree", "ground"]
+				},
+				{
+					"name": "rhino",
+					"spanish": "Rinoceronte",
+					"food": ["fruit", "leaf"],
+					"ambient": ["ground"]
+				},
+				{
+					"name": "hornbill",
+					"spanish": "Cálao",
+					"food": ["fruit", "insect"],
+					"ambient": ["air", "tree"]
+				}
+
+		]
+}
