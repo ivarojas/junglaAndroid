@@ -1,7 +1,9 @@
 package com.taller.jandroid;
 
+import persistance.Jungle;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -21,6 +23,9 @@ public class MainActivity extends MyActivity implements OnClickListener{
         
         Button start = (Button)findViewById(R.id.start);
         Button exit = (Button)findViewById(R.id.exit);
+
+        Jungle app = (Jungle)getApplication();
+        Log.i("maiiiin",app.getBorneo_animals().size()+"");
         
         start.setOnClickListener(this);
         exit.setOnClickListener(this);

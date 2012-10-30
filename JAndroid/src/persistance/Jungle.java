@@ -1,7 +1,9 @@
 package persistance;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
 import java.util.List;
 import com.google.gson.Gson;
@@ -13,27 +15,34 @@ import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
 import android.app.Application;
+import android.content.Context;
+import android.util.Log;
 import animal.Animal;
 
 public class Jungle extends Application{
 	
 	private List<Animal> congo_animals;
 	private List<Animal> borneo_animals;
+	private Context bsc;
 	
 	public Jungle(){
 		super();
-		readJungleJson();
 	}
 	
 	@Override
 	public void onCreate(){
 		super.onCreate();
+		bsc = getBaseContext();
+		readJungleJson();
 	}
 	
 	public void readJungleJson(){
-		try {
+		try {			
 			JsonParser parser = new JsonParser();
-			JsonElement jsonElement = parser.parse(new FileReader("/home/vito/workspace/CheckAds3/src/jungle.json"));
+			InputStream in = null;
+			Log.i("sdfsldljk",bsc.getAssets().toString()); 
+			in = bsc.getAssets().open("jungle.json");
+			JsonElement jsonElement = parser.parse(new InputStreamReader(in, "UTF-8"));
 			JsonObject jsonObject = jsonElement.getAsJsonObject();
 
 			JsonElement Congo = jsonObject.get("Congo");
@@ -51,7 +60,9 @@ public class Jungle extends Application{
 			e.printStackTrace();
 		} catch (JsonSyntaxException e) {
 			e.printStackTrace();
-		} catch (FileNotFoundException e) {
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
