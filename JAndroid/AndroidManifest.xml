@@ -9,12 +9,11 @@
 
     <uses-permission android:name="android.permission.VIBRATE" >       
     </uses-permission>
-    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:icon="@drawable/icon_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" android:name="animal.Jungle">
+        android:theme="@style/AppTheme" android:name="persistance.Jungle">
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
