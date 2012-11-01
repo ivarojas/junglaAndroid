@@ -22,7 +22,7 @@
         android:layout_height="200dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:src="@drawable/elephant2" />
+        android:src="@drawable/elephant" />
 
     <ImageButton
         android:id="@+id/buttonSound"

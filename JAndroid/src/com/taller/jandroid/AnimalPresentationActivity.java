@@ -28,10 +28,9 @@ public class AnimalPresentationActivity extends MyActivity {
 	private int animal_sound,animal_img;
 	private String animal_name, animal_info;
 	int destiny;
-	private Dialog dialog;
 	WebView mWebView;
 	private Dialog dialog1;
-	@SuppressLint("SetJavaScriptEnabled")
+
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,13 +46,6 @@ public class AnimalPresentationActivity extends MyActivity {
     	ImageButton sound=(ImageButton)findViewById(R.id.speaker);
         ImageButton info=(ImageButton)findViewById(R.id.bubble);
         ImageView imv=(ImageView)findViewById(R.id.imageView1);
-        Button video = (Button)findViewById(R.id.web); 
-        
-        dialog = new Dialog(this);
-		dialog.setContentView(R.layout.dialog_webview);
-		dialog.setTitle("Video:");
-		
-		Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
 
         dialog1 = new Dialog(this);
 		dialog1.setContentView(R.layout.dialog_info_animal);
@@ -96,33 +88,6 @@ public class AnimalPresentationActivity extends MyActivity {
 			public void onClick(View v){
 //				alertDialog.show();
 				dialog1.show();
-			}
-		});
-		
-		video.setOnClickListener(new OnClickListener(){
-			private VideoView mVideoView;
-			private MediaController mc;
-
-			public void onClick(View v){
-				
-			     mVideoView = (VideoView) dialog.findViewById(R.id.videoView1);
-//			     String videourl = "rtsp://v7.cache4.c.youtube.com/CiILENy73wIaGQl25yDUbxNXTRMYDSANFEgGUgZ2aWRlb3MM/0/0/0/video.3gp";
-			     
-			     mVideoView.requestFocus();
-			     Uri video = Uri.parse("android.resource://com.taller.jandroid/"+R.raw.video_orangutan);
-
-			     mVideoView.setVideoURI(Uri.parse(video.toString()));
-			     mVideoView.start();
-			     mVideoView.setZOrderOnTop(true);
-			     dialog.show();
-			     
-			
-			}
-		});
-		
-		dialogButton.setOnClickListener(new OnClickListener(){
-			public void onClick(View v){
-				dialog.dismiss();
 			}
 		});
 		
