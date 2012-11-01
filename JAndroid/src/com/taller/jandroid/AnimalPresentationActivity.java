@@ -134,7 +134,7 @@ public class AnimalPresentationActivity extends MyActivity {
 		}
 		if(animal_name.equals("elephant")){
 			animal_info="Hola soy un elefante del Congo.\nAmo comer frutas y plantas.\nSoy el tercer animal terrestre más grande en la Tierra.";
-			animal_img=R.drawable.elephant2;
+			animal_img=R.drawable.elephant;
 			animal_sound=R.raw.sound_elephant;
 		}
 		if(animal_name.equals("gorilla")){
