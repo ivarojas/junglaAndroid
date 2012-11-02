@@ -108,8 +108,8 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 		for(i = 0; i < 6; i++){
 			if(!right_answers.contains(new Integer(i))){
 				answer_image = (ImageView)findViewById(images_ids[i]);
-				answer_image.setImageResource(wrong_foods_ids.get(k));
-				//answer_image.setImageResource(R.drawable.arrow_next);
+				//answer_image.setImageResource(wrong_foods_ids.get(k));
+				answer_image.setImageResource(R.drawable.arrow_next);
 				k++;
 			}
 		}
