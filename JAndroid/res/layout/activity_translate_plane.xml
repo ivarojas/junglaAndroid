@@ -54,6 +54,6 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/plane3" />
+        android:src="@drawable/plane" />
 
 </FrameLayout>

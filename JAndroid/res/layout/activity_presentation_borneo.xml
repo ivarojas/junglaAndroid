@@ -46,7 +46,7 @@
 	        android:layout_width="120dp"
 	        android:layout_height="140dp"
 	        android:layout_margin="5dp"
-	        android:background="@drawable/sun_bear" />
+	        android:background="@drawable/bear" />
 	</LinearLayout>
 	<LinearLayout 
         android:layout_width="match_parent"

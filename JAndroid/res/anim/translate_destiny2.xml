@@ -5,9 +5,9 @@
     <set>
 	    <translate
 	        android:fromXDelta="0%p"
-	        android:toXDelta="35%p"
+	        android:toXDelta="5%p"
 	        android:fromYDelta="0%p"
-	        android:toYDelta="75%p" />
+	        android:toYDelta="100%p" />
 	    <alpha
 	        android:fromAlpha="100"
 	        android:toAlpha="50" />
@@ -16,8 +16,13 @@
 	        android:toXScale="0.7"
 	        android:fromYScale="1"
 	        android:toYScale="0.7"
-	        android:pivotX="45%p"
-	        android:pivotY="75%p" />
+	        android:pivotX="5%p"
+	        android:pivotY="55%p" />
+	   	<rotate
+	        android:fromDegrees="0"
+    	    android:toDegrees="-15"
+	        android:pivotX="0%"
+    	    android:pivotY="0%" />
 	</set>			
 
 </set>
