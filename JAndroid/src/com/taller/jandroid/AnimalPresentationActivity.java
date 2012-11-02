@@ -1,13 +1,11 @@
 package com.taller.jandroid;
 
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,8 +17,6 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.MediaController;
-import android.widget.VideoView;
 
 public class AnimalPresentationActivity extends MyActivity {
 	private static AlertDialog alertDialog;
@@ -124,7 +120,7 @@ public class AnimalPresentationActivity extends MyActivity {
 	public void setAnimalInfo(){
 		if(animal_name.equals("monkey")){
 			animal_info="Hola soy un mono Bonobo.\nMe gusta comer frutas, pero también como nueces, semillas, hojas e insectos.";
-			animal_img=R.drawable.monkey;
+			animal_img=R.drawable.bonobo;
 			animal_sound=R.raw.sound_bonobo;	
 		}
 		if(animal_name.equals("hippo")){

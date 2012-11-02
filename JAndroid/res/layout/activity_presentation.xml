@@ -4,6 +4,61 @@
     android:layout_height="match_parent"
     android:background="@drawable/background" >
 
+    <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       android:scrollbars="vertical" >
+ 
+   	    <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content">
+
+		    <ImageButton
+		        android:id="@+id/gorillabutton"
+		        android:layout_width="150dp"
+		        android:layout_height="150dp"
+		        android:layout_margin="5dp"
+		        android:background="@drawable/threed_gorilla" />
+		
+		    <ImageButton
+		        android:id="@+id/hippobutton"
+		        android:layout_width="150dp"
+		        android:layout_height="150dp"
+		        android:layout_margin="5dp"
+		        android:background="@drawable/threed_hippo" />
+		</LinearLayout>
+   	    <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content">
+		    
+		    
+		    <ImageButton
+		        android:id="@+id/elephantbutton"
+		        android:layout_width="150dp"
+		        android:layout_height="150dp"
+		        android:layout_margin="5dp"
+		        android:background="@drawable/threed_elephant" />
+		
+		    <ImageButton
+		        android:id="@+id/bonobobutton"
+		        android:layout_width="150dp"
+		        android:layout_height="150dp"
+				android:layout_margin="5dp"
+		        android:background="@drawable/threed_bonobo" />
+		</LinearLayout>
+ 	    <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content">
+		
+		    <ImageButton
+		        android:id="@+id/okapibutton"
+		        android:layout_width="150dp"
+		        android:layout_height="150dp"
+		        android:layout_margin="5dp"
+		        android:background="@drawable/threed_okapi" />
+		</LinearLayout>   
+	</LinearLayout>
     <ImageButton
         android:id="@+id/continuebutton"
         android:layout_width="60dp"
@@ -12,48 +67,6 @@
         android:layout_alignParentRight="true"
         android:layout_marginBottom="40dp"
         android:layout_marginRight="28dp"
-        android:background="@drawable/arrow_next" />
-
-    <ImageButton
-        android:id="@+id/monkeybutton"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/threed_monkey" />
-
-    <ImageButton
-        android:id="@+id/rhinobutton"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:background="@drawable/threed_hippo" />
-
-    <ImageButton
-        android:id="@+id/lionbutton"
-        android:layout_width="150dp"
-        android:layout_height="100dp"
-        android:layout_alignBottom="@+id/monkeybutton"
-        android:layout_toLeftOf="@+id/monkeybutton"
-        android:background="@drawable/threed_elephant" />
-
-    <ImageButton
-        android:id="@+id/giraffebutton"
-        android:layout_width="100dp"
-        android:layout_height="120dp"
-        android:layout_alignLeft="@+id/lionbutton"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="21dp"
-        android:background="@drawable/threed_gorilla" />
-
-    <ImageButton
-        android:id="@+id/okapibutton"
-        android:layout_width="120dp"
-        android:layout_height="140dp"
-        android:layout_alignLeft="@+id/giraffebutton"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="33dp"
-        android:background="@drawable/threed_okapi" />
-
+        android:background="@drawable/arrow_next" />		    
+		    
 </RelativeLayout>

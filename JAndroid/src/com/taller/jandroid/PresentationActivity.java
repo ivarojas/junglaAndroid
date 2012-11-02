@@ -32,17 +32,17 @@ public class PresentationActivity extends MyActivity {
         
         ImageButton lbutton;
         
-        ImageButton mbutton=(ImageButton)findViewById(R.id.monkeybutton);
-        ImageButton rbutton=(ImageButton)findViewById(R.id.rhinobutton);
+        ImageButton bbutton=(ImageButton)findViewById(R.id.bonobobutton);
+        ImageButton hbutton=(ImageButton)findViewById(R.id.hippobutton);
         if(destiny == 1)
-        	lbutton=(ImageButton)findViewById(R.id.lionbutton);
+        	lbutton=(ImageButton)findViewById(R.id.elephantbutton);
         else
         	lbutton=(ImageButton)findViewById(R.id.rhino);
-        ImageButton gbutton=(ImageButton)findViewById(R.id.giraffebutton);
+        ImageButton gbutton=(ImageButton)findViewById(R.id.gorillabutton);
         ImageButton obutton=(ImageButton)findViewById(R.id.okapibutton);
         ImageButton next=(ImageButton)findViewById(R.id.continuebutton);
 
-        mbutton.setOnClickListener(new OnClickListener() {
+        bbutton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationActivity.this,AnimalPresentationActivity.class);
                 i.putExtra("animal","monkey");
@@ -52,7 +52,7 @@ public class PresentationActivity extends MyActivity {
                }
              });
         
-        rbutton.setOnClickListener(new OnClickListener() {
+        hbutton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationActivity.this,AnimalPresentationActivity.class);
                 i.putExtra("animal","hippo");
