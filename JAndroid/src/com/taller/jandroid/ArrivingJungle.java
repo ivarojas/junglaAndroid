@@ -68,7 +68,13 @@ public class ArrivingJungle extends MyActivity implements OnClickListener, Anima
     
     public void onClick(View v) {
     	if(v.getId() == R.id.nextButton_arriv){
-    		Intent presentation = new Intent(this, PresentationActivity.class);
+    		Intent presentation = null;
+    		if(destiny == 1){
+    			presentation = new Intent(this, PresentationActivity.class);
+    		}
+    		else{
+    			presentation = new Intent(this, PresentationBorneoActivity.class);
+    		}
     		presentation.putExtra("destiny", destiny);
     		this.startActivity(presentation);
     		finish();

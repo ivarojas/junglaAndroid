@@ -60,6 +60,11 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
+            android:name=".PresentationBorneoActivity"
+            android:label="@string/title_activity_main"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
             android:name=".GoodbyeActivity"
             android:label="@string/title_activity_goodbye"
             android:screenOrientation="portrait" >

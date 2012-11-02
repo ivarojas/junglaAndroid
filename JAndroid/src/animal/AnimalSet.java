@@ -7,8 +7,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 
-import animal.Animal;
-
 public class AnimalSet {
 
 	private Context context;
@@ -45,6 +43,12 @@ public class AnimalSet {
 		}
 		
 		return animal_random;
+	}
+	
+
+	public int getDrawableAnimalId(String name) {
+		Resources resources = this.context.getResources();
+		return resources.getIdentifier(name, "drawable", context.getPackageName());
 	}
 	
 	public int getShadowAnimalId(String name){

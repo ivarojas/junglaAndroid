@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +18,7 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import animal.AnimalSet;
 
 public class AnimalPresentationActivity extends MyActivity {
 	private static AlertDialog alertDialog;
@@ -26,6 +28,7 @@ public class AnimalPresentationActivity extends MyActivity {
 	int destiny;
 	WebView mWebView;
 	private Dialog dialog1;
+	private AnimalSet animal_set;
 
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,7 @@ public class AnimalPresentationActivity extends MyActivity {
         setContentView(R.layout.activity_animal_presentation);      
         
         destiny = getIntent().getExtras().getInt("destiny");
+        Log.i("destiny", destiny+"");
         
     	AlertDialog.Builder builder=new AlertDialog.Builder(this);
         ImageButton arrow=(ImageButton)findViewById(R.id.back);
@@ -66,11 +70,17 @@ public class AnimalPresentationActivity extends MyActivity {
         
         arrow.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                Intent i=new Intent(AnimalPresentationActivity.this,PresentationActivity.class);
+            	Intent i = null;
+            	if(destiny == 1){
+            		i=new Intent(AnimalPresentationActivity.this,PresentationActivity.class);
+            	}
+            	else{
+            		i=new Intent(AnimalPresentationActivity.this,PresentationBorneoActivity.class);
+            	}
                 i.putExtra("destiny", destiny);
                 mp.stop();
                 startActivity(i);
-                }
+            }  
             });
         
 		sound.setOnClickListener(new OnClickListener(){
@@ -118,38 +128,29 @@ public class AnimalPresentationActivity extends MyActivity {
     }
 	
 	public void setAnimalInfo(){
-		if(animal_name.equals("monkey")){
-			animal_info="Hola soy un mono Bonobo.\nMe gusta comer frutas, pero también como nueces, semillas, hojas e insectos.";
-			animal_img=R.drawable.bonobo;
-			animal_sound=R.raw.sound_bonobo;	
-		}
-		if(animal_name.equals("hippo")){
-			animal_info="Hola soy un hipopótamo.\nPaso la mayor parte del día sumergido en el agua.\n";
-			animal_img=R.drawable.hippo;
-			animal_sound=R.raw.sound_hippo;
-		}
-		if(animal_name.equals("elephant")){
-			animal_info="Hola soy un elefante del Congo.\nAmo comer frutas y plantas.\nSoy el tercer animal terrestre más grande en la Tierra.";
-			animal_img=R.drawable.elephant;
-			animal_sound=R.raw.sound_elephant;
-		}
-		if(animal_name.equals("gorilla")){
-			animal_info="Hola soy un gorila.\nPaso todo el día en busca de hojas, tallos y brotes de las plantas.";
-			animal_img=R.drawable.gorilla;
-			animal_sound=R.raw.sound_gorilla;
-		}
-		if(animal_name.equals("okapi")){
+		
+		if(animal_name.equals("okapi") || animal_name.equals("proboscis")){
 			animal_info="Hola soy un okapi.\nSoy pariente de las jirafas.\nSoy vegetariano, me alimento de frutas y hojas";
-			animal_img=R.drawable.okapi;
-			animal_sound=R.raw.sound_gorilla;
+			animal_img = animal_set.getDrawableAnimalId(animal_name);
+			animal_sound = R.raw.sound_bear;
 			findViewById(R.id.speaker).setVisibility(View.INVISIBLE);
+		}else{
+			animal_set = new AnimalSet(this);
+			animal_img = animal_set.getDrawableAnimalId(animal_name);
+			animal_sound = animal_set.getSoundAnimalId(animal_name);
 		}
 	}
 	
     @Override
     public void onBackPressed(){
     	super.onBackPressed();
-        Intent i=new Intent(this,PresentationActivity.class);
+    	Intent i = null;
+    	if(destiny == 1){
+    		i=new Intent(this,PresentationActivity.class);
+    	}
+    	else{
+    		i=new Intent(this,PresentationBorneoActivity.class);
+    	}
         i.putExtra("destiny", destiny);
         mp.stop();
         startActivity(i);

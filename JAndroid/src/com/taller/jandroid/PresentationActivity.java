@@ -25,19 +25,13 @@ public class PresentationActivity extends MyActivity {
         
         destiny = getIntent().getExtras().getInt("destiny");
         
-        if(destiny == 1)
-        	setContentView(R.layout.activity_presentation);
-        else
-        	setContentView(R.layout.activity_presentation_borneo);
+      	setContentView(R.layout.activity_presentation);
         
-        ImageButton lbutton;
+        
         
         ImageButton bbutton=(ImageButton)findViewById(R.id.bonobobutton);
         ImageButton hbutton=(ImageButton)findViewById(R.id.hippobutton);
-        if(destiny == 1)
-        	lbutton=(ImageButton)findViewById(R.id.elephantbutton);
-        else
-        	lbutton=(ImageButton)findViewById(R.id.rhino);
+        ImageButton ebutton=(ImageButton)findViewById(R.id.elephantbutton);
         ImageButton gbutton=(ImageButton)findViewById(R.id.gorillabutton);
         ImageButton obutton=(ImageButton)findViewById(R.id.okapibutton);
         ImageButton next=(ImageButton)findViewById(R.id.continuebutton);
@@ -45,7 +39,7 @@ public class PresentationActivity extends MyActivity {
         bbutton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationActivity.this,AnimalPresentationActivity.class);
-                i.putExtra("animal","monkey");
+                i.putExtra("animal","bonobo");
                 i.putExtra("destiny", destiny);
                 startActivity(i);
                 finish();
@@ -62,7 +56,7 @@ public class PresentationActivity extends MyActivity {
                }
              });
         
-        lbutton.setOnClickListener(new OnClickListener() {
+        ebutton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationActivity.this,AnimalPresentationActivity.class);
                 i.putExtra("animal","elephant");
