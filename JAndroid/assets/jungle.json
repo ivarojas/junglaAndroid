@@ -3,31 +3,31 @@
 				{
 					"name": "elephant",
 					"spanish": "Elefante",
-					"food": ["fruit", "leaf"],
+					"food": ["fruit", "plant"],
 					"ambient": ["ground"]
 				},
 				{
 					"name": "hippo",
 					"spanish": "Hipopótamo",
-					"food": ["leaf"],
+					"food": ["plant"],
 					"ambient": ["river","ground"]
 				},
 				{
 					"name": "bonobo",
 					"spanish": "Mono Bonobo",
-					"food": ["fruit", "leaf", "insect"],
+					"food": ["fruit", "plant", "insect"],
 					"ambient": ["tree", "ground"]
 				},
 				{
 					"name": "okapi",
 					"spanish": "Okapi",
-					"food": ["fruit", "leaf"],
+					"food": ["fruit", "plant"],
 					"ambient": ["ground"]
 				},
 				{
 					"name": "gorilla",
 					"spanish": "Gorila",
-					"food": ["fruit", "leaf"],
+					"food": ["fruit", "plant"],
 					"ambient": ["tree", "ground"]
 				}
 			],
@@ -47,7 +47,7 @@
 				{
 					"name": "bear",
 					"spanish": "Oso Malayo",
-					"food": ["meat", "fruit", "leaf", "insect"],
+					"food": ["meat", "fruit", "plant", "insect"],
 					"ambient": ["tree", "ground"]
 				},
 				{
@@ -59,19 +59,19 @@
 				{
 					"name": "orangutan",
 					"spanish": "Orangután",
-					"food": ["fruit", "leaf", "insect"],
+					"food": ["fruit", "plant", "insect"],
 					"ambient": ["tree", "ground"]
 				},
 				{
 					"name": "proboscis",
 					"spanish": "Mono narigudo",
-					"food": ["fruit", "leaf"],
+					"food": ["fruit", "plant"],
 					"ambient": ["tree", "ground"]
 				},
 				{
 					"name": "rhino",
 					"spanish": "Rinoceronte",
-					"food": ["fruit", "leaf"],
+					"food": ["fruit", "plant"],
 					"ambient": ["ground"]
 				},
 				{

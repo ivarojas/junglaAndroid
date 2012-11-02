@@ -1,9 +1,16 @@
 package com.taller.jandroid;
 
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
+
+import persistance.Jungle;
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
@@ -31,8 +38,10 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 	public static final boolean Debugging = false;
 	private static int success = 0;
 	Dialog dialog;
+	private List<Integer> right_answers;
 	
-    @Override
+    @SuppressLint("UseValueOf")
+	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mDragController = new DragController(this);
@@ -63,7 +72,47 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 		
 		dialogButton.setOnClickListener(this);
 		dialog.show();
-		        
+		
+		
+		// Getting random food for the animal
+		Jungle jungle = (Jungle) getApplication();
+		Hashtable<String, List<Integer>> foods = jungle.getChallengeFoodIds(jungle.CONGO, "bonobo", 6);
+		List<Integer> right_foods_ids = foods.get("right_foods");
+		List<Integer> wrong_foods_ids = foods.get("wrong_foods");
+		
+		ImageView answer_image;
+		int[] images_ids = {
+				R.id.image_view1,
+				R.id.image_view2,
+				R.id.image_view3,
+				R.id.image_view4,
+				R.id.image_view5,
+				R.id.image_view6,
+		};
+		
+		//right answers
+		int size = right_foods_ids.size();
+		right_answers = getRightAnswers(size);
+		Log.i("size", size + "");
+		Log.i("comidas correctas", right_foods_ids.toString());
+		Log.i("respuestas correctas", right_answers.toString());
+		int i;
+		for(i = 0; i < size; i++){
+			answer_image = (ImageView)findViewById(images_ids[right_answers.get(i)]);
+			answer_image.setImageResource(right_foods_ids.get(i));
+		}
+		
+		//wrong answers
+		Log.i("comidas incorrectas", wrong_foods_ids.toString());
+		int k = 0;
+		for(i = 0; i < 6; i++){
+			if(!right_answers.contains(new Integer(i))){
+				answer_image = (ImageView)findViewById(images_ids[i]);
+				answer_image.setImageResource(wrong_foods_ids.get(k));
+				//answer_image.setImageResource(R.drawable.arrow_next);
+				k++;
+			}
+		}
     }
     
     @Override
@@ -228,5 +277,21 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
         i.putExtra("animal", "elephant");
         startActivity(i);    	
     }
+	
+	public List<Integer> getRightAnswers(int amount){
+		List<Integer> random_numbers = new ArrayList<Integer>();
+		
+		int n;
+		for(int i = 0; i < amount; i++){
+			n = (int)(0 + (int)(Math.random() * ((5 - 1) + 1)));
+			while(random_numbers.contains(new Integer(n))){
+				n = (int)(0 + (int)(Math.random() * ((5 - 1) + 1)));	
+			}
+			
+			random_numbers.add(new Integer(n));
+		}
+		
+		return random_numbers;
+	} 
 	
 }

@@ -1,0 +1,7 @@
+{
+	"fruit": ["apple", "cherry", "banana"],
+	"meat": ["meat"],
+	"plant": ["leaf", "grass"],
+	"insect": ["ant", "bug"],
+	"extra": ["hamburger","ice_cream"]
+}
