@@ -1,6 +1,9 @@
 package com.taller.jandroid;
 
 
+import java.util.List;
+
+import persistance.Jungle;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -11,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewManager;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
@@ -18,10 +22,10 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import animal.Animal;
 import animal.AnimalSet;
 
 public class AnimalPresentationActivity extends MyActivity {
-	private static AlertDialog alertDialog;
 	private MediaPlayer mp;
 	private int animal_sound,animal_img;
 	private String animal_name, animal_info;
@@ -41,7 +45,6 @@ public class AnimalPresentationActivity extends MyActivity {
         destiny = getIntent().getExtras().getInt("destiny");
         Log.i("destiny", destiny+"");
         
-    	AlertDialog.Builder builder=new AlertDialog.Builder(this);
         ImageButton arrow=(ImageButton)findViewById(R.id.back);
     	ImageButton sound=(ImageButton)findViewById(R.id.speaker);
         ImageButton info=(ImageButton)findViewById(R.id.bubble);
@@ -49,7 +52,6 @@ public class AnimalPresentationActivity extends MyActivity {
 
         dialog1 = new Dialog(this);
 		dialog1.setContentView(R.layout.dialog_info_animal);
-		dialog1.setTitle("Información:");
 		
 		Button dialogButton1 = (Button) dialog1.findViewById(R.id.dialogButtonOK);
 		
@@ -59,14 +61,7 @@ public class AnimalPresentationActivity extends MyActivity {
         
         mp=MediaPlayer.create(AnimalPresentationActivity.this,animal_sound);
         imv.setBackgroundResource(animal_img);
-        
-    	builder.setMessage(animal_info)
-		.setCancelable(false)
-		.setPositiveButton("Cerrar",new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog,int id) {}
-		});
-    	
-    	alertDialog = builder.create();
+           	
         
         arrow.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
@@ -92,7 +87,54 @@ public class AnimalPresentationActivity extends MyActivity {
 		
 		info.setOnClickListener(new OnClickListener(){
 			public void onClick(View v){
-//				alertDialog.show();
+				Jungle app = (Jungle)getApplicationContext();
+				Animal anim = null;
+				if(destiny==1)
+					anim = app.getSingleAnimal(app.CONGO, animal_name);
+				else
+					anim = app.getSingleAnimal(app.BORNEO, animal_name);	
+				dialog1.setTitle(anim.getSpanish()+":");
+				
+				if(anim!=null)
+					Log.i("animal", anim.getSpanish());
+				List<String> food = anim.getFood();
+				List<String> ambient = anim.getAmbient();
+				View vi = null;
+				if(!ambient.contains("air")){
+					vi = dialog1.findViewById(R.id.airLayout);
+					((ViewManager)vi.getParent()).removeView(vi);
+				}
+				if(!ambient.contains("tree")){
+					vi = dialog1.findViewById(R.id.treeLayout);
+					((ViewManager)vi.getParent()).removeView(vi);
+				}
+				if(!ambient.contains("ground")){
+					vi = dialog1.findViewById(R.id.groundLayout);
+					((ViewManager)vi.getParent()).removeView(vi);
+				}
+				if(!ambient.contains("river")){
+					vi = dialog1.findViewById(R.id.riverlayout);
+					((ViewManager)vi.getParent()).removeView(vi);
+				}
+				
+				if(!food.contains("fruit")){
+					vi = dialog1.findViewById(R.id.fruitLayout);
+					((ViewManager)vi.getParent()).removeView(vi);
+				}
+				if(!food.contains("insect")){
+					vi = dialog1.findViewById(R.id.insectLayout);
+					((ViewManager)vi.getParent()).removeView(vi);
+				}
+				if(!food.contains("plant")){
+					vi = dialog1.findViewById(R.id.plantLayout);
+					((ViewManager)vi.getParent()).removeView(vi);
+				}
+				if(!food.contains("meat")){
+					vi = dialog1.findViewById(R.id.meatLayout);
+					((ViewManager)vi.getParent()).removeView(vi);
+				}
+				
+				
 				dialog1.show();
 			}
 		});
@@ -131,7 +173,10 @@ public class AnimalPresentationActivity extends MyActivity {
 		
 		if(animal_name.equals("okapi") || animal_name.equals("proboscis")){
 			animal_info="Hola soy un okapi.\nSoy pariente de las jirafas.\nSoy vegetariano, me alimento de frutas y hojas";
-			animal_img = animal_set.getDrawableAnimalId(animal_name);
+			if(animal_name.equals("proboscis"))
+				animal_img = R.drawable.proboscis;
+			else
+				animal_img = R.drawable.okapi;
 			animal_sound = R.raw.sound_bear;
 			findViewById(R.id.speaker).setVisibility(View.INVISIBLE);
 		}else{

@@ -26,9 +26,10 @@
         android:id="@+id/speaker"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_above="@+id/back"
         android:layout_alignRight="@+id/imageView1"
-        android:layout_marginBottom="52dp"
+        android:layout_below="@+id/imageView1"
+        android:layout_marginRight="28dp"
+        android:layout_marginTop="19dp"
         android:background="@drawable/speaker" />
 
     <ImageButton
@@ -37,6 +38,7 @@
         android:layout_height="75dp"
         android:layout_alignLeft="@+id/imageView1"
         android:layout_alignTop="@+id/speaker"
+        android:layout_marginLeft="32dp"
         android:background="@drawable/sbubble" />
 
 </RelativeLayout>

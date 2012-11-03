@@ -143,6 +143,17 @@ public class Jungle extends Application{
 		return challenge_foods;
 	}
 	
+	public Animal getSingleAnimal(int ambient, String name){
+		List<Animal> animals = getAnimalsByAmbient(ambient);
+		for(Animal anim : animals){
+			if(anim.getName().equals(name))
+				return anim;
+		}
+		
+		return null;
+			
+	}
+	
 	public List<Animal> getAnimalsByAmbient(int ambient){
 		List<Animal> animals;
 		switch(ambient){
