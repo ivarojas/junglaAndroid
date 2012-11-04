@@ -102,7 +102,6 @@ public class ShadowActivity extends MyActivity {
 
 	@Override
 	public void verifyChoice(View v) {
-		// TODO Auto-generated method stub
 		
 	}
 	
@@ -114,7 +113,8 @@ public class ShadowActivity extends MyActivity {
         correct_answer = random_animals.get(rand_n);
         int shadow_animal_id = animal_set.getShadowAnimalId(random_animals.get(rand_n));
         ImageView image_view = (ImageView) findViewById(R.id.shadow);
-        image_view.setBackgroundResource(shadow_animal_id);
+        
+        image_view.setBackgroundDrawable(decodeDrawable(shadow_animal_id));
         
         //set choices
         int[] button_ids = {R.id.first_option, R.id.second_option, R.id.third_option};
