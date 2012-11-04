@@ -7,15 +7,15 @@
 	        android:fromXDelta="0%p"
 	        android:toXDelta="5%p"
 	        android:fromYDelta="0%p"
-	        android:toYDelta="100%p" />
+	        android:toYDelta="105%p" />
 	    <alpha
 	        android:fromAlpha="100"
 	        android:toAlpha="50" />
 	    <scale
 	        android:fromXScale="1"
-	        android:toXScale="0.7"
+	        android:toXScale="0.6"
 	        android:fromYScale="1"
-	        android:toYScale="0.7"
+	        android:toYScale="0.6"
 	        android:pivotX="5%p"
 	        android:pivotY="55%p" />
 	   	<rotate
