@@ -60,7 +60,7 @@ public class AnimalPresentationActivity extends MyActivity {
         setAnimalInfo();
         
         mp=MediaPlayer.create(AnimalPresentationActivity.this,animal_sound);
-        imv.setBackgroundResource(animal_img);
+        imv.setBackgroundDrawable(decodeDrawable(animal_img));
            	
         
         arrow.setOnClickListener(new OnClickListener() {
