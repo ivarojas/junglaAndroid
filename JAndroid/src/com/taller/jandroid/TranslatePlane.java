@@ -1,12 +1,13 @@
 package com.taller.jandroid;
 
+import persistance.Jungle;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -49,12 +50,12 @@ public class TranslatePlane extends MyActivity implements OnClickListener, Anima
     	
     	switch(v.getId()){
     	case R.id.destiny1:{
-    		destiny = 1;
+    		destiny = 0;
     		translate = AnimationUtils.loadAnimation(this, R.anim.translate_destiny1);
     		break;
     	}
     	case R.id.destiny2:{
-    		destiny = 2;
+    		destiny = 1;
     		translate = AnimationUtils.loadAnimation(this, R.anim.translate_destiny2);
     		break;
     	}
@@ -80,8 +81,10 @@ public class TranslatePlane extends MyActivity implements OnClickListener, Anima
     public void onAnimationRepeat(Animation arg0) {
     }           
     public void onAnimationEnd(Animation arg0) {
+    	
+    	Jungle app = (Jungle)getApplicationContext();
+    	app.setDestiny(destiny);
     	Intent nextintent = new Intent(this,ArrivingJungle.class);
-    	nextintent.putExtra("destiny", destiny);    		
 		this.startActivity(nextintent);
 		this.finish();
     }

@@ -2,6 +2,7 @@ package com.taller.jandroid;
 
 import java.util.List;
 
+import persistance.Jungle;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -22,7 +23,7 @@ public class ShadowActivity extends MyActivity {
 	private AnimalSet animal_set;
 	private List<String> random_animals;
 	private String correct_answer;
-    
+    private int destiny;
 	MediaPlayer mediaPlayer;
 	
 	@Override
@@ -32,8 +33,11 @@ public class ShadowActivity extends MyActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
   
+        Jungle app = (Jungle)getApplicationContext();
+        destiny = app.getDestiny();
+        
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
+                
         builder.setMessage("Has fallado")
         		.setCancelable(false)
         		.setPositiveButton("Reintentar",new DialogInterface.OnClickListener() {
@@ -95,8 +99,12 @@ public class ShadowActivity extends MyActivity {
     @Override
     public void onBackPressed(){
     	super.onBackPressed();
-        Intent i=new Intent(this,PresentationActivity.class);
-        i.putExtra("destiny", 1);
+        Intent i = null;
+        if(destiny == 0)
+        	i=new Intent(this,PresentationActivity.class);
+        else
+        	i=new Intent(this,PresentationBorneoActivity.class);
+        
         startActivity(i);
     }
 
@@ -108,9 +116,15 @@ public class ShadowActivity extends MyActivity {
 	public void setShadowAnimal(){
 		//setting shadow animal and choices to show
         animal_set = new AnimalSet(this);
-        random_animals = animal_set.getAnimalsRandom("congo", 3);
+        Jungle app = (Jungle)getApplicationContext();
+        
+        if(destiny == app.CONGO)
+        	random_animals = animal_set.getAnimalsRandom("congo", 3);
+        else
+        	random_animals = animal_set.getAnimalsRandom("borneo", 3);
+        
         int rand_n = (int)(Math.random() * 3);
-        correct_answer = random_animals.get(rand_n);
+        correct_answer = app.getSpanishName(destiny,random_animals.get(rand_n));
         int shadow_animal_id = animal_set.getShadowAnimalId(random_animals.get(rand_n));
         ImageView image_view = (ImageView) findViewById(R.id.shadow);
         
@@ -120,7 +134,7 @@ public class ShadowActivity extends MyActivity {
         int[] button_ids = {R.id.first_option, R.id.second_option, R.id.third_option};
         for(int i = 0; i < 3; i++){
         	Button choice = (Button) findViewById(button_ids[i]);
-        	choice.setText(this.random_animals.get(i));
+        	choice.setText(app.getSpanishName(destiny,this.random_animals.get(i)));
         }
 	}
 }

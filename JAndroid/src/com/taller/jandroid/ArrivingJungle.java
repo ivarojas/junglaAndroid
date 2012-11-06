@@ -1,11 +1,12 @@
 package com.taller.jandroid;
 
+import persistance.Jungle;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -24,12 +25,13 @@ public class ArrivingJungle extends MyActivity implements OnClickListener, Anima
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        
-        destiny = getIntent().getExtras().getInt("destiny");
-        
+
         setContentView(R.layout.activity_arriving_jungle);
+
+        Jungle app = (Jungle)getApplicationContext();
+        destiny = app.getDestiny();
         
-        if(destiny == 2){
+        if(destiny == app.BORNEO){
         	findViewById(R.id.relative_arriv).setBackgroundResource(R.drawable.arriving_jungle2);
         }
         
@@ -69,13 +71,12 @@ public class ArrivingJungle extends MyActivity implements OnClickListener, Anima
     public void onClick(View v) {
     	if(v.getId() == R.id.nextButton_arriv){
     		Intent presentation = null;
-    		if(destiny == 1){
+    		if(destiny == 0){
     			presentation = new Intent(this, PresentationActivity.class);
     		}
     		else{
     			presentation = new Intent(this, PresentationBorneoActivity.class);
     		}
-    		presentation.putExtra("destiny", destiny);
     		this.startActivity(presentation);
     		finish();
     	}
