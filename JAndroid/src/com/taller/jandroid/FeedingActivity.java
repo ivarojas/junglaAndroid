@@ -39,6 +39,8 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 	private static int success = 0;
 	Dialog dialog;
 	private List<Integer> right_answers;
+	private int[] images_ids = new int[6];
+	private List<Integer> right_answers_ids;
 	
     @SuppressLint("UseValueOf")
 	@Override
@@ -81,18 +83,21 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 		List<Integer> wrong_foods_ids = foods.get("wrong_foods");
 		
 		ImageView answer_image;
-		int[] images_ids = {
-				R.id.image_view1,
-				R.id.image_view2,
-				R.id.image_view3,
-				R.id.image_view4,
-				R.id.image_view5,
-				R.id.image_view6,
-		};
+		
+		images_ids[0] = R.id.image_view1;
+		images_ids[1] = R.id.image_view2;
+		images_ids[2] = R.id.image_view3;
+		images_ids[3] = R.id.image_view4;
+		images_ids[4] = R.id.image_view5;
+		images_ids[5] = R.id.image_view6;
 		
 		//right answers
 		int size = right_foods_ids.size();
 		right_answers = getRightAnswers(size);
+		right_answers_ids = new ArrayList<Integer>();
+		for(int right_answer : right_answers)
+			right_answers_ids.add(images_ids[right_answer]);
+		
 		Log.i("size", size + "");
 		Log.i("comidas correctas", right_foods_ids.toString());
 		Log.i("respuestas correctas", right_answers.toString());
@@ -251,11 +256,11 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 		DropSpot center = (DropSpot)mDragLayer.findViewById(R.id.drop_spot0);
 		
 		
-		if(v.getId() == R.id.image_view4 || v.getId() == R.id.image_view2 || v.getId() == R.id.image_view6){
+		if(right_answers_ids.contains(v.getId())){
 			center.setBackgroundResource(R.drawable.monkey);
 			success += 1;
 			((ViewManager)v.getParent()).removeView(v);
-			if(success ==3){
+			if(success == right_answers_ids.size()){
 				ImageButton next = (ImageButton)mDragLayer.findViewById(R.id.next);
 				next.setVisibility(View.VISIBLE);
 			}
