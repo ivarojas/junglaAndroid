@@ -77,7 +77,7 @@
         <activity
             android:name=".ChooseAnimalsJungleActivity"
             android:label="@string/title_activity_choose_animals_jungle"
-            android:screenOrientation="landscape" >
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".SplitAnimalActivity"
