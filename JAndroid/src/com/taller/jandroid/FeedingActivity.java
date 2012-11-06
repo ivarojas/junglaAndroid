@@ -104,7 +104,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 		int i;
 		for(i = 0; i < size; i++){
 			answer_image = (ImageView)findViewById(images_ids[right_answers.get(i)]);
-			answer_image.setImageResource(right_foods_ids.get(i));
+			answer_image.setImageDrawable(decodeDrawable(right_foods_ids.get(i)));
 		}
 		
 		//wrong answers
@@ -113,8 +113,8 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 		for(i = 0; i < 6; i++){
 			if(!right_answers.contains(new Integer(i))){
 				answer_image = (ImageView)findViewById(images_ids[i]);
-				//answer_image.setImageResource(wrong_foods_ids.get(k));
-				answer_image.setImageResource(R.drawable.arrow_next);
+				answer_image.setImageDrawable(decodeDrawable(wrong_foods_ids.get(k)));
+//				answer_image.setImageResource(R.drawable.arrow_next);
 				k++;
 			}
 		}
