@@ -134,7 +134,7 @@ public class Jungle extends Application{
 		
 		//generating random answers and getting images ids from context
 		List<Integer> right_food_ids = getRandomFoodIds(right_foods, right_answers);
-		List<Integer> wrong_food_ids = getRandomFoodIds(right_foods, wrong_answers);
+		List<Integer> wrong_food_ids = getRandomFoodIds(wrong_foods, wrong_answers);
 		
 		Hashtable<String,List<Integer>> challenge_foods = new Hashtable<String,List<Integer>>();
 		challenge_foods.put("right_foods", right_food_ids);
