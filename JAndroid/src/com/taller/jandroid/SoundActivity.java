@@ -33,6 +33,7 @@ public class SoundActivity extends MyActivity{
 	private static ImageButton sound;
 	private AnimationDrawable sound_animation;
 	private int destiny;
+	private MediaPlayer media_player2;
 	private static Context context;
 
 	@Override
@@ -95,6 +96,8 @@ public class SoundActivity extends MyActivity{
     	if(button.getText().equals(app.getSpanishName(destiny,this.correct_answer))){
     		if(media_player!=null && media_player.isPlaying())
     			media_player.stop();
+    		if(media_player2!=null && media_player2.isPlaying())
+    			media_player2.stop();
     		media_player = MediaPlayer.create(SoundActivity.this, R.raw.tada);
     		media_player.start();
     		Intent intent = new Intent(this, AnimalInformationActivity.class);
@@ -115,7 +118,10 @@ public class SoundActivity extends MyActivity{
     @Override
     public void onBackPressed(){
     	super.onBackPressed();
-    	media_player.stop();
+    	if(media_player!=null && media_player.isPlaying())
+			media_player.stop();
+    	if(media_player2!=null && media_player2.isPlaying())
+			media_player2.stop();
         Intent i = new Intent(this,FeedingActivity.class);
         startActivity(i);    	
     }
@@ -140,16 +146,19 @@ public class SoundActivity extends MyActivity{
         }while(correct_answer.equals("okapi") || correct_answer.equals("proboscis"));
                 
         //Setting sound
-		media_player = MediaPlayer.create(SoundActivity.this, this.animal_set.getSoundAnimalId(this.correct_answer));
+		media_player2 = MediaPlayer.create(SoundActivity.this, this.animal_set.getSoundAnimalId(this.correct_answer));
 		//media_player.setLooping(true);
-		media_player.start();
+		media_player2.start();
 		this.sound.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-            	if(!media_player.isPlaying()){
+            	if(media_player!=null && media_player.isPlaying())
+            		media_player.stop();
+            	
+            	if(!media_player2.isPlaying()){
             		sound.setBackgroundResource(R.drawable.sound_speaker);
             		sound_animation = (AnimationDrawable) sound.getBackground();
             		sound_animation.start();
-            		media_player.start();
+            		media_player2.start();
             	}
             }
             
@@ -167,7 +176,7 @@ public class SoundActivity extends MyActivity{
 		sound.setBackgroundResource(R.drawable.sound_speaker);
 		sound_animation = (AnimationDrawable) sound.getBackground();
 		
-		this.media_player.setOnCompletionListener(new OnCompletionListener() {
+		this.media_player2.setOnCompletionListener(new OnCompletionListener() {
 			public void onCompletion(MediaPlayer arg0) {
 				SoundActivity.sound.setBackgroundResource(SoundActivity.context.getResources().getIdentifier("play", "drawable", SoundActivity.context.getPackageName()));
 			}

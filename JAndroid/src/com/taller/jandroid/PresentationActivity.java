@@ -1,15 +1,14 @@
 package com.taller.jandroid;
 
-import com.taller.jandroid.R;
-
-import android.os.Bundle;
+import persistance.Jungle;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 
 public class PresentationActivity extends MyActivity {
@@ -22,12 +21,8 @@ public class PresentationActivity extends MyActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        
-        destiny = getIntent().getExtras().getInt("destiny");
-        
+       
       	setContentView(R.layout.activity_presentation);
-        
-        
         
         ImageButton bbutton=(ImageButton)findViewById(R.id.bonobobutton);
         ImageButton hbutton=(ImageButton)findViewById(R.id.hippobutton);
@@ -40,7 +35,6 @@ public class PresentationActivity extends MyActivity {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationActivity.this,AnimalPresentationActivity.class);
                 i.putExtra("animal","bonobo");
-                i.putExtra("destiny", destiny);
                 startActivity(i);
                 finish();
                }
@@ -50,7 +44,6 @@ public class PresentationActivity extends MyActivity {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationActivity.this,AnimalPresentationActivity.class);
                 i.putExtra("animal","hippo");
-                i.putExtra("destiny", destiny);
                 startActivity(i);
                 finish();
                }
@@ -60,7 +53,6 @@ public class PresentationActivity extends MyActivity {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationActivity.this,AnimalPresentationActivity.class);
                 i.putExtra("animal","elephant");
-                i.putExtra("destiny", destiny);
                 startActivity(i);
                 finish();
                }
@@ -70,7 +62,6 @@ public class PresentationActivity extends MyActivity {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationActivity.this,AnimalPresentationActivity.class);
                 i.putExtra("animal","gorilla");
-                i.putExtra("destiny", destiny);
                 startActivity(i);
                 finish();
                }
@@ -80,7 +71,6 @@ public class PresentationActivity extends MyActivity {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationActivity.this,AnimalPresentationActivity.class);
                 i.putExtra("animal","okapi");
-                i.putExtra("destiny", destiny);
                 startActivity(i);
                 finish();
                }
