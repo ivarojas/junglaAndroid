@@ -24,8 +24,8 @@ public class AnimalSet {
 		String[] animals = null;
 		if(key.equals("congo"))
 			animals = getAnimalsCongo();
-		else if(key.equals("extra"))
-			animals = getAnimalsExtras();
+		else if(key.equals("borneo"))
+			animals = getAnimalsBorneo();
 		
 		List<String> animal_random = new ArrayList<String>();
 		List<Integer> number_random = new ArrayList<Integer>();
@@ -72,15 +72,15 @@ public class AnimalSet {
 		return animals;
 	}
 	
-	public String[] getAnimalsExtras(){
+	public String[] getAnimalsBorneo(){
 		String[] animals = {
-			"cow",
-			"dog",
-			"giraffe",
-			"lion",
-			"rabbit",
+			"leopard",
+			"frog",
+			"bear",
+			"orangutan",
+			"proboscis",
 			"rhino",
-			"zebra",
+			"hornbill",
 		};
 		return animals;
 	}

@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonObject;
@@ -20,7 +19,6 @@ import com.google.gson.reflect.TypeToken;
 import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
-import android.util.Log;
 import animal.Animal;
 
 public class Jungle extends Application{
@@ -30,12 +28,13 @@ public class Jungle extends Application{
 	
 	private List<Animal> congo_animals;
 	private List<Animal> borneo_animals;
-	private JsonObject jsonObject;
 	private Context bsc;
 	private Food food;
+	private int destiny;
 	
 	public Jungle(){
 		super();
+		destiny = CONGO;
 	}
 	
 	@Override
@@ -143,6 +142,17 @@ public class Jungle extends Application{
 		return challenge_foods;
 	}
 	
+	public String getSpanishName(int ambient, String name){
+		List<Animal> animals = getAnimalsByAmbient(ambient);
+		for(Animal anim : animals){
+			if(anim.getName().equals(name))
+				return anim.getSpanish();
+		}
+		
+		return "";
+			
+	}
+	
 	public Animal getSingleAnimal(int ambient, String name){
 		List<Animal> animals = getAnimalsByAmbient(ambient);
 		for(Animal anim : animals){
@@ -185,5 +195,13 @@ public class Jungle extends Application{
 		}
 		
 		return food_ids;
+	}
+
+	public int getDestiny() {
+		return destiny;
+	}
+
+	public void setDestiny(int destiny) {
+		this.destiny = destiny;
 	}
 }

@@ -4,9 +4,7 @@ package com.taller.jandroid;
 import java.util.List;
 
 import persistance.Jungle;
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -42,7 +40,9 @@ public class AnimalPresentationActivity extends MyActivity {
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_animal_presentation);      
         
-        destiny = getIntent().getExtras().getInt("destiny");
+        Jungle app = (Jungle)getApplicationContext();
+        destiny = app.getDestiny();
+        
         Log.i("destiny", destiny+"");
         
         ImageButton arrow=(ImageButton)findViewById(R.id.back);
@@ -66,7 +66,7 @@ public class AnimalPresentationActivity extends MyActivity {
         arrow.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
             	Intent i = null;
-            	if(destiny == 1){
+            	if(destiny == 0){
             		i=new Intent(AnimalPresentationActivity.this,PresentationActivity.class);
             	}
             	else{
@@ -89,7 +89,7 @@ public class AnimalPresentationActivity extends MyActivity {
 			public void onClick(View v){
 				Jungle app = (Jungle)getApplicationContext();
 				Animal anim = null;
-				if(destiny==1)
+				if(destiny == app.CONGO)
 					anim = app.getSingleAnimal(app.CONGO, animal_name);
 				else
 					anim = app.getSingleAnimal(app.BORNEO, animal_name);	
@@ -190,13 +190,13 @@ public class AnimalPresentationActivity extends MyActivity {
     public void onBackPressed(){
     	super.onBackPressed();
     	Intent i = null;
-    	if(destiny == 1){
+    	Log.i("destiny", destiny+"");
+    	if(destiny == 0){
     		i=new Intent(this,PresentationActivity.class);
     	}
     	else{
     		i=new Intent(this,PresentationBorneoActivity.class);
     	}
-        i.putExtra("destiny", destiny);
         mp.stop();
         startActivity(i);
     }
