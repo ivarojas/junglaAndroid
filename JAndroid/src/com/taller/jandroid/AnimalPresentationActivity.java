@@ -102,36 +102,44 @@ public class AnimalPresentationActivity extends MyActivity {
 				View vi = null;
 				if(!ambient.contains("air")){
 					vi = dialog1.findViewById(R.id.airLayout);
-					((ViewManager)vi.getParent()).removeView(vi);
+					if(vi!=null)
+						((ViewManager)vi.getParent()).removeView(vi);
 				}
 				if(!ambient.contains("tree")){
 					vi = dialog1.findViewById(R.id.treeLayout);
-					((ViewManager)vi.getParent()).removeView(vi);
+					if(vi!=null)
+						((ViewManager)vi.getParent()).removeView(vi);
 				}
 				if(!ambient.contains("ground")){
 					vi = dialog1.findViewById(R.id.groundLayout);
-					((ViewManager)vi.getParent()).removeView(vi);
+					if(vi!=null)
+						((ViewManager)vi.getParent()).removeView(vi);
 				}
 				if(!ambient.contains("river")){
 					vi = dialog1.findViewById(R.id.riverlayout);
-					((ViewManager)vi.getParent()).removeView(vi);
+					if(vi!=null)
+						((ViewManager)vi.getParent()).removeView(vi);
 				}
 				
 				if(!food.contains("fruit")){
 					vi = dialog1.findViewById(R.id.fruitLayout);
-					((ViewManager)vi.getParent()).removeView(vi);
+					if(vi!=null)
+						((ViewManager)vi.getParent()).removeView(vi);
 				}
 				if(!food.contains("insect")){
 					vi = dialog1.findViewById(R.id.insectLayout);
-					((ViewManager)vi.getParent()).removeView(vi);
+					if(vi!=null)
+						((ViewManager)vi.getParent()).removeView(vi);
 				}
 				if(!food.contains("plant")){
 					vi = dialog1.findViewById(R.id.plantLayout);
-					((ViewManager)vi.getParent()).removeView(vi);
+					if(vi!=null)
+						((ViewManager)vi.getParent()).removeView(vi);
 				}
 				if(!food.contains("meat")){
 					vi = dialog1.findViewById(R.id.meatLayout);
-					((ViewManager)vi.getParent()).removeView(vi);
+					if(vi!=null)
+						((ViewManager)vi.getParent()).removeView(vi);
 				}
 				
 				

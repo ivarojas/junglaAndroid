@@ -2,6 +2,8 @@ package com.taller.jandroid;
 
 import java.util.List;
 
+import persistance.Jungle;
+
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
@@ -30,6 +32,7 @@ public class SoundActivity extends MyActivity{
 	private String correct_answer;
 	private static ImageButton sound;
 	private AnimationDrawable sound_animation;
+	private int destiny;
 	private static Context context;
 
 	@Override
@@ -39,7 +42,10 @@ public class SoundActivity extends MyActivity{
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		
-		setContentView(R.layout.activity_sound);
+        setContentView(R.layout.activity_sound);
+        
+        Jungle app = (Jungle)getApplicationContext();
+        destiny = app.getDestiny();        
 		
 		sound = (ImageButton)findViewById(R.id.soundChallenge);
 		
@@ -84,8 +90,9 @@ public class SoundActivity extends MyActivity{
     }
     
     public void verifyAnswer(View view){
+    	Jungle app = (Jungle)getApplicationContext();
     	Button button = (Button) findViewById(view.getId());
-    	if(button.getText().equals(this.correct_answer)){
+    	if(button.getText().equals(app.getSpanishName(destiny,this.correct_answer))){
     		if(media_player!=null && media_player.isPlaying())
     			media_player.stop();
     		media_player = MediaPlayer.create(SoundActivity.this, R.raw.tada);
@@ -116,11 +123,22 @@ public class SoundActivity extends MyActivity{
 	public void setSoundAnimal(){
 		//setting sound animal and choices to show
         animal_set = new AnimalSet(this);
-        random_animals = animal_set.getAnimalsRandom("congo", 3);
-        int rand_n = (int)(Math.random() * 3);
-        correct_answer = random_animals.get(rand_n);
-        int sound_animal_id = animal_set.getSoundAnimalId(random_animals.get(rand_n));
         
+        Jungle app = (Jungle)getApplicationContext();
+        
+        if(destiny == app.CONGO){
+        	random_animals = animal_set.getAnimalsRandom("congo", 3, true);
+        }
+        else{
+        	random_animals = animal_set.getAnimalsRandom("borneo", 3, true);
+        }
+        
+        int rand_n = 0;
+        do{
+        	rand_n = (int)(Math.random() * 3);
+        	correct_answer = random_animals.get(rand_n);
+        }while(correct_answer.equals("okapi") || correct_answer.equals("proboscis"));
+                
         //Setting sound
 		media_player = MediaPlayer.create(SoundActivity.this, this.animal_set.getSoundAnimalId(this.correct_answer));
 		//media_player.setLooping(true);
@@ -141,7 +159,7 @@ public class SoundActivity extends MyActivity{
         int[] button_ids = {R.id.first_option, R.id.second_option, R.id.third_option};
         for(int i = 0; i < 3; i++){
         	Button choice = (Button) findViewById(button_ids[i]);
-        	choice.setText(this.random_animals.get(i));
+        	choice.setText(app.getSpanishName(destiny,this.random_animals.get(i)));
         }
 	}
 

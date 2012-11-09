@@ -20,17 +20,17 @@ public class AnimalSet {
 	}
 	
 	@SuppressLint("UseValueOf")
-	public List<String> getAnimalsRandom(String key, int amount){
-		String[] animals = null;
+	public List<String> getAnimalsRandom(String key, int amount, boolean sound){
+		List<String> animals = new ArrayList<String>();
 		if(key.equals("congo"))
-			animals = getAnimalsCongo();
+			animals = getAnimalsCongo(sound);
 		else if(key.equals("borneo"))
-			animals = getAnimalsBorneo();
+			animals = getAnimalsBorneo(sound);
 		
 		List<String> animal_random = new ArrayList<String>();
 		List<Integer> number_random = new ArrayList<Integer>();
 		
-		int length = animals.length;
+		int length = animals.size();
 		int n;
 		for(int i = 0; i<amount; i++){
 			n = (int)(Math.random() * length);
@@ -39,7 +39,7 @@ public class AnimalSet {
 			}
 			
 			number_random.add(new Integer(n));
-			animal_random.add(animals[n]);
+			animal_random.add(animals.get(n));
 		}
 		
 		return animal_random;
@@ -61,27 +61,43 @@ public class AnimalSet {
 		return resources.getIdentifier("sound_" + name, "raw", context.getPackageName()); 
 	}
 	
-	public String[] getAnimalsCongo(){
-		String[] animals = {
-			"elephant",
-			"hippo",
-			"gorilla",
-			"okapi",
-			"bonobo"
-		};
+	public List<String> getAnimalsCongo(boolean sound){
+		List<String> animals = new ArrayList<String>();
+		if(sound){
+			animals.add("elephant");
+			animals.add("hippo");
+			animals.add("gorilla");
+			animals.add("bonobo");
+		}
+		else{
+			animals.add("elephant");
+			animals.add("hippo");
+			animals.add("gorilla");
+			animals.add("okapi");
+			animals.add("bonobo");
+		}
 		return animals;
 	}
 	
-	public String[] getAnimalsBorneo(){
-		String[] animals = {
-			"leopard",
-			"frog",
-			"bear",
-			"orangutan",
-			"proboscis",
-			"rhino",
-			"hornbill",
-		};
+	public List<String> getAnimalsBorneo(boolean sound){
+		List<String> animals = new ArrayList<String>();
+		if(sound){
+			animals.add("leopard");
+			animals.add("frog");
+			animals.add("bear");
+			animals.add("orangutan");
+			animals.add("rhino");
+			animals.add("hornbill");
+		}
+		else{
+			animals.add("leopard");
+			animals.add("frog");
+			animals.add("bear");
+			animals.add("orangutan");
+			animals.add("proboscis");
+			animals.add("rhino");
+			animals.add("hornbill");
+		}
 		return animals;
 	}
 }

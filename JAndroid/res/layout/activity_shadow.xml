@@ -41,7 +41,13 @@
 	        android1:onClick="verifyAnswer"
 	        android1:text="Hipopótamo" 
 	        android:textSize="15dp" />
-
+	</LinearLayout>
+	<LinearLayout
+	    android1:id="@+id/linearLayout3"
+	    android1:layout_width="match_parent"
+	    android1:layout_height="wrap_content"
+	    android1:gravity="center_horizontal"
+	    android1:orientation="horizontal" >
 	    <Button
 	        android1:id="@+id/third_option"
 	        android1:layout_width="90dp"

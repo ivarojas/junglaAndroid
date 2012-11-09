@@ -119,9 +119,9 @@ public class ShadowActivity extends MyActivity {
         Jungle app = (Jungle)getApplicationContext();
         
         if(destiny == app.CONGO)
-        	random_animals = animal_set.getAnimalsRandom("congo", 3);
+        	random_animals = animal_set.getAnimalsRandom("congo", 3, false);
         else
-        	random_animals = animal_set.getAnimalsRandom("borneo", 3);
+        	random_animals = animal_set.getAnimalsRandom("borneo", 3, false);
         
         int rand_n = (int)(Math.random() * 3);
         correct_answer = app.getSpanishName(destiny,random_animals.get(rand_n));
