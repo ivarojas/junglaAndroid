@@ -231,8 +231,7 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     @Override
     public void onBackPressed(){
     	super.onBackPressed();
-        Intent i = new Intent(this,AnimalInformationActivity.class);
-        i.putExtra("animal", "gorilla");
+        Intent i = new Intent(this,SoundActivity.class);
         startActivity(i);    	
     }
     

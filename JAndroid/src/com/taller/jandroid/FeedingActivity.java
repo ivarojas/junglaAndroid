@@ -278,8 +278,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 	@Override
     public void onBackPressed(){
 		super.onBackPressed();
-        Intent i = new Intent(this,AnimalInformationActivity.class);
-        i.putExtra("animal", "elephant");
+        Intent i = new Intent(this,ShadowActivity.class);
         startActivity(i);    	
     }
 	

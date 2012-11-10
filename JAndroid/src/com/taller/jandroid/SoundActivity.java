@@ -100,8 +100,9 @@ public class SoundActivity extends MyActivity{
     			media_player2.stop();
     		media_player = MediaPlayer.create(SoundActivity.this, R.raw.tada);
     		media_player.start();
-    		Intent intent = new Intent(this, AnimalInformationActivity.class);
-    		intent.putExtra("animal", "gorilla");
+//    		Intent intent = new Intent(this, AnimalInformationActivity.class);
+//    		intent.putExtra("animal", "gorilla");
+    		Intent intent = new Intent(this, SplitAnimalActivity.class);
     		media_player.stop();
             startActivity(intent);
             finish();

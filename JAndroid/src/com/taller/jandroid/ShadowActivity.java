@@ -83,7 +83,7 @@ public class ShadowActivity extends MyActivity {
     			mediaPlayer.stop();
     		mediaPlayer = MediaPlayer.create(this, R.raw.tada);
     		mediaPlayer.start();
-    		Intent intent = new Intent(this, AnimalInformationActivity.class);
+    		Intent intent = new Intent(this, FeedingActivity.class);
     		intent.putExtra("animal", "elephant");
             startActivity(intent);
             finish();
