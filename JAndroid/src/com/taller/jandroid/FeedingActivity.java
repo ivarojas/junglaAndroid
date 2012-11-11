@@ -283,6 +283,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
         startActivity(i);    	
     }
 	
+	@SuppressLint({ "UseValueOf", "UseValueOf" })
 	public List<Integer> getRightAnswers(int amount){
 		List<Integer> random_numbers = new ArrayList<Integer>();
 		

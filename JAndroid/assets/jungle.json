@@ -4,31 +4,36 @@
 					"name": "elephant",
 					"spanish": "Elefante",
 					"food": ["fruit", "plant"],
-					"ambient": ["ground"]
+					"ambient": ["ground"],
+					"description": ["Hola soy un elefante del Congo.\nAmo comer frutas y plantas.\nSoy el tercer animal terrestre más grande en la Tierra."]
 				},
 				{
 					"name": "hippo",
-					"spanish": "HipopÃ³tamo",
+					"spanish": "Hipopótamo",
 					"food": ["plant"],
-					"ambient": ["river","ground"]
+					"ambient": ["river","ground"],
+					"description": ["Hola soy un hipopótamo.\nPaso la mayor parte del día sumergido en el agua.\n"]
 				},
 				{
 					"name": "bonobo",
 					"spanish": "Mono Bonobo",
 					"food": ["fruit", "plant", "insect"],
-					"ambient": ["tree", "ground"]
+					"ambient": ["tree", "ground"],
+					"description": ["Hola soy un mono Bonobo.\nMe gusta comer frutas, pero también como nueces, semillas, hojas e insectos."]
 				},
 				{
 					"name": "okapi",
 					"spanish": "Okapi",
 					"food": ["fruit", "plant"],
-					"ambient": ["ground"]
+					"ambient": ["ground"],
+					"description": ["Hola soy un okapi.\nSoy pariente de las jirafas. Soy vegetariano, me alimento de frutas y hojas."]
 				},
 				{
 					"name": "gorilla",
 					"spanish": "Gorila",
 					"food": ["fruit", "plant"],
-					"ambient": ["tree", "ground"]
+					"ambient": ["tree", "ground"],
+					"description": ["Hola soy un gorila.\nPaso todo el día en busca de hojas, tallos y brotes de las plantas."]
 				}
 			],
 	"Borneo":[
@@ -36,49 +41,57 @@
 					"name": "leopard",
 					"spanish": "Pantera Nebulosa",
 					"food": ["meat"],
-					"ambient": ["ground"]
+					"ambient": ["ground"],
+					"description": ["Hola soy una pantera. Tengo manchas con forma de nubes, soy capaz de trepar árboles y como carne."]
 				},
 				{
 					"name": "frog",
 					"spanish": "Rana cabeza plana",
 					"food": ["insect"],
-					"ambient": ["river"]
+					"ambient": ["river"],
+					"description": ["Hola soy una rana.\nSoy tan pequeña como una moneda, respiro por la piel, y vivo en los ríos."]
 				},
 				{
 					"name": "bear",
 					"spanish": "Oso Malayo",
 					"food": ["meat", "fruit", "plant", "insect"],
-					"ambient": ["tree", "ground"]
+					"ambient": ["tree", "ground"],
+					"description": ["Hola soy un oso. También me conocen como Oso del sol. Me gusta la miel y descansar en los árboles."]
 				},
 				{
 					"name": "snake",
 					"spanish": "Serpiente",
 					"food": ["meat"],
-					"ambient": ["tree"]
+					"ambient": ["tree"],
+					"description": ["Hola soy una serpiente. Soy de muchos colores, vivo en los árboles, y como ranas y lagartijas."]
 				},
 				{
 					"name": "orangutan",
-					"spanish": "OrangutÃ¡n",
+					"spanish": "Orangután",
 					"food": ["fruit", "plant", "insect"],
-					"ambient": ["tree", "ground"]
+					"ambient": ["tree", "ground"],
+					"description": ["Hola soy un orangután.\nSoy solitario."]
 				},
 				{
 					"name": "proboscis",
 					"spanish": "Mono narigudo",
 					"food": ["fruit", "plant"],
-					"ambient": ["tree", "ground"]
+					"ambient": ["tree", "ground"],
+					"description": ["Hola soy un mono narigudo. Soy sociable, un gran nadador y tengo una enorme nariz."]
 				},
 				{
 					"name": "rhino",
 					"spanish": "Rinoceronte",
 					"food": ["fruit", "plant"],
-					"ambient": ["ground"]
+					"ambient": ["ground"],
+					"description": ["Hola soy un rinoceronte. Soy solitario, tengo una piel dura y poseo 2 cuernos en la cabeza."]
 				},
 				{
 					"name": "hornbill",
-					"spanish": "CÃ¡lao",
+					"spanish": "Cálao",
 					"food": ["fruit", "insect"],
-					"ambient": ["air", "tree"]
+					"ambient": ["air", "tree"],
+					"description": ["Hola soy cálao. Tengo un enorme pico, soy sociable y puedo imitar sonidos de otras aves."]
 				}
 
 		]
