@@ -8,6 +8,7 @@ public class Animal {
     private String spanish;
     private List<String> food;
     private List<String> ambient;
+    private String description;
 
     // getters
     public String getName() { 
@@ -22,12 +23,13 @@ public class Animal {
     public List<String> getAmbient() { 
     	return ambient; 
     }
-
+	public String getDescription() {
+		return description;
+	}
+	// setters
     public void setName(String name) { 
     	this.name = name; 
     }
-    
-    // setters
     public void setSpanish(String spanish) { 
     	this.spanish = spanish; 
     }
@@ -36,6 +38,9 @@ public class Animal {
     }
     public void setAmbient(List<String> ambient) { 
     	this.ambient = ambient; 
-    }	
+    }
+	public void setDescription(String description) {
+		this.description = description;
+	}	
 }
 

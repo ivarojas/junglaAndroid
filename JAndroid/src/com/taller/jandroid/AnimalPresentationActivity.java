@@ -12,14 +12,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewManager;
 import android.view.View.OnClickListener;
+import android.view.ViewManager;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import animal.Animal;
 import animal.AnimalSet;
 
@@ -95,10 +96,13 @@ public class AnimalPresentationActivity extends MyActivity {
 					anim = app.getSingleAnimal(app.BORNEO, animal_name);	
 				dialog1.setTitle(anim.getSpanish()+":");
 				
-				if(anim!=null)
-					Log.i("animal", anim.getSpanish());
 				List<String> food = anim.getFood();
 				List<String> ambient = anim.getAmbient();
+				animal_info = app.getSingleAnimal(destiny, animal_name).getDescription();
+				
+				TextView tx = (TextView)dialog1.findViewById(R.id.animal_info);
+				tx.setText(animal_info);
+				
 				View vi = null;
 				if(!ambient.contains("air")){
 					vi = dialog1.findViewById(R.id.airLayout);
@@ -178,7 +182,7 @@ public class AnimalPresentationActivity extends MyActivity {
     }
 	
 	public void setAnimalInfo(){
-		
+				
 		if(animal_name.equals("okapi") || animal_name.equals("proboscis")){
 			animal_info="Hola soy un okapi.\nSoy pariente de las jirafas.\nSoy vegetariano, me alimento de frutas y hojas";
 			if(animal_name.equals("proboscis"))
@@ -198,7 +202,6 @@ public class AnimalPresentationActivity extends MyActivity {
     public void onBackPressed(){
     	super.onBackPressed();
     	Intent i = null;
-    	Log.i("destiny", destiny+"");
     	if(destiny == 0){
     		i=new Intent(this,PresentationActivity.class);
     	}
