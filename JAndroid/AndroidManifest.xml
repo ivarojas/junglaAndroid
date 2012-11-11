@@ -90,11 +90,6 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".NewChallengeActivity"
-            android:label="@string/title_activity_new_challenge" 
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
             android:name=".FeedingActivity"
             android:label="@string/title_activity_new_challenge" 
             android:screenOrientation="portrait" >
