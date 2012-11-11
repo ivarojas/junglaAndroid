@@ -18,25 +18,10 @@ import drag_framework.DragController;
 import drag_framework.DragLayer;
 import drag_framework.DropSpot;
 
-/**
- * This activity presents a screen on which images can be added and moved around.
- * It also defines areas on the screen where the dragged views can be dropped. Feedback is
- * provided to the user as the objects are dragged over these drop zones.
- *
- * <p> Like the DragActivity in the previous version of the DragView example application, the
- * code here is derived from the Android Launcher code.
- * 
- */
-
 	public class ChooseAnimalsJungleActivity extends MyActivity 
 	    implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 	{
-	
-	
-	/**
-	 */
-	// Variables
-	
+		
 	private DragController mDragController;   // Object that sends out drag-drop events while a view is being moved.
 	private DragLayer mDragLayer;             // The ViewGroup that supports drag-drop.
 	private boolean mLongClickStartsDrag = false;    // If true, it takes a long click to start the drag operation.
@@ -45,18 +30,7 @@ import drag_framework.DropSpot;
 	public static final boolean Debugging = false;
 	private static int success = 0;
 	Dialog dialog;
-	
-	/**
-	 */
-	// Methods
-	
-	/**
-	 * onCreate - called when the activity is first created.
-	 * 
-	 * Creates a drag controller and sets up three views so click and long click on the views are sent to this activity.
-	 * The onLongClick method starts a drag sequence.
-	 *
-	 */
+
 	
 	 public void onCreate(Bundle savedInstanceState) 
 	{
@@ -194,9 +168,6 @@ import drag_framework.DropSpot;
 	
 	public boolean startDrag (View v)
 	{
-	    // Let the DragController initiate a drag-drop sequence.
-	    // I use the dragInfo to pass along the object being dragged.
-	    // I'm not sure how the Launcher designers do this.
 	    Object dragInfo = v;
 	    
 	    mDragController.startDrag (v, mDragLayer, dragInfo, DragController.DRAG_ACTION_MOVE);
@@ -246,11 +217,7 @@ import drag_framework.DropSpot;
 	    i6.setOnClickListener(this);
 	    i6.setOnLongClickListener(this);
 	    i6.setOnTouchListener(this);
-	
-	    // Set up some drop targets and enable them by connecting them to the drag layer
-	    // and the drag controller.
-	    // Note: If the dragLayer is not set, the drop spot will not accept drops.
-	    // That is the initial state of the second drop spot.
+
 	    DropSpot drop1 = (DropSpot) mDragLayer.findViewById (R.id.drop_spot1);
 	
 	    DropSpot drop2 = (DropSpot) mDragLayer.findViewById (R.id.drop_spot2);
@@ -264,27 +231,14 @@ import drag_framework.DropSpot;
 	    DropSpot drop6 = (DropSpot) mDragLayer.findViewById (R.id.drop_spot6);
 	    
 	    DropSpot drop_center = (DropSpot) mDragLayer.findViewById (R.id.drop_spot_center);
-	    drop_center.setup (mDragLayer, dragController, R.drawable.drag_here,this);
-	
-	    
+	    drop_center.setup (mDragLayer, dragController, R.drawable.drag_here,this);	    
 	
 	    drop1.setup (null, dragController, R.color.drop_target_disabled,this);
 	    drop2.setup (null, dragController, R.color.drop_target_disabled,this);
 	    drop3.setup (null, dragController, R.color.drop_target_disabled,this);
 	    drop4.setup (null, dragController, R.color.drop_target_disabled,this);
 	    drop5.setup (null, dragController, R.color.drop_target_disabled,this);
-	    drop6.setup (null, dragController, R.color.drop_target_disabled,this);
-		
-	    // Note: It might be interesting to allow the drop spots to be movable too.
-	    // Unfortunately, in the current implementation, that does not work
-	    // because the parent view of the DropTarget objects is not the drag layer.
-	    // The current DragLayer.onDrop method makes assumptions about how to reposition a dropped view.
-	
-	    // Give the user a little guidance.
-//	    String message = mLongClickStartsDrag ? "Press and hold to start dragging." 
-//	                                          : "Toca un animal para arrastrarlo.";
-//	    Toast.makeText (getApplicationContext(), message, Toast.LENGTH_LONG).show ();
-	
+	    drop6.setup (null, dragController, R.color.drop_target_disabled,this);	
 	}
 	
 	@Override
