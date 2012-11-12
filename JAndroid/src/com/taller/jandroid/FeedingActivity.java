@@ -63,8 +63,8 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 		dialog.setContentView(R.layout.activity_choose_dialog);
 		
 		float d = this.getResources().getDisplayMetrics().density;
-		((TextView)dialog.findViewById(R.id.textView1)).setLayoutParams(new LinearLayout.LayoutParams((int)(100*d),LayoutParams.WRAP_CONTENT));
-		((TextView)dialog.findViewById(R.id.textView1)).setText("");
+		((TextView)dialog.findViewById(R.id.text_dialog)).setLayoutParams(new LinearLayout.LayoutParams((int)(100*d),LayoutParams.WRAP_CONTENT));
+		((TextView)dialog.findViewById(R.id.text_dialog)).setText("");
 		((ImageView)dialog.findViewById(R.id.image)).setBackgroundDrawable(decodeDrawable((R.drawable.drag_here_feed_instructions)));
 		dialog.setTitle("Dale alimentos al animal");
 		Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);

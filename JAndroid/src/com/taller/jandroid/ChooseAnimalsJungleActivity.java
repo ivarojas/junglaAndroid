@@ -61,13 +61,6 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 		setupViews();
 		setAnimalsOptions();
 
-		TextView tx = (TextView)findViewById(R.id.text_question);
-
-		if(destiny == app.CONGO)
-			tx.setText("¿Cuáles de estos animales viven en la jungla del Congo?");
-		else
-			tx.setText("¿Cuáles de estos animales viven en la jungla de Borneo?");
-
 		ImageButton next = (ImageButton)findViewById(R.id.nextButton_choose);
 		next.setVisibility(View.INVISIBLE);
 
@@ -78,7 +71,18 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 		dialog.setTitle("Instrucciones:");
 
 		success = 0;
-
+		
+		TextView tx = (TextView)findViewById(R.id.text_question);
+		TextView txd = (TextView)dialog.findViewById(R.id.text_dialog);
+		
+		if(destiny == app.CONGO){
+			tx.setText("¿Cuáles de estos animales viven en la jungla del Congo?");
+			txd.setText("Encuentra los animales que viven en la jungla del Congo");
+		}
+		else{
+			tx.setText("¿Cuáles de estos animales viven en la jungla de Borneo?");
+			txd.setText("Encuentra los animales que viven en la jungla del Borneo");
+		}
 
 		Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
 		// if button is clicked, close the custom dialog
@@ -92,41 +96,25 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 		right_answers = new ArrayList<Integer>();
 		right_answers_ids = new ArrayList<Integer>();
 		
-//		images_ids[0] = R.id.animal1;
-//		images_ids[1] = R.id.animal2;
-//		images_ids[2] = R.id.animal3;
-//		images_ids[3] = R.id.animal4;
-//		images_ids[4] = R.id.animal5;
-//		images_ids[5] = R.id.animal6;
-//
-//		List<Integer> possible_answers = new ArrayList<Integer>();
-//		possible_answers.add(new Integer(1));
-//		possible_answers.add(new Integer(2));
-//		possible_answers.add(new Integer(3));
-//		possible_answers.add(new Integer(4));
-//		possible_answers.add(new Integer(5));
-//		possible_answers.add(new Integer(6));
-//		
-//		// random amount of right_answers
-//		int k = 0;
-//		k = (3 + (int)(Math.random() * ((possible_answers.size() - 1 - 3) + 1)));
-//		int j = 0;
-//		for(int i = 0; i < k; i++){
-//			j = (0 + (int)(Math.random() * ((possible_answers.size() - 1 - 0) + 1)));
-//			right_answers.add(possible_answers.get(j));
-//			possible_answers.remove(j);
-//		}
+		images_ids[0] = R.id.animal1;
+		images_ids[1] = R.id.animal2;
+		images_ids[2] = R.id.animal3;
+		images_ids[3] = R.id.animal4;
+		images_ids[4] = R.id.animal5;
+		images_ids[5] = R.id.animal6;
 		
 		// random amount of right_answers
 		int k = 0;
 		k = (2 + (int)(Math.random() * ((5 - 2) + 1)));
 		
 		Jungle app = (Jungle)getApplicationContext();
-		right_answers = app.getRandomRange(1, 6, k);
+		right_answers = app.getRandomRange(0, 5, k);
 		
 		
 		List<String> random_right_animals = new ArrayList<String>();
 		List<String> random_wrong_animals = new ArrayList<String>();
+		List<String> random_wrong_animals1 = new ArrayList<String>();
+		List<String> random_wrong_animals2 = new ArrayList<String>();
 		
 		
 		int wrong_animals = 6 - k;
@@ -140,27 +128,30 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 		}
 		else{
 			random_right_animals = animSet.getAnimalsRandom("borneo", k, false);
-			random_wrong_animals  = animSet.getAnimalsRandom("borneo", wrong_animals_1, false);
+			random_wrong_animals1  = animSet.getAnimalsRandom("congo", wrong_animals_1, false);
 		}
 		
-		random_wrong_animals.addAll(animSet.getAnimalsRandom("extra", wrong_animals_2, false));
+		random_wrong_animals2 = animSet.getAnimalsRandom("extra", wrong_animals_2, false);
+		
+		random_wrong_animals.addAll(random_wrong_animals1);
+		random_wrong_animals.addAll(random_wrong_animals2);
 		
 		ImageView img = null;
 		int img_id = 0;
-		for(int i = 0; i < k; i++){
-			img = (ImageView) findViewById(images_ids[i]);
-			img_id = animSet.getDrawableAnimalId(random_right_animals.get(i));
+		int n = 0;
+		for(Integer i: right_answers){
+			img = (ImageView)findViewById(images_ids[i]);
+			img_id = animSet.getDrawableAnimalId(random_right_animals.get(n++));
 			img.setImageDrawable(decodeDrawable(img_id));
 			right_answers_ids.add(new Integer(images_ids[i]));
 		}
 
-		
+		n = 0;
 		for(int i = 0; i < 6; i++){
 			if(!right_answers.contains(new Integer(i))){
-				ImageView answer_image = (ImageView)findViewById(images_ids[i]);
-				img_id = animSet.getDrawableAnimalId(random_right_animals.get(i));
+				img = (ImageView)findViewById(images_ids[i]);
+				img_id = animSet.getDrawableAnimalId(random_wrong_animals.get(n++));
 				img.setImageDrawable(decodeDrawable(img_id));
-				k++;
 			}
 		}
 		
