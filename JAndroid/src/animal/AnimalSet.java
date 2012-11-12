@@ -26,7 +26,8 @@ public class AnimalSet {
 			animals = getAnimalsCongo(sound);
 		else if(key.equals("borneo"))
 			animals = getAnimalsBorneo(sound);
-		
+		else 
+			animals = getAnimalsExtra();
 		List<String> animal_random = new ArrayList<String>();
 		List<Integer> number_random = new ArrayList<Integer>();
 		
@@ -98,6 +99,14 @@ public class AnimalSet {
 			animals.add("rhino");
 			animals.add("hornbill");
 		}
+		return animals;
+	}
+	
+	public List<String> getAnimalsExtra(){
+		List<String> animals = new ArrayList<String>();
+		animals.add("penguin");
+		animals.add("whale");
+		animals.add("dog");
 		return animals;
 	}
 }
