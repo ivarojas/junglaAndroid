@@ -81,7 +81,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 		}
 		else{
 			tx.setText("¿Cuáles de estos animales viven en la jungla de Borneo?");
-			txd.setText("Encuentra los animales que viven en la jungla del Borneo");
+			txd.setText("Encuentra los animales que viven en la jungla de Borneo");
 		}
 
 		Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
