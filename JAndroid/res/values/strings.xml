@@ -1,5 +1,4 @@
 <resources>
-
     <string name="app_name">La Jungla</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
@@ -10,6 +9,13 @@
     <string name="title_activity_choose_animals_jungle">ChooseAnimalsJungleActivity</string>
     <string name="title_activity_say_goodbye">SayGoodbyeActivity</string>
     <string name="bye">Este el fin del viaje. Ven conmigo a una nueva aventura!!</string>
-    <string name="title_activity_new_challenge">NewChallengeActivity</string>
-
+    <string name="title_activity_translate_plane">TranslatePlane</string>
+    <string name="title_activity_arriving_jungle">ArrivingJungle</string>
+    <string name="title_activity_shadow">ShadowActivity</string>
+    <string name="title_activity_presentation">PresentationActivity</string>
+    <string name="title_activity_animal_presentation">AnimalPresentationActivity</string>
+	<string name="title_activity_presentation_borneo">PresentationBorneoActivity</string>
+	<string name="title_activity_sound">SoundActivity</string>
+	<string name="title_activity_split_animal">SplitAnimalActivity</string>
+	<string name="title_activity_feeding">FeedingActivity</string>
 </resources>

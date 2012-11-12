@@ -20,7 +20,6 @@ import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import animal.AnimalSet;
 
 public class SoundActivity extends MyActivity{
@@ -100,14 +99,10 @@ public class SoundActivity extends MyActivity{
     			media_player2.stop();
     		media_player = MediaPlayer.create(SoundActivity.this, R.raw.tada);
     		media_player.start();
-//    		Intent intent = new Intent(this, AnimalInformationActivity.class);
-//    		intent.putExtra("animal", "gorilla");
     		Intent intent = new Intent(this, SplitAnimalActivity.class);
-    		media_player.stop();
             startActivity(intent);
             finish();
     	}else{
-    		// show it
     		if(media_player!=null && media_player.isPlaying())
     			media_player.stop();
     		media_player = MediaPlayer.create(SoundActivity.this, R.raw.failbeep);
@@ -150,7 +145,7 @@ public class SoundActivity extends MyActivity{
 		media_player2 = MediaPlayer.create(SoundActivity.this, this.animal_set.getSoundAnimalId(this.correct_answer));
 		//media_player.setLooping(true);
 		media_player2.start();
-		this.sound.setOnClickListener(new OnClickListener() {
+		SoundActivity.sound.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
             	if(media_player!=null && media_player.isPlaying())
             		media_player.stop();
@@ -186,7 +181,6 @@ public class SoundActivity extends MyActivity{
 	
 	@Override
 	public void verifyChoice(View v) {
-		// TODO Auto-generated method stub
 		
 	}
 	

@@ -10,7 +10,6 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
@@ -66,8 +65,8 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 		float d = this.getResources().getDisplayMetrics().density;
 		((TextView)dialog.findViewById(R.id.textView1)).setLayoutParams(new LinearLayout.LayoutParams((int)(100*d),LayoutParams.WRAP_CONTENT));
 		((TextView)dialog.findViewById(R.id.textView1)).setText("");
-		((ImageView)dialog.findViewById(R.id.image)).setBackgroundResource(R.drawable.drag_here_feed_instructions);
-		dialog.setTitle("Dale 3 alimentos al animal");
+		((ImageView)dialog.findViewById(R.id.image)).setBackgroundDrawable(decodeDrawable((R.drawable.drag_here_feed_instructions)));
+		dialog.setTitle("Dale alimentos al animal");
 		Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
 
 		success = 0;
@@ -98,9 +97,6 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 		for(int right_answer : right_answers)
 			right_answers_ids.add(images_ids[right_answer]);
 		
-		Log.i("size", size + "");
-		Log.i("comidas correctas", right_foods_ids.toString());
-		Log.i("respuestas correctas", right_answers.toString());
 		int i;
 		for(i = 0; i < size; i++){
 			answer_image = (ImageView)findViewById(images_ids[right_answers.get(i)]);
@@ -108,13 +104,11 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 		}
 		
 		//wrong answers
-		Log.i("comidas incorrectas", wrong_foods_ids.toString());
 		int k = 0;
 		for(i = 0; i < 6; i++){
 			if(!right_answers.contains(new Integer(i))){
 				answer_image = (ImageView)findViewById(images_ids[i]);
 				answer_image.setImageDrawable(decodeDrawable(wrong_foods_ids.get(k)));
-//				answer_image.setImageResource(R.drawable.arrow_next);
 				k++;
 			}
 		}
