@@ -182,8 +182,8 @@ public class Jungle extends Application{
 	@SuppressLint("UseValueOf")
 	public List<Integer> getRandomFoodIds(List<String> foods, int amount){
 		List<Integer> food_ids = new ArrayList<Integer>();
-		List<Integer> number_random = new ArrayList<Integer>();
-		int size = foods.size();
+		//List<Integer> number_random = new ArrayList<Integer>();
+		/*int size = foods.size();
 		for(int i = 0, n; i<amount; i++){
 			n = (int)(Math.random() * size);
 			while(number_random.contains(new Integer(n))){
@@ -192,6 +192,13 @@ public class Jungle extends Application{
 			
 			number_random.add(new Integer(n));
 			food_ids.add(getFoodImageId(foods.get(n)));
+		}*/
+		List<Integer> random_numbers = getRandomRange(0,foods.size()-1,amount);
+		int size = random_numbers.size();
+		int k;
+		for(int i = 0; i < size; i++){
+			k = random_numbers.get(i);
+			food_ids.add(getFoodImageId(foods.get(k)));
 		}
 		
 		return food_ids;
