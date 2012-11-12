@@ -204,4 +204,22 @@ public class Jungle extends Application{
 	public void setDestiny(int destiny) {
 		this.destiny = destiny;
 	}
+	
+	public List<Integer> getRandomRange(int min, int max, int amount){
+		List<Integer> numbers = new ArrayList<Integer>();
+		List<Integer> random_numbers = new ArrayList<Integer>();
+		int size = max - min + 1;
+		
+		for(int i = min; i <= max; i++)
+			numbers.add(i);
+		
+		for(int i = 0, n; i<amount; i++){
+			n = (int)(Math.random() * size);
+			random_numbers.add(numbers.get(n));
+			numbers.remove(n);
+			size = numbers.size();
+		}
+		
+		return random_numbers;
+	}
 }
