@@ -92,7 +92,8 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 		
 		//right answers
 		int size = right_foods_ids.size();
-		right_answers = getRightAnswers(size);
+		Jungle app = (Jungle)getApplicationContext();
+		right_answers = app.getRandomRange(0, 5, size);
 		right_answers_ids = new ArrayList<Integer>();
 		for(int right_answer : right_answers)
 			right_answers_ids.add(images_ids[right_answer]);
@@ -274,23 +275,5 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 		super.onBackPressed();
         Intent i = new Intent(this,ShadowActivity.class);
         startActivity(i);    	
-    }
-	
-	@SuppressLint({ "UseValueOf", "UseValueOf" })
-	public List<Integer> getRightAnswers(int amount){
-		List<Integer> random_numbers = new ArrayList<Integer>();
-		
-		int n;
-		for(int i = 0; i < amount; i++){
-			n = (int)(0 + (int)(Math.random() * ((5 - 1) + 1)));
-			while(random_numbers.contains(new Integer(n))){
-				n = (int)(0 + (int)(Math.random() * ((5 - 1) + 1)));	
-			}
-			
-			random_numbers.add(new Integer(n));
-		}
-		
-		return random_numbers;
-	} 
-	
+    }	
 }
