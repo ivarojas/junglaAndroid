@@ -229,4 +229,28 @@ public class Jungle extends Application{
 		
 		return random_numbers;
 	}
+	
+	@SuppressLint("UseValueOf")
+	public List<Animal> getAnimalsRandom(int ambient, int amount){
+		List<Animal> animals = getAnimalsByAmbient(ambient);
+		
+		List<Animal> random_animals = new ArrayList<Animal>();
+		
+		if(amount > animals.size() || amount <= 0){
+			return animals;  
+		}
+		List<Integer> numbers = getRandomRange(0, random_animals.size()-1, amount);
+		
+		int size = numbers.size();
+		for(int i = 0; i < size; i++){
+			random_animals.add(animals.get(i));
+		}
+		
+		return random_animals;
+	}
+
+	public int getImageId(String prefix, String animal_name, String suffix) {
+		Context context = getApplicationContext();
+		return context.getResources().getIdentifier(prefix + animal_name + suffix, "drawable", context.getPackageName());
+	}
 }

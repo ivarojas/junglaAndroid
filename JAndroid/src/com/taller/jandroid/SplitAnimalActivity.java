@@ -1,7 +1,10 @@
 package com.taller.jandroid;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
+
+import persistance.Jungle;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -22,21 +25,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.widget.ViewSwitcher.ViewFactory;
+import animal.Animal;
 
 
 public class SplitAnimalActivity extends MyActivity implements ViewFactory, View.OnClickListener {
 
-    private Integer[] mImageUpIds = {
-            R.drawable.split_chimpanzee_up,
-            R.drawable.split_zebra_up,
-            R.drawable.split_hippo_up,
-    };
-    
-    private Integer[] mImageDownIds = {
-            R.drawable.split_gorilla_down, 
-            R.drawable.split_elephant_down,
-            R.drawable.split_chimpanzee_down,
-    };
+    private List<Integer> animals_ids_up;
+    private List<Integer> animals_ids_down;
 
     ImageSwitcher iSwitcherUp;
 	ImageSwitcher iSwitcherDown;
@@ -69,8 +64,8 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
 		iSwitcherDown = (ImageSwitcher) findViewById(R.id.imageSwitcherDown);
 		iSwitcherDown.setFactory(this);
 		
-		iSwitcherUp.setImageResource(mImageUpIds[0]);
-		iSwitcherDown.setImageResource(mImageDownIds[0]);
+		iSwitcherUp.setImageResource(animals_ids_up.get(0));
+		iSwitcherDown.setImageResource(animals_ids_down.get(0));
 
 		next = (ImageButton)findViewById(R.id.nextButton_split);
 		next.setVisibility(View.INVISIBLE);
@@ -113,7 +108,7 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     public void setPositionUpNext()
     {
     	positionUp++;
-    	if(positionUp > mImageUpIds.length -1)
+    	if(positionUp > animals_ids_up.size() -1)
     	{
     		positionUp = 0;
     	}
@@ -124,14 +119,14 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     	positionUp--;
     	if(positionUp < 0)
     	{
-    		positionUp = mImageUpIds.length - 1;
+    		positionUp = animals_ids_up.size() - 1;
     	} 	
     }
     
     public void setPositionDownNext()
     {
     	positionDown++;
-    	if(positionDown > mImageDownIds.length -1)
+    	if(positionDown > animals_ids_down.size() -1)
     	{
     		positionDown = 0;
     	}
@@ -142,7 +137,7 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     	positionDown--;
     	if(positionDown < 0)
     	{
-    		positionDown = mImageDownIds.length - 1;
+    		positionDown = animals_ids_down.size() - 1;
     	} 	
     }
     
@@ -165,7 +160,7 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     			   iSwitcherUp.setOutAnimation(AnimationUtils.loadAnimation(SplitAnimalActivity.this,
     						android.R.anim.slide_out_right));
     			   setPositionUpNext();
-    			   iSwitcherUp.setImageResource(mImageUpIds[positionUp]);
+    			   iSwitcherUp.setImageResource(animals_ids_up.get(positionUp));
     			   //Toast.makeText(SplitedAnimalActivity.this, "Your selected position = " + getResources().getResourceName(mImageIds[position]), Toast.LENGTH_SHORT).show();
     			}    
     	});  
@@ -179,7 +174,7 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
         				R.anim.slide_out_left));
             	
             	setPositionUpPrev();
-            	iSwitcherUp.setImageResource(mImageUpIds[positionUp]);
+            	iSwitcherUp.setImageResource(animals_ids_up.get(positionUp));
             	//Toast.makeText(SplitedAnimalActivity.this, "Your selected position = " + getResources().getResourceName(mImageIds[position]), Toast.LENGTH_SHORT).show();
             }
         });
@@ -192,7 +187,7 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     			   iSwitcherDown.setOutAnimation(AnimationUtils.loadAnimation(SplitAnimalActivity.this,
     						android.R.anim.slide_out_right));
     			   setPositionDownNext();
-    			   iSwitcherDown.setImageResource(mImageDownIds[positionDown]); 
+    			   iSwitcherDown.setImageResource(animals_ids_down.get(positionDown)); 
     			   //Toast.makeText(SplitedAnimalActivity.this, "Your selected position = " + getResources().getResourceName(mImageIds[position]), Toast.LENGTH_SHORT).show();
     		   }    
     	});  
@@ -206,7 +201,7 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
         				R.anim.slide_out_left));
             	
             	setPositionDownPrev();
-            	iSwitcherDown.setImageResource(mImageDownIds[positionDown]);
+            	iSwitcherDown.setImageResource(animals_ids_down.get(positionDown));
             	//Toast.makeText(SplitedAnimalActivity.this, "Your selected position = " + getResources().getResourceName(mImageIds[position]), Toast.LENGTH_SHORT).show();
             }
         });
@@ -261,7 +256,7 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     	HorizontalScrollView scrollView = (HorizontalScrollView) findViewById(R.id.horizontalScrollView1);
     	LinearLayout topLinearLayout = (LinearLayout) scrollView.getChildAt(0);
     	final ImageView imageView = new ImageView (this);
-        imageView.setImageResource(mImageUpIds[positionUp]);
+        imageView.setImageResource(animals_ids_up.get(positionUp));
         topLinearLayout.addView(imageView);
     }
 
@@ -273,5 +268,36 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
 	@Override
 	public void verifyChoice(View v) {
 
+	}
+	
+	public void setSplitAnimals(){
+		Jungle jungle = (Jungle) getApplication();
+		
+		List<Animal> random_animals = jungle.getAnimalsRandom(jungle.CONGO, 5);
+		List<Integer> positions_up = jungle.getRandomRange(0, 4, 5);
+		List<Integer> positions_down = jungle.getRandomRange(0, 4, 5);
+		
+		List<Integer> animals_ids_up = new ArrayList<Integer>(); 
+		List<Integer> animals_ids_down = new ArrayList<Integer>();
+		Hashtable<Integer,String> hash_ids_names = new Hashtable<Integer,String>();
+		
+		int k, image_id;
+		String animal_name;
+		int size = positions_up.size();
+		for(int i = 0; i < size; i++){
+			k = positions_up.get(i);
+			animal_name = random_animals.get(k).getName();
+			image_id = jungle.getImageId("split_", animal_name, "_up");
+			animals_ids_up.add(image_id);
+			hash_ids_names.put(image_id, animal_name);
+		}
+		
+		for(int i = 0; i < size; i++){
+			k = positions_down.get(i);
+			animal_name = random_animals.get(k).getName();
+			image_id = jungle.getImageId("split_", animal_name, "_up");
+			animals_ids_down.add(image_id);
+			hash_ids_names.put(image_id, animal_name);
+		}
 	}
 }
