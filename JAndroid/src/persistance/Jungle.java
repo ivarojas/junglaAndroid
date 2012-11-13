@@ -239,7 +239,7 @@ public class Jungle extends Application{
 		if(amount > animals.size() || amount <= 0){
 			return animals;  
 		}
-		List<Integer> numbers = getRandomRange(0, random_animals.size()-1, amount);
+		List<Integer> numbers = getRandomRange(0, animals.size()-1, amount);
 		
 		int size = numbers.size();
 		for(int i = 0; i < size; i++){

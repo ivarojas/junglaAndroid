@@ -168,16 +168,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="20dp">
+        android:paddingTop="10dp">
         <LinearLayout 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="90dp"
+            android:paddingLeft="100dp"
             android:orientation="horizontal">	
 			<drag_framework.DropSpot
 			    android:id="@+id/drop_spot_center"
-			    android:layout_width="150dp"
-			    android:layout_height="150dp"
+			    android:layout_width="105dp"
+			    android:layout_height="105dp"
+			    android:layout_margin="10dp"
 			    android:background="@drawable/drag_here" >
 			</drag_framework.DropSpot>
 			<ImageButton
@@ -185,11 +186,12 @@
 		        android:layout_width="60dp"
 		        android:layout_height="60dp"
 		        android:layout_gravity="center_vertical"
+		        android:layout_margin="10dp"
 		        android:background="@android:color/transparent"
 		        android:scaleType="fitCenter"
 		        android:src="@drawable/arrow_next" />
 		</LinearLayout>
-		<TextView
+		<myviews.MyTextView
 	   	    android:id="@+id/text_question"
 	   	    android:layout_width="wrap_content"
 	   	    android:layout_height="wrap_content"
@@ -197,6 +199,7 @@
 	   	    android:text="¿Cuál de estos animales viven en la jungla?"
 	   	    android:textAppearance="?android:attr/textAppearanceMedium"
 	   	    android:textStyle="bold"
-	   	    android:textSize="25dp"/>
+	   	    android:textSize="35dp"
+	   	    android:background="#AAFFFFFF"/>
 	</LinearLayout>		
 </drag_framework.DragLayer>
