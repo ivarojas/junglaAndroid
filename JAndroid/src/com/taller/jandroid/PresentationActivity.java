@@ -1,6 +1,5 @@
 package com.taller.jandroid;
 
-import persistance.Jungle;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -119,7 +118,6 @@ public class PresentationActivity extends MyActivity {
 
 	@Override
 	public void verifyChoice(View v) {
-		// TODO Auto-generated method stub
-		
+
 	}
 }

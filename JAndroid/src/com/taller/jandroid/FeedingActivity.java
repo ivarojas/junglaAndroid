@@ -10,7 +10,6 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
@@ -64,10 +63,10 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 		dialog.setContentView(R.layout.activity_choose_dialog);
 		
 		float d = this.getResources().getDisplayMetrics().density;
-		((TextView)dialog.findViewById(R.id.textView1)).setLayoutParams(new LinearLayout.LayoutParams((int)(100*d),LayoutParams.WRAP_CONTENT));
-		((TextView)dialog.findViewById(R.id.textView1)).setText("");
-		((ImageView)dialog.findViewById(R.id.image)).setBackgroundResource(R.drawable.drag_here_feed_instructions);
-		dialog.setTitle("Dale 3 alimentos al animal");
+		((TextView)dialog.findViewById(R.id.text_dialog)).setLayoutParams(new LinearLayout.LayoutParams((int)(100*d),LayoutParams.WRAP_CONTENT));
+		((TextView)dialog.findViewById(R.id.text_dialog)).setText("");
+		((ImageView)dialog.findViewById(R.id.image)).setBackgroundDrawable(decodeDrawable((R.drawable.drag_here_feed_instructions)));
+		dialog.setTitle("Dale alimentos al animal");
 		Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
 
 		success = 0;
@@ -93,14 +92,12 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 		
 		//right answers
 		int size = right_foods_ids.size();
-		right_answers = getRightAnswers(size);
+		Jungle app = (Jungle)getApplicationContext();
+		right_answers = app.getRandomRange(0, 5, size);
 		right_answers_ids = new ArrayList<Integer>();
 		for(int right_answer : right_answers)
 			right_answers_ids.add(images_ids[right_answer]);
 		
-		Log.i("size", size + "");
-		Log.i("comidas correctas", right_foods_ids.toString());
-		Log.i("respuestas correctas", right_answers.toString());
 		int i;
 		for(i = 0; i < size; i++){
 			answer_image = (ImageView)findViewById(images_ids[right_answers.get(i)]);
@@ -108,13 +105,11 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 		}
 		
 		//wrong answers
-		Log.i("comidas incorrectas", wrong_foods_ids.toString());
 		int k = 0;
 		for(i = 0; i < 6; i++){
 			if(!right_answers.contains(new Integer(i))){
 				answer_image = (ImageView)findViewById(images_ids[i]);
 				answer_image.setImageDrawable(decodeDrawable(wrong_foods_ids.get(k)));
-//				answer_image.setImageResource(R.drawable.arrow_next);
 				k++;
 			}
 		}
@@ -280,23 +275,5 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 		super.onBackPressed();
         Intent i = new Intent(this,ShadowActivity.class);
         startActivity(i);    	
-    }
-	
-	@SuppressLint({ "UseValueOf", "UseValueOf" })
-	public List<Integer> getRightAnswers(int amount){
-		List<Integer> random_numbers = new ArrayList<Integer>();
-		
-		int n;
-		for(int i = 0; i < amount; i++){
-			n = (int)(0 + (int)(Math.random() * ((5 - 1) + 1)));
-			while(random_numbers.contains(new Integer(n))){
-				n = (int)(0 + (int)(Math.random() * ((5 - 1) + 1)));	
-			}
-			
-			random_numbers.add(new Integer(n));
-		}
-		
-		return random_numbers;
-	} 
-	
+    }	
 }
