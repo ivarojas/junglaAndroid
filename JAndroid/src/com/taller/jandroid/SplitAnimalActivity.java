@@ -63,7 +63,9 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
 		
 		iSwitcherDown = (ImageSwitcher) findViewById(R.id.imageSwitcherDown);
 		iSwitcherDown.setFactory(this);
+		
 		this.setSplitAnimals();
+		
 		iSwitcherUp.setImageResource(animals_ids_up.get(0));
 		iSwitcherDown.setImageResource(animals_ids_down.get(0));
 
@@ -273,7 +275,7 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
 	public void setSplitAnimals(){
 		Jungle jungle = (Jungle) getApplicationContext();
 		
-		List<Animal> random_animals = jungle.getAnimalsRandom(jungle.CONGO, 5);
+		List<Animal> random_animals = jungle.getAnimalsRandom(jungle.getDestiny(), 5);
 		List<Integer> positions_up = jungle.getRandomRange(0, 4, 5);
 		List<Integer> positions_down = jungle.getRandomRange(0, 4, 5);
 		
