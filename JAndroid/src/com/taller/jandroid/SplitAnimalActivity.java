@@ -295,7 +295,7 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
 		for(int i = 0; i < size; i++){
 			k = positions_down.get(i);
 			animal_name = random_animals.get(k).getName();
-			image_id = jungle.getImageId("split_", animal_name, "_up");
+			image_id = jungle.getImageId("split_", animal_name, "_down");
 			animals_ids_down.add(image_id);
 			hash_ids_names.put(image_id, animal_name);
 		}
