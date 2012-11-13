@@ -11,9 +11,12 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
@@ -23,6 +26,7 @@ import android.widget.ImageButton;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher.ViewFactory;
 import animal.Animal;
@@ -47,7 +51,11 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
 	Activity activity = this;
 	List<Integer> right_animals = new ArrayList<Integer>();
 
-	private Dialog dialog; 
+	private Dialog dialog;
+	private View toast_layout;
+	private Toast toast;
+	private Jungle jungle;
+	private Hashtable<Integer, String> hash_ids_names; 
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,6 +73,7 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
 		iSwitcherDown.setFactory(this);
 		
 		this.setSplitAnimals();
+		this.setToast();
 		
 		iSwitcherUp.setImageResource(animals_ids_up.get(0));
 		iSwitcherDown.setImageResource(animals_ids_down.get(0));
@@ -233,19 +242,25 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     }
     
     void mixAnimalParts(){
-    	/*if(positionUp == positionDown){
-    		if(!right_animals.contains(new Integer(positionUp))){
-    			right_animals.add(new Integer(positionUp));
-    			addRightImage();
-    			Toast.makeText(SplitAnimalActivity.this, "Bien hecho !!!", Toast.LENGTH_SHORT).show();
-    		}
-    	}*/
-    	if(positionUp == 0 && positionDown == 2){
+    	String animal_up_name = hash_ids_names.get(animals_ids_up.get(positionUp));
+    	String animal_down_name = hash_ids_names.get(animals_ids_down.get(positionDown));
+    	
+    	if(animal_up_name.equals(animal_down_name)){
     		next = (ImageButton)findViewById(R.id.nextButton_split);
     		next.setVisibility(View.VISIBLE);
     		mediaPlayer = MediaPlayer.create(this, R.raw.tada);
     		mediaPlayer.start();
-    		Toast.makeText(SplitAnimalActivity.this, "Bien hecho !!!", Toast.LENGTH_SHORT).show();
+    		//Toast.makeText(SplitAnimalActivity.this, "Bien hecho !!!", Toast.LENGTH_SHORT).show();
+    		
+    		//showing animal and name
+    		ImageView image = (ImageView) toast_layout.findViewById(R.id.animal_image);
+    		String animal_name = hash_ids_names.get(animals_ids_up.get(positionUp));
+    		int image_id = jungle.getImageId("", animal_name, "");
+    		image.setBackgroundDrawable(decodeDrawable(image_id));
+    		TextView text = (TextView) toast_layout.findViewById(R.id.animal_name);
+    		text.setText(animal_name);
+    		toast.setView(toast_layout);
+    		toast.show();
     	}
     	else{
     		mediaPlayer = MediaPlayer.create(this, R.raw.failbeep);
@@ -273,7 +288,7 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
 	}
 	
 	public void setSplitAnimals(){
-		Jungle jungle = (Jungle) getApplicationContext();
+		jungle = (Jungle) getApplicationContext();
 		
 		List<Animal> random_animals = jungle.getAnimalsRandom(jungle.getDestiny(), 5);
 		List<Integer> positions_up = jungle.getRandomRange(0, 4, 5);
@@ -281,7 +296,7 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
 		
 		animals_ids_up = new ArrayList<Integer>(); 
 		animals_ids_down = new ArrayList<Integer>();
-		Hashtable<Integer,String> hash_ids_names = new Hashtable<Integer,String>();
+		hash_ids_names = new Hashtable<Integer,String>();
 		
 		int k, image_id;
 		String animal_name;
@@ -301,5 +316,19 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
 			animals_ids_down.add(image_id);
 			hash_ids_names.put(image_id, animal_name);
 		}
+	}
+	
+	private void setToast(){
+		LayoutInflater inflater = getLayoutInflater();
+		toast_layout = inflater.inflate(
+							R.layout.split_animal_mix,
+		                    (ViewGroup) findViewById(R.id.toast_layout_root));
+
+		TextView text = (TextView) toast_layout.findViewById(R.id.animal_name);
+		text.setText("This is a custom toast");
+
+		toast = new Toast(getApplicationContext());
+		toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+		toast.setDuration(Toast.LENGTH_LONG);
 	}
 }
