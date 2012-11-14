@@ -6,7 +6,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background" >
+    android:background="#000000" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,7 +41,8 @@
                 android:background="#554AFF74"
                 android:text="Creadores"
                 android:gravity="center"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#FFFFFF"  />
 
             <TextView
                 android:id="@+id/authors_content"
@@ -58,7 +59,8 @@
                 android:background="#554AFF74"
                 android:text="Información de animales"
                 android:gravity="center"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#FFFFFF"  />
 			
             <TextView 
                 android:id="@+id/info_content"
@@ -75,7 +77,8 @@
                 android:background="#554AFF74"
                 android:text="Sonidos (libre uso, incluso comercial)"
                 android:gravity="center"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#FFFFFF"  />
 			
             <TextView
                 android:id="@+id/sounds_content"
@@ -92,7 +95,8 @@
                 android:background="#554AFF74"
                 android:text="Imágenes"
                 android:gravity="center"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium" 
+                android:textColor="#FFFFFF" />
             
             <TextView 
                 android:id="@+id/images_content"
@@ -109,7 +113,8 @@
                 android:background="#554AFF74"
                 android:text="Indie (protagonista de aplicación)"
                 android:gravity="center"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#FFFFFF"  />
 			
             <TextView 
                 android:id="@+id/character_content"
@@ -127,7 +132,8 @@
                 android:background="#554AFF74"
                 android:text="Universidad de Chile"
                 android:gravity="center"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#FFFFFF"  />
 	
             <LinearLayout
                 android:layout_width="match_parent"
@@ -190,7 +196,8 @@
                 android:background="#554AFF74"
                 android:text="Google"
                 android:gravity="center"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium" 
+                android:textColor="#FFFFFF" />
     
             <ImageView 
                 android:layout_width="200dp"

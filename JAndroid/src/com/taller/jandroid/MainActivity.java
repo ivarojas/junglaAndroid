@@ -1,12 +1,10 @@
 package com.taller.jandroid;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.util.Linkify;
-import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -16,7 +14,10 @@ import android.widget.TextView;
 
 public class MainActivity extends MyActivity implements OnClickListener{
 	private Dialog dialog;
-	private String infolinks="www.heathwood.org/simpson/quicklinks/animalsoftherainforest/animalmap2.htm\nwww.enchantedlearning.com/subjects/rainforest/animals/Sampling.shtml\nwww.kids.mongabay.com/slideshows/congo-rainforest-tour/\nwww.pbs.org/wnet/africa/explore/rainforest/rainforest_animals_lo.html\nwww.arkive.org/\nwww.a-z-animals.com\nwww.visit50.com/2011/06/borneo-proboscis-monkey-up-close/\nwww.animalstown.com/\nwww.waza.org\nwww.mongabay.com/borneo/borneo_wildlife.html\nwww.telegraph.co.uk/travel/destinations/asia/malaysia/738665/The-jungles-of-Borneo.html\n";
+	private String infolinks="" +
+			"<p><a href='www.heathwood.org/simpson/quicklinks/animalsoftherainforest/animalmap2.htm'>Heathwood.org</a></p>" +
+			"<p><a href='www.enchantedlearning.com/subjects/rainforest/animals/Sampling.shtml'>Enchantedlearning.com</a></p>" +
+			"\nwww.kids.mongabay.com/slideshows/congo-rainforest-tour/\nwww.pbs.org/wnet/africa/explore/rainforest/rainforest_animals_lo.html\nwww.arkive.org/\nwww.a-z-animals.com\nwww.visit50.com/2011/06/borneo-proboscis-monkey-up-close/\nwww.animalstown.com/\nwww.waza.org\nwww.mongabay.com/borneo/borneo_wildlife.html\nwww.telegraph.co.uk/travel/destinations/asia/malaysia/738665/The-jungles-of-Borneo.html\n";
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,8 +42,8 @@ public class MainActivity extends MyActivity implements OnClickListener{
 		Linkify.addLinks(ac, Linkify.ALL);
 		
 		TextView ic=(TextView)dialog.findViewById(R.id.info_content);
-		ic.setText(infolinks);
-		Linkify.addLinks(ic, Linkify.ALL);
+		ic.setText(Html.fromHtml(infolinks));
+//		Linkify.addLinks(ic, Linkify.ALL);
 		ic.append("Microsoft ® Encarta ® 2007. © 1993-2006 Microsoft Corporation. Reservados todos los derechos.\n");
 		
 		TextView sc=(TextView)dialog.findViewById(R.id.sounds_content);
