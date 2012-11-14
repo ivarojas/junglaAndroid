@@ -1,16 +1,24 @@
 package com.taller.jandroid;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.util.Linkify;
+import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends MyActivity implements OnClickListener{
+	private Dialog dialog;
+	private String infolinks="www.heathwood.org/simpson/quicklinks/animalsoftherainforest/animalmap2.htm\nwww.enchantedlearning.com/subjects/rainforest/animals/Sampling.shtml\nwww.kids.mongabay.com/slideshows/congo-rainforest-tour/\nwww.pbs.org/wnet/africa/explore/rainforest/rainforest_animals_lo.html\nwww.arkive.org/\nwww.a-z-animals.com\nwww.visit50.com/2011/06/borneo-proboscis-monkey-up-close/\nwww.animalstown.com/\nwww.waza.org\nwww.mongabay.com/borneo/borneo_wildlife.html\nwww.telegraph.co.uk/travel/destinations/asia/malaysia/738665/The-jungles-of-Borneo.html\n";
 	
-    @Override
+	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -21,9 +29,38 @@ public class MainActivity extends MyActivity implements OnClickListener{
         
         Button start = (Button)findViewById(R.id.start);
         Button exit = (Button)findViewById(R.id.exit);
+        Button credits= (Button)findViewById(R.id.credits);
         
+        dialog=new Dialog(this);
+		dialog.setContentView(R.layout.credits);
+		Button closeButton = (Button) dialog.findViewById(R.id.closeButton);
+		
+		
+		TextView ac=(TextView)dialog.findViewById(R.id.authors_content);
+		ac.setText("Brahim Usen (busenmo@gmail.com)\nIván Rojas (ivanrohe@gmail.com)\nVíctor Rojas (vitorohe@gmail.com)");
+		Linkify.addLinks(ac, Linkify.ALL);
+		
+		TextView ic=(TextView)dialog.findViewById(R.id.info_content);
+		ic.setText(infolinks);
+		Linkify.addLinks(ic, Linkify.ALL);
+		ic.append("Microsoft ® Encarta ® 2007. © 1993-2006 Microsoft Corporation. Reservados todos los derechos.\n");
+		
+		TextView sc=(TextView)dialog.findViewById(R.id.sounds_content);
+		sc.setText("www.freesound.org\nwww.findsounds.com\nwww.freeinfosociety.com/media_index.php?cat=20&type=3");
+		Linkify.addLinks(sc, Linkify.ALL);
+		
+		TextView imc=(TextView)dialog.findViewById(R.id.images_content);
+		imc.setText("Animales y avión: Noemí Rojas H. (noemirohe@gmail.com)\nFondo: www.vectorjungle.com\n(libre uso, incluso comercial)\nOtras imágenes: insectos, frutas, etc.\n(libre uso, incluso comercial)\n");
+		Linkify.addLinks(imc, Linkify.ALL);
+		
+		TextView cc=(TextView)dialog.findViewById(R.id.character_content);
+		cc.setText("Creadora:\nwww.misscoffee.deviantart.com\nwww.etsy.com/shop/michellecoffee\nwww.michelle-coffee.tumblr.com/");
+		Linkify.addLinks(cc, Linkify.ALL);
+		
         start.setOnClickListener(this);
         exit.setOnClickListener(this);
+        credits.setOnClickListener(this);
+        closeButton.setOnClickListener(this);
     }
     
 	public void onClick(View arg0) {
@@ -35,6 +72,12 @@ public class MainActivity extends MyActivity implements OnClickListener{
 	    	break;
 		case R.id.exit: 
 			android.os.Process.killProcess(android.os.Process.myPid()); 
+			break;
+		case R.id.credits:
+			dialog.show();
+			break;
+		case R.id.closeButton:
+			dialog.dismiss();
 			break;
 		}
 		

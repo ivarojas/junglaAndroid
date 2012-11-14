@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#334AFF74"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="center_horizontal"
+                android:background="#EE38C93B"
+                android:text="Agradecimientos y Fuentes"
+                android:gravity="center"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/authors_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:background="#554AFF74"
+                android:text="Creadores"
+                android:gravity="center"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/authors_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/info_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="28dp"
+                android:background="#554AFF74"
+                android:text="Información de animales"
+                android:gravity="center"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+			
+            <TextView 
+                android:id="@+id/info_content"
+			    android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+				android:textAppearance="?android:attr/textAppearanceSmall"
+				android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/sounds_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="46dp"
+                android:background="#554AFF74"
+                android:text="Sonidos (libre uso, incluso comercial)"
+                android:gravity="center"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+			
+            <TextView
+                android:id="@+id/sounds_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#FFFFFF" />
+            
+            <TextView
+                android:id="@+id/images_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="22dp"
+                android:background="#554AFF74"
+                android:text="Imágenes"
+                android:gravity="center"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+            
+            <TextView 
+                android:id="@+id/images_content"
+			    android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+				android:textAppearance="?android:attr/textAppearanceSmall"
+				android:textColor="#FFFFFF" />
+            
+            <TextView
+                android:id="@+id/character_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="37dp"
+                android:background="#554AFF74"
+                android:text="Indie (protagonista de aplicación)"
+                android:gravity="center"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+			
+            <TextView 
+                android:id="@+id/character_content"
+			    android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+				android:textAppearance="?android:attr/textAppearanceSmall"
+				android:textColor="#FFFFFF" />
+            
+            
+            <TextView
+                android:id="@+id/dcc_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="41dp"
+                android:background="#554AFF74"
+                android:text="Universidad de Chile"
+                android:gravity="center"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+	
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+                
+                <LinearLayout
+                    android:layout_width="162dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:orientation="vertical" >
+                	
+                    <ImageView 
+	                    android:layout_width="120dp"
+			        	android:layout_height="80dp"
+			        	android:layout_margin="5dp"
+			        	android:background="@drawable/logo_dcc" />
+                
+                    <TextView 
+	                    android:id="@+id/dcc_logo_content"
+					    android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:text="CC4010 Taller de Proyectos de Programación Android"
+				        android:textAppearance="?android:attr/textAppearanceSmall"
+				        android:textColor="#FFFFFF" />
+	             
+                </LinearLayout>
+            
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                	android:layout_height="wrap_content"
+                	android:orientation="vertical"
+                	android:layout_gravity="right" >
+		            
+		            <TextView 
+		                android:id="@+id/dcc_profe_content"
+					    android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:layout_gravity="center"
+						android:textAppearance="?android:attr/textAppearanceSmall"
+						android:text="Profesor:\nJeremy Barbay"
+						android:textColor="#FFFFFF" />
+		            
+		            <ImageView 
+		                android:layout_width="80dp"
+			        	android:layout_height="80dp"
+			        	android:layout_margin="5dp"
+			        	android:background="@drawable/profe"
+			        	android:layout_gravity="center" />
+		          </LinearLayout>
+		                        
+            </LinearLayout>
+            
+            
+            <TextView
+                android:id="@+id/dcc_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="41dp"
+                android:background="#554AFF74"
+                android:text="Google"
+                android:gravity="center"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+            <ImageView 
+                android:layout_width="200dp"
+	        	android:layout_height="60dp"
+	        	android:layout_margin="5dp"
+	        	android:background="@drawable/logo_cursorlab"
+	        	android:layout_gravity="center" />
+	        
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/closeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="OK" />
+        
+        </LinearLayout>
+        
+</RelativeLayout>
+
+</ScrollView>
