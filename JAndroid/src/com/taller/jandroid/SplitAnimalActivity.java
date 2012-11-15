@@ -223,13 +223,15 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     	next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	toast_layout.setVisibility(View.INVISIBLE);
-            	Intent nextIntent = new Intent(SplitAnimalActivity.this, ChooseAnimalsJungleActivity.class);
+            	Intent nextIntent = new Intent(SplitAnimalActivity.this, SoundActivity.class);
             	startActivity(nextIntent);
             	finish();
             }
         });
     	
     	mix = (Button) findViewById(R.id.buttonMix);
+    	Typeface font = Typeface.createFromAsset(getAssets(), "fonts/fawn.ttf");
+    	mix.setTypeface(font);
     	mix.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	mixAnimalParts();
@@ -240,8 +242,9 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     @Override
     public void onBackPressed(){
     	super.onBackPressed();
-        Intent i = new Intent(this,SoundActivity.class);
-        startActivity(i);    	
+        Intent i = new Intent(this,FeedingActivity.class);
+        startActivity(i);    
+        finish();
     }
     
     void mixAnimalParts(){
@@ -259,14 +262,14 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     		ImageView image = (ImageView) toast_layout.findViewById(R.id.animal_image);
     		String animal_name = hash_ids_names.get(animals_ids_up.get(positionUp));
     		int image_id = jungle.getImageId("", animal_name, "");
-    		image.setBackgroundDrawable(decodeDrawable(image_id));
+    		image.setBackgroundResource(image_id);
     		TextView text = (TextView) toast_layout.findViewById(R.id.animal_name);
     		
     		Jungle app = (Jungle)getApplicationContext();
     		
     		text.setText(app.getSpanishName(app.getDestiny(),animal_name));
     		toast.setView(toast_layout);
-    		toast.show();
+//    		toast.show();
     	}
     	else{
     		mediaPlayer = MediaPlayer.create(this, R.raw.failbeep);
@@ -296,9 +299,9 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
 	public void setSplitAnimals(){
 		jungle = (Jungle) getApplicationContext();
 		
-		List<Animal> random_animals = jungle.getAnimalsRandom(jungle.getDestiny(), 5);
-		List<Integer> positions_up = jungle.getRandomRange(0, 4, 5);
-		List<Integer> positions_down = jungle.getRandomRange(0, 4, 5);
+		List<Animal> random_animals = jungle.getAnimalsRandom(jungle.getDestiny(), 4);
+		List<Integer> positions_up = jungle.getRandomRange(0, 3, 4);
+		List<Integer> positions_down = jungle.getRandomRange(0, 3, 4);
 		
 		animals_ids_up = new ArrayList<Integer>(); 
 		animals_ids_down = new ArrayList<Integer>();

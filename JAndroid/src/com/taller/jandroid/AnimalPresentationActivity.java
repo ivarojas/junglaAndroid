@@ -210,6 +210,7 @@ public class AnimalPresentationActivity extends MyActivity {
     	}
         mp.stop();
         startActivity(i);
+        finish();
     }
 
 	@Override

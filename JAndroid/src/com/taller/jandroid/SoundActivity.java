@@ -100,7 +100,7 @@ public class SoundActivity extends MyActivity{
     			media_player2.stop();
     		media_player = MediaPlayer.create(SoundActivity.this, R.raw.tada);
     		media_player.start();
-    		Intent intent = new Intent(this, SplitAnimalActivity.class);
+    		Intent intent = new Intent(this, ChooseAnimalsJungleActivity.class);
             startActivity(intent);
             finish();
     	}else{
@@ -119,8 +119,9 @@ public class SoundActivity extends MyActivity{
 			media_player.stop();
     	if(media_player2!=null && media_player2.isPlaying())
 			media_player2.stop();
-        Intent i = new Intent(this,FeedingActivity.class);
-        startActivity(i);    	
+        Intent i = new Intent(this,SplitAnimalActivity.class);
+        startActivity(i);    
+        finish();
     }
 
 	public void setSoundAnimal(){
@@ -152,7 +153,7 @@ public class SoundActivity extends MyActivity{
             		media_player.stop();
             	
             	if(!media_player2.isPlaying()){
-            		sound.setBackgroundDrawable(decodeDrawable(R.drawable.sound_speaker));
+            		sound.setBackgroundResource(R.drawable.sound_speaker);
             		sound_animation = (AnimationDrawable) sound.getBackground();
             		sound_animation.start();
             		media_player2.start();

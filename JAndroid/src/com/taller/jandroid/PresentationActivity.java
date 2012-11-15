@@ -1,6 +1,7 @@
 package com.taller.jandroid;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,6 +10,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class PresentationActivity extends MyActivity {
 	
@@ -23,6 +25,10 @@ public class PresentationActivity extends MyActivity {
        
       	setContentView(R.layout.activity_presentation);
         
+      	TextView tx = (TextView)findViewById(R.id.title_congo);
+       	Typeface font = Typeface.createFromAsset(getAssets(), "fonts/HOLLY.ttf");
+       	tx.setTypeface(font);
+      	
         ImageButton bbutton=(ImageButton)findViewById(R.id.bonobobutton);
         ImageButton hbutton=(ImageButton)findViewById(R.id.hippobutton);
         ImageButton ebutton=(ImageButton)findViewById(R.id.elephantbutton);
@@ -112,7 +118,8 @@ public class PresentationActivity extends MyActivity {
     public void onBackPressed(){
     	super.onBackPressed();
         Intent translate = new Intent(this,TranslatePlane.class);
-        startActivity(translate);    	
+        startActivity(translate);    
+        finish();
     }
 
 

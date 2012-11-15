@@ -363,8 +363,9 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 	@Override
 	public void onBackPressed(){
 		super.onBackPressed();
-		Intent i = new Intent(this,SplitAnimalActivity.class);
+		Intent i = new Intent(this,SoundActivity.class);
 		startActivity(i);    	
+		finish();
 	}
 
 } // end class

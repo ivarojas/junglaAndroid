@@ -58,11 +58,12 @@ abstract public class MyActivity extends Activity {
 		BitmapFactory.Options o = new BitmapFactory.Options();
 		o.inJustDecodeBounds = true;
 		o.inDither = false;
-		o.inDensity = 480;
+		o.inDensity = 240;
+		o.inPurgeable = true;
 		BitmapFactory.decodeStream(in,null,o);
 
 		//The new size we want to scale to
-		final int REQUIRED_SIZE=240;
+		final int REQUIRED_SIZE=350;
 
 		//Find the correct scale value. It should be the power of 2.
 		int scale=1;

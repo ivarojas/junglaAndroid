@@ -37,6 +37,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 	private List<Integer> right_answers;
 	private int[] images_ids = new int[6];
 	private List<Integer> right_answers_ids;
+	private int destiny;
 	
     @SuppressLint("UseValueOf")
 	@Override
@@ -49,7 +50,12 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 	        WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_feeding);
         
-        this.setDrop_background(R.drawable.open_mouth_monkey);
+        Jungle app = (Jungle)getApplicationContext();
+        destiny = app.getDestiny();
+        if(destiny == 0)
+        	this.setDrop_background(R.drawable.feed_bonobo_open_mouth);
+        else
+        	this.setDrop_background(R.drawable.feed_orangutan_open_mouth);
         setupViews();
         
         ImageButton next = (ImageButton)findViewById(R.id.next);
@@ -85,7 +91,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 		
 		//right answers
 		int size = right_foods_ids.size();
-		Jungle app = (Jungle)getApplicationContext();
+		
 		right_answers = app.getRandomRange(0, 5, size);
 		right_answers_ids = new ArrayList<Integer>();
 		for(int right_answer : right_answers)
@@ -178,7 +184,12 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 	    DropSpot drop6 = (DropSpot) mDragLayer.findViewById (R.id.drop_spot6);
     
 	    DropSpot drop_center = (DropSpot) mDragLayer.findViewById (R.id.drop_spot0);
-	    drop_center.setup (mDragLayer, dragController, R.drawable.sad_monkey, this);
+	    if(destiny == 0)
+	    	drop_center.setup (mDragLayer, dragController, R.drawable.feed_bonobo_sad, this);
+	    else{
+	    	drop_center.setup (mDragLayer, dragController, R.drawable.feed_orangutan_sad, this);
+	    	drop_center.setBackgroundResource(R.drawable.feed_orangutan_sad);
+	    }
 	    drop1.setup (null, dragController, R.color.drop_target_disabled, this);
 	    drop2.setup (null, dragController, R.color.drop_target_disabled, this);
 	    drop3.setup (null, dragController, R.color.drop_target_disabled, this);
@@ -194,7 +205,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 	    }
 	    
 	    if(v.getId() == R.id.next){
-	    	Intent i = new Intent(this, SoundActivity.class);
+	    	Intent i = new Intent(this, SplitAnimalActivity.class);
 	    	startActivity(i);
 	    	finish();
 	    }
@@ -245,7 +256,10 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 		
 		
 		if(right_answers_ids.contains(v.getId())){
-			center.setBackgroundDrawable(decodeDrawable(R.drawable.monkey));
+			if(destiny == 0)
+				center.setBackgroundDrawable(decodeDrawable(R.drawable.feed_bonobo_happy));
+			else
+				center.setBackgroundDrawable(decodeDrawable(R.drawable.feed_orangutan_happy));
 			success += 1;
 			((ViewManager)v.getParent()).removeView(v);
 			if(success == right_answers_ids.size()){
@@ -256,7 +270,10 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 	    	mediaPlayer.start();
 		}
 		else{
-			center.setBackgroundDrawable(decodeDrawable(R.drawable.sad_monkey));
+			if(destiny == 0)
+				center.setBackgroundDrawable(decodeDrawable(R.drawable.feed_bonobo_sad));
+			else
+				center.setBackgroundDrawable(decodeDrawable(R.drawable.feed_orangutan_sad));
 			MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.failbeep);
 	    	mediaPlayer.start();
 		}
@@ -268,5 +285,6 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 		super.onBackPressed();
         Intent i = new Intent(this,ShadowActivity.class);
         startActivity(i);    	
+        finish();
     }	
 }

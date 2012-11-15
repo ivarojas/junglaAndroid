@@ -4,61 +4,76 @@
     android:layout_height="match_parent"
     android:background="@drawable/background" >
 
-    <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:orientation="vertical"
-       android:scrollbars="vertical" >
- 
-   	    <LinearLayout 
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content">
-
-		    <ImageButton
-		        android:id="@+id/gorillabutton"
-		        android:layout_width="150dp"
-		        android:layout_height="150dp"
-		        android:layout_margin="5dp"
-		        android:background="@drawable/threed_gorilla" />
-		
-		    <ImageButton
-		        android:id="@+id/hippobutton"
-		        android:layout_width="150dp"
-		        android:layout_height="150dp"
-		        android:layout_margin="5dp"
-		        android:background="@drawable/threed_hippo" />
+    <ScrollView 
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+	    <LinearLayout
+	       	android:layout_width="match_parent"
+	       	android:layout_height="wrap_content"
+	       	android:orientation="vertical"
+	       	android:scrollbars="vertical" >
+	 
+	        <TextView
+	            android:id="@+id/title_congo"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="Congo"
+	            android:layout_gravity="center_horizontal"
+	            android:layout_margin="5dp"
+	            android:textSize="40sp"
+	            android:textColor="#FFFFFF"
+	            android:textAppearance="?android:attr/textAppearanceMedium" />
+	        
+	   	    <LinearLayout 
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content">
+	
+			    <ImageButton
+			        android:id="@+id/gorillabutton"
+			        android:layout_width="150dp"
+			        android:layout_height="150dp"
+			        android:layout_margin="5dp"
+			        android:background="@drawable/threed_gorilla" />
+			
+			    <ImageButton
+			        android:id="@+id/hippobutton"
+			        android:layout_width="150dp"
+			        android:layout_height="150dp"
+			        android:layout_margin="5dp"
+			        android:background="@drawable/threed_hippo" />
+			</LinearLayout>
+	   	    <LinearLayout 
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content">
+			    
+			    
+			    <ImageButton
+			        android:id="@+id/elephantbutton"
+			        android:layout_width="150dp"
+			        android:layout_height="150dp"
+			        android:layout_margin="5dp"
+			        android:background="@drawable/threed_elephant" />
+			
+			    <ImageButton
+			        android:id="@+id/bonobobutton"
+			        android:layout_width="150dp"
+			        android:layout_height="150dp"
+					android:layout_margin="5dp"
+			        android:background="@drawable/threed_bonobo" />
+			</LinearLayout>
+	 	    <LinearLayout 
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content">
+			
+			    <ImageButton
+			        android:id="@+id/okapibutton"
+			        android:layout_width="150dp"
+			        android:layout_height="150dp"
+			        android:layout_margin="5dp"
+			        android:background="@drawable/threed_okapi" />
+			</LinearLayout>   
 		</LinearLayout>
-   	    <LinearLayout 
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content">
-		    
-		    
-		    <ImageButton
-		        android:id="@+id/elephantbutton"
-		        android:layout_width="150dp"
-		        android:layout_height="150dp"
-		        android:layout_margin="5dp"
-		        android:background="@drawable/threed_elephant" />
-		
-		    <ImageButton
-		        android:id="@+id/bonobobutton"
-		        android:layout_width="150dp"
-		        android:layout_height="150dp"
-				android:layout_margin="5dp"
-		        android:background="@drawable/threed_bonobo" />
-		</LinearLayout>
- 	    <LinearLayout 
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content">
-		
-		    <ImageButton
-		        android:id="@+id/okapibutton"
-		        android:layout_width="150dp"
-		        android:layout_height="150dp"
-		        android:layout_margin="5dp"
-		        android:background="@drawable/threed_okapi" />
-		</LinearLayout>   
-	</LinearLayout>
+	</ScrollView>
     <ImageButton
         android:id="@+id/continuebutton"
         android:layout_width="60dp"
@@ -68,5 +83,5 @@
         android:layout_marginBottom="40dp"
         android:layout_marginRight="28dp"
         android:background="@drawable/arrow_next" />		    
-		    
+	
 </RelativeLayout>

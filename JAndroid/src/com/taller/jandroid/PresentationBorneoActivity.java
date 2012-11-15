@@ -1,16 +1,16 @@
 package com.taller.jandroid;
 
-import com.taller.jandroid.R;
-
-import android.os.Bundle;
 import android.content.Intent;
+import android.graphics.Typeface;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.View.OnClickListener;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class PresentationBorneoActivity extends MyActivity {
 	
@@ -25,6 +25,10 @@ public class PresentationBorneoActivity extends MyActivity {
 
        	setContentView(R.layout.activity_presentation_borneo);
         
+       	TextView tx = (TextView)findViewById(R.id.title_borneo);
+       	Typeface font = Typeface.createFromAsset(getAssets(), "fonts/HOLLY.ttf");
+       	tx.setTypeface(font);
+       	
         ImageButton obutton=(ImageButton)findViewById(R.id.orangutanbutton);
         ImageButton fbutton=(ImageButton)findViewById(R.id.frogbutton);
         ImageButton rbutton=(ImageButton)findViewById(R.id.rhinobutton);
@@ -38,7 +42,6 @@ public class PresentationBorneoActivity extends MyActivity {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationBorneoActivity.this,AnimalPresentationActivity.class);
                 i.putExtra("animal","orangutan");
-                i.putExtra("destiny", 2);
                 startActivity(i);
                 finish();
                }
@@ -48,7 +51,6 @@ public class PresentationBorneoActivity extends MyActivity {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationBorneoActivity.this,AnimalPresentationActivity.class);
                 i.putExtra("animal","frog");
-                i.putExtra("destiny", 2);
                 startActivity(i);
                 finish();
                }
@@ -57,8 +59,7 @@ public class PresentationBorneoActivity extends MyActivity {
         rbutton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationBorneoActivity.this,AnimalPresentationActivity.class);
-                i.putExtra("animal","rhino");
-                i.putExtra("destiny", 2);
+                i.putExtra("animal","rhino");                
                 startActivity(i);
                 finish();
                }
@@ -68,7 +69,6 @@ public class PresentationBorneoActivity extends MyActivity {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationBorneoActivity.this,AnimalPresentationActivity.class);
                 i.putExtra("animal","proboscis");
-                i.putExtra("destiny", 2);
                 startActivity(i);
                 finish();
                }
@@ -78,7 +78,6 @@ public class PresentationBorneoActivity extends MyActivity {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationBorneoActivity.this,AnimalPresentationActivity.class);
                 i.putExtra("animal","hornbill");
-                i.putExtra("destiny", 2);
                 startActivity(i);
                 finish();
                }
@@ -87,7 +86,6 @@ public class PresentationBorneoActivity extends MyActivity {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationBorneoActivity.this,AnimalPresentationActivity.class);
                 i.putExtra("animal","leopard");
-                i.putExtra("destiny", 2);
                 startActivity(i);
                 finish();
                }
@@ -96,7 +94,6 @@ public class PresentationBorneoActivity extends MyActivity {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationBorneoActivity.this,AnimalPresentationActivity.class);
                 i.putExtra("animal","bear");
-                i.putExtra("destiny", 2);
                 startActivity(i);
                 finish();
                }
@@ -138,7 +135,8 @@ public class PresentationBorneoActivity extends MyActivity {
     public void onBackPressed(){
     	super.onBackPressed();
         Intent translate = new Intent(this,TranslatePlane.class);
-        startActivity(translate);    	
+        startActivity(translate);  
+        finish();
     }
 
 

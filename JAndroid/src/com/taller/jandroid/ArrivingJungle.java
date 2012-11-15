@@ -32,7 +32,7 @@ public class ArrivingJungle extends MyActivity implements OnClickListener, Anima
         destiny = app.getDestiny();
         
         if(destiny == app.BORNEO){
-        	findViewById(R.id.relative_arriv).setBackgroundDrawable(decodeDrawable(R.drawable.arriving_jungle2));
+        	findViewById(R.id.relative_arriv).setBackgroundResource(R.drawable.arriving_jungle2);
         }
         
         ImageButton next = (ImageButton)findViewById(R.id.nextButton_arriv);
