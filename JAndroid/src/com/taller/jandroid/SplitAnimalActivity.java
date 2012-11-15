@@ -222,6 +222,7 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     	next = (ImageButton) findViewById(R.id.nextButton_split);
     	next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+            	toast_layout.setVisibility(View.INVISIBLE);
             	Intent nextIntent = new Intent(SplitAnimalActivity.this, ChooseAnimalsJungleActivity.class);
             	startActivity(nextIntent);
             	finish();
