@@ -2,8 +2,10 @@ package com.taller.jandroid;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,16 +17,16 @@ import android.widget.TextView;
 public class MainActivity extends MyActivity implements OnClickListener{
 	private Dialog dialog;
 	private String infolinks="" +
-			"<p><a href='www.heathwood.org/simpson/quicklinks/animalsoftherainforest/animalmap2.htm'>Heathwood.org</a></p>" +
-			"<p><a href='www.enchantedlearning.com/subjects/rainforest/animals/Sampling.shtml'>Enchantedlearning.com</a></p>" +
-			"www.kids.mongabay.com/slideshows/congo-rainforest-tour/" +
-			"www.pbs.org/wnet/africa/explore/rainforest/rainforest_animals_lo.html" +
-			"www.arkive.org/" +
-			"www.a-z-animals.com" +
-			"www.visit50.com/2011/06/borneo-proboscis-monkey-up-close/" +
-			"www.animalstown.com/\nwww.waza.org" +
-			"www.mongabay.com/borneo/borneo_wildlife.html" +
-			"www.telegraph.co.uk/travel/destinations/asia/malaysia/738665/The-jungles-of-Borneo.html";
+			"<p><a href='http://www.heathwood.org/simpson/quicklinks/animalsoftherainforest/animalmap2.htm'>Heathwood.org</a></p>" +
+			"<p><a href='http://www.enchantedlearning.com/subjects/rainforest/animals/Sampling.shtml'>Enchantedlearning.com</a></p>" +
+			"<p><a href='http://www.kids.mongabay.com/slideshows/congo-rainforest-tour/'>Kids.mongabay.com</a></p>" +
+			"<p><a href='http://www.pbs.org/wnet/africa/explore/rainforest/rainforest_animals_lo.html'>Pbs.org</a></p>" +
+			"<p><a href='http://www.arkive.org/'>Arkive.org</a></p>" +
+			"<p><a href='http://www.a-z-animals.com'>A-z-animals.com</a></p>" +
+			"<p><a href='http://www.visit50.com/2011/06/borneo-proboscis-monkey-up-close/'>Visit50.com</a></p>" +
+			"<p><a href='http://www.animalstown.com/\nwww.waza.org'>Animalstown.com</a></p>" +
+			"<p><a href='http://www.mongabay.com/borneo/borneo_wildlife.html'>Mongabay.com</a></p>" +
+			"<p><a href='http://www.telegraph.co.uk/travel/destinations/asia/malaysia/738665/The-jungles-of-Borneo.html'>Telegraph.co.uk</a></p>";
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,10 @@ public class MainActivity extends MyActivity implements OnClickListener{
         Button exit = (Button)findViewById(R.id.exit);
         Button credits= (Button)findViewById(R.id.credits);
         
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/fawn.ttf");  
+        start.setTypeface(font);
+        exit.setTypeface(font);
+        
         dialog=new Dialog(this);
 		dialog.setContentView(R.layout.credits);
 		Button closeButton = (Button) dialog.findViewById(R.id.closeButton);
@@ -50,7 +56,9 @@ public class MainActivity extends MyActivity implements OnClickListener{
 		
 		TextView ic=(TextView)dialog.findViewById(R.id.info_content);
 		ic.setText(Html.fromHtml(infolinks));
-//		Linkify.addLinks(ic, Linkify.ALL);
+		ic.setMovementMethod(LinkMovementMethod.getInstance());
+
+//		Linkify.addLinks(ic, Linkify.WEB_URLS);
 		ic.append("Microsoft ® Encarta ® 2007. © 1993-2006 Microsoft Corporation. Reservados todos los derechos.\n");
 		
 		TextView sc=(TextView)dialog.findViewById(R.id.sounds_content);

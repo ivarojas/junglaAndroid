@@ -9,6 +9,8 @@ import persistance.Jungle;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -220,6 +222,7 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     	next = (ImageButton) findViewById(R.id.nextButton_split);
     	next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+            	toast_layout.setVisibility(View.INVISIBLE);
             	Intent nextIntent = new Intent(SplitAnimalActivity.this, ChooseAnimalsJungleActivity.class);
             	startActivity(nextIntent);
             	finish();
@@ -258,7 +261,10 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     		int image_id = jungle.getImageId("", animal_name, "");
     		image.setBackgroundDrawable(decodeDrawable(image_id));
     		TextView text = (TextView) toast_layout.findViewById(R.id.animal_name);
-    		text.setText(animal_name);
+    		
+    		Jungle app = (Jungle)getApplicationContext();
+    		
+    		text.setText(app.getSpanishName(app.getDestiny(),animal_name));
     		toast.setView(toast_layout);
     		toast.show();
     	}
@@ -326,6 +332,10 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
 
 		TextView text = (TextView) toast_layout.findViewById(R.id.animal_name);
 		text.setText("This is a custom toast");
+		text.setTextColor(Color.BLACK);
+		text.setTextSize(20);
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/fawn.ttf"); 
+		text.setTypeface(font);
 
 		toast = new Toast(getApplicationContext());
 		toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);

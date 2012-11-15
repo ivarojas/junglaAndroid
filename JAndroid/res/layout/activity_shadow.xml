@@ -22,25 +22,25 @@
 
 	    <Button
 	        android1:id="@+id/first_option"
-	        android1:layout_width="90dp"
+	        android1:layout_width="122dp"
 	        android1:layout_height="wrap_content"
 	        android1:layout_margin="5dp"
 	        android:background="@drawable/button"
 	        android1:adjustViewBounds="false"
 	        android1:contentDescription="first_option"
 	        android1:onClick="verifyAnswer" 
-	        android:textSize="15dp" />
+	        android:textSize="22dp" />
 
 	    <Button
 	        android1:id="@+id/second_option"
-	        android1:layout_width="90dp"
+	        android1:layout_width="122dp"
 	        android1:layout_height="wrap_content"
 	        android1:layout_margin="5dp"
 	        android:background="@drawable/button"
 	        android1:contentDescription="first_option"
 	        android1:onClick="verifyAnswer"
 	        android1:text="Hipopótamo" 
-	        android:textSize="15dp" />
+	        android:textSize="22dp" />
 	</LinearLayout>
 	<LinearLayout
 	    android1:id="@+id/linearLayout3"
@@ -50,14 +50,14 @@
 	    android1:orientation="horizontal" >
 	    <Button
 	        android1:id="@+id/third_option"
-	        android1:layout_width="90dp"
+	        android1:layout_width="122dp"
 	        android1:layout_height="wrap_content"
 	        android1:layout_margin="5dp"
 	        android:background="@drawable/button"
 	        android1:contentDescription="first_option"
 	        android1:onClick="verifyAnswer"
 	        android1:text="Elefante" 
-	        android:textSize="15dp" />
+	        android:textSize="22dp" />
 
 	</LinearLayout>
 

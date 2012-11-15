@@ -46,7 +46,7 @@
 				},
 				{
 					"name": "frog",
-					"spanish": "Rana cabeza plana",
+					"spanish": "Rana",
 					"food": ["insect"],
 					"ambient": ["river"],
 					"description": "Hola soy una anfibio.\nSoy tan pequeña como una moneda, respiro por la piel, y vivo en los ríos."

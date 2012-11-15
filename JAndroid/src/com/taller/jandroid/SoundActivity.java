@@ -11,6 +11,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -151,7 +152,7 @@ public class SoundActivity extends MyActivity{
             		media_player.stop();
             	
             	if(!media_player2.isPlaying()){
-            		sound.setBackgroundResource(R.drawable.sound_speaker);
+            		sound.setBackgroundDrawable(decodeDrawable(R.drawable.sound_speaker));
             		sound_animation = (AnimationDrawable) sound.getBackground();
             		sound_animation.start();
             		media_player2.start();
@@ -165,6 +166,8 @@ public class SoundActivity extends MyActivity{
         for(int i = 0; i < 3; i++){
         	Button choice = (Button) findViewById(button_ids[i]);
         	choice.setText(app.getSpanishName(destiny,this.random_animals.get(i)));
+            Typeface font = Typeface.createFromAsset(getAssets(), "fonts/fawn.ttf"); 
+        	choice.setTypeface(font);
         }
 	}
 
