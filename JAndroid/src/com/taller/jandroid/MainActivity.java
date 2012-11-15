@@ -2,6 +2,7 @@ package com.taller.jandroid;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.util.Linkify;
@@ -31,6 +32,10 @@ public class MainActivity extends MyActivity implements OnClickListener{
         Button start = (Button)findViewById(R.id.start);
         Button exit = (Button)findViewById(R.id.exit);
         Button credits= (Button)findViewById(R.id.credits);
+        
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/fawn.ttf");  
+        start.setTypeface(font);
+        exit.setTypeface(font);
         
         dialog=new Dialog(this);
 		dialog.setContentView(R.layout.credits);

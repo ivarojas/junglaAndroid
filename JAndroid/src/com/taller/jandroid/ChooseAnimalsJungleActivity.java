@@ -344,7 +344,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 			mediaPlayer.start();
 
 			((ViewManager)v.getParent()).removeView(v);
-			center.setBackgroundResource(R.drawable.smiley_happy);
+			center.setBackgroundDrawable(decodeDrawable(R.drawable.smiley_happy));
 			success += 1;
 			if(success == right_answers_ids.size()){
 				ImageButton next = (ImageButton)mDragLayer.findViewById(R.id.nextButton_choose);
@@ -354,7 +354,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 		else{
 			MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.failbeep);
 			mediaPlayer.start();
-			center.setBackgroundResource(R.drawable.smiley_sad);
+			center.setBackgroundDrawable(decodeDrawable(R.drawable.smiley_sad));
 		}
 	}
 

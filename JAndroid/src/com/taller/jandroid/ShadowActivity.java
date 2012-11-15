@@ -6,6 +6,7 @@ import persistance.Jungle;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
@@ -135,6 +136,8 @@ public class ShadowActivity extends MyActivity {
         for(int i = 0; i < 3; i++){
         	Button choice = (Button) findViewById(button_ids[i]);
         	choice.setText(app.getSpanishName(destiny,this.random_animals.get(i)));
+            Typeface font = Typeface.createFromAsset(getAssets(), "fonts/fawn.ttf"); 
+            choice.setTypeface(font);
         }
 	}
 }

@@ -252,7 +252,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 		
 		
 		if(right_answers_ids.contains(v.getId())){
-			center.setBackgroundResource(R.drawable.monkey);
+			center.setBackgroundDrawable(decodeDrawable(R.drawable.monkey));
 			success += 1;
 			((ViewManager)v.getParent()).removeView(v);
 			if(success == right_answers_ids.size()){
@@ -263,7 +263,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 	    	mediaPlayer.start();
 		}
 		else{
-			center.setBackgroundResource(R.drawable.sad_monkey);
+			center.setBackgroundDrawable(decodeDrawable(R.drawable.sad_monkey));
 			MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.failbeep);
 	    	mediaPlayer.start();
 		}
