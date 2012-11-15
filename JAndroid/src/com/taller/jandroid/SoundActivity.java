@@ -172,12 +172,12 @@ public class SoundActivity extends MyActivity{
 	}
 
 	public void setSoundButton(){
-		sound.setBackgroundDrawable(decodeDrawable(R.drawable.sound_speaker));
+		sound.setBackgroundResource(R.drawable.sound_speaker);
 		sound_animation = (AnimationDrawable) sound.getBackground();
 		
 		this.media_player2.setOnCompletionListener(new OnCompletionListener() {
 			public void onCompletion(MediaPlayer arg0) {
-				SoundActivity.sound.setBackgroundDrawable(decodeDrawable(SoundActivity.context.getResources().getIdentifier("play", "drawable", SoundActivity.context.getPackageName())));
+				SoundActivity.sound.setBackgroundResource(SoundActivity.context.getResources().getIdentifier("play", "drawable", SoundActivity.context.getPackageName()));
 			}
         });
 	}

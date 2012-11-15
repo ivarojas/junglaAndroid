@@ -12,7 +12,6 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewManager;
@@ -21,8 +20,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import drag_framework.DragController;
 import drag_framework.DragLayer;
 import drag_framework.DropSpot;
@@ -61,10 +58,6 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 	    next.setOnClickListener(this);
 	    dialog = new Dialog(this);
 		dialog.setContentView(R.layout.activity_choose_dialog);
-		
-		float d = this.getResources().getDisplayMetrics().density;
-		((TextView)dialog.findViewById(R.id.text_dialog)).setLayoutParams(new LinearLayout.LayoutParams((int)(100*d),LayoutParams.WRAP_CONTENT));
-		((TextView)dialog.findViewById(R.id.text_dialog)).setText("");
 		((ImageView)dialog.findViewById(R.id.image)).setBackgroundDrawable(decodeDrawable((R.drawable.drag_here_feed_instructions)));
 		dialog.setTitle("Dale alimentos al animal");
 		Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);

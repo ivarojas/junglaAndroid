@@ -78,10 +78,12 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 		if(destiny == app.CONGO){
 			tx.setText("¿Cuáles de estos animales viven en la jungla del Congo?");
 			txd.setText("Encuentra los animales que viven en la jungla del Congo");
+			txd.setTextSize(30);
 		}
 		else{
 			tx.setText("¿Cuáles de estos animales viven en la jungla de Borneo?");
 			txd.setText("Encuentra los animales que viven en la jungla de Borneo");
+			txd.setTextSize(30);
 		}
 
 		Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
