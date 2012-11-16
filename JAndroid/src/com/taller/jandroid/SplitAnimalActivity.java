@@ -77,8 +77,8 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
 		this.setSplitAnimals();
 		this.setToast();
 		
-		iSwitcherUp.setImageResource(animals_ids_up.get(0));
-		iSwitcherDown.setImageResource(animals_ids_down.get(0));
+		iSwitcherUp.setImageDrawable(decodeDrawable(animals_ids_up.get(0)));
+		iSwitcherDown.setImageDrawable(decodeDrawable(animals_ids_down.get(0)));
 
 		next = (ImageButton)findViewById(R.id.nextButton_split);
 		next.setVisibility(View.INVISIBLE);
@@ -173,7 +173,7 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     			   iSwitcherUp.setOutAnimation(AnimationUtils.loadAnimation(SplitAnimalActivity.this,
     						android.R.anim.slide_out_right));
     			   setPositionUpNext();
-    			   iSwitcherUp.setImageResource(animals_ids_up.get(positionUp));
+    			   iSwitcherUp.setImageDrawable(decodeDrawable(animals_ids_up.get(positionUp)));
     			   //Toast.makeText(SplitedAnimalActivity.this, "Your selected position = " + getResources().getResourceName(mImageIds[position]), Toast.LENGTH_SHORT).show();
     			}    
     	});  
@@ -187,7 +187,7 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
         				R.anim.slide_out_left));
             	
             	setPositionUpPrev();
-            	iSwitcherUp.setImageResource(animals_ids_up.get(positionUp));
+            	iSwitcherUp.setImageDrawable(decodeDrawable(animals_ids_up.get(positionUp)));
             	//Toast.makeText(SplitedAnimalActivity.this, "Your selected position = " + getResources().getResourceName(mImageIds[position]), Toast.LENGTH_SHORT).show();
             }
         });
@@ -200,7 +200,7 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     			   iSwitcherDown.setOutAnimation(AnimationUtils.loadAnimation(SplitAnimalActivity.this,
     						android.R.anim.slide_out_right));
     			   setPositionDownNext();
-    			   iSwitcherDown.setImageResource(animals_ids_down.get(positionDown)); 
+    			   iSwitcherDown.setImageDrawable(decodeDrawable(animals_ids_down.get(positionDown))); 
     			   //Toast.makeText(SplitedAnimalActivity.this, "Your selected position = " + getResources().getResourceName(mImageIds[position]), Toast.LENGTH_SHORT).show();
     		   }    
     	});  
@@ -214,7 +214,7 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
         				R.anim.slide_out_left));
             	
             	setPositionDownPrev();
-            	iSwitcherDown.setImageResource(animals_ids_down.get(positionDown));
+            	iSwitcherDown.setImageDrawable(decodeDrawable(animals_ids_down.get(positionDown)));
             	//Toast.makeText(SplitedAnimalActivity.this, "Your selected position = " + getResources().getResourceName(mImageIds[position]), Toast.LENGTH_SHORT).show();
             }
         });
@@ -262,7 +262,7 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     		ImageView image = (ImageView) toast_layout.findViewById(R.id.animal_image);
     		String animal_name = hash_ids_names.get(animals_ids_up.get(positionUp));
     		int image_id = jungle.getImageId("", animal_name, "");
-    		image.setBackgroundResource(image_id);
+    		image.setBackgroundDrawable(decodeDrawable(image_id));
     		TextView text = (TextView) toast_layout.findViewById(R.id.animal_name);
     		
     		Jungle app = (Jungle)getApplicationContext();
@@ -282,7 +282,7 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     	HorizontalScrollView scrollView = (HorizontalScrollView) findViewById(R.id.horizontalScrollView1);
     	LinearLayout topLinearLayout = (LinearLayout) scrollView.getChildAt(0);
     	final ImageView imageView = new ImageView (this);
-        imageView.setImageResource(animals_ids_up.get(positionUp));
+        imageView.setImageDrawable(decodeDrawable(animals_ids_up.get(positionUp)));
         topLinearLayout.addView(imageView);
     }
 

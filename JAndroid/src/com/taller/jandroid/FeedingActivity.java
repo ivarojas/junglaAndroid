@@ -188,7 +188,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 	    	drop_center.setup (mDragLayer, dragController, R.drawable.feed_bonobo_sad, this);
 	    else{
 	    	drop_center.setup (mDragLayer, dragController, R.drawable.feed_orangutan_sad, this);
-	    	drop_center.setBackgroundResource(R.drawable.feed_orangutan_sad);
+	    	drop_center.setBackgroundDrawable(decodeDrawable(R.drawable.feed_orangutan_sad));
 	    }
 	    drop1.setup (null, dragController, R.color.drop_target_disabled, this);
 	    drop2.setup (null, dragController, R.color.drop_target_disabled, this);
