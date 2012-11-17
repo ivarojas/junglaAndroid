@@ -61,7 +61,7 @@ public class AnimalPresentationActivity extends MyActivity {
         setAnimalInfo();
         
         mp=MediaPlayer.create(AnimalPresentationActivity.this,animal_sound);
-        imv.setBackgroundDrawable(decodeDrawable(animal_img));
+        imv.setBackgroundDrawable(decodeDrawable(animal_img,true));
            	
         
         arrow.setOnClickListener(new OnClickListener() {
@@ -76,6 +76,8 @@ public class AnimalPresentationActivity extends MyActivity {
                 i.putExtra("destiny", destiny);
                 mp.stop();
                 startActivity(i);
+                finish();
+                recycle();
             }  
             });
         
@@ -211,11 +213,20 @@ public class AnimalPresentationActivity extends MyActivity {
         mp.stop();
         startActivity(i);
         finish();
+        recycle();
     }
 
 	@Override
 	public void verifyChoice(View v) {
 
+	}
+	public void recycle(){
+		ImageView image_view = (ImageView) findViewById(R.id.imageView1);
+		((ViewManager)image_view.getParent()).removeView(image_view);
+		ImageButton sound=(ImageButton)findViewById(R.id.speaker);
+		((ViewManager)sound.getParent()).removeView(sound);
+        ImageButton info=(ImageButton)findViewById(R.id.bubble);
+        ((ViewManager)info.getParent()).removeView(info);
 	}
     
 }
