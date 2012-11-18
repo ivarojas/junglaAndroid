@@ -19,15 +19,14 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.view.ViewManager;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher.ViewFactory;
@@ -225,6 +224,7 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
             	toast_layout.setVisibility(View.INVISIBLE);
             	Intent nextIntent = new Intent(SplitAnimalActivity.this, SoundActivity.class);
             	startActivity(nextIntent);
+            	recycle();
             	finish();
             }
         });
@@ -244,11 +244,13 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     	super.onBackPressed();
     	if (jungle.getState() != jungle.CHOOSE_CHALLENGE){
 	        Intent i = new Intent(this,FeedingActivity.class);
-	        startActivity(i);    
+	        startActivity(i);
 	        finish();
 		}else{
 			this.goMenuChallenges();
 		}
+    	
+    	recycle();
     }
     
     void mixAnimalParts(){
@@ -266,7 +268,7 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     		ImageView image = (ImageView) toast_layout.findViewById(R.id.animal_image);
     		String animal_name = hash_ids_names.get(animals_ids_up.get(positionUp));
     		int image_id = jungle.getImageId("", animal_name, "");
-    		image.setBackgroundResource(image_id);
+    		image.setBackgroundDrawable(decodeDrawable(image_id,false));
     		TextView text = (TextView) toast_layout.findViewById(R.id.animal_name);
     		
     		Jungle app = (Jungle)getApplicationContext();
@@ -280,14 +282,6 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     		mediaPlayer.start();
     		Toast.makeText(SplitAnimalActivity.this, "Mal hecho !!!", Toast.LENGTH_SHORT).show();
     	}	
-    }
-    
-    void addRightImage(){
-    	HorizontalScrollView scrollView = (HorizontalScrollView) findViewById(R.id.horizontalScrollView1);
-    	LinearLayout topLinearLayout = (LinearLayout) scrollView.getChildAt(0);
-    	final ImageView imageView = new ImageView (this);
-        imageView.setImageResource(animals_ids_up.get(positionUp));
-        topLinearLayout.addView(imageView);
     }
 
 	public void onClick(View v) {
@@ -303,9 +297,9 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
 	public void setSplitAnimals(){
 		jungle = (Jungle) getApplicationContext();
 		
-		List<Animal> random_animals = jungle.getAnimalsRandom(jungle.getDestiny(), 4);
-		List<Integer> positions_up = jungle.getRandomRange(0, 3, 4);
-		List<Integer> positions_down = jungle.getRandomRange(0, 3, 4);
+		List<Animal> random_animals = jungle.getAnimalsRandom(jungle.getDestiny(), 5);
+		List<Integer> positions_up = jungle.getRandomRange(0, 4, 5);
+		List<Integer> positions_down = jungle.getRandomRange(0, 4, 5);
 		
 		animals_ids_up = new ArrayList<Integer>(); 
 		animals_ids_down = new ArrayList<Integer>();
@@ -347,5 +341,15 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
 		toast = new Toast(getApplicationContext());
 		toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
 		toast.setDuration(Toast.LENGTH_LONG);
+	}
+	
+	public void recycle(){
+		((ViewManager)iSwitcherUp.getParent()).removeView(iSwitcherUp);
+		((ViewManager)iSwitcherDown.getParent()).removeView(iSwitcherDown);
+		((ViewManager)btnNextUp.getParent()).removeView(btnNextUp);
+		((ViewManager)btnPrevDown.getParent()).removeView(btnPrevDown);
+		((ViewManager)btnNextDown.getParent()).removeView(btnNextDown);
+		((ViewManager)btnPrevUp.getParent()).removeView(btnPrevUp);
+		((ViewManager)mix.getParent()).removeView(mix);
 	}
 }

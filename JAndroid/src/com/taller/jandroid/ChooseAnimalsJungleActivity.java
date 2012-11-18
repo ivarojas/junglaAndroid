@@ -145,7 +145,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 		for(Integer i: right_answers){
 			img = (ImageView)findViewById(images_ids[i]);
 			img_id = animSet.getDrawableAnimalId(random_right_animals.get(n++));
-			img.setImageDrawable(decodeDrawable(img_id));
+			img.setImageDrawable(decodeDrawable(img_id,false));
 			right_answers_ids.add(new Integer(images_ids[i]));
 		}
 
@@ -154,7 +154,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 			if(!right_answers.contains(new Integer(i))){
 				img = (ImageView)findViewById(images_ids[i]);
 				img_id = animSet.getDrawableAnimalId(random_wrong_animals.get(n++));
-				img.setImageDrawable(decodeDrawable(img_id));
+				img.setImageDrawable(decodeDrawable(img_id,false));
 			}
 		}
 		
@@ -201,6 +201,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 		if(v.getId() == R.id.nextButton_choose){
 			Intent i = new Intent(this, SayGoodbyeActivity.class);
 			startActivity(i);
+			recycle();
 			finish();
 		}
 		if(v.getId() == R.id.dialogButtonOK)
@@ -347,7 +348,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 			mediaPlayer.start();
 
 			((ViewManager)v.getParent()).removeView(v);
-			center.setBackgroundDrawable(decodeDrawable(R.drawable.smiley_happy));
+			center.setBackgroundDrawable(decodeDrawable(R.drawable.smiley_happy,false));
 			success += 1;
 			if(success == right_answers_ids.size()){
 				ImageButton next = (ImageButton)mDragLayer.findViewById(R.id.nextButton_choose);
@@ -357,7 +358,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 		else{
 			MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.failbeep);
 			mediaPlayer.start();
-			center.setBackgroundDrawable(decodeDrawable(R.drawable.smiley_sad));
+			center.setBackgroundDrawable(decodeDrawable(R.drawable.smiley_sad,false));
 		}
 	}
 
@@ -371,6 +372,16 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 		}else{
 			this.goMenuChallenges();
 		}
+		
+		recycle();
 	}
 
+	public void recycle(){
+		for(int i=0; i< 5; i++){
+			ImageView image_view = (ImageView) findViewById(images_ids[i]);
+			if(image_view != null)
+				((ViewManager)image_view.getParent()).removeView(image_view);
+		}
+	}
+	
 } // end class

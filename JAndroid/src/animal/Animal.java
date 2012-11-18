@@ -9,6 +9,7 @@ public class Animal {
     private List<String> food;
     private List<String> ambient;
     private String description;
+    private String url;
 
     // getters
     public String getName() { 
@@ -26,6 +27,9 @@ public class Animal {
 	public String getDescription() {
 		return description;
 	}
+	public String getUrl() {
+		return url;
+	}
 	// setters
     public void setName(String name) { 
     	this.name = name; 
@@ -41,6 +45,9 @@ public class Animal {
     }
 	public void setDescription(String description) {
 		this.description = description;
+	}	
+	public void setUrl(String url) {
+		this.url = url;
 	}	
 }
 

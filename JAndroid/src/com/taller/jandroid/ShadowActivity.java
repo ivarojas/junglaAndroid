@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewManager;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -88,6 +89,7 @@ public class ShadowActivity extends MyActivity {
     		Intent intent = new Intent(this, FeedingActivity.class);
     		intent.putExtra("animal", "elephant");
             startActivity(intent);
+            recycle();
             finish();
     	}else{
     		if(mediaPlayer!=null && mediaPlayer.isPlaying())
@@ -108,9 +110,13 @@ public class ShadowActivity extends MyActivity {
             else
             	i=new Intent(this,PresentationBorneoActivity.class);
             startActivity(i);
+            finish();
 		}else{
 			this.goMenuChallenges();
+			
 		}
+        
+        recycle();
     }
 
 	@Override
@@ -133,7 +139,7 @@ public class ShadowActivity extends MyActivity {
         int shadow_animal_id = animal_set.getShadowAnimalId(random_animals.get(rand_n));
         ImageView image_view = (ImageView) findViewById(R.id.shadow);
         
-        image_view.setBackgroundDrawable(decodeDrawable(shadow_animal_id));
+        image_view.setBackgroundDrawable(decodeDrawable(shadow_animal_id,false));
         
         //set choices
         int[] button_ids = {R.id.first_option, R.id.second_option, R.id.third_option};
@@ -142,6 +148,16 @@ public class ShadowActivity extends MyActivity {
         	choice.setText(app.getSpanishName(destiny,this.random_animals.get(i)));
             Typeface font = Typeface.createFromAsset(getAssets(), "fonts/fawn.ttf"); 
             choice.setTypeface(font);
+        }
+	}
+	
+	public void recycle(){
+		ImageView choice = (ImageView) findViewById(R.id.shadow);
+		((ViewManager)choice.getParent()).removeView(choice);
+		int[] button_ids = {R.id.first_option, R.id.second_option, R.id.third_option};
+        for(int i = 0; i < 3; i++){
+        	Button choice2 = (Button) findViewById(button_ids[i]);
+        	((ViewManager)choice2.getParent()).removeView(choice2);
         }
 	}
 }

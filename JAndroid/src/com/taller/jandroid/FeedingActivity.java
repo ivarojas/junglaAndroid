@@ -65,7 +65,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 	    next.setOnClickListener(this);
 	    dialog = new Dialog(this);
 		dialog.setContentView(R.layout.activity_choose_dialog);
-		((ImageView)dialog.findViewById(R.id.image)).setBackgroundDrawable(decodeDrawable((R.drawable.drag_here_feed_instructions)));
+		((ImageView)dialog.findViewById(R.id.image)).setBackgroundDrawable(decodeDrawable(R.drawable.drag_here_feed_instructions,false));
 		dialog.setTitle("Dale alimentos al animal");
 		Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
 
@@ -101,7 +101,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 		int i;
 		for(i = 0; i < size; i++){
 			answer_image = (ImageView)findViewById(images_ids[right_answers.get(i)]);
-			answer_image.setImageDrawable(decodeDrawable(right_foods_ids.get(i)));
+			answer_image.setImageDrawable(decodeDrawable(right_foods_ids.get(i),false));
 		}
 		
 		//wrong answers
@@ -109,7 +109,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 		for(i = 0; i < 6; i++){
 			if(!right_answers.contains(new Integer(i))){
 				answer_image = (ImageView)findViewById(images_ids[i]);
-				answer_image.setImageDrawable(decodeDrawable(wrong_foods_ids.get(k)));
+				answer_image.setImageDrawable(decodeDrawable(wrong_foods_ids.get(k),false));
 				k++;
 			}
 		}
@@ -189,7 +189,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 	    	drop_center.setup (mDragLayer, dragController, R.drawable.feed_bonobo_sad, this);
 	    else{
 	    	drop_center.setup (mDragLayer, dragController, R.drawable.feed_orangutan_sad, this);
-	    	drop_center.setBackgroundResource(R.drawable.feed_orangutan_sad);
+	    	drop_center.setBackgroundDrawable(decodeDrawable(R.drawable.feed_orangutan_sad,false));
 	    }
 	    drop1.setup (null, dragController, R.color.drop_target_disabled, this);
 	    drop2.setup (null, dragController, R.color.drop_target_disabled, this);
@@ -208,6 +208,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 	    if(v.getId() == R.id.next){
 	    	Intent i = new Intent(this, SplitAnimalActivity.class);
 	    	startActivity(i);
+	    	recycle();
 	    	finish();
 	    }
 	    if(v.getId() == R.id.dialogButtonOK)
@@ -258,9 +259,9 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 		
 		if(right_answers_ids.contains(v.getId())){
 			if(destiny == 0)
-				center.setBackgroundDrawable(decodeDrawable(R.drawable.feed_bonobo_happy));
+				center.setBackgroundDrawable(decodeDrawable(R.drawable.feed_bonobo_happy,false));
 			else
-				center.setBackgroundDrawable(decodeDrawable(R.drawable.feed_orangutan_happy));
+				center.setBackgroundDrawable(decodeDrawable(R.drawable.feed_orangutan_happy,false));
 			success += 1;
 			((ViewManager)v.getParent()).removeView(v);
 			if(success == right_answers_ids.size()){
@@ -272,9 +273,9 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 		}
 		else{
 			if(destiny == 0)
-				center.setBackgroundDrawable(decodeDrawable(R.drawable.feed_bonobo_sad));
+				center.setBackgroundDrawable(decodeDrawable(R.drawable.feed_bonobo_sad,false));
 			else
-				center.setBackgroundDrawable(decodeDrawable(R.drawable.feed_orangutan_sad));
+				center.setBackgroundDrawable(decodeDrawable(R.drawable.feed_orangutan_sad,false));
 			MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.failbeep);
 	    	mediaPlayer.start();
 		}
@@ -286,10 +287,20 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 		super.onBackPressed();
 		if (app.getState() != app.CHOOSE_CHALLENGE){
 			Intent i = new Intent(this,ShadowActivity.class);
-			startActivity(i);    	
+			startActivity(i);	   	
 			finish();
 		}else{
 			this.goMenuChallenges();
 		}
+		
+		recycle(); 
     }	
+	
+	public void recycle(){
+		for(int i=0; i< 5; i++){
+			ImageView image_view = (ImageView) findViewById(images_ids[i]);
+			if(image_view != null)
+				((ViewManager)image_view.getParent()).removeView(image_view);
+		}
+	}
 }

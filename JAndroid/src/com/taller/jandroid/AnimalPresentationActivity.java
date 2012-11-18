@@ -6,7 +6,9 @@ import java.util.List;
 import persistance.Jungle;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -32,6 +34,7 @@ public class AnimalPresentationActivity extends MyActivity {
 	WebView mWebView;
 	private Dialog dialog1;
 	private AnimalSet animal_set;
+	private String animal_url;
 
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,19 +52,22 @@ public class AnimalPresentationActivity extends MyActivity {
         ImageButton arrow=(ImageButton)findViewById(R.id.back);
     	ImageButton sound=(ImageButton)findViewById(R.id.speaker);
         ImageButton info=(ImageButton)findViewById(R.id.bubble);
+        ImageButton url=(ImageButton)findViewById(R.id.urlButton);
         ImageView imv=(ImageView)findViewById(R.id.imageView1);
 
         dialog1 = new Dialog(this);
 		dialog1.setContentView(R.layout.dialog_info_animal);
 		
 		Button dialogButton1 = (Button) dialog1.findViewById(R.id.dialogButtonOK);
+		Typeface font = Typeface.createFromAsset(getAssets(), "fonts/fawn.ttf");  
+		dialogButton1.setTypeface(font);
 		
         animal_name=getIntent().getStringExtra("animal");
         
         setAnimalInfo();
         
         mp=MediaPlayer.create(AnimalPresentationActivity.this,animal_sound);
-        imv.setBackgroundDrawable(decodeDrawable(animal_img));
+        imv.setBackgroundDrawable(decodeDrawable(animal_img,true));
            	
         
         arrow.setOnClickListener(new OnClickListener() {
@@ -76,6 +82,8 @@ public class AnimalPresentationActivity extends MyActivity {
                 i.putExtra("destiny", destiny);
                 mp.stop();
                 startActivity(i);
+                finish();
+                recycle();
             }  
             });
         
@@ -101,7 +109,7 @@ public class AnimalPresentationActivity extends MyActivity {
 				animal_info = app.getSingleAnimal(destiny, animal_name).getDescription();
 				
 				TextView tx = (TextView)dialog1.findViewById(R.id.animal_info);
-				tx.setText(animal_info);
+				tx.setText(animal_info);				
 				
 				View vi = null;
 				if(!ambient.contains("air")){
@@ -150,6 +158,12 @@ public class AnimalPresentationActivity extends MyActivity {
 				dialog1.show();
 			}
 		});
+		url.setOnClickListener(new OnClickListener(){
+			public void onClick(View v){
+				Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(animal_url));
+				startActivity(browserIntent);
+			}
+		});
 		
 		dialogButton1.setOnClickListener(new OnClickListener(){
 			public void onClick(View v){
@@ -195,6 +209,17 @@ public class AnimalPresentationActivity extends MyActivity {
 			animal_set = new AnimalSet(this);
 			animal_img = animal_set.getDrawableAnimalId(animal_name);
 			animal_sound = animal_set.getSoundAnimalId(animal_name);
+			
+			Jungle app = (Jungle)getApplicationContext();
+			
+			if(animal_name.equals("snake")){
+				ImageButton url=(ImageButton)findViewById(R.id.urlButton);
+				url.setVisibility(View.INVISIBLE);
+			}
+			if(destiny == app.CONGO)
+				animal_url = app.getSingleAnimal(app.CONGO, animal_name).getUrl();
+			else
+				animal_url = app.getSingleAnimal(app.BORNEO, animal_name).getUrl();	
 		}
 	}
 	
@@ -211,11 +236,20 @@ public class AnimalPresentationActivity extends MyActivity {
         mp.stop();
         startActivity(i);
         finish();
+        recycle();
     }
 
 	@Override
 	public void verifyChoice(View v) {
 
+	}
+	public void recycle(){
+		ImageView image_view = (ImageView) findViewById(R.id.imageView1);
+		((ViewManager)image_view.getParent()).removeView(image_view);
+		ImageButton sound=(ImageButton)findViewById(R.id.speaker);
+		((ViewManager)sound.getParent()).removeView(sound);
+        ImageButton info=(ImageButton)findViewById(R.id.bubble);
+        ((ViewManager)info.getParent()).removeView(info);
 	}
     
 }

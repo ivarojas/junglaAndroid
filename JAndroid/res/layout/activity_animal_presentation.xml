@@ -31,7 +31,7 @@
         android:layout_below="@+id/imageView1"
         android:layout_marginRight="28dp"
         android:layout_marginTop="19dp"
-        android:background="@drawable/speaker" />
+        android:background="@drawable/sound_4" />
 
     <ImageButton
         android:id="@+id/bubble"
@@ -41,5 +41,14 @@
         android:layout_alignTop="@+id/speaker"
         android:layout_marginLeft="32dp"
         android:background="@drawable/sbubble" />
+
+    <ImageButton
+        android:id="@+id/urlButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_below="@+id/speaker"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/web_search" />
 
 </RelativeLayout>

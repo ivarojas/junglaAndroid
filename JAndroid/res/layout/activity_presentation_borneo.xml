@@ -29,62 +29,84 @@
 	    
 		    <ImageButton
 		        android:id="@+id/proboscisbutton"
-		        android:layout_width="150dp"
-		        android:layout_height="150dp"
-		        android:layout_margin="5dp"
+		        android:layout_width="110dp"
+		        android:layout_height="110dp"
+		        android:layout_gravity="center_horizontal"
+		        android:layout_marginBottom="5dp"
+		        android:layout_marginLeft="20dp"
 		        android:background="@drawable/threed_proboscis" />
 		
 		    <ImageButton
 		        android:id="@+id/hornbillbutton"
-		        android:layout_width="150dp"
-		        android:layout_height="150dp"
-		        android:layout_margin="5dp"
+		        android:layout_width="110dp"
+		        android:layout_height="110dp"
+		        android:layout_marginBottom="5dp"
+		        android:layout_marginLeft="40dp"
 		        android:background="@drawable/threed_hornbill" />
 	
 	    </LinearLayout>
 	    <LinearLayout 
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content">
+
 		    <ImageButton
 		        android:id="@+id/rhinobutton"
-		        android:layout_width="150dp"
-		        android:layout_height="150dp"
-		        android:layout_margin="5dp"
+		        android:layout_width="110dp"
+		        android:layout_height="110dp"
+		        android:layout_marginBottom="5dp"
+		        android:layout_marginLeft="20dp"
 		        android:background="@drawable/threed_rhino" />
 		
 		    <ImageButton
 		        android:id="@+id/bearbutton"
-		        android:layout_width="150dp"
-		        android:layout_height="150dp"
-		        android:layout_margin="5dp"
+		        android:layout_width="110dp"
+		        android:layout_height="110dp"
+		        android:layout_marginBottom="5dp"
+		        android:layout_marginLeft="40dp"
 		        android:background="@drawable/threed_bear" />
+
 		</LinearLayout>
 		<LinearLayout 
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content">
+
 		    <ImageButton
 		        android:id="@+id/leopardbutton"
-		        android:layout_width="150dp"
-		        android:layout_height="150dp"
-		        android:layout_margin="5dp"
+		        android:layout_width="110dp"
+		        android:layout_height="110dp"
+		        android:layout_marginBottom="5dp"
+		        android:layout_marginLeft="20dp"
 		        android:background="@drawable/threed_leopard" />
 		
 		    <ImageButton
 		        android:id="@+id/orangutanbutton"
-		        android:layout_width="150dp"
-		        android:layout_height="150dp"
-		        android:layout_margin="5dp"
+		        android:layout_width="110dp"
+		        android:layout_height="110dp"
+		        android:layout_marginBottom="5dp"
+		        android:layout_marginLeft="40dp"
 		        android:background="@drawable/threed_orangutan" />
+
 		</LinearLayout>
 		<LinearLayout 
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content">
+
 		    <ImageButton
 		        android:id="@+id/frogbutton"
-		        android:layout_width="150dp"
-		        android:layout_height="150dp"
-		        android:layout_margin="5dp"
+		        android:layout_width="110dp"
+		        android:layout_height="110dp"
+		        android:layout_marginBottom="5dp"
+		        android:layout_marginLeft="20dp"
 		        android:background="@drawable/threed_frog" />
+
+		    <ImageButton
+		        android:id="@+id/snakebutton"
+		        android:layout_width="110dp"
+		        android:layout_height="110dp"
+		        android:layout_marginBottom="5dp"
+		        android:layout_marginLeft="40dp"
+		        android:background="@drawable/threed_snake" />
+
 		</LinearLayout>
 	</LinearLayout>
 	</ScrollView>
