@@ -75,4 +75,10 @@ abstract public class MyActivity extends Activity {
 		o2.inSampleSize=scale;
 		return new BitmapDrawable(BitmapFactory.decodeStream(in, null, o2));
 	}
+	
+	public void goMenuChallenges(){
+		Intent i = new Intent(this,ChallengesActivity.class);
+        this.startActivity(i);    	
+        this.finish();
+	}
 }

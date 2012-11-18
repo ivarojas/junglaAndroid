@@ -38,6 +38,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 	private int[] images_ids = new int[6];
 	private List<Integer> right_answers_ids;
 	private int destiny;
+	private Jungle app;
 	
     @SuppressLint("UseValueOf")
 	@Override
@@ -50,7 +51,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 	        WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_feeding);
         
-        Jungle app = (Jungle)getApplicationContext();
+        app = (Jungle)getApplicationContext();
         destiny = app.getDestiny();
         if(destiny == 0)
         	this.setDrop_background(R.drawable.feed_bonobo_open_mouth);
@@ -283,8 +284,12 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 	@Override
     public void onBackPressed(){
 		super.onBackPressed();
-        Intent i = new Intent(this,ShadowActivity.class);
-        startActivity(i);    	
-        finish();
+		if (app.getState() != app.CHOOSE_CHALLENGE){
+			Intent i = new Intent(this,ShadowActivity.class);
+			startActivity(i);    	
+			finish();
+		}else{
+			this.goMenuChallenges();
+		}
     }	
 }

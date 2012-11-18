@@ -34,6 +34,7 @@ public class SoundActivity extends MyActivity{
 	private AnimationDrawable sound_animation;
 	private int destiny;
 	private MediaPlayer media_player2;
+	private Jungle app;
 	private static Context context;
 
 	@Override
@@ -45,7 +46,7 @@ public class SoundActivity extends MyActivity{
 		
         setContentView(R.layout.activity_sound);
         
-        Jungle app = (Jungle)getApplicationContext();
+        app = (Jungle)getApplicationContext();
         destiny = app.getDestiny();        
 		
 		sound = (ImageButton)findViewById(R.id.soundChallenge);
@@ -115,13 +116,17 @@ public class SoundActivity extends MyActivity{
     @Override
     public void onBackPressed(){
     	super.onBackPressed();
-    	if(media_player!=null && media_player.isPlaying())
-			media_player.stop();
-    	if(media_player2!=null && media_player2.isPlaying())
-			media_player2.stop();
-        Intent i = new Intent(this,SplitAnimalActivity.class);
-        startActivity(i);    
-        finish();
+    	if (app.getState() != app.CHOOSE_CHALLENGE){
+        	if(media_player!=null && media_player.isPlaying())
+    			media_player.stop();
+        	if(media_player2!=null && media_player2.isPlaying())
+    			media_player2.stop();
+            Intent i = new Intent(this,SplitAnimalActivity.class);
+            startActivity(i);    
+            finish();
+		}else{
+			this.goMenuChallenges();
+		}
     }
 
 	public void setSoundAnimal(){

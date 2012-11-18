@@ -242,9 +242,13 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     @Override
     public void onBackPressed(){
     	super.onBackPressed();
-        Intent i = new Intent(this,FeedingActivity.class);
-        startActivity(i);    
-        finish();
+    	if (jungle.getState() != jungle.CHOOSE_CHALLENGE){
+	        Intent i = new Intent(this,FeedingActivity.class);
+	        startActivity(i);    
+	        finish();
+		}else{
+			this.goMenuChallenges();
+		}
     }
     
     void mixAnimalParts(){

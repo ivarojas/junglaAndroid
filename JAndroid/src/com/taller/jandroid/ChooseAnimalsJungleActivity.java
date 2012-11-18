@@ -41,6 +41,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 	private int destiny;
 	private List<Integer> right_answers;
 	private List<Integer> right_answers_ids;
+	private Jungle app;
 
 
 	public void onCreate(Bundle savedInstanceState) 
@@ -55,7 +56,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 
 		this.setDrop_background(R.drawable.drag_here);
 		
-		Jungle app =  (Jungle)getApplicationContext();
+		app =  (Jungle)getApplicationContext();
 		destiny = app.getDestiny();
 		
 		setupViews();
@@ -363,9 +364,13 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 	@Override
 	public void onBackPressed(){
 		super.onBackPressed();
-		Intent i = new Intent(this,SoundActivity.class);
-		startActivity(i);    	
-		finish();
+		if (app.getState() != app.CHOOSE_CHALLENGE){
+			Intent i = new Intent(this,SoundActivity.class);
+			startActivity(i);    	
+			finish();
+		}else{
+			this.goMenuChallenges();
+		}
 	}
 
 } // end class

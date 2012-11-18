@@ -23,6 +23,8 @@ import animal.Animal;
 
 public class Jungle extends Application{
 	
+	public final int CHOOSE_CHALLENGE = 0;
+	public final int ADVENTURE = 1;
 	public final int CONGO = 0;
 	public final int BORNEO = 1;
 	
@@ -31,6 +33,7 @@ public class Jungle extends Application{
 	private Context bsc;
 	private Food food;
 	private int destiny;
+	private int state;
 	
 	public Jungle(){
 		super();
@@ -42,6 +45,8 @@ public class Jungle extends Application{
 		super.onCreate();
 		bsc = getBaseContext();
 		readJungleJson();
+		
+		this.state = this.ADVENTURE;
 	}
 	
 	public void readJungleJson(){
@@ -252,5 +257,13 @@ public class Jungle extends Application{
 	public int getImageId(String prefix, String animal_name, String suffix) {
 		Context context = getApplicationContext();
 		return context.getResources().getIdentifier(prefix + animal_name + suffix, "drawable", context.getPackageName());
+	}
+
+	public void setState(int state) {
+		this.state = state;  		
+	}
+	
+	public int getState() {
+		return this.state;  		
 	}
 }

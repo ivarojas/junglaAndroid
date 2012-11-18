@@ -26,6 +26,7 @@ public class ShadowActivity extends MyActivity {
 	private String correct_answer;
     private int destiny;
 	MediaPlayer mediaPlayer;
+	private Jungle app;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,7 @@ public class ShadowActivity extends MyActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
   
-        Jungle app = (Jungle)getApplicationContext();
+        app = (Jungle)getApplicationContext();
         destiny = app.getDestiny();
         
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -100,13 +101,16 @@ public class ShadowActivity extends MyActivity {
     @Override
     public void onBackPressed(){
     	super.onBackPressed();
-        Intent i = null;
-        if(destiny == 0)
-        	i=new Intent(this,PresentationActivity.class);
-        else
-        	i=new Intent(this,PresentationBorneoActivity.class);
-        
-        startActivity(i);
+        if (app.getState() != app.CHOOSE_CHALLENGE){
+        	Intent i = null;
+            if(destiny == 0)
+            	i=new Intent(this,PresentationActivity.class);
+            else
+            	i=new Intent(this,PresentationBorneoActivity.class);
+            startActivity(i);
+		}else{
+			this.goMenuChallenges();
+		}
     }
 
 	@Override

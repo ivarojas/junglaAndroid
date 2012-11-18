@@ -1,5 +1,6 @@
 package com.taller.jandroid;
 
+import persistance.Jungle;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -23,6 +24,9 @@ public class IndieIntroducing extends MyActivity implements OnClickListener {
         
         ImageButton next = (ImageButton)findViewById(R.id.nextButton_intr);
         next.setOnClickListener(this);
+        
+        Jungle jungle = (Jungle)this.getApplication();
+        jungle.setState(jungle.ADVENTURE);
     }
     
     @Override

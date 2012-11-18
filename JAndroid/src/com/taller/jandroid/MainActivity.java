@@ -38,11 +38,13 @@ public class MainActivity extends MyActivity implements OnClickListener{
         setContentView(R.layout.activity_main);
         
         Button start = (Button)findViewById(R.id.start);
+        Button challenges = (Button)findViewById(R.id.challenges);
         Button exit = (Button)findViewById(R.id.exit);
         Button credits= (Button)findViewById(R.id.credits);
         
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/fawn.ttf");  
         start.setTypeface(font);
+        challenges.setTypeface(font);
         exit.setTypeface(font);
         
         dialog=new Dialog(this);
@@ -74,6 +76,7 @@ public class MainActivity extends MyActivity implements OnClickListener{
 		Linkify.addLinks(cc, Linkify.ALL);
 		
         start.setOnClickListener(this);
+        challenges.setOnClickListener(this);
         exit.setOnClickListener(this);
         credits.setOnClickListener(this);
         closeButton.setOnClickListener(this);
@@ -85,6 +88,10 @@ public class MainActivity extends MyActivity implements OnClickListener{
 		case R.id.start: 
 			Intent start_game = new Intent(this,IndieIntroducing.class);
 	    	this.startActivity(start_game);
+	    	break;
+		case R.id.challenges: 
+			Intent choose_challenge = new Intent(this,ChallengesActivity.class);
+	    	this.startActivity(choose_challenge);
 	    	break;
 		case R.id.exit: 
 			android.os.Process.killProcess(android.os.Process.myPid()); 

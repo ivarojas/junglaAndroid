@@ -29,20 +29,31 @@
         android:id="@+id/start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/second"
+        android:layout_below="@id/second"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="44dp"
         android:text="Jugar"
         android:textSize="35dp"
         android:background="@drawable/button"/>
-
+    
+    <Button
+        android:id="@+id/challenges"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/start"
+        android:layout_marginTop="23dp"
+        android:background="@drawable/button"
+        android:text="Desafíos"
+        android:textSize="35dp" />
+    
     <Button
         android:id="@+id/exit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/start"
-        android:layout_below="@+id/start"
-        android:layout_marginTop="61dp"
+        android:layout_below="@id/challenges"
+        android:layout_marginTop="30dp"
         android:text="Salir"
         android:textSize="35dp"
         android:background="@drawable/button"/>
