@@ -5,35 +5,40 @@
 					"spanish": "Elefante",
 					"food": ["fruit", "plant"],
 					"ambient": ["ground"],
-					"description": "Hola soy un elefante del Congo.\nAmo comer frutas y plantas.\nSoy el tercer animal terrestre más grande en la Tierra."
+					"description": "Hola soy un elefante del Congo.\nAmo comer frutas y plantas.\nSoy el tercer animal terrestre más grande en la Tierra.",
+					"url": "http://es.wikipedia.org/wiki/Loxodonta_cyclotis"
 				},
 				{
 					"name": "hippo",
 					"spanish": "Hipopótamo",
 					"food": ["plant"],
 					"ambient": ["river","ground"],
-					"description": "Hola, soy un hipopótamo.\nPaso la mayor parte del día sumergido en el agua.\nMi nombre significa \"caballo de río\"."
+					"description": "Hola, soy un hipopótamo.\nPaso la mayor parte del día sumergido en el agua.\nMi nombre significa \"caballo de río\".",
+					"url": "http://es.wikipedia.org/wiki/Hippopotamus_amphibius"
 				},
 				{
 					"name": "bonobo",
 					"spanish": "Mono Bonobo",
 					"food": ["fruit", "plant", "insect"],
 					"ambient": ["tree", "ground"],
-					"description": "Hola, soy un simio.\nMe gusta comer frutas, pero también como nueces, semillas, hojas e insectos."
+					"description": "Hola, soy un simio.\nMe gusta comer frutas, pero también como nueces, semillas, hojas e insectos.",
+					"url": "http://es.wikipedia.org/wiki/Bonobo"
 				},
 				{
 					"name": "okapi",
 					"spanish": "Okapi",
 					"food": ["fruit", "plant"],
 					"ambient": ["ground"],
-					"description": "Hola, soy pariente de las jirafas.\nTengo una lengua muy larga.\nSoy vegetariano, me alimento de frutas y hojas."
+					"description": "Hola, soy pariente de las jirafas.\nTengo una lengua muy larga.\nSoy vegetariano, me alimento de frutas y hojas.",
+					"url": "http://es.wikipedia.org/wiki/Okapi"
 				},
 				{
 					"name": "gorilla",
 					"spanish": "Gorila",
 					"food": ["fruit", "plant"],
 					"ambient": ["tree", "ground"],
-					"description": "Hola, soy el simio más grande del mundo.\nPaso todo el día en busca de hojas, tallos y brotes de las plantas."
+					"description": "Hola, soy el simio más grande del mundo.\nPaso todo el día en busca de hojas, tallos y brotes de las plantas.",
+					"url": "http://es.wikipedia.org/wiki/Gorilla_beringei_beringei"
 				}
 			],
 	"Borneo":[
@@ -42,56 +47,64 @@
 					"spanish": "Pantera Nebulosa",
 					"food": ["meat"],
 					"ambient": ["ground"],
-					"description": "Hola, soy un felino.\nTengo manchas con forma de nubes, soy capaz de trepar árboles y como carne."
+					"description": "Hola, soy un felino.\nTengo manchas con forma de nubes, soy capaz de trepar árboles y como carne.",
+					"url" : "http://es.wikipedia.org/wiki/Pantera_nebulosa"
 				},
 				{
 					"name": "frog",
 					"spanish": "Rana",
 					"food": ["insect"],
 					"ambient": ["river"],
-					"description": "Hola soy una anfibio.\nSoy tan pequeña como una moneda, respiro por la piel, y vivo en los ríos."
+					"description": "Hola soy un anfibio.\nSoy tan pequeña como una moneda, respiro por la piel, y vivo en los ríos.",
+					"url": "http://es.wikipedia.org/wiki/Barbourula_kalimantanensis"
 				},
 				{
 					"name": "bear",
 					"spanish": "Oso Malayo",
 					"food": ["meat", "fruit", "plant", "insect"],
 					"ambient": ["tree", "ground"],
-					"description": "Hola, soy un oso al que le gusta mucho la miel y descansar en los árboles.\nTambién me conocen como Oso del sol"
+					"description": "Hola, soy un oso al que le gusta mucho la miel y descansar en los árboles.\nTambién me conocen como Oso del sol",
+					"url": "http://es.wikipedia.org/wiki/Helarctos_malayanus"
 				},
 				{
 					"name": "snake",
 					"spanish": "Serpiente",
 					"food": ["meat"],
 					"ambient": ["tree"],
-					"description": "Hola soy un reptil.\nSoy de muchos colores, vivo en los árboles, y como ranas y lagartijas."
+					"description": "Hola soy un reptil.\nSoy de muchos colores, vivo en los árboles, y como ranas y lagartijas.",
+					"url": "" 
 				},
 				{
 					"name": "orangutan",
 					"spanish": "Orangután",
 					"food": ["fruit", "plant", "insect"],
 					"ambient": ["tree", "ground"],
-					"description": "Hola, soy un simio.\nTengo largos brazos y paso casi todo el tiempo en los árboles.\nMi pelo es café rojizo."
+					"description": "Hola, soy un simio.\nTengo largos brazos y paso casi todo el tiempo en los árboles.\nMi pelo es café rojizo.",
+					"url": "http://es.wikipedia.org/wiki/Orangutan_de_borneo"
 				},
 				{
 					"name": "proboscis",
 					"spanish": "Mono narigudo",
 					"food": ["fruit", "plant"],
 					"ambient": ["tree", "ground"],
-					"description": "Hola, soy un simio muy sociable, un gran nadador y tengo una enorme nariz.\nMe gusta columpiarme en los árboles."
+					"description": "Hola, soy un simio muy sociable, un gran nadador y tengo una enorme nariz.\nMe gusta columpiarme en los árboles.",
+					"url": "http://es.wikipedia.org/wiki/Mono_narigudo"
 				},
 				{
 					"name": "rhino",
 					"spanish": "Rinoceronte",
 					"food": ["fruit", "plant"],
 					"ambient": ["ground"],
-					"description": "Hola, soy un rinoceronte.\nSoy solitario, tengo una piel dura y poseo 2 cuernos en la cabeza."
+					"description": "Hola, soy un rinoceronte.\nSoy solitario, tengo una piel dura y poseo 2 cuernos en la cabeza.",
+					"url": "http://es.wikipedia.org/wiki/Dicerorhinus_sumatrensis"
 				},
 				{
 					"name": "hornbill",
 					"spanish": "Cálao",
 					"food": ["fruit", "insect"],
 					"ambient": ["air", "tree"],
-					"description": "Hola, soy ave.\nTengo un enorme pico, soy sociable y puedo imitar sonidos de otras aves."
+					"description": "Hola, soy un ave.\nTengo un enorme pico, soy sociable y puedo imitar sonidos de otras aves.",
+					"url": "http://es.wikipedia.org/wiki/Buceros_rhinoceros"
 				}
 
 		]

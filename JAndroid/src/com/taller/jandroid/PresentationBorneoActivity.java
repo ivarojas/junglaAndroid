@@ -36,6 +36,7 @@ public class PresentationBorneoActivity extends MyActivity {
         ImageButton hbutton=(ImageButton)findViewById(R.id.hornbillbutton);
         ImageButton lbutton=(ImageButton)findViewById(R.id.leopardbutton);
         ImageButton bbutton=(ImageButton)findViewById(R.id.bearbutton);
+        ImageButton sbutton=(ImageButton)findViewById(R.id.snakebutton);
         ImageButton next=(ImageButton)findViewById(R.id.continuebutton);
 
         obutton.setOnClickListener(new OnClickListener() {
@@ -94,6 +95,14 @@ public class PresentationBorneoActivity extends MyActivity {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationBorneoActivity.this,AnimalPresentationActivity.class);
                 i.putExtra("animal","bear");
+                startActivity(i);
+                finish();
+               }
+             });
+        sbutton.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
+                Intent i=new Intent(PresentationBorneoActivity.this,AnimalPresentationActivity.class);
+                i.putExtra("animal","snake");
                 startActivity(i);
                 finish();
                }
