@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.taller.jandroid"
     android:versionCode="1"
@@ -7,15 +8,16 @@
         android:minSdkVersion="8"
         android:targetSdkVersion="8" />
 
-    <uses-permission android:name="android.permission.VIBRATE" >       
+    <uses-permission android:name="android.permission.VIBRATE" >
     </uses-permission>
 
     <application
+        android:name="persistance.Jungle"
         android:icon="@drawable/icon_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" android:name="persistance.Jungle">
+        android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="com.taller.jandroid.MainActivity"
             android:label="@string/title_activity_main"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -25,71 +27,74 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".IndieIntroducing"
+            android:name="com.taller.jandroid.IndieIntroducing"
             android:label="@string/title_activity_indie_introducing"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".TranslatePlane"
+            android:name="com.taller.jandroid.TranslatePlane"
             android:label="@string/title_activity_translate_plane"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".ArrivingJungle"
+            android:name="com.taller.jandroid.ArrivingJungle"
             android:label="@string/title_activity_arriving_jungle"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".ShadowActivity"
+            android:name="com.taller.jandroid.ShadowActivity"
             android:label="@string/title_activity_shadow"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".PresentationActivity"
+            android:name="com.taller.jandroid.PresentationActivity"
             android:label="@string/title_activity_presentation"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".AnimalPresentationActivity"
+            android:name="com.taller.jandroid.AnimalPresentationActivity"
             android:label="@string/title_activity_animal_presentation"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".PresentationBorneoActivity"
+            android:name="com.taller.jandroid.PresentationBorneoActivity"
             android:label="@string/title_activity_presentation_borneo"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".GoodbyeActivity"
+            android:name="com.taller.jandroid.GoodbyeActivity"
             android:label="@string/title_activity_goodbye"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".SoundActivity"
+            android:name="com.taller.jandroid.SoundActivity"
             android:label="@string/title_activity_sound"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".ChooseAnimalsJungleActivity"
+            android:name="com.taller.jandroid.ChooseAnimalsJungleActivity"
             android:label="@string/title_activity_choose_animals_jungle"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".SplitAnimalActivity"
+            android:name="com.taller.jandroid.SplitAnimalActivity"
             android:label="@string/title_activity_split_animal"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".SayGoodbyeActivity"
+            android:name="com.taller.jandroid.SayGoodbyeActivity"
             android:label="@string/title_activity_say_goodbye"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".FeedingActivity"
-            android:label="@string/title_activity_feeding" 
+            android:name="com.taller.jandroid.FeedingActivity"
+            android:label="@string/title_activity_feeding"
             android:screenOrientation="portrait" >
         </activity>
-        
+        <activity
+            android:name="com.taller.jandroid.ChallengesActivity"
+            android:label="@string/title_activity_challenges" >
+        </activity>
     </application>
 
 </manifest>

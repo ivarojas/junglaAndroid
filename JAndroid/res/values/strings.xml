@@ -1,4 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">La Jungla</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
@@ -14,8 +16,10 @@
     <string name="title_activity_shadow">ShadowActivity</string>
     <string name="title_activity_presentation">PresentationActivity</string>
     <string name="title_activity_animal_presentation">AnimalPresentationActivity</string>
-	<string name="title_activity_presentation_borneo">PresentationBorneoActivity</string>
-	<string name="title_activity_sound">SoundActivity</string>
-	<string name="title_activity_split_animal">SplitAnimalActivity</string>
-	<string name="title_activity_feeding">FeedingActivity</string>
+    <string name="title_activity_presentation_borneo">PresentationBorneoActivity</string>
+    <string name="title_activity_sound">SoundActivity</string>
+    <string name="title_activity_split_animal">SplitAnimalActivity</string>
+    <string name="title_activity_feeding">FeedingActivity</string>
+    <string name="title_activity_challenges">ChallengesActivity</string>
+
 </resources>
