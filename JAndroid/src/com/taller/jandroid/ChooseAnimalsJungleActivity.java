@@ -68,6 +68,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 		next.setOnClickListener(this);
 
 		dialog = new Dialog(this);
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		dialog.setContentView(R.layout.activity_choose_dialog);
 		dialog.setTitle("Instrucciones:");
 

@@ -48,32 +48,48 @@ public class MainActivity extends MyActivity implements OnClickListener{
         exit.setTypeface(font);
         
         dialog=new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		dialog.setContentView(R.layout.credits);
 		Button closeButton = (Button) dialog.findViewById(R.id.closeButton);
-		
+		closeButton.setTypeface(font);
 		
 		TextView ac=(TextView)dialog.findViewById(R.id.authors_content);
-		ac.setText("Brahim Usen (busenmo@gmail.com)\nIván Rojas (ivanrohe@gmail.com)\nVíctor Rojas (vitorohe@gmail.com)");
+		ac.setText("Brahim Usen (busenmo@gmail.com)\n\nIván Rojas (ivanrohe@gmail.com)\n\nVíctor Rojas (vitorohe@gmail.com)\n");
 		Linkify.addLinks(ac, Linkify.ALL);
 		
 		TextView ic=(TextView)dialog.findViewById(R.id.info_content);
 		ic.setText(Html.fromHtml(infolinks));
 		ic.setMovementMethod(LinkMovementMethod.getInstance());
-
-//		Linkify.addLinks(ic, Linkify.WEB_URLS);
 		ic.append("Microsoft ® Encarta ® 2007. © 1993-2006 Microsoft Corporation. Reservados todos los derechos.\n");
 		
 		TextView sc=(TextView)dialog.findViewById(R.id.sounds_content);
-		sc.setText("www.freesound.org\nwww.findsounds.com\nwww.freeinfosociety.com/media_index.php?cat=20&type=3");
-		Linkify.addLinks(sc, Linkify.ALL);
+		sc.setText(Html.fromHtml("" +
+				"<p><a href='http://www.freesound.org'>Freesound.org</a></p>" +
+				"<p><a href='http://www.findsounds.com'>Findsounds.com</a></p>" +
+				"<p><a href='http://www.freeinfosociety.com/media_index.php?cat=20&type=3'></a></p>"));
 		
 		TextView imc=(TextView)dialog.findViewById(R.id.images_content);
-		imc.setText("Animales y avión: Noemí Rojas H. (noemirohe@gmail.com)\nFondo: www.vectorjungle.com\n(libre uso, incluso comercial)\nOtras imágenes: insectos, frutas, etc.\n(libre uso, incluso comercial)\n");
+		imc.setText("Animales y avión:\nNoemí Rojas H. (noemirohe@gmail.com)\n\n");
 		Linkify.addLinks(imc, Linkify.ALL);
-		
+		imc.append(Html.fromHtml("" +
+				"<p>Fondo de algunos desafíos: <a href='http://www.vectorjungle.com/2010/09/free-vector-jungle-background/'>Vectorjungle.com</a>" +
+				"<br>(libre uso, incluso comercial)</p>" +
+				"<p>Fondo de pantalla de inicio, elegir destino y despedida:<br>Víctor Rojas</p>"+
+				"<p>Otras imágenes: insectos, frutas, etc.<br>(libre uso, incluso comercial)</p>"));
+	
 		TextView cc=(TextView)dialog.findViewById(R.id.character_content);
-		cc.setText("Creadora:\nwww.misscoffee.deviantart.com\nwww.etsy.com/shop/michellecoffee\nwww.michelle-coffee.tumblr.com/");
-		Linkify.addLinks(cc, Linkify.ALL);
+		cc.setText(Html.fromHtml("" +
+				"<p>Creadora:<br>" +
+				"Michelle Coffee, 27, Canadá</p>"+
+				"<p><a href='http://www.etsy.com/shop/michellecoffee'>Etsy.com</a></p>" +
+				"<p><a href='http://www.michelle-coffee.tumblr.com'>Tumblr.com</a></p>" +
+				"<p><a href='http://www.misscoffee.deviantart.com'>Deviantart.com</a></p>" +
+				"<p><a href='http://www.facebook.com/missmichellecoffee'>Facebook.com</a></p>"));
+		cc.setMovementMethod(LinkMovementMethod.getInstance());
+		
+		TextView je=(TextView)dialog.findViewById(R.id.jeremy_email);
+		je.setText("(jeremy@dcc.uchile.cl)");
+		Linkify.addLinks(je, Linkify.ALL);
 		
         start.setOnClickListener(this);
         challenges.setOnClickListener(this);
