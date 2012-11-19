@@ -3,6 +3,8 @@ package com.taller.jandroid;
 
 import java.util.List;
 
+import myviews.MyTextView;
+
 import persistance.Jungle;
 import android.app.Dialog;
 import android.content.Intent;
@@ -35,6 +37,7 @@ public class AnimalPresentationActivity extends MyActivity {
 	private Dialog dialog1;
 	private AnimalSet animal_set;
 	private String animal_url;
+	private Jungle app;
 
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,7 +47,7 @@ public class AnimalPresentationActivity extends MyActivity {
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_animal_presentation);      
         
-        Jungle app = (Jungle)getApplicationContext();
+        app = (Jungle)getApplicationContext();
         destiny = app.getDestiny();
         
         Log.i("destiny", destiny+"");
@@ -96,7 +99,6 @@ public class AnimalPresentationActivity extends MyActivity {
 		
 		info.setOnClickListener(new OnClickListener(){
 			public void onClick(View v){
-				Jungle app = (Jungle)getApplicationContext();
 				Animal anim = null;
 				if(destiny == app.CONGO)
 					anim = app.getSingleAnimal(app.CONGO, animal_name);
@@ -196,6 +198,9 @@ public class AnimalPresentationActivity extends MyActivity {
     }
 	
 	public void setAnimalInfo(){
+		
+		MyTextView tx = (MyTextView)findViewById(R.id.animalName);
+		tx.setText(app.getSpanishName(destiny, animal_name));
 				
 		if(animal_name.equals("okapi") || animal_name.equals("proboscis")){
 			animal_info="Hola soy un okapi.\nSoy pariente de las jirafas.\nSoy vegetariano, me alimento de frutas y hojas";
@@ -209,8 +214,6 @@ public class AnimalPresentationActivity extends MyActivity {
 			animal_set = new AnimalSet(this);
 			animal_img = animal_set.getDrawableAnimalId(animal_name);
 			animal_sound = animal_set.getSoundAnimalId(animal_name);
-			
-			Jungle app = (Jungle)getApplicationContext();
 			
 			if(animal_name.equals("snake")){
 				ImageButton url=(ImageButton)findViewById(R.id.urlButton);
@@ -250,6 +253,8 @@ public class AnimalPresentationActivity extends MyActivity {
 		((ViewManager)sound.getParent()).removeView(sound);
         ImageButton info=(ImageButton)findViewById(R.id.bubble);
         ((ViewManager)info.getParent()).removeView(info);
+        ImageButton url=(ImageButton)findViewById(R.id.urlButton);
+        ((ViewManager)url.getParent()).removeView(url);
 	}
     
 }
