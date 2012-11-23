@@ -93,7 +93,6 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     		int id = animals_ids_up.get(0);
     		animals_ids_up.set(0, animals_ids_up.get(animals_ids_up.size()-1));
     		animals_ids_up.set(animals_ids_up.size()-1, id);
-    		Log.i("repeat","aquí pasó");
     	}
 		
 		iSwitcherUp.setImageResource(animals_ids_up.get(0));
