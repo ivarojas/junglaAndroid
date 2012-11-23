@@ -52,6 +52,12 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
         setContentView(R.layout.activity_feeding);
         
         app = (Jungle)getApplicationContext();
+        
+		if (app.getState() == app.CHOOSE_CHALLENGE){
+			int dest = (int) Math.round(Math.random());
+			app.setDestiny(dest);
+		}
+        
         destiny = app.getDestiny();
         if(destiny == 0)
         	this.setDrop_background(R.drawable.feed_bonobo_open_mouth);

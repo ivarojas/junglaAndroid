@@ -47,6 +47,12 @@ public class SoundActivity extends MyActivity{
         setContentView(R.layout.activity_sound);
         
         app = (Jungle)getApplicationContext();
+        
+		if (app.getState() == app.CHOOSE_CHALLENGE){
+			int dest = (int) Math.round(Math.random());
+			app.setDestiny(dest);
+		}
+        
         destiny = app.getDestiny();        
 		
 		sound = (ImageButton)findViewById(R.id.soundChallenge);

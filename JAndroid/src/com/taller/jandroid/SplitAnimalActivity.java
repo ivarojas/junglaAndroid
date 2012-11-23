@@ -13,6 +13,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,8 +56,9 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
 	private Dialog dialog;
 	private View toast_layout;
 	private Toast toast;
-	private Jungle jungle;
-	private Hashtable<Integer, String> hash_ids_names; 
+	private Jungle app;
+	private Hashtable<Integer, String> hash_ids_names;
+	private int destiny; 
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,6 +67,14 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_split_animal);
+        
+        app = (Jungle)getApplicationContext();
+        
+		if (app.getState() == app.CHOOSE_CHALLENGE){
+			int dest = (int) Math.round(Math.random());
+			app.setDestiny(dest);
+		}
+		destiny = app.getDestiny();
         
        // imageSwitcher1
 		iSwitcherUp = (ImageSwitcher) findViewById(R.id.imageSwitcherUp);
@@ -75,6 +85,16 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
 		
 		this.setSplitAnimals();
 		this.setToast();
+		
+    	String animal_up_name = hash_ids_names.get(animals_ids_up.get(0));
+    	String animal_down_name = hash_ids_names.get(animals_ids_down.get(0));
+    	
+    	if(animal_up_name.equals(animal_down_name)){
+    		int id = animals_ids_up.get(0);
+    		animals_ids_up.set(0, animals_ids_up.get(animals_ids_up.size()-1));
+    		animals_ids_up.set(animals_ids_up.size()-1, id);
+    		Log.i("repeat","aquí pasó");
+    	}
 		
 		iSwitcherUp.setImageResource(animals_ids_up.get(0));
 		iSwitcherDown.setImageResource(animals_ids_down.get(0));
@@ -222,7 +242,7 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     	next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	toast_layout.setVisibility(View.INVISIBLE);
-            	if (jungle.getState() != jungle.CHOOSE_CHALLENGE){
+            	if (app.getState() != app.CHOOSE_CHALLENGE){
             		Intent nextIntent = new Intent(SplitAnimalActivity.this, SoundActivity.class);
             		startActivity(nextIntent);
             		finish();
@@ -246,7 +266,7 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     @Override
     public void onBackPressed(){
     	super.onBackPressed();
-    	if (jungle.getState() != jungle.CHOOSE_CHALLENGE){
+    	if (app.getState() != app.CHOOSE_CHALLENGE){
 	        Intent i = new Intent(this,FeedingActivity.class);
 	        startActivity(i);
 	        finish();
@@ -271,15 +291,15 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     		//showing animal and name
     		ImageView image = (ImageView) toast_layout.findViewById(R.id.animal_image);
     		String animal_name = hash_ids_names.get(animals_ids_up.get(positionUp));
-    		int image_id = jungle.getImageId("", animal_name, "");
-    		image.setBackgroundDrawable(decodeDrawable(image_id,false));
+    		int image_id = app.getImageId("", animal_name, "");
+    		image.setBackgroundDrawable(decodeDrawable(image_id,true));
     		TextView text = (TextView) toast_layout.findViewById(R.id.animal_name);
     		
     		Jungle app = (Jungle)getApplicationContext();
     		
     		text.setText(app.getSpanishName(app.getDestiny(),animal_name));
     		toast.setView(toast_layout);
-//    		toast.show();
+    		toast.show();
     	}
     	else{
     		mediaPlayer = MediaPlayer.create(this, R.raw.failbeep);
@@ -299,11 +319,10 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
 	}
 	
 	public void setSplitAnimals(){
-		jungle = (Jungle) getApplicationContext();
 		
-		List<Animal> random_animals = jungle.getAnimalsRandom(jungle.getDestiny(), 5);
-		List<Integer> positions_up = jungle.getRandomRange(0, 4, 5);
-		List<Integer> positions_down = jungle.getRandomRange(0, 4, 5);
+		List<Animal> random_animals = app.getAnimalsRandom(destiny, 5);
+		List<Integer> positions_up = app.getRandomRange(0, 4, 5);
+		List<Integer> positions_down = app.getRandomRange(0, 4, 5);
 		
 		animals_ids_up = new ArrayList<Integer>(); 
 		animals_ids_down = new ArrayList<Integer>();
@@ -315,7 +334,7 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
 		for(int i = 0; i < size; i++){
 			k = positions_up.get(i);
 			animal_name = random_animals.get(k).getName();
-			image_id = jungle.getImageId("split_", animal_name, "_up");
+			image_id = app.getImageId("split_", animal_name, "_up");
 			animals_ids_up.add(image_id);
 			hash_ids_names.put(image_id, animal_name);
 		}
@@ -323,7 +342,7 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
 		for(int i = 0; i < size; i++){
 			k = positions_down.get(i);
 			animal_name = random_animals.get(k).getName();
-			image_id = jungle.getImageId("split_", animal_name, "_down");
+			image_id = app.getImageId("split_", animal_name, "_down");
 			animals_ids_down.add(image_id);
 			hash_ids_names.put(image_id, animal_name);
 		}
