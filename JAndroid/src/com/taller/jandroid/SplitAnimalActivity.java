@@ -13,7 +13,6 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -244,11 +243,12 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
             	if (app.getState() != app.CHOOSE_CHALLENGE){
             		Intent nextIntent = new Intent(SplitAnimalActivity.this, SoundActivity.class);
             		startActivity(nextIntent);
+            		recycle();
             		finish();
             	}else{
+            		recycle();
             		goMenuChallenges();
             	}
-            	recycle();
             }
         });
     	
@@ -268,12 +268,12 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     	if (app.getState() != app.CHOOSE_CHALLENGE){
 	        Intent i = new Intent(this,FeedingActivity.class);
 	        startActivity(i);
+	        recycle();
 	        finish();
 		}else{
+			recycle();
 			this.goMenuChallenges();
 		}
-    	
-    	recycle();
     }
     
     void mixAnimalParts(){

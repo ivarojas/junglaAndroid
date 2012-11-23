@@ -1,6 +1,7 @@
 package com.taller.jandroid;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,6 +15,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 public class GoodbyeActivity extends MyActivity implements AnimationListener {
+	
+	MediaPlayer mp;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,17 +31,20 @@ public class GoodbyeActivity extends MyActivity implements AnimationListener {
         Animation anim1 = AnimationUtils.loadAnimation(this, R.anim.goodbye_anim1);
         Animation anim2 = AnimationUtils.loadAnimation(this, R.anim.goodbye_anim2);
         Animation anim3 = AnimationUtils.loadAnimation(this, R.anim.goodbye_anim3);
-        anim1.setDuration(5000);
+        anim1.setDuration(3000);
         animSet.addAnimation(anim1);
-        anim2.setDuration(5000);
-        anim2.setStartOffset(5000);
+        anim2.setDuration(3000);
+        anim2.setStartOffset(3000);
         animSet.addAnimation(anim2);
-        anim3.setDuration(5000);
-        anim3.setStartOffset(10000);
+        anim3.setDuration(3000);
+        anim3.setStartOffset(6000);
         animSet.addAnimation(anim3);
         animSet.setAnimationListener(this);
         
+        mp = MediaPlayer.create(this, R.raw.nature);
+        mp.start();
         image.startAnimation(animSet);
+        
         
     }
     
@@ -66,6 +72,7 @@ public class GoodbyeActivity extends MyActivity implements AnimationListener {
     }
 
 	public void onAnimationEnd(Animation animation) {
+		mp.stop();
 		ImageView indie_ship = (ImageView)findViewById(R.id.ship);
 		indie_ship.setVisibility(View.INVISIBLE);
 		Intent next = new Intent(this,TranslatePlane.class);
@@ -74,12 +81,10 @@ public class GoodbyeActivity extends MyActivity implements AnimationListener {
 	}
 
 	public void onAnimationRepeat(Animation animation) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	public void onAnimationStart(Animation animation) {
-		// TODO Auto-generated method stub
 		
 	}
 	

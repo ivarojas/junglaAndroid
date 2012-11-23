@@ -215,11 +215,12 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 	    	if (app.getState() != app.CHOOSE_CHALLENGE){
 	    		Intent i = new Intent(this, SplitAnimalActivity.class);
 	    		startActivity(i);
+	    		recycle();
 	    		finish();
 	    	}else{
+	    		recycle();
 	    		goMenuChallenges();
 	    	}
-	    	recycle();
 	    }
 	    if(v.getId() == R.id.dialogButtonOK)
 	    	dialog.dismiss();
@@ -297,13 +298,13 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 		super.onBackPressed();
 		if (app.getState() != app.CHOOSE_CHALLENGE){
 			Intent i = new Intent(this,ShadowActivity.class);
-			startActivity(i);	   	
+			startActivity(i);
+			recycle();
 			finish();
 		}else{
+			recycle();
 			this.goMenuChallenges();
-		}
-		
-		recycle(); 
+		} 
     }	
 	
 	public void recycle(){

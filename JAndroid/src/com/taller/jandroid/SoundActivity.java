@@ -133,7 +133,7 @@ public class SoundActivity extends MyActivity{
         	if(media_player2!=null && media_player2.isPlaying())
     			media_player2.stop();
             Intent i = new Intent(this,SplitAnimalActivity.class);
-            startActivity(i);    
+            startActivity(i);
             finish();
 		}else{
 			this.goMenuChallenges();

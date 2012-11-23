@@ -97,11 +97,12 @@ public class ShadowActivity extends MyActivity {
     			Intent intent = new Intent(this, FeedingActivity.class);
     			intent.putExtra("animal", "elephant");
     			startActivity(intent);
+    			recycle();
             	finish();
     		}else{
+    			recycle();
     			goMenuChallenges();
     		}
-    		recycle();
     	}else{
     		if(mediaPlayer!=null && mediaPlayer.isPlaying())
     			mediaPlayer.stop();
@@ -121,13 +122,13 @@ public class ShadowActivity extends MyActivity {
             else
             	i=new Intent(this,PresentationBorneoActivity.class);
             startActivity(i);
+            recycle();
             finish();
 		}else{
+			recycle();
 			this.goMenuChallenges();
 			
 		}
-        
-        recycle();
     }
 
 	@Override
