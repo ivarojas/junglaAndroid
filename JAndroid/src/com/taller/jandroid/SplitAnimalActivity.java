@@ -222,10 +222,14 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     	next.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	toast_layout.setVisibility(View.INVISIBLE);
-            	Intent nextIntent = new Intent(SplitAnimalActivity.this, SoundActivity.class);
-            	startActivity(nextIntent);
+            	if (jungle.getState() != jungle.CHOOSE_CHALLENGE){
+            		Intent nextIntent = new Intent(SplitAnimalActivity.this, SoundActivity.class);
+            		startActivity(nextIntent);
+            		finish();
+            	}else{
+            		goMenuChallenges();
+            	}
             	recycle();
-            	finish();
             }
         });
     	

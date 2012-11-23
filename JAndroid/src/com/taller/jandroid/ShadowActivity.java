@@ -86,11 +86,16 @@ public class ShadowActivity extends MyActivity {
     			mediaPlayer.stop();
     		mediaPlayer = MediaPlayer.create(this, R.raw.tada);
     		mediaPlayer.start();
-    		Intent intent = new Intent(this, FeedingActivity.class);
-    		intent.putExtra("animal", "elephant");
-            startActivity(intent);
-            recycle();
-            finish();
+    		
+    		if (app.getState() != app.CHOOSE_CHALLENGE){
+    			Intent intent = new Intent(this, FeedingActivity.class);
+    			intent.putExtra("animal", "elephant");
+    			startActivity(intent);
+            	finish();
+    		}else{
+    			goMenuChallenges();
+    		}
+    		recycle();
     	}else{
     		if(mediaPlayer!=null && mediaPlayer.isPlaying())
     			mediaPlayer.stop();

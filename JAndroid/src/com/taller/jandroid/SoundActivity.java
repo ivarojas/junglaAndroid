@@ -101,9 +101,14 @@ public class SoundActivity extends MyActivity{
     			media_player2.stop();
     		media_player = MediaPlayer.create(SoundActivity.this, R.raw.tada);
     		media_player.start();
-    		Intent intent = new Intent(this, ChooseAnimalsJungleActivity.class);
-            startActivity(intent);
-            finish();
+    		
+    		if (app.getState() != app.CHOOSE_CHALLENGE){
+    			Intent intent = new Intent(this, ChooseAnimalsJungleActivity.class);
+    			startActivity(intent);
+    			finish();
+    		}else{
+    			goMenuChallenges();
+    		}
     	}else{
     		if(media_player!=null && media_player.isPlaying())
     			media_player.stop();

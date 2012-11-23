@@ -78,12 +78,12 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 		TextView txd = (TextView)dialog.findViewById(R.id.text_dialog);
 		
 		if(destiny == app.CONGO){
-			tx.setText("Â¿CuÃ¡les de estos animales viven en la jungla del Congo?");
+			tx.setText("¿Cuáles de estos animales viven en la jungla del Congo?");
 			txd.setText("Encuentra los animales que viven en la jungla del Congo");
 			txd.setTextSize(30);
 		}
 		else{
-			tx.setText("Â¿CuÃ¡les de estos animales viven en la jungla de Borneo?");
+			tx.setText("¿Cuáles de estos animales viven en la jungla de Borneo?");
 			txd.setText("Encuentra los animales que viven en la jungla de Borneo");
 			txd.setTextSize(30);
 		}
@@ -111,7 +111,6 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 		int k = 0;
 		k = (2 + (int)(Math.random() * ((5 - 2) + 1)));
 		
-		Jungle app = (Jungle)getApplicationContext();
 		right_answers = app.getRandomRange(0, 5, k);
 		
 		
@@ -200,10 +199,14 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 		}
 
 		if(v.getId() == R.id.nextButton_choose){
-			Intent i = new Intent(this, SayGoodbyeActivity.class);
-			startActivity(i);
+			if (app.getState() != app.CHOOSE_CHALLENGE){
+				Intent i = new Intent(this, SayGoodbyeActivity.class);
+				startActivity(i);
+				finish();
+			}else{
+				goMenuChallenges();
+			}
 			recycle();
-			finish();
 		}
 		if(v.getId() == R.id.dialogButtonOK)
 			dialog.dismiss();

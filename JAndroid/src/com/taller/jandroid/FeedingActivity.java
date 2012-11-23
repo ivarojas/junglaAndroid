@@ -206,10 +206,14 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 	    }
 	    
 	    if(v.getId() == R.id.next){
-	    	Intent i = new Intent(this, SplitAnimalActivity.class);
-	    	startActivity(i);
+	    	if (app.getState() != app.CHOOSE_CHALLENGE){
+	    		Intent i = new Intent(this, SplitAnimalActivity.class);
+	    		startActivity(i);
+	    		finish();
+	    	}else{
+	    		goMenuChallenges();
+	    	}
 	    	recycle();
-	    	finish();
 	    }
 	    if(v.getId() == R.id.dialogButtonOK)
 	    	dialog.dismiss();
