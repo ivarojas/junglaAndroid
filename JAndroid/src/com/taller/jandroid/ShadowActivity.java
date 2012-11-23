@@ -37,6 +37,12 @@ public class ShadowActivity extends MyActivity {
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
   
         app = (Jungle)getApplicationContext();
+        
+		if (app.getState() == app.CHOOSE_CHALLENGE){
+			int dest = (int) Math.round(Math.random());
+			app.setDestiny(dest);
+		}
+        
         destiny = app.getDestiny();
         
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

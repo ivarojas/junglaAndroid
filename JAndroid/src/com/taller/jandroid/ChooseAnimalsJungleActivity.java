@@ -57,6 +57,12 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 		this.setDrop_background(R.drawable.drag_here);
 		
 		app =  (Jungle)getApplicationContext();
+		
+		if (app.getState() == app.CHOOSE_CHALLENGE){
+			int dest = (int) Math.round(Math.random());
+			app.setDestiny(dest);
+		}
+		
 		destiny = app.getDestiny();
 		
 		setupViews();
@@ -78,12 +84,12 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 		TextView txd = (TextView)dialog.findViewById(R.id.text_dialog);
 		
 		if(destiny == app.CONGO){
-			tx.setText("¿Cuáles de estos animales viven en la jungla del Congo?");
+			tx.setText("Â¿CuÃ¡les de estos animales viven en la jungla del Congo?");
 			txd.setText("Encuentra los animales que viven en la jungla del Congo");
 			txd.setTextSize(30);
 		}
 		else{
-			tx.setText("¿Cuáles de estos animales viven en la jungla de Borneo?");
+			tx.setText("Â¿CuÃ¡les de estos animales viven en la jungla de Borneo?");
 			txd.setText("Encuentra los animales que viven en la jungla de Borneo");
 			txd.setTextSize(30);
 		}
