@@ -95,7 +95,7 @@ public class ShadowActivity extends MyActivity {
     		
     		if (app.getState() != app.CHOOSE_CHALLENGE){
     			Intent intent = new Intent(this, FeedingActivity.class);
-    			intent.putExtra("animal", "elephant");
+    			//intent.putExtra("animal", "elephant");
     			startActivity(intent);
             	finish();
     		}else{
