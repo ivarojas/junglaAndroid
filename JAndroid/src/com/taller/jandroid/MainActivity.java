@@ -66,8 +66,9 @@ public class MainActivity extends MyActivity implements OnClickListener{
 		sc.setText(Html.fromHtml("" +
 				"<p><a href='http://www.freesound.org'>Freesound.org</a></p>" +
 				"<p><a href='http://www.findsounds.com'>Findsounds.com</a></p>" +
-				"<p><a href='http://www.freeinfosociety.com/media_index.php?cat=20&type=3'></a></p>"));
-		
+				"<p><a href='http://soundbible.com'>Soundbible.com</a></p>" +
+				"<p><a href='http://www.freeinfosociety.com/media_index.php?cat=20&type=3'>Freeinfosociety.com</a></p>"));
+		sc.setMovementMethod(LinkMovementMethod.getInstance());
 		TextView imc=(TextView)dialog.findViewById(R.id.images_content);
 		imc.setText("Animales y avión:\nNoemí Rojas H. (noemirohe@gmail.com)\n\n");
 		Linkify.addLinks(imc, Linkify.ALL);

@@ -219,11 +219,12 @@ public class AnimalPresentationActivity extends MyActivity {
 				ImageButton url=(ImageButton)findViewById(R.id.urlButton);
 				url.setVisibility(View.INVISIBLE);
 			}
-			if(destiny == app.CONGO)
-				animal_url = app.getSingleAnimal(app.CONGO, animal_name).getUrl();
-			else
-				animal_url = app.getSingleAnimal(app.BORNEO, animal_name).getUrl();	
 		}
+		
+		if(destiny == app.CONGO)
+			animal_url = app.getSingleAnimal(app.CONGO, animal_name).getUrl();
+		else
+			animal_url = app.getSingleAnimal(app.BORNEO, animal_name).getUrl();
 	}
 	
     @Override

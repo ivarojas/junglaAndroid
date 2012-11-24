@@ -13,7 +13,6 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -93,7 +92,6 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     		int id = animals_ids_up.get(0);
     		animals_ids_up.set(0, animals_ids_up.get(animals_ids_up.size()-1));
     		animals_ids_up.set(animals_ids_up.size()-1, id);
-    		Log.i("repeat","aquí pasó");
     	}
 		
 		iSwitcherUp.setImageResource(animals_ids_up.get(0));
@@ -245,11 +243,12 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
             	if (app.getState() != app.CHOOSE_CHALLENGE){
             		Intent nextIntent = new Intent(SplitAnimalActivity.this, SoundActivity.class);
             		startActivity(nextIntent);
+            		recycle();
             		finish();
             	}else{
+            		recycle();
             		goMenuChallenges();
             	}
-            	recycle();
             }
         });
     	
@@ -269,12 +268,12 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     	if (app.getState() != app.CHOOSE_CHALLENGE){
 	        Intent i = new Intent(this,FeedingActivity.class);
 	        startActivity(i);
+	        recycle();
 	        finish();
 		}else{
+			recycle();
 			this.goMenuChallenges();
 		}
-    	
-    	recycle();
     }
     
     void mixAnimalParts(){
