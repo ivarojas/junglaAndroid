@@ -25,7 +25,7 @@ import drag_framework.DragController;
 import drag_framework.DragLayer;
 import drag_framework.DropSpot;
 
-public class ChooseAnimalsJungleActivity extends MyActivity 
+public class ChooseAnimalsJungleActivity extends ChallengeActivity 
 implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 {
 
@@ -97,7 +97,10 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 		Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
 		// if button is clicked, close the custom dialog
 		dialogButton.setOnClickListener(this);
-		dialog.show();	    
+		dialog.show();
+		
+		//setting final dialog
+		this.setupDialogEnd();
 	}
 
 	@SuppressLint("UseValueOf")
@@ -203,20 +206,28 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 		if (mLongClickStartsDrag) {
 			// Tell the user that it takes a long click to start dragging.
 		}
-
-		if(v.getId() == R.id.nextButton_choose){
-			if (app.getState() != app.CHOOSE_CHALLENGE){
-				Intent i = new Intent(this, SayGoodbyeActivity.class);
-				startActivity(i);
-				recycle();
-				finish();
-			}else{
-				recycle();
-				goMenuChallenges();
-			}
+		
+		switch(v.getId()){
+			case R.id.again:
+				Intent self = new Intent(this, ChooseAnimalsJungleActivity.class);
+				startActivity(self);
+	            finish();
+				break;
+			case R.id.nope:
+				//Para cambiar la redireccion, cambiar la clase destino del intent
+				if (app.getState() != app.CHOOSE_CHALLENGE){
+					Intent i = new Intent(this, SayGoodbyeActivity.class);
+					startActivity(i);
+					recycle();
+					finish();
+				}else{
+					recycle();
+					goMenuChallenges();
+				}
+				break;
+			case R.id.dialogButtonOK:
+				dialog.dismiss();
 		}
-		if(v.getId() == R.id.dialogButtonOK)
-			dialog.dismiss();
 	}
 
 	/**
@@ -362,8 +373,11 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 			center.setBackgroundDrawable(decodeDrawable(R.drawable.smiley_happy,false));
 			success += 1;
 			if(success == right_answers_ids.size()){
-				ImageButton next = (ImageButton)mDragLayer.findViewById(R.id.nextButton_choose);
-				next.setVisibility(View.VISIBLE);
+				//ImageButton next = (ImageButton)mDragLayer.findViewById(R.id.nextButton_choose);
+				//next.setVisibility(View.VISIBLE);
+				String return_message = "Has ganado";
+				display.setText(return_message);
+				finalDialog.show();
 			}
 		}
 		else{

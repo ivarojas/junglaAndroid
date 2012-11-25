@@ -3,6 +3,7 @@ package com.taller.jandroid;
 import java.io.InputStream;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +13,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 abstract public class MyActivity extends Activity {
 	
@@ -88,4 +91,5 @@ abstract public class MyActivity extends Activity {
         startActivity(i); 
         finish();
 	}
+	
 }

@@ -33,7 +33,7 @@ import android.widget.ViewSwitcher.ViewFactory;
 import animal.Animal;
 
 
-public class SplitAnimalActivity extends MyActivity implements ViewFactory, View.OnClickListener {
+public class SplitAnimalActivity extends ChallengeActivity implements ViewFactory, View.OnClickListener {
 
     private List<Integer> animals_ids_up;
     private List<Integer> animals_ids_down;
@@ -101,6 +101,9 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
 		next.setVisibility(View.INVISIBLE);
 		
     	setButtons();
+    	
+    	//setting final dialog
+        this.setupDialogEnd();
     	
 	    dialog = new Dialog(this);
 		dialog.setContentView(R.layout.activity_manual_split_animal);
@@ -281,8 +284,8 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     	String animal_down_name = hash_ids_names.get(animals_ids_down.get(positionDown));
     	
     	if(animal_up_name.equals(animal_down_name)){
-    		next = (ImageButton)findViewById(R.id.nextButton_split);
-    		next.setVisibility(View.VISIBLE);
+    		//next = (ImageButton)findViewById(R.id.nextButton_split);
+    		//next.setVisibility(View.VISIBLE);
     		mediaPlayer = MediaPlayer.create(this, R.raw.tada);
     		mediaPlayer.start();
     		//Toast.makeText(SplitAnimalActivity.this, "Bien hecho !!!", Toast.LENGTH_SHORT).show();
@@ -298,7 +301,11 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     		
     		text.setText(app.getSpanishName(app.getDestiny(),animal_name));
     		toast.setView(toast_layout);
-    		toast.show();
+    		//toast.show();
+    		
+    		String return_message = "Has ganado";
+			this.display.setText(return_message);
+			this.finalDialog.show();
     	}
     	else{
     		mediaPlayer = MediaPlayer.create(this, R.raw.failbeep);
@@ -308,7 +315,30 @@ public class SplitAnimalActivity extends MyActivity implements ViewFactory, View
     }
 
 	public void onClick(View v) {
-		dialog.dismiss();
+		//dialog.dismiss();
+		switch(v.getId()){
+			case R.id.again:
+				Intent self = new Intent(this, SplitAnimalActivity.class);
+				//self.putExtra("animal", "elephant");
+	            startActivity(self);
+	            finish();
+				break;
+			case R.id.nope:
+				//Para cambiar la redireccion, cambiar la clase destino del intent
+				toast_layout.setVisibility(View.INVISIBLE);
+            	if (app.getState() != app.CHOOSE_CHALLENGE){
+            		Intent nextIntent = new Intent(SplitAnimalActivity.this, SoundActivity.class);
+            		startActivity(nextIntent);
+            		recycle();
+            		finish();
+            	}else{
+            		recycle();
+            		goMenuChallenges();
+            	}
+				break;
+			case R.id.button1:
+				dialog.dismiss();
+		}
 	}
 
 

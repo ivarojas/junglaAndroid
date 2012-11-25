@@ -23,7 +23,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import animal.AnimalSet;
 
-public class SoundActivity extends MyActivity{
+public class SoundActivity extends ChallengeActivity{
 
 	private AlertDialog alertDialog;
 	MediaPlayer media_player;
@@ -71,6 +71,9 @@ public class SoundActivity extends MyActivity{
 		// create alert dialog
 		alertDialog = builder.create();
 		
+		//setting final dialog
+        this.setupDialogEnd();
+		
 		context = this.getApplicationContext();
     }
 
@@ -108,13 +111,9 @@ public class SoundActivity extends MyActivity{
     		media_player = MediaPlayer.create(SoundActivity.this, R.raw.tada);
     		media_player.start();
     		
-    		if (app.getState() != app.CHOOSE_CHALLENGE){
-    			Intent intent = new Intent(this, ChooseAnimalsJungleActivity.class);
-    			startActivity(intent);
-    			finish();
-    		}else{
-    			goMenuChallenges();
-    		}
+    		String return_message = "Has ganado";
+			this.display.setText(return_message);
+			this.finalDialog.show();
     	}else{
     		if(media_player!=null && media_player.isPlaying())
     			media_player.stop();
@@ -139,7 +138,27 @@ public class SoundActivity extends MyActivity{
 			this.goMenuChallenges();
 		}
     }
-
+    
+    public void onClick(View v) {
+	    switch(v.getId()){
+			case R.id.again:
+				Intent self = new Intent(this, SoundActivity.class);
+				startActivity(self);
+	            finish();
+				break;
+			case R.id.nope:
+				//Para cambiar la redireccion, cambiar la clase destino del intent
+				if (app.getState() != app.CHOOSE_CHALLENGE){
+	    			Intent intent = new Intent(this, ChooseAnimalsJungleActivity.class);
+	    			startActivity(intent);
+	    			finish();
+	    		}else{
+	    			goMenuChallenges();
+	    		}
+				break;
+		}
+	}
+    
 	public void setSoundAnimal(){
 		//setting sound animal and choices to show
         animal_set = new AnimalSet(this);
