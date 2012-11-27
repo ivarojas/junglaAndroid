@@ -2,19 +2,17 @@ package com.taller.jandroid;
 
 import persistance.Jungle;
 import android.os.Bundle;
-import android.app.Activity;
 import android.content.Intent;
-import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 
-public class ChallengesActivity extends Activity implements OnClickListener {
+public class ChallengesActivity extends MyActivity implements OnClickListener {
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -35,13 +33,6 @@ public class ChallengesActivity extends Activity implements OnClickListener {
         
         Jungle jungle = (Jungle)getApplicationContext();
         jungle.setState(jungle.CHOOSE_CHALLENGE);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_challenges, menu);
-		return true;
 	}
 
 	public void onClick(View arg0) {
@@ -69,6 +60,11 @@ public class ChallengesActivity extends Activity implements OnClickListener {
 		}
 		
 		finish();
+	}
+
+	@Override
+	public void verifyChoice(View v) {
+		
 	}
 
 }

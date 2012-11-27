@@ -13,6 +13,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 abstract public class MyActivity extends Activity {
@@ -39,12 +41,29 @@ abstract public class MyActivity extends Activity {
         broadcastReceiver = new BroadcastReceiver() {
           @Override
           public void onReceive(Context context, Intent intent) {
-        	  finish();
         	  
+        	  finish();
+        	  android.os.Process.killProcess(android.os.Process.myPid());
           }
         };
         registerReceiver(broadcastReceiver, intentFilter);
 	}
+	
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+	
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item) 
+    {        
+        Intent i = new Intent(this,MainActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
+        startActivity(i);
+        finish();
+        return super.onOptionsItemSelected(item);
+    }
 	
 	@Override
 	public void onDestroy(){

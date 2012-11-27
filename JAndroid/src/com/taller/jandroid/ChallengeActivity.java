@@ -13,7 +13,6 @@ public class ChallengeActivity extends MyActivity implements OnClickListener{
 
 	@Override
 	public void verifyChoice(View v) {
-		// TODO Auto-generated method stub
 		
 	}
 	
@@ -31,7 +30,6 @@ public class ChallengeActivity extends MyActivity implements OnClickListener{
     }
 
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
 		
 	}
 }

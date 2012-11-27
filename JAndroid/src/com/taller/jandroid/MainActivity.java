@@ -1,5 +1,6 @@
 package com.taller.jandroid;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -14,7 +15,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends MyActivity implements OnClickListener{
+public class MainActivity extends Activity implements OnClickListener{
 	private Dialog dialog;
 	private String infolinks="" +
 			"<p><a href='http://www.heathwood.org/simpson/quicklinks/animalsoftherainforest/animalmap2.htm'>Heathwood.org</a></p>" +
@@ -110,8 +111,11 @@ public class MainActivity extends MyActivity implements OnClickListener{
 			Intent choose_challenge = new Intent(this,ChallengesActivity.class);
 	    	this.startActivity(choose_challenge);
 	    	break;
-		case R.id.exit: 
-			android.os.Process.killProcess(android.os.Process.myPid()); 
+		case R.id.exit:
+			Intent intent = new Intent("CLOSE_ALL");
+	        this.sendBroadcast(intent);
+			android.os.Process.killProcess(android.os.Process.myPid());
+			finish();
 			break;
 		case R.id.credits:
 			dialog.show();
@@ -120,11 +124,6 @@ public class MainActivity extends MyActivity implements OnClickListener{
 			dialog.dismiss();
 			break;
 		}
-		
-	}
-
-	@Override
-	public void verifyChoice(View v) {
 		
 	}
 }

@@ -9,8 +9,6 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewManager;
 import android.view.Window;
@@ -63,29 +61,6 @@ public class ShadowActivity extends ChallengeActivity {
         
         //setting final dialog
         this.setupDialogEnd();
-    }
-	
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
-    
-    @Override
-    public boolean onOptionsItemSelected (MenuItem item) 
-    {
-        switch (item.getItemId()) {
-//        case ENABLE_S2_MENU_ID:
-//            if (mSpot2 != null) mSpot2.setDragLayer (mDragLayer);
-//            return true;
-        }
-
-        
-        Intent intent = new Intent("CLOSE_ALL");
-        this.sendBroadcast(intent);
-//        android.os.Process.killProcess(android.os.Process.myPid()); 
-        finish();
-        return super.onOptionsItemSelected(item);
     }
     
     public void verifyAnswer(View view){
