@@ -86,7 +86,7 @@ abstract public class MyActivity extends Activity {
 		//The new size we want to scale to
 		final int REQUIRED_SIZE;
 		if(better)
-			REQUIRED_SIZE=240;
+			REQUIRED_SIZE=256;
 		else
 			REQUIRED_SIZE=128;
 

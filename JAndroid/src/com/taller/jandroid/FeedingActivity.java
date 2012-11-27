@@ -204,28 +204,16 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 	       // Tell the user that it takes a long click to start dragging and do some shit.
 	    }
 	    
-	    /*if(v.getId() == R.id.next){
-	    	if (app.getState() != app.CHOOSE_CHALLENGE){
-	    		Intent i = new Intent(this, SplitAnimalActivity.class);
-	    		startActivity(i);
-	    		recycle();
-	    		finish();
-	    	}else{
-	    		recycle();
-	    		goMenuChallenges();
-	    	}
-	    }
-	    if(v.getId() == R.id.dialogButtonOK)
-	    	dialog.dismiss();*/
-	    
 	    switch(v.getId()){
 			case R.id.again:
+				finalDialog.dismiss();
 				Intent self = new Intent(this, FeedingActivity.class);
 				//self.putExtra("animal", "elephant");
 	            startActivity(self);
 	            finish();
 				break;
 			case R.id.nope:
+				finalDialog.dismiss();
 				//Para cambiar la redireccion, cambiar la clase destino del intent
 				if (app.getState() != app.CHOOSE_CHALLENGE){
 		    		Intent i = new Intent(this, SplitAnimalActivity.class);

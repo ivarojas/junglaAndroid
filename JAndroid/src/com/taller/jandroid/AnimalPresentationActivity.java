@@ -13,7 +13,6 @@ import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewManager;
@@ -48,8 +47,6 @@ public class AnimalPresentationActivity extends MyActivity {
         
         app = (Jungle)getApplicationContext();
         destiny = app.getDestiny();
-        
-        Log.i("destiny", destiny+"");
         
         ImageButton arrow=(ImageButton)findViewById(R.id.back);
     	ImageButton sound=(ImageButton)findViewById(R.id.speaker);

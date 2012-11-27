@@ -117,11 +117,13 @@ public class SoundActivity extends ChallengeActivity{
     public void onClick(View v) {
 	    switch(v.getId()){
 			case R.id.again:
+				finalDialog.dismiss();
 				Intent self = new Intent(this, SoundActivity.class);
 				startActivity(self);
 	            finish();
 				break;
 			case R.id.nope:
+				finalDialog.dismiss();
 				//Para cambiar la redireccion, cambiar la clase destino del intent
 				if (app.getState() != app.CHOOSE_CHALLENGE){
 	    			Intent intent = new Intent(this, ChooseAnimalsJungleActivity.class);

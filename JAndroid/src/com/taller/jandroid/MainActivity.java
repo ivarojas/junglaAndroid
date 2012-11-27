@@ -106,10 +106,12 @@ public class MainActivity extends Activity implements OnClickListener{
 		case R.id.start: 
 			Intent start_game = new Intent(this,IndieIntroducing.class);
 	    	this.startActivity(start_game);
+	    	finish();
 	    	break;
 		case R.id.challenges: 
 			Intent choose_challenge = new Intent(this,ChallengesActivity.class);
 	    	this.startActivity(choose_challenge);
+	    	finish();
 	    	break;
 		case R.id.exit:
 			Intent intent = new Intent("CLOSE_ALL");

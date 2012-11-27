@@ -182,11 +182,13 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 		
 		switch(v.getId()){
 			case R.id.again:
+				finalDialog.dismiss();
 				Intent self = new Intent(this, ChooseAnimalsJungleActivity.class);
 				startActivity(self);
 	            finish();
 				break;
 			case R.id.nope:
+				finalDialog.dismiss();
 				//Para cambiar la redireccion, cambiar la clase destino del intent
 				if (app.getState() != app.CHOOSE_CHALLENGE){
 					Intent i = new Intent(this, SayGoodbyeActivity.class);

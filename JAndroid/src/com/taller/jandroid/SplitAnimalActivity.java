@@ -293,12 +293,13 @@ public class SplitAnimalActivity extends ChallengeActivity implements ViewFactor
 		//dialog.dismiss();
 		switch(v.getId()){
 			case R.id.again:
+				finalDialog.dismiss();
 				Intent self = new Intent(this, SplitAnimalActivity.class);
-				//self.putExtra("animal", "elephant");
 	            startActivity(self);
 	            finish();
 				break;
 			case R.id.nope:
+				finalDialog.dismiss();
 				//Para cambiar la redireccion, cambiar la clase destino del intent
 				toast_layout.setVisibility(View.INVISIBLE);
             	if (app.getState() != app.CHOOSE_CHALLENGE){
