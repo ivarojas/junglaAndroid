@@ -20,6 +20,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import drag_framework.DragController;
 import drag_framework.DragLayer;
 import drag_framework.DropSpot;
@@ -39,6 +40,8 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 	private List<Integer> right_answers_ids;
 	private int destiny;
 	private Jungle app;
+	private TextView display ;
+	private Dialog finalDialog;
 	
     @SuppressLint("UseValueOf")
 	@Override
@@ -63,7 +66,9 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
         	this.setDrop_background(R.drawable.feed_bonobo_open_mouth);
         else
         	this.setDrop_background(R.drawable.feed_orangutan_open_mouth);
+        
         setupViews();
+        this.setupDialogEnd();
         
         ImageButton next = (ImageButton)findViewById(R.id.next);
 	    next.setVisibility(View.INVISIBLE);
@@ -204,6 +209,19 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 	    drop5.setup (null, dragController, R.color.drop_target_disabled, this);
 	    drop6.setup (null, dragController, R.color.drop_target_disabled, this);
 	}
+    
+    public void setupDialogEnd(){
+    	finalDialog = new Dialog(this);
+    	finalDialog.setContentView(R.layout.dialog_retry);
+    	
+    	Button again = (Button)finalDialog.findViewById(R.id.again);
+    	Button nope = (Button)finalDialog.findViewById(R.id.nope);
+    	
+    	again.setOnClickListener(this);
+    	nope.setOnClickListener(this);
+
+    	display = (TextView)finalDialog.findViewById(R.id.msg_displayed);    	
+    }
 
 	public void onClick(View v) 
 	{
@@ -211,7 +229,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 	       // Tell the user that it takes a long click to start dragging and do some shit.
 	    }
 	    
-	    if(v.getId() == R.id.next){
+	    /*if(v.getId() == R.id.next){
 	    	if (app.getState() != app.CHOOSE_CHALLENGE){
 	    		Intent i = new Intent(this, SplitAnimalActivity.class);
 	    		startActivity(i);
@@ -223,7 +241,29 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 	    	}
 	    }
 	    if(v.getId() == R.id.dialogButtonOK)
-	    	dialog.dismiss();
+	    	dialog.dismiss();*/
+	    
+	    switch(v.getId()){
+			case R.id.again:
+				Intent self = new Intent(this, FeedingActivity.class);
+				//self.putExtra("animal", "elephant");
+	            startActivity(self);
+	            finish();
+				break;
+			case R.id.nope:
+				//Para cambiar la redireccion, cambiar la clase destino del intent
+				if (app.getState() != app.CHOOSE_CHALLENGE){
+		    		Intent i = new Intent(this, SplitAnimalActivity.class);
+		    		startActivity(i);
+		    		finish();
+		    	}else{
+		    		goMenuChallenges();
+		    	}
+		    	recycle();
+				break;
+			case R.id.dialogButtonOK:
+				dialog.dismiss();
+		}
 	}
 	
 	public boolean onLongClick(View v) 
@@ -266,7 +306,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 	public void verifyChoice(View v) {
 		
 		DropSpot center = (DropSpot)mDragLayer.findViewById(R.id.drop_spot0);
-		
+		String return_message;
 		
 		if(right_answers_ids.contains(v.getId())){
 			if(destiny == 0)
@@ -276,8 +316,11 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 			success += 1;
 			((ViewManager)v.getParent()).removeView(v);
 			if(success == right_answers_ids.size()){
-				ImageButton next = (ImageButton)mDragLayer.findViewById(R.id.next);
-				next.setVisibility(View.VISIBLE);
+				//ImageButton next = (ImageButton)mDragLayer.findViewById(R.id.next);
+				//next.setVisibility(View.VISIBLE);
+				return_message = "Has ganado";
+				display.setText(return_message);
+				finalDialog.show();
 			}
 			MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.tada);
 	    	mediaPlayer.start();
@@ -290,7 +333,6 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 			MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.failbeep);
 	    	mediaPlayer.start();
 		}
-
 	}
 	
 	@Override

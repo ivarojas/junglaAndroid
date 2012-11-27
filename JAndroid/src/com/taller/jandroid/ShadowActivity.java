@@ -19,7 +19,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import animal.AnimalSet;
 
-public class ShadowActivity extends MyActivity {
+public class ShadowActivity extends ChallengeActivity {
 
     private AlertDialog alertDialog;
 	private AnimalSet animal_set;
@@ -60,6 +60,9 @@ public class ShadowActivity extends MyActivity {
         
         //setting shadow animal and choices to show
         this.setShadowAnimal();
+        
+        //setting final dialog
+        this.setupDialogEnd();
     }
 	
     @Override
@@ -93,16 +96,9 @@ public class ShadowActivity extends MyActivity {
     		mediaPlayer = MediaPlayer.create(this, R.raw.tada);
     		mediaPlayer.start();
     		
-    		if (app.getState() != app.CHOOSE_CHALLENGE){
-    			Intent intent = new Intent(this, FeedingActivity.class);
-    			intent.putExtra("animal", "elephant");
-    			startActivity(intent);
-    			recycle();
-            	finish();
-    		}else{
-    			recycle();
-    			goMenuChallenges();
-    		}
+    		String return_message = "Has ganado";
+			this.display.setText(return_message);
+			this.finalDialog.show();
     	}else{
     		if(mediaPlayer!=null && mediaPlayer.isPlaying())
     			mediaPlayer.stop();
@@ -161,6 +157,28 @@ public class ShadowActivity extends MyActivity {
             Typeface font = Typeface.createFromAsset(getAssets(), "fonts/fawn.ttf"); 
             choice.setTypeface(font);
         }
+	}
+	
+	public void onClick(View v) {
+	    switch(v.getId()){
+			case R.id.again:
+				Intent self = new Intent(this, ShadowActivity.class);
+				startActivity(self);
+	            finish();
+				break;
+			case R.id.nope:
+				//Para cambiar la redireccion, cambiar la clase destino del intent
+				if (app.getState() != app.CHOOSE_CHALLENGE){
+	    			Intent intent = new Intent(this, FeedingActivity.class);
+	    			startActivity(intent);
+	    			recycle();
+	            	finish();
+	    		}else{
+	    			recycle();
+	    			goMenuChallenges();
+	    		}
+				break;
+		}
 	}
 	
 	public void recycle(){
