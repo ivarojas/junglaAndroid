@@ -52,6 +52,7 @@ public class ArrivingJungle extends MyActivity implements OnClickListener, Anima
     		else{
     			presentation = new Intent(this, PresentationBorneoActivity.class);
     		}
+    		presentation.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
     		this.startActivity(presentation);
     		finish();
     	}
@@ -96,12 +97,13 @@ public class ArrivingJungle extends MyActivity implements OnClickListener, Anima
     public void onBackPressed(){
     	super.onBackPressed();
     	Intent intro = new Intent(this,TranslatePlane.class);
+    	intro.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
     	this.startActivity(intro);
+    	finish();
     }
 
 	@Override
 	public void verifyChoice(View v) {
-		// TODO Auto-generated method stub
 		
 	}
     

@@ -92,6 +92,8 @@ public class ShadowActivity extends ChallengeActivity {
             	i=new Intent(this,PresentationActivity.class);
             else
             	i=new Intent(this,PresentationBorneoActivity.class);
+            
+            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
             startActivity(i);
             recycle();
             finish();
@@ -139,6 +141,7 @@ public class ShadowActivity extends ChallengeActivity {
 			case R.id.again:
 				finalDialog.dismiss();
 				Intent self = new Intent(this, ShadowActivity.class);
+				self.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
 				startActivity(self);
 	            finish();
 				break;
@@ -147,6 +150,7 @@ public class ShadowActivity extends ChallengeActivity {
 				//Para cambiar la redireccion, cambiar la clase destino del intent
 				if (app.getState() != app.CHOOSE_CHALLENGE){
 	    			Intent intent = new Intent(this, FeedingActivity.class);
+	    			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
 	    			startActivity(intent);
 	    			recycle();
 	            	finish();

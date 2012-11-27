@@ -51,7 +51,9 @@ public class GoodbyeActivity extends MyActivity implements AnimationListener {
 		ImageView indie_ship = (ImageView)findViewById(R.id.ship);
 		indie_ship.setVisibility(View.INVISIBLE);
 		Intent next = new Intent(this,TranslatePlane.class);
+		next.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		startActivity(next);
+		finish();
 		
 	}
 
@@ -67,7 +69,9 @@ public class GoodbyeActivity extends MyActivity implements AnimationListener {
     public void onBackPressed(){
     	super.onBackPressed();
         Intent i = new Intent(this,SayGoodbyeActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
         startActivity(i);    	
+        finish();
     }
 
 	@Override

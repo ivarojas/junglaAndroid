@@ -184,7 +184,9 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 			case R.id.again:
 				finalDialog.dismiss();
 				Intent self = new Intent(this, ChooseAnimalsJungleActivity.class);
+				self.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
 				startActivity(self);
+				recycle();
 	            finish();
 				break;
 			case R.id.nope:
@@ -192,6 +194,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 				//Para cambiar la redireccion, cambiar la clase destino del intent
 				if (app.getState() != app.CHOOSE_CHALLENGE){
 					Intent i = new Intent(this, SayGoodbyeActivity.class);
+					i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
 					startActivity(i);
 					recycle();
 					finish();
@@ -367,6 +370,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 		super.onBackPressed();
 		if (app.getState() != app.CHOOSE_CHALLENGE){
 			Intent i = new Intent(this,SoundActivity.class);
+			i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
 			startActivity(i);
 			recycle();
 			finish();

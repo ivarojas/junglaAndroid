@@ -25,6 +25,7 @@ public class SayGoodbyeActivity extends MyActivity implements OnClickListener {
 	public void onClick(View arg0) {
 		if(arg0.getId() == R.id.nextButton_sayGB){
 			Intent next = new Intent(this, GoodbyeActivity.class);
+			next.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
 			this.startActivity(next);
 			finish();
 		}	
@@ -34,7 +35,9 @@ public class SayGoodbyeActivity extends MyActivity implements OnClickListener {
     public void onBackPressed(){
     	super.onBackPressed();
         Intent i = new Intent(this,ChooseAnimalsJungleActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
         startActivity(i);    	
+        finish();
     }
 
 	@Override

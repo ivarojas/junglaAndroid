@@ -208,7 +208,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 			case R.id.again:
 				finalDialog.dismiss();
 				Intent self = new Intent(this, FeedingActivity.class);
-				//self.putExtra("animal", "elephant");
+				self.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
 	            startActivity(self);
 	            finish();
 				break;
@@ -217,12 +217,14 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 				//Para cambiar la redireccion, cambiar la clase destino del intent
 				if (app.getState() != app.CHOOSE_CHALLENGE){
 		    		Intent i = new Intent(this, SplitAnimalActivity.class);
+		    		i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
 		    		startActivity(i);
+		    		recycle();
 		    		finish();
 		    	}else{
+		    		recycle();
 		    		goMenuChallenges();
 		    	}
-		    	recycle();
 				break;
 			case R.id.dialogButtonOK:
 				dialog.dismiss();
@@ -303,6 +305,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 		super.onBackPressed();
 		if (app.getState() != app.CHOOSE_CHALLENGE){
 			Intent i = new Intent(this,ShadowActivity.class);
+			i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
 			startActivity(i);
 			recycle();
 			finish();

@@ -106,6 +106,7 @@ abstract public class MyActivity extends Activity {
 	
 	public void goMenuChallenges(){
 		Intent i = new Intent(this,ChallengesActivity.class);
+		i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
         startActivity(i); 
         finish();
 	}

@@ -40,6 +40,7 @@ public class PresentationBorneoActivity extends MyActivity {
         obutton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationBorneoActivity.this,AnimalPresentationActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
                 i.putExtra("animal","orangutan");
                 startActivity(i);
                 finish();
@@ -49,6 +50,7 @@ public class PresentationBorneoActivity extends MyActivity {
         fbutton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationBorneoActivity.this,AnimalPresentationActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
                 i.putExtra("animal","frog");
                 startActivity(i);
                 finish();
@@ -58,6 +60,7 @@ public class PresentationBorneoActivity extends MyActivity {
         rbutton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationBorneoActivity.this,AnimalPresentationActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
                 i.putExtra("animal","rhino");                
                 startActivity(i);
                 finish();
@@ -67,6 +70,7 @@ public class PresentationBorneoActivity extends MyActivity {
         pbutton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationBorneoActivity.this,AnimalPresentationActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
                 i.putExtra("animal","proboscis");
                 startActivity(i);
                 finish();
@@ -76,6 +80,7 @@ public class PresentationBorneoActivity extends MyActivity {
         hbutton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationBorneoActivity.this,AnimalPresentationActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
                 i.putExtra("animal","hornbill");
                 startActivity(i);
                 finish();
@@ -84,6 +89,7 @@ public class PresentationBorneoActivity extends MyActivity {
         lbutton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationBorneoActivity.this,AnimalPresentationActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
                 i.putExtra("animal","leopard");
                 startActivity(i);
                 finish();
@@ -92,6 +98,7 @@ public class PresentationBorneoActivity extends MyActivity {
         bbutton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationBorneoActivity.this,AnimalPresentationActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
                 i.putExtra("animal","bear");
                 startActivity(i);
                 finish();
@@ -100,6 +107,7 @@ public class PresentationBorneoActivity extends MyActivity {
         sbutton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationBorneoActivity.this,AnimalPresentationActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
                 i.putExtra("animal","snake");
                 startActivity(i);
                 finish();
@@ -108,6 +116,7 @@ public class PresentationBorneoActivity extends MyActivity {
         next.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationBorneoActivity.this,ShadowActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
                 startActivity(i);
                 finish();
                }
@@ -118,6 +127,7 @@ public class PresentationBorneoActivity extends MyActivity {
     public void onBackPressed(){
     	super.onBackPressed();
         Intent translate = new Intent(this,TranslatePlane.class);
+        translate.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
         startActivity(translate);  
         finish();
     }
@@ -125,7 +135,6 @@ public class PresentationBorneoActivity extends MyActivity {
 
 	@Override
 	public void verifyChoice(View v) {
-		// TODO Auto-generated method stub
 		
 	}
 }

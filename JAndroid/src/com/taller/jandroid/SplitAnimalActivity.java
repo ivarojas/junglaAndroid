@@ -220,6 +220,7 @@ public class SplitAnimalActivity extends ChallengeActivity implements ViewFactor
             	toast_layout.setVisibility(View.INVISIBLE);
             	if (app.getState() != app.CHOOSE_CHALLENGE){
             		Intent nextIntent = new Intent(SplitAnimalActivity.this, SoundActivity.class);
+            		nextIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
             		startActivity(nextIntent);
             		recycle();
             		finish();
@@ -245,6 +246,7 @@ public class SplitAnimalActivity extends ChallengeActivity implements ViewFactor
     	super.onBackPressed();
     	if (app.getState() != app.CHOOSE_CHALLENGE){
 	        Intent i = new Intent(this,FeedingActivity.class);
+	        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
 	        startActivity(i);
 	        recycle();
 	        finish();
@@ -295,6 +297,7 @@ public class SplitAnimalActivity extends ChallengeActivity implements ViewFactor
 			case R.id.again:
 				finalDialog.dismiss();
 				Intent self = new Intent(this, SplitAnimalActivity.class);
+				self.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
 	            startActivity(self);
 	            finish();
 				break;
@@ -304,6 +307,7 @@ public class SplitAnimalActivity extends ChallengeActivity implements ViewFactor
 				toast_layout.setVisibility(View.INVISIBLE);
             	if (app.getState() != app.CHOOSE_CHALLENGE){
             		Intent nextIntent = new Intent(SplitAnimalActivity.this, SoundActivity.class);
+            		nextIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
             		startActivity(nextIntent);
             		recycle();
             		finish();

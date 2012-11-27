@@ -107,6 +107,7 @@ public class SoundActivity extends ChallengeActivity{
         	if(media_player2!=null && media_player2.isPlaying())
     			media_player2.stop();
             Intent i = new Intent(this,SplitAnimalActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
             startActivity(i);
             finish();
 		}else{
@@ -119,6 +120,7 @@ public class SoundActivity extends ChallengeActivity{
 			case R.id.again:
 				finalDialog.dismiss();
 				Intent self = new Intent(this, SoundActivity.class);
+				self.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
 				startActivity(self);
 	            finish();
 				break;
@@ -127,6 +129,7 @@ public class SoundActivity extends ChallengeActivity{
 				//Para cambiar la redireccion, cambiar la clase destino del intent
 				if (app.getState() != app.CHOOSE_CHALLENGE){
 	    			Intent intent = new Intent(this, ChooseAnimalsJungleActivity.class);
+	    			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
 	    			startActivity(intent);
 	    			finish();
 	    		}else{

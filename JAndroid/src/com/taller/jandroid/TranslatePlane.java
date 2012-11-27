@@ -83,6 +83,7 @@ public class TranslatePlane extends MyActivity implements OnClickListener, Anima
     	Jungle app = (Jungle)getApplicationContext();
     	app.setDestiny(destiny);
     	Intent nextintent = new Intent(this,ArrivingJungle.class);
+    	nextintent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
 		this.startActivity(nextintent);
 		this.finish();
     }
@@ -91,7 +92,9 @@ public class TranslatePlane extends MyActivity implements OnClickListener, Anima
     public void onBackPressed(){
     	super.onBackPressed();
     	Intent intro = new Intent(this,IndieIntroducing.class);
+    	intro.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
     	this.startActivity(intro);
+    	finish();
     }
 
 	@Override

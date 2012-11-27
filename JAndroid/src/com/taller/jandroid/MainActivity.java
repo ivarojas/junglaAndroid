@@ -105,11 +105,13 @@ public class MainActivity extends Activity implements OnClickListener{
 		switch(arg0.getId()){
 		case R.id.start: 
 			Intent start_game = new Intent(this,IndieIntroducing.class);
+			start_game.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
 	    	this.startActivity(start_game);
 	    	finish();
 	    	break;
 		case R.id.challenges: 
 			Intent choose_challenge = new Intent(this,ChallengesActivity.class);
+			choose_challenge.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
 	    	this.startActivity(choose_challenge);
 	    	finish();
 	    	break;

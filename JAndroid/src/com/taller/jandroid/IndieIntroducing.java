@@ -30,7 +30,9 @@ public class IndieIntroducing extends MyActivity implements OnClickListener {
 	public void onClick(View arg0) {
 		if(arg0.getId() == R.id.nextButton_intr){
 			Intent chooseDestiny = new Intent(this, TranslatePlane.class);
+			chooseDestiny.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
 			this.startActivity(chooseDestiny);
+			finish();
 		}
 	}
 
@@ -43,6 +45,8 @@ public class IndieIntroducing extends MyActivity implements OnClickListener {
     public void onBackPressed(){
     	super.onBackPressed();
         Intent i = new Intent(this,MainActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
         startActivity(i);
+        finish();
     }
 }

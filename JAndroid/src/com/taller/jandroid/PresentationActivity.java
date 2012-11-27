@@ -37,6 +37,7 @@ public class PresentationActivity extends MyActivity {
         bbutton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationActivity.this,AnimalPresentationActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
                 i.putExtra("animal","bonobo");
                 startActivity(i);
                 finish();
@@ -46,6 +47,7 @@ public class PresentationActivity extends MyActivity {
         hbutton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationActivity.this,AnimalPresentationActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
                 i.putExtra("animal","hippo");
                 startActivity(i);
                 finish();
@@ -55,6 +57,7 @@ public class PresentationActivity extends MyActivity {
         ebutton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationActivity.this,AnimalPresentationActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
                 i.putExtra("animal","elephant");
                 startActivity(i);
                 finish();
@@ -64,6 +67,7 @@ public class PresentationActivity extends MyActivity {
         gbutton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationActivity.this,AnimalPresentationActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
                 i.putExtra("animal","gorilla");
                 startActivity(i);
                 finish();
@@ -73,6 +77,7 @@ public class PresentationActivity extends MyActivity {
         obutton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationActivity.this,AnimalPresentationActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
                 i.putExtra("animal","okapi");
                 startActivity(i);
                 finish();
@@ -82,6 +87,7 @@ public class PresentationActivity extends MyActivity {
         next.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 Intent i=new Intent(PresentationActivity.this,ShadowActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
                 startActivity(i);
                 finish();
                }
@@ -92,6 +98,7 @@ public class PresentationActivity extends MyActivity {
     public void onBackPressed(){
     	super.onBackPressed();
         Intent translate = new Intent(this,TranslatePlane.class);
+        translate.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
         startActivity(translate);    
         finish();
     }

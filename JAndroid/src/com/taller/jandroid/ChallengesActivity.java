@@ -39,22 +39,27 @@ public class ChallengesActivity extends MyActivity implements OnClickListener {
 		switch(arg0.getId()){
 			case R.id.shadow: 
 				Intent shadow_challenge = new Intent(this,ShadowActivity.class);
+				shadow_challenge.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
 		    	this.startActivity(shadow_challenge);
 		    	break;
 			case R.id.feed: 
 				Intent feed_challenge = new Intent(this,FeedingActivity.class);
+				feed_challenge.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
 		    	this.startActivity(feed_challenge);
 		    	break;
 			case R.id.sound: 
 				Intent sound_challenge = new Intent(this,SoundActivity.class);
+				sound_challenge.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
 		    	this.startActivity(sound_challenge); 
 				break;
 			case R.id.split:
 				Intent split_challenge = new Intent(this,SplitAnimalActivity.class);
+				split_challenge.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
 		    	this.startActivity(split_challenge);
 				break;
 			case R.id.choose:
 				Intent choose_challenge = new Intent(this,ChooseAnimalsJungleActivity.class);
+				choose_challenge.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
 		    	this.startActivity(choose_challenge);
 				break;
 		}
@@ -67,4 +72,13 @@ public class ChallengesActivity extends MyActivity implements OnClickListener {
 		
 	}
 
+	@Override
+	public void onBackPressed(){
+		super.onBackPressed();
+		Intent i = new Intent(this, MainActivity.class);
+		i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
+		startActivity(i);
+		finish();
+	}
+	
 }

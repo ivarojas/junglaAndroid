@@ -92,7 +92,7 @@ public class AnimalPresentationActivity extends MyActivity {
             	else{
             		i=new Intent(AnimalPresentationActivity.this,PresentationBorneoActivity.class);
             	}
-                i.putExtra("destiny", destiny);
+            	i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
                 mp.stop();
                 startActivity(i);
                 recycle();
@@ -229,6 +229,7 @@ public class AnimalPresentationActivity extends MyActivity {
     	else{
     		i=new Intent(this,PresentationBorneoActivity.class);
     	}
+    	i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); 
         mp.stop();
         startActivity(i);
         recycle();
