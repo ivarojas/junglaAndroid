@@ -17,7 +17,6 @@ package drag_framework;
 import android.content.Context;
 import android.graphics.Rect;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 import com.taller.jandroid.MyActivity;
@@ -224,7 +223,7 @@ public void onDrop(DragSource source, int x, int y, int xOffset, int yOffset,
     int left = x - xOffset + viewX;
     int top = y - yOffset + viewY;
     DragLayer.LayoutParams lp = new DragLayer.LayoutParams (w, h, left, top);
-    
+
     myActivity.verifyChoice(v);  
         
 }

@@ -22,12 +22,9 @@ package drag_framework;
 import android.content.Context;
 import android.graphics.Rect;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewManager;
-import android.widget.Toast;
 
 /**
  * A ViewGroup that coordinates dragging across its dscendants.
