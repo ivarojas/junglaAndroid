@@ -4,9 +4,10 @@ package com.taller.jandroid;
 import java.util.List;
 
 import myviews.MyTextView;
-
 import persistance.Jungle;
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
@@ -66,6 +67,20 @@ public class AnimalPresentationActivity extends MyActivity {
 		dialogButton1.setTypeface(font);
 		
         animal_name=getIntent().getStringExtra("animal");
+        
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Para ver más información del animal debes estar conectado a internet")
+           .setCancelable(false)
+           .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+               public void onClick(DialogInterface dialog, int id) {
+            	   dialog.cancel();
+               }
+           })
+           //Set your icon here
+           .setTitle("No estás conectado!")
+           .setIcon(R.drawable.alert);
+        final AlertDialog alert = builder.create();
+        
         
         setAnimalInfo();
         
@@ -162,8 +177,13 @@ public class AnimalPresentationActivity extends MyActivity {
 		});
 		url.setOnClickListener(new OnClickListener(){
 			public void onClick(View v){
-				Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(animal_url));
-				startActivity(browserIntent);
+				
+				if(!isInternetOn()){
+					alert.show();
+				}else{
+					Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(animal_url));
+					startActivity(browserIntent);
+				}
 			}
 		});
 		

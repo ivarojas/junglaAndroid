@@ -3,7 +3,6 @@ package com.taller.jandroid;
 import java.io.InputStream;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -11,10 +10,10 @@ import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 abstract public class MyActivity extends Activity {
 	
@@ -90,6 +89,24 @@ abstract public class MyActivity extends Activity {
 		Intent i = new Intent(this,ChallengesActivity.class);
         startActivity(i); 
         finish();
+	}
+	
+	public boolean isInternetOn() {
+		ConnectivityManager connec =  (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+		// ARE WE CONNECTED TO THE NET
+		if ( connec.getNetworkInfo(0).getState() == NetworkInfo.State.CONNECTED ||
+				connec.getNetworkInfo(0).getState() == NetworkInfo.State.CONNECTING ||
+				connec.getNetworkInfo(1).getState() == NetworkInfo.State.CONNECTING ||
+				connec.getNetworkInfo(1).getState() == NetworkInfo.State.CONNECTED ) {
+
+			return true;
+		} 
+		else if ( connec.getNetworkInfo(0).getState() == NetworkInfo.State.DISCONNECTED ||  
+					connec.getNetworkInfo(1).getState() == NetworkInfo.State.DISCONNECTED  ) {
+			return false;
+		}
+		
+		return false;
 	}
 	
 }
