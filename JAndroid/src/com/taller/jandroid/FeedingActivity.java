@@ -13,8 +13,6 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewManager;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -46,10 +44,7 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mDragController = new DragController(this);
-	    
-	    requestWindowFeature(Window.FEATURE_NO_TITLE);
-	    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-	        WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_feeding);
         
         app = (Jungle)getApplicationContext();
