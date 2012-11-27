@@ -85,8 +85,8 @@ public class AnimalPresentationActivity extends MyActivity {
                 i.putExtra("destiny", destiny);
                 mp.stop();
                 startActivity(i);
-                finish();
                 recycle();
+                finish();                
             }  
             });
         
@@ -239,8 +239,8 @@ public class AnimalPresentationActivity extends MyActivity {
     	}
         mp.stop();
         startActivity(i);
-        finish();
         recycle();
+        finish();
     }
 
 	@Override
@@ -259,3 +259,4 @@ public class AnimalPresentationActivity extends MyActivity {
 	}
     
 }
+ 
