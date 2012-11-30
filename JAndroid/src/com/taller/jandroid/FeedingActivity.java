@@ -8,6 +8,7 @@ import persistance.Jungle;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -72,7 +73,9 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener{
 		((ImageView)dialog.findViewById(R.id.image)).setBackgroundDrawable(decodeDrawable(R.drawable.drag_here_feed_instructions,false));
 		dialog.setTitle("Dale alimentos al animal");
 		Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
-
+		Typeface font = Typeface.createFromAsset(getAssets(), "fonts/fawn.ttf");  
+		dialogButton.setTypeface(font);
+		
 		success = 0;
 		
 		dialogButton.setOnClickListener(this);

@@ -9,18 +9,20 @@
 		android:layout_height="wrap_content"
 		android:orientation="vertical">
           
-	    <TextView 
+	    <myviews.MyTextView 
             android:id="@+id/msg_displayed"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:gravity="center"
+            android:textSize="28sp"
             android:layout_gravity="center"/>
 
-	    <TextView
+	    <myviews.MyTextView
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="¿Otro intento?"
 	        android:gravity="center"
+	        android:textSize="28sp"
 	        android:layout_gravity="center" />
 
 	</LinearLayout>

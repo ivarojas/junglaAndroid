@@ -7,6 +7,7 @@ import persistance.Jungle;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -89,6 +90,8 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 		}
 
 		Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
+		Typeface font = Typeface.createFromAsset(getAssets(), "fonts/fawn.ttf");
+		dialogButton.setTypeface(font);
 		// if button is clicked, close the custom dialog
 		dialogButton.setOnClickListener(this);
 		dialog.show();
@@ -347,8 +350,6 @@ implements View.OnLongClickListener, View.OnClickListener, View.OnTouchListener
 			center.setBackgroundDrawable(decodeDrawable(R.drawable.smiley_happy,false));
 			success += 1;
 			if(success == right_answers_ids.size()){
-				//ImageButton next = (ImageButton)mDragLayer.findViewById(R.id.nextButton_choose);
-				//next.setVisibility(View.VISIBLE);
 				String return_message = "Has ganado";
 				display.setText(return_message);
 				finalDialog.show();

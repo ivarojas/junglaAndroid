@@ -104,6 +104,8 @@ public class SplitAnimalActivity extends ChallengeActivity implements ViewFactor
 		dialog.setTitle("Instrucciones:");
 
 		Button dialogButton = (Button) dialog.findViewById(R.id.button1);
+		Typeface font = Typeface.createFromAsset(getAssets(), "fonts/fawn.ttf");  
+		dialogButton.setTypeface(font);
 		// if button is clicked, close the custom dialog
 		dialogButton.setOnClickListener(this);
 		dialog.show();
