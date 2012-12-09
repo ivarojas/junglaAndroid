@@ -94,6 +94,14 @@ public class MainActivity extends Activity implements OnClickListener{
 		je.setText("(jeremy@dcc.uchile.cl)");
 		Linkify.addLinks(je, Linkify.ALL);
 		
+		TextView ne=(TextView)dialog.findViewById(R.id.natalia_email);
+		ne.setText("(nataliandrea@ug.uchile.cl)");
+		Linkify.addLinks(ne, Linkify.ALL);
+		
+		TextView me=(TextView)dialog.findViewById(R.id.mauricio_email);
+		me.setText("(waxkun@gmail.com)");
+		Linkify.addLinks(me, Linkify.ALL);
+		
         start.setOnClickListener(this);
         challenges.setOnClickListener(this);
         exit.setOnClickListener(this);

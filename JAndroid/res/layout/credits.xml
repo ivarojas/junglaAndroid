@@ -189,25 +189,46 @@
                         android:id="@+id/dcc_profe_content"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:layout_marginTop="5dp"
                         android:text="Profesor:\nJeremy Barbay"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="#FFFFFF" />
 
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_gravity="center"
-                        android:layout_margin="5dp"
-                        android:background="@drawable/profe" />
-
                     <TextView
                         android:id="@+id/jeremy_email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="TextView" />
+                        android:text="" />
+					
+					<TextView
+                        android:id="@+id/dcc_natalia_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Ayudante:\nNatalia Alarcón"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/natalia_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="" />
+                    
+                    <TextView
+                        android:id="@+id/dcc_mauricio_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Ayudante:\nMauricio Quezada"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/mauricio_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="" />
 
                 </LinearLayout>
             </LinearLayout>
